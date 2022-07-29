@@ -12,10 +12,12 @@ public class Tiger {
 		return "main";
 	}
 	
+
 	
 	@RequestMapping("/main")
 	public String f0() {
 		System.out.println("템플릿 실행");
+		System.out.println("hi");
 		return "index";
 	}
 	
