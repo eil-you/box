@@ -71,7 +71,7 @@
 </head>
 <body>
 
-	<img src="img/logo/logo.png"/ class="mainlogo">
+	<img src="img/logo/earthbox_logo.png"/ class="mainlogo">
 	
 	<p class="sub-title">자원도 절약하고 환경도 지키는</p>
 	

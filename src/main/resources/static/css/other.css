@@ -12,16 +12,12 @@
 }
 
 /* ---------- main page css ---------- */
-
-
 @media ( max-width :768px) {
-	
 	.sub-title {
 		font-weight: bold;
 	}
-	
 	.mainlogo {
-		padding-top: 50px;
+		margin-top: 40px !important;
 		width: 80%;
 		margin: auto;
 		display: block;
@@ -35,7 +31,7 @@
 	}
 	.join_btn {
 		width: 70%;
-		height:50px;
+		height: 50px;
 		font-size: 18px;
 		display: block;
 		margin: auto;
@@ -43,4 +39,58 @@
 		color: #f9f9ed;
 		font-weight: bold;
 	}
+
+	/*로그인 page*/
+	.login-btn {
+		height: 50px;
+		font-size: 18px;
+		display: block;
+		margin: auto;
+		background-color: #587353;
+		color: #f9f9ed;
+		font-weight: bold;
+	}
+	.join_link {
+		font-size: 16px;
+		color: #555;
+		font-weight: bold;
+	}
+	.login_title {
+		font-weight: bold;
+		font-size: 30px !important;
+	}
+
+	/*index*/
+	.dropdown {
+		position: relative;
+		display: inline-block;
+	}
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+		padding: 12px 16px;
+		z-index: 1;
+	}
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	.card-img {
+		position: static !important;
+		width: 30%;
+	}
+	.card {
+		position: static !important;
+	}
+	.card-product__img {
+		position: static !important;
+	}
+	
+	.list_layout {
+	
+		display: block;
+	}
+	
 }
