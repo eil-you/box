@@ -104,6 +104,7 @@
 	function checkId() {
 		
 		user_id = $('#user_id').val();
+		console.log(user_id);
 		
 		$.ajax({
 			
