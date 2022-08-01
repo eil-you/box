@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.forus.mapper.UserInfoMapper">
+<mapper namespace="com.forus.mapper.UserMapper">
 
 	<select id="userInfoList" resultType = "com.forus.domain.UserInfoVO">
 		select * from user_tb

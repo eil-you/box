@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.forus.domain.UserInfoVO;
-import com.forus.mapper.UserInfoMapper;
+import com.forus.mapper.UserMapper;
 import com.mysql.cj.Session;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 
 @Controller
-public class UserInfoController {
+public class UserController {
 	
 	
 	@RequestMapping("/")
@@ -30,7 +30,7 @@ public class UserInfoController {
 		
 		
 	@Autowired // self service
-	UserInfoMapper mapper;
+	UserMapper mapper;
 	
 	
 	
@@ -51,7 +51,7 @@ public class UserInfoController {
 			return "login";
 		}else {
 			session.setAttribute("user", result);
-			return "index";
+			return "redirect:/index.do";
 		}
 	}
 	

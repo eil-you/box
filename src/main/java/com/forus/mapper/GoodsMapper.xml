@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.forus.mapper.GoodsMapper">
+	
+	<select id="goodsList" resultType="com.forus.domain.GoodsListVO">
+		select * from goods_tb where 
+		loc_seq=(select loc_seq from g_location_tb 
+		where v_machine_seq=
+		(select v_machine_seq from v_machine_tb 
+		where v_machine_addr = #{user_add} ))
+	</select>
+
+
+	<select id="selectAptName" resultType="String">
+		select apt_name from v_machine_tb where v_machine_addr =#{user_add}	
+	</select>
+
+
+
+
+</mapper>

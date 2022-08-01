@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.forus.domain.UserInfoVO;
 
 @Mapper
-public interface UserInfoMapper {
+public interface UserMapper {
 
 	
 		
@@ -16,6 +16,8 @@ public interface UserInfoMapper {
 	
 	// login
 	public UserInfoVO login(UserInfoVO vo);
+	
+
 	
 		
 		
