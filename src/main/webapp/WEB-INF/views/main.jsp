@@ -78,7 +78,7 @@
 	<h1 class="main_title">당신 곁의 EARTH BOX</h1><br>
 	
 	<div class="btn_center">
-		<button class="join_btn btn btn-sm" onclick ="location.href='login'">시작하기</button>
+		<button class="join_btn btn btn-sm" onclick ="location.href='viewLogin.do'">시작하기</button>
 	</div>
 
 </body>
