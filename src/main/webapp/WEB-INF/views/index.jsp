@@ -82,17 +82,15 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i>
+			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
 			<div class="dropdown">
-				<a href="">A 아파트 ▼</a>
+				<a class="menu_drop" href="">A 아파트 ▼</a>
 				<div class="dropdown-content">
-					<a href="">아파트 설정하기</a>
+					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
 			</div>
-
-
 		</div>
-
+		<!-- 
 		<ul class="navbar__menu">
 			<li><a href="login.do">로그인</a></li>
 			<li><a href="">Gallery</a></li>
@@ -100,97 +98,59 @@
 			<li><a href="">FAQ</a></li>
 			<li><a href="">Booking</a></li>
 		</ul>
-
-		<ul class="navbar__icons">
-			<li><i class="fab fa-twitter"></i></li>
-			<li><i class="fab fa-facebook-f"></i></li>
-		</ul>
-
-		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
-		</a>
+ -->
 	</nav>
-
-
 
 	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
-		<div class="container">
-			<!-- 시작 -->
+		<div class="container container-pd">
 			<div class="row list_layout">
-					<div class="card-product__img">
-						<img class="card-img" src="img/product/product1.png" alt="">
-						<div class="card-body">
-						<p>Accessories</p>
-						<h4 class="card-product__title">
-							<a href="single-product.html">Quartz Belt Watch</a>
-						</h4>
-						<p class="card-product__price">$150.00</p>
-					</div>
-					</div>
+				<!--리스트 출력 시작 시작 -->
 
+				<%
+				for (int i = 0; i < 6; i++) {
+				%>
+				<div class="card-product__img">
+					<img class="card-img" src="img/product/product<%=i + 1%>.png">
+					<div class="card-body">
+						<h4>상품이름</h4>
+						<br>
+						<p>상품 위치</p>
+						<p>\120,000</p>
+					</div>
+				</div>
+				<%
+				}
+				%>
 				<!-- 끝 -->
 			</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
 
-
-
-
-	<footer>
-		<div class="container">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/logo.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center   wow fadeInUp animated">
-						<div class="social">
-							<h2>Follow Me on Here</h2>
-							<ul class="icon_list">
-								<li><a href="http://www.facebook.com/abdullah.noman99"
-									target="_blank"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="http://www.twitter.com/absconderm"
-									target="_blank"><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="http://www.dribbble.com/abdullahnoman"
-									target="_blank"><i class="fa fa-dribbble"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="copyright_text   wow fadeInUp animated">
-							<p>
-								Shared by <i class="fa fa-love"></i><a
-									href="https://bootstrapthemes.co">BootstrapThemes</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+	<div class="foot-bar">
+		
+		<div class="foot-div" onclick="location.href='#'">
+			<svg aria-label="홈" class="_8-yf5 " color="white" fill="#262626"
+			height="24" role="img" viewBox="0 0 24 24" width="24">
+			<path
+				d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
+				fill="none" stroke="currentColor" stroke-linejoin="round"
+				stroke-width="2"></path></svg>
 		</div>
-	</footer>
-
-
-
-
-
-
-
-
-
-
+		<div class="foot-div">
+			<p>🗨️</p>
+		</div>
+		<div class="foot-div">
+			<p>등록하기</p>
+		</div>
+		<div class="foot-div">
+			<p>위치</p>
+		</div>
+		<div class="foot-div">
+			<p>내정보</p>
+		</div>
+	</div>
 
 	<!-- =========================
      SCRIPTS 

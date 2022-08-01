@@ -4780,7 +4780,9 @@ select[multiple].input-group-sm>.input-group-btn>.btn {
     visibility: visible
 }
 
+
 .nav-tabs .dropdown-menu {
+	
     margin-top: -1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0
@@ -7768,4 +7770,5 @@ button.close {
     .hidden-print {
         display: none !important
     }
+    
 }
