@@ -14,6 +14,11 @@
 	</select>
 	
 	
+	<insert id="join" parameterType="com.forus.domain.UserInfo">
+		insert into user_tb(user_id, user_pw, user_nick, user_email, user_addr) values(#{user_id},#{user_pw},#{user_nick},#{user_email},#{user_addr})
+	</insert>
+	
+	
  	
 
 

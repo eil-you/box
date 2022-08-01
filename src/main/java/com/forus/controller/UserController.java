@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cassandra.CassandraProperties.Request;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +54,16 @@ public class UserController {
 			session.setAttribute("user", result);
 			return "redirect:/index.do";
 		}
+	}
+	
+	@RequestMapping("/Join.do")
+	public String userJoin(UserInfoVO vo) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String securePassword = encoder.encode(vo.getUser_pw());
+		vo.setUser_pw(securePassword);
+		mapper.join(vo);
+		
+		return "login";
 	}
 	
 	
