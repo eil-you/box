@@ -18,7 +18,9 @@
 		insert into user_tb(user_id, user_pw, user_nick, user_email, user_addr) values(#{user_id},#{user_pw},#{user_nick},#{user_email},#{user_addr})
 	</insert>
 	
-	
+	<select id="checkId">
+		select user_id * from user_tb where user_id=#{user_id}	
+	</select>
  	
 
 
