@@ -5,10 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cassandra.CassandraProperties.Request;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.forus.domain.UserInfoVO;
@@ -63,6 +65,14 @@ public class UserController {
 		return "login";
 	}
 	
+	// 중복 아이디 확인
+	@ResponseBody
+	@RequestMapping("/CheckId.do")
+	public String checkId(String user_id) {
+		String result = mapper.checkId(user_id);
+		
+		return result;
+	}
 	
 	
 	

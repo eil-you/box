@@ -21,6 +21,9 @@ public interface UserMapper {
 	// join
 	public void join(UserInfoVO vo);
 	
+	// 중복 아이디 확인
+	public String checkId(String user_id);
+	
 		
 		
 		
