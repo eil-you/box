@@ -18,6 +18,8 @@ public interface UserMapper {
 	public UserInfoVO login(UserInfoVO vo);
 	
 
+	// join
+	public void join(UserInfoVO vo);
 	
 		
 		
