@@ -23,7 +23,7 @@
 	<div class="join_container">
 		<div class="login-content">
 
-			<form action="main.do">
+			<form action="Join.do">
 				<h2 class="login_title">EARTH BOX</h2>
 				<br>
 				<div class="input-div join-input">
@@ -107,7 +107,7 @@
 		
 		$.ajax({
 			
-			url : 'checkId.do',
+			url : 'CheckId.do',
 			type : 'post',
 			data : {
 				
