@@ -23,10 +23,6 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	
 	
-	@RequestMapping("/")
-	public String main() {
-		return "main";
-	}
 	
 		
 		
@@ -34,11 +30,7 @@ public class UserController {
 	UserMapper mapper;
 	
 	
-	
-	@RequestMapping("/viewLogin.do")
-	public String login() {
-		return "login";
-	}
+
 
 	@RequestMapping("/Login.do")
 	public String userLogin(UserInfoVO vo, HttpSession session) {
