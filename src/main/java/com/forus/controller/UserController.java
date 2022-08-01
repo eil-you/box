@@ -42,18 +42,21 @@ public class UserController {
 
 	@RequestMapping("/Login.do")
 	public String userLogin(UserInfoVO vo, HttpSession session) {
-		System.out.println(vo);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 		UserInfoVO result = mapper.login(vo);
 		System.out.println(result);
 		
+		// 암호키를 복호화 함 
+		encoder.matches(vo.getUser_pw(), result.getUser_pw());
 		
-		
-		if(result==null) {
-			return "login";
-		}else {
+		if(encoder.matches(vo.getUser_pw(), result.getUser_pw())) {
 			session.setAttribute("user", result);
 			return "redirect:/index.do";
+		}else {
+			return "login";
 		}
+	
 	}
 	
 	@RequestMapping("/Join.do")
