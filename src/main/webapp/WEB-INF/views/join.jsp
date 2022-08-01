@@ -17,8 +17,9 @@
 <body>
 
 	<div class="container">
+
 		<div class="login-content">
-			<form action="Login.do">
+			<form action="main.do">
 				<img src="img/logo/earthbox_logo.png">
 				<h2 class="login_title">EARTH BOX</h2><br>
            		<div class="input-div one">
@@ -27,7 +28,7 @@
            		   </div>
            		   <div class="div">
            		   		<h5>아이디</h5>
-           		   		<input type="text" class="input" name="user_id">
+           		   		<input type="text" class="input" name="id">
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -36,11 +37,11 @@
            		   </div>
            		   <div class="div">
            		    	<h5>비밀번호</h5>
-           		    	<input type="password" class="input" name="user_pw">
+           		    	<input type="password" class="input" name="pw">
             	   </div>
             	</div>
             	<br>
-            	<p><a class ="join_link" href="viewJoin.do">회원가입</a><p>
+            	<p><a class ="join_link" href="#">회원가입</a><p>
             	<br>
             	<input type="submit" class="btn btn-sm login-btn" value="로그인" >
             </form>
