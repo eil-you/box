@@ -10,11 +10,11 @@
 
 
 	<select id="login" parameterType="com.forus.domain.UserInfoVO" resultType="com.forus.domain.UserInfoVO">
-		select * from user_tb where user_id=#{user_id} and user_pw= #{user_pw} 
+		select * from user_tb where user_id=#{user_id}
 	</select>
 	
 	
-	<insert id="join" parameterType="com.forus.domain.UserInfo">
+	<insert id="join" parameterType="com.forus.domain.UserInfoVO">
 		insert into user_tb(user_id, user_pw, user_nick, user_email, user_addr) values(#{user_id},#{user_pw},#{user_nick},#{user_email},#{user_addr})
 	</insert>
 	
