@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+		<!--  Mapper 파일(sql 쿼리문을 가지고 있는 파일) 설정하기  -->
+		<!--  파일이 여러개 생성될 수 있다.  -->
+		<mappers>
+			<mapper resource="com/forus/mapper/UserInfoMapper.xml"/>
+		</mappers>		
+		
+
+</configuration>
