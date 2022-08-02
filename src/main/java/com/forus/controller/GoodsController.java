@@ -47,10 +47,18 @@ public class GoodsController {
 		
 		return "goodsInfo";
 	}
+	
+	// 상품 등록
+	@RequestMapping("gInsert.do")
+	public String gInsert(){
+		
+		
+		
+		
+		return "redirect:/index.do";
+	}
 
 
-	
-	
 	
 	
 	

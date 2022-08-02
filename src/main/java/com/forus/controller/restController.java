@@ -13,6 +13,7 @@ public class restController {
 	@Autowired // self service
 	UserMapper mapper;
 
+	// 아이디 중복 확인 
 	@RequestMapping("/CheckId.do")
 	public @ResponseBody String checkId(String user_id) {
 		String result = mapper.checkId(user_id);
@@ -21,5 +22,8 @@ public class restController {
 
 		return result;
 	}
+	
+	
+
 
 }
