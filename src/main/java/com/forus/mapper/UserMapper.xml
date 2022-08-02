@@ -19,7 +19,7 @@
 	</insert>
 	
 	<select id="checkId">
-		select user_id * from user_tb where user_id=#{user_id}	
+		select user_id from user_tb where user_id=#{user_id}	
 	</select>
  	
 
