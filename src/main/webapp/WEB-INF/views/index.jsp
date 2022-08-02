@@ -77,15 +77,11 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 </head>
-
-<body>
-
 <% 
 
-List<GoodsListVO> list = (List<GoodsListVO>)session.getAttribute("GoodsList");
+List<GoodsListVO> list = (List)session.getAttribute("GoodsList"); %>
 
-%>
-
+<body>
 
 	<!-- Preloader -->
 	<div id="preloader">
@@ -121,10 +117,10 @@ List<GoodsListVO> list = (List<GoodsListVO>)session.getAttribute("GoodsList");
 				<div class="card-product__img">
 					<img class="card-img" src="img/product/product1.png">
 					<div class="card-body">
-						<h4><%= %></h4>
-						<br>
-						<p>상품 위치</p>
-						<p>\<%= %></p>
+							<h4><%=list.get(1) %></h4>
+							<br>
+							<p>상품 위치</p>
+							<p><%=list.get(3) %></p>
 					</div>
 				</div>
 				<!-- 끝 -->
