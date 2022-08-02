@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.forus.domain.GoodsListVO;
+import com.forus.domain.GoodsVO;
 
 @Mapper
 public interface GoodsMapper {
@@ -18,6 +19,8 @@ public interface GoodsMapper {
 	public String selectAptName(String user_add);
 	
 	
+	// goodsInfo
+	public GoodsVO goodsInfo(int g_seq);
 	
 	
 	

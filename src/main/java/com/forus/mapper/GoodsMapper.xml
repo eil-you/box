@@ -9,12 +9,17 @@
 		loc_seq=(select loc_seq from g_location_tb 
 		where v_machine_seq=
 		(select v_machine_seq from v_machine_tb 
-		where v_machine_addr = #{user_add} ))
+		where v_machine_addr = #{user_add} )) and g_status='판매'
 	</select>
 
 
 	<select id="selectAptName" resultType="String">
 		select apt_name from v_machine_tb where v_machine_addr =#{user_add}	
+	</select>
+	
+	
+	<select id="goodsInfo" parameterType="int" resultType="com.forus.domain.GoodsVO">
+		select g_seq, gc_seq, g_name, g_info, g_img, g_price,seller_id from goods_tb where g_seq = #{g_seq}
 	</select>
 
 

@@ -11,5 +11,11 @@ import lombok.RequiredArgsConstructor;
 public class GoodsVO {
 	private int g_seq;
 	private int gc_seq;
+	private String g_name;
+	private String g_info;
+	private String g_img;
+	private int g_price;
+	private String seller_id;
+	
 
 }
