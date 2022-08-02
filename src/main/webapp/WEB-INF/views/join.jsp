@@ -42,7 +42,7 @@
 					</div>
 					<div class="div">
 						<h5>아이디</h5> 
-						<input type="text" class="input input-id" name="user_id"> <button class="check-id">중복확인</button>
+						<input type="text" class="input input-id" name="user_id" id="user_id"> <button class="check-id" onclick='checkId()'>중복확인</button>
 					</div>
 				</div>
 
@@ -99,7 +99,7 @@
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	// id중복값 찾기
-	$(document).ready(findOverla);
+	$(document).ready();
 	
 	function checkId() {
 		
@@ -115,11 +115,13 @@
 				'user_id' : user_id
 				
 			},
-			
-			
-		
-		
-		
+			success : function () {
+				console.log("성공")
+			},
+			error: function () {
+				console.log("실패")
+			}
+				
 		
 		})
 		
