@@ -1,7 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="com.forus.domain.GoodsListVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 
 <!DOCTYPE html>
 <html>
@@ -77,6 +79,14 @@
 </head>
 
 <body>
+
+<% 
+
+List<GoodsListVO> list = (List<GoodsListVO>)session.getAttribute("GoodsList");
+
+%>
+
+
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
@@ -108,22 +118,15 @@
 		<div class="container container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
-
-				<%
-				for (int i = 0; i < 6; i++) {
-				%>
 				<div class="card-product__img">
-					<img class="card-img" src="img/product/product<%=i + 1%>.png">
+					<img class="card-img" src="img/product/product1.png">
 					<div class="card-body">
-						<h4>상품이름</h4>
+						<h4><%= %></h4>
 						<br>
 						<p>상품 위치</p>
-						<p>\120,000</p>
+						<p>\<%= %></p>
 					</div>
 				</div>
-				<%
-				}
-				%>
 				<!-- 끝 -->
 			</div>
 		</div>
