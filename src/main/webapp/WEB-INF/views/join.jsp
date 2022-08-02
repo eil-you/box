@@ -99,14 +99,12 @@
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-	// id중복값 찾기
-	//$('.check-id').
-	//$(document).ready();
+	// id중복값 찾기 ajax 통신
 	
 	function checkId() {
 		
 		user_id = $('#user_id').val();
-		console.log(user_id);
+		//console.log(user_id);
 		
 		$.ajax({
 			
@@ -117,24 +115,33 @@
 				'user_id' : user_id
 				
 			},
-			dataType :JSON,
-			success : function () {
-				console.log("성공")
-			},
+			success : canUse,
 			error: function () {
 				console.log("실패")
 			}
 				
 		
 		})
+	}
+	
+	function canUse(data) {
 		
+		console.log(data)
 		
-		
-		
+		if (data == "") {
+			
+			alert("사용 가능한 아이디 입니다.")
+
+			
+		} else {
+			
+			$('#user_id').val(null);		
+			alert("중복된 아이디입니다.")
+			
+		}
 		
 		
 	}
-	
 	
 	
 	// 도로명 주소찾기 
