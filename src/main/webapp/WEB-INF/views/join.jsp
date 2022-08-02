@@ -115,6 +115,7 @@
 				'user_id' : user_id
 				
 			},
+			dataType :JSON
 			success : function () {
 				console.log("성공")
 			},
