@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.forus.domain.GoodsListVO;
+import com.forus.domain.GoodsVO;
 import com.forus.domain.UserInfoVO;
 import com.forus.mapper.GoodsMapper;
 
@@ -33,6 +34,18 @@ public class GoodsController {
 		// 아파트 보내주기
 		request.setAttribute("apt_name",apt_name);
 
+	}
+	
+	
+	// 상품 한개 상세 정보 불러오기
+	@RequestMapping("/goodsInfo.do")
+	public String goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
+		GoodsVO result =mapper.goodsInfo(g_seq);
+		System.out.println(result);
+		request.setAttribute("goodsInfo", result);
+		request.setAttribute("apt_name", apt_name);
+		
+		return "goodsInfo";
 	}
 
 
