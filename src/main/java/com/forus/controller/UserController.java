@@ -66,14 +66,14 @@ public class UserController {
 	}
 	
 	// 중복 아이디 확인
-	@ResponseBody
-	@RequestMapping("/CheckId.do")
-	public String checkId(String user_id) {
-		String result = mapper.checkId(user_id);
-		
-		return result;
-	}
-	
+//	@ResponseBody
+//	@RequestMapping("/CheckId.do")
+//	public String checkId(String user_id) {
+//		String result = mapper.checkId(user_id);
+//		
+//		return result;
+//	}
+//	
 	
 	
 	

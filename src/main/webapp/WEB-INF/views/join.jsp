@@ -42,7 +42,8 @@
 					</div>
 					<div class="div">
 						<h5>아이디</h5> 
-						<input type="text" class="input input-id" name="user_id" id="user_id"> <button class="check-id" onclick='checkId()'>중복확인</button>
+						<input type="text" class="input input-id" name="user_id" id="user_id"> 
+						<button type = "button" class="check-id" onclick='checkId()'>중복확인</button>
 					</div>
 				</div>
 
@@ -99,7 +100,8 @@
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
 	// id중복값 찾기
-	$(document).ready();
+	//$('.check-id').
+	//$(document).ready();
 	
 	function checkId() {
 		
@@ -115,7 +117,7 @@
 				'user_id' : user_id
 				
 			},
-			dataType :JSON
+			dataType :JSON,
 			success : function () {
 				console.log("성공")
 			},
