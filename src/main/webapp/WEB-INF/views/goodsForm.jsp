@@ -100,7 +100,7 @@
 		<form class="form-horizontal" action="goodsInsert.do" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="title"
+					<input type="text" class="form-control"
 						placeholder="글 제목" name="g_name">
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="title"
+					<input type="text" class="form-control"
 						placeholder="가격" name="g_price">
 				</div>
 			</div>
@@ -134,11 +134,13 @@
 
 			<div class="form-group">
 				<div class="col-sm-10">
-					<textarea rows="10" id="content" class="form-control"
+					<textarea rows="10" class="form-control"
 						name="g_info"></textarea>
 				</div>
 			</div>
 
+				<input type="hidden" value="${user_id}" name = "user_id" id ="user_id">
+				<input type="hidden" value="${user_addr}" name = "user_addr" id="user_addr">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit"  class="btn btn-default">작성완료</button>
@@ -147,12 +149,6 @@
 		</form>
 
 	</div>
-
-
-
-
-
-
 
 
 	<div class="foot-bar">
@@ -202,6 +198,11 @@
 		  }); 
 		}); 		
 		
+	user_addr = $("#user_addr").val()
+	user_id = $("#user_id").val()
+	console.log(user_id)
+	console.log(user_addr)
+	
 	</script>
 
 </body>

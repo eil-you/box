@@ -112,10 +112,9 @@
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
-					<div class="card-product__img">
+					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
 						<img class="card-img" src="./file/${vo.g_img}">
 						<div class="card-body">
-							<input type="hidden" id="g_seq" value="${vo.g_seq}">
 							<h4>
 								<c:out value="${vo.g_name}" />
 							</h4>
@@ -133,8 +132,10 @@
 	</section>
 	<!-- ================ trending product section end ================= -->
 
+	<!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div" onclick="location.href='index.do'">
+		<div class="foot-div"
+			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
 				<img alt="" src="/img/icon/home.png">
 			</div>
@@ -142,10 +143,10 @@
 
 		<div class="foot-div">
 			<img alt="" src="/img/icon/mesaage.png">
-		</div>s
+		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/home.png">
+			<img alt="" src="/img/icon/add.png">
 		</div>
 
 		<div class="foot-div">
@@ -155,13 +156,13 @@
 			<img alt="" src="/img/icon/me.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 
 ============================== -->
 
-
-	<script src="js/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/owl.carousel.js"></script>
@@ -173,6 +174,23 @@
 			$('')
 
 		}
+
+		function viewGoodsContent(g_seq){
+            console.log(g_seq)
+			
+            var f = document.createElement("form");
+            var obj = document.createElement('input');
+            obj.setAttribute('type','hidden')
+            obj.setAttribute('name','g_seq')
+            obj.setAttribute('value', g_seq )
+            
+            f.appendChild(obj);
+            f.setAttribute('method','post');
+            f.setAttribute('action','viewGoodsContent.do')
+            document.body.appendChild(f);
+		    f.submit();
+			}
+		
 	</script>
 
 
