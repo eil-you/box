@@ -4,17 +4,17 @@
 
 <mapper namespace="com.forus.mapper.UserMapper">
 
-	<select id="userInfoList" resultType = "com.forus.domain.UserInfoVO">
+	<select id="userInfoList" resultType = "com.forus.domain.userInfoVO">
 		select * from user_tb
 	</select>
 
 
-	<select id="login" parameterType="com.forus.domain.UserInfoVO" resultType="com.forus.domain.UserInfoVO">
+	<select id="login" parameterType="com.forus.domain.userInfoVO" resultType="com.forus.domain.userInfoVO">
 		select * from user_tb where user_id=#{user_id}
 	</select>
 	
 	
-	<insert id="join" parameterType="com.forus.domain.UserInfoVO">
+	<insert id="join" parameterType="com.forus.domain.userInfoVO">
 		insert into user_tb(user_id, user_pw, user_nick, user_email, user_addr) values(#{user_id},#{user_pw},#{user_nick},#{user_email},#{user_addr})
 	</insert>
 	

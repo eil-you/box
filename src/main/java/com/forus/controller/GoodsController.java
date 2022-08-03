@@ -1,6 +1,9 @@
 package com.forus.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,9 +14,11 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.goodsListVO;
-import com.forus.domain.GoodsVO;
+import com.forus.domain.goodsVO;
 import com.forus.domain.userInfoVO;
 import com.forus.mapper.GoodsMapper;
 
@@ -48,7 +53,7 @@ public class GoodsController {
 	// 상품 한개 상세 정보 불러오기
 	@RequestMapping("/goodsInfo.do")
 	public String goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
-		GoodsVO result =mapper.goodsInfo(g_seq);
+		goodsVO result =mapper.goodsInfo(g_seq);
 		System.out.println(result);
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
@@ -56,15 +61,37 @@ public class GoodsController {
 		return "goodsInfo";
 	}
 	
-	// 상품 등록
-	@RequestMapping("gInsert.do")
-	public String gInsert(){
-		
-		
-		
-		
-		return "redirect:/index.do";
-	}
+//	
+//	// 상품 등록
+//	@RequestMapping("goodsInsert.do")
+//	public String goodsInsert(@RequestParam("g_img") MultipartFile file, HttpSession session, goodsVO vo) {
+//
+//		String path = session.getServletContext().getRealPath("/file");
+//
+//		System.out.println("경로 : " + path);
+//
+//		// int maxSize = 10 * 1024 * 1024;
+//		// String encoding = "UTF-8";
+//
+//		//DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+//		//MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
+//		
+//		// 이미지 저장하기
+//        String uuid = UUID.randomUUID().toString();
+//        // file upload to system
+//        File converFile = new File(path, uuid + file.getOriginalFilename());
+//        try {
+//			file.transferTo(converFile);
+//		} catch (IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//        String msg = file.getOriginalFilename() + " is saved in server db";
+//        System.out.println(msg);
+//		
+//		return "index";
+//
+//	}
 
 
 	

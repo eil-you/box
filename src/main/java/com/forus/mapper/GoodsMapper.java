@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.forus.domain.goodsListVO;
-import com.forus.domain.GoodsVO;
+import com.forus.domain.goodsVO;
 
 @Mapper
 public interface GoodsMapper {
@@ -20,7 +20,7 @@ public interface GoodsMapper {
 	
 	
 	// goodsInfo
-	public GoodsVO goodsInfo(int g_seq);
+	public goodsVO goodsInfo(int g_seq);
 	
 	
 	

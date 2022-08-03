@@ -8,9 +8,11 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class GoodsVO {
+@NoArgsConstructor
+public class goodsVO {
 	private int g_seq;
 	private int gc_seq;
+	private int loc_seq;
 	private String g_name;
 	private String g_info;
 	private String g_img;
