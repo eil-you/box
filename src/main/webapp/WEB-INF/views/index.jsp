@@ -116,10 +116,14 @@
 						<img class="card-img" src="./file/${vo.g_img}">
 						<div class="card-body">
 							<input type="hidden" id="g_seq" value="${vo.g_seq}">
-							<h4><c:out value="${vo.g_name}"/></h4>
+							<h4>
+								<c:out value="${vo.g_name}" />
+							</h4>
 							<br>
 							<p>${apt_name}</p>
-							<p><c:out value="${vo.g_price}"/></p>
+							<p>
+								<c:out value="${vo.g_price}" />
+							</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -130,28 +134,25 @@
 	<!-- ================ trending product section end ================= -->
 
 	<div class="foot-bar">
+		<div class="foot-div" onclick="location.href='index.do'">
+			<div>
+				<img alt="" src="/img/icon/home.png">
+			</div>
+		</div>
 
-		<div class="foot-div" onclick="location.href='#'">
-			<svg aria-label="홈" class="_8-yf5 " color="white" fill="#262626"
-				height="24" role="img" viewBox="0 0 24 24" width="24">
-			<path
-					d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
-					fill="none" stroke="currentColor" stroke-linejoin="round"
-					stroke-width="2"></path></svg>
-		</div>
 		<div class="foot-div">
-			<?xml version="1.0" ?>
-			<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+			<img alt="" src="/img/icon/mesaage.png">
+		</div>s
 
+		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+			<img alt="" src="/img/icon/home.png">
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/location.png">
 		</div>
 		<div class="foot-div">
-			<p>등록하기</p>
-		</div>
-		<div class="foot-div">
-			<p>위치</p>
-		</div>
-		<div class="foot-div">
-			<p>내정보</p>
+			<img alt="" src="/img/icon/me.png">
 		</div>
 	</div>
 
@@ -167,15 +168,11 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-	function goodsContent() {
+		function goodsContent() {
 
-		$('')
-		
-		
+			$('')
 
-	}
-	
-	
+		}
 	</script>
 
 
