@@ -22,6 +22,9 @@ public interface GoodsMapper {
 	// goodsInfo
 	public goodsVO goodsInfo(int g_seq);
 	
+	// goodsInsert
+	public void goodsInsert(goodsVO vo);
+	
 	
 	
 }
