@@ -68,7 +68,7 @@ public class GoodsController {
 	
 	// 상품 등록
 	@RequestMapping("goodsInsert.do")
-	public String goodsInsert(@RequestParam("g_img") MultipartFile file, HttpSession session, goodsVO vo) {
+	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo) {
 
 		String path = session.getServletContext().getRealPath("/file");
 

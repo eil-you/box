@@ -92,7 +92,7 @@
 			<h4 style="display: inline-block;">어스박스 상품등록</h4>
 		</div>
 	</nav>
-
+	
 
 	<!--  <div class="panel-heading">게시판 만들기</div> -->
 	<div class="panel-body add-body">
@@ -107,7 +107,7 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<!-- 상품 카테고리 리스트 출력 시작 -->
-					<select class="my-select" name="gc_seq">
+					<select class="my-select" name="gc_name">
 						<option>카테고리를 선택 해 주세요</option>
 					<c:forEach items="${categoryList}" var="vo" step="1">
 						<option><c:out value = "${vo.gc_name}" /></option>
@@ -118,14 +118,14 @@
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control"
+					<input type="number" class="form-control"
 						placeholder="가격" name="g_price">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
 					<div class="filebox">
-						<label for="file">📷</label> <input type="file" name="g_img"
+						<label for="file">📷</label> <input type="file" name="g_imgg"
 							id="file" accept="image/*;capture=camera" > <input
 							class="upload-name" value="선택한 파일 없음">
 					</div>

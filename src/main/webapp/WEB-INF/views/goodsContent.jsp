@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +92,7 @@
 			<h4 style="display: inline-block;">어스박스 상품등록</h4>
 		</div>
 	</nav>
-
+	
 
 	<!--  <div class="panel-heading">게시판 만들기</div> -->
 	<div class="panel-body add-body">
@@ -98,28 +100,25 @@
 		<form class="form-horizontal" action="goodsInsert.do" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="title"
+					<input type="text" class="form-control"
 						placeholder="글 제목" name="g_name">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
+					<!-- 상품 카테고리 리스트 출력 시작 -->
 					<select class="my-select" name="gc_name">
 						<option>카테고리를 선택 해 주세요</option>
-						<option>카테고리 1</option>
-						<option>카테고리 2</option>
-						<option>카테고리 3</option>
-						<option>카테고리 4</option>
-						<option>카테고리 5</option>
-						<option>카테고리 6</option>
-						<option>카테고리 7</option>
+					<c:forEach items="${categoryList}" var="vo" step="1">
+						<option><c:out value = "${vo.gc_name}" /></option>
+						</c:forEach>
 					</select>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="title"
+					<input type="text" class="form-control"
 						placeholder="가격" name="g_price">
 				</div>
 			</div>
@@ -127,7 +126,7 @@
 				<div class="col-sm-10">
 					<div class="filebox">
 						<label for="file">📷</label> <input type="file" name="g_img"
-							id="file" accept="image/*;capture=camera"> <input
+							id="file" accept="image/*;capture=camera" > <input
 							class="upload-name" value="선택한 파일 없음">
 					</div>
 				</div>
@@ -135,11 +134,13 @@
 
 			<div class="form-group">
 				<div class="col-sm-10">
-					<textarea rows="10" id="content" class="form-control"
+					<textarea rows="10" class="form-control"
 						name="g_info"></textarea>
 				</div>
 			</div>
 
+				<input type="hidden" value="${user_id}" name = "seller_id">
+				<input type="hidden" value="${user_addr}" name = "user_addr">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit"  class="btn btn-default">작성완료</button>
@@ -148,12 +149,6 @@
 		</form>
 
 	</div>
-
-
-
-
-
-
 
 
 	<div class="foot-bar">
