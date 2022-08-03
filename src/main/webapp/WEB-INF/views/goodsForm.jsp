@@ -139,8 +139,8 @@
 				</div>
 			</div>
 
-				<input type="hidden" value="${user_id}" name = "user_id" id ="user_id">
-				<input type="hidden" value="${user_addr}" name = "user_addr" id="user_addr">
+				<input type="hidden" value="${user_id}" name = "seller_id">
+				<input type="hidden" value="${user_addr}" name = "user_addr">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit"  class="btn btn-default">작성완료</button>
@@ -198,11 +198,6 @@
 		  }); 
 		}); 		
 		
-	user_addr = $("#user_addr").val()
-	user_id = $("#user_id").val()
-	console.log(user_id)
-	console.log(user_addr)
-	
 	</script>
 
 </body>
