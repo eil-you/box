@@ -77,9 +77,7 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 </head>
-<% 
 
-List<GoodsListVO> list = (List)session.getAttribute("GoodsList"); %>
 
 <body>
 
@@ -92,7 +90,7 @@ List<GoodsListVO> list = (List)session.getAttribute("GoodsList"); %>
 		<div class="navbar__logo">
 			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
 			<div class="dropdown">
-				<a class="menu_drop" href="">A 아파트 ▼</a>
+				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
 					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
@@ -117,10 +115,13 @@ List<GoodsListVO> list = (List)session.getAttribute("GoodsList"); %>
 				<div class="card-product__img">
 					<img class="card-img" src="img/product/product1.png">
 					<div class="card-body">
-							<h4><%=list.get(1) %></h4>
+					<c:forEach items="${GoodsList}"  var="vo">
+							<input type="hidden" id="g_seq" value="${g_seq}" onclick="">
+							<h4>${vo.g_name}</h4>
 							<br>
-							<p>상품 위치</p>
-							<p><%=list.get(3) %></p>
+							<p>${apt_name}</p>
+							<p>${vo.g_price}</p>
+					</c:forEach>
 					</div>
 				</div>
 				<!-- 끝 -->
@@ -144,7 +145,7 @@ List<GoodsListVO> list = (List)session.getAttribute("GoodsList"); %>
 			<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 			
 		</div>
-		<div class="foot-div">
+		<div class="foot-div">https://ceodanbi.tistory.com/
 			<p>등록하기</p>
 		</div>
 		<div class="foot-div">

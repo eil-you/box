@@ -127,7 +127,7 @@
 				<div class="col-sm-10">
 					<div class="filebox">
 						<label for="file">📷</label> <input type="file" name="g_img"
-							id="file" accept="image/*;capture=camera" > <input
+							id="file" accept="image/*;capture=camera"> <input
 							class="upload-name" value="선택한 파일 없음">
 					</div>
 				</div>
