@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GoodsListVO {
+public class goodsListVO {
 	private int g_seq;
 	private String g_name;
 	private String g_img;

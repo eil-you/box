@@ -12,9 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.forus.domain.GoodsListVO;
+import com.forus.domain.goodsListVO;
 import com.forus.domain.GoodsVO;
-import com.forus.domain.UserInfoVO;
+import com.forus.domain.userInfoVO;
 import com.forus.mapper.GoodsMapper;
 
 @Controller
@@ -32,7 +32,7 @@ public class GoodsController {
 		System.out.println(user_addr);
 		String user_id = request.getParameter("user_id");
 		System.out.println(user_id);
-		List<GoodsListVO> result = mapper.goodsList(user_addr);
+		List<goodsListVO> result = mapper.goodsList(user_addr);
 		System.out.println("list"+result);
 		// 회원 주소 아파트 이름 가져오기
 		String apt_name = mapper.selectAptName(user_addr);

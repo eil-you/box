@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.forus.domain.UserInfoVO;
+import com.forus.domain.userInfoVO;
 import com.forus.mapper.UserMapper;
 import com.mysql.cj.Session;
 
@@ -33,10 +33,10 @@ public class UserController {
 
 
 	@RequestMapping("/Login.do")
-	public ModelAndView userLogin(UserInfoVO vo, ModelMap model) {
+	public ModelAndView userLogin(userInfoVO vo, ModelMap model) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		UserInfoVO result = mapper.login(vo);
+		userInfoVO result = mapper.login(vo);
 		System.out.println("로그인 확인 "+ result);
 		
 		// 암호키를 복호화 함 
@@ -54,7 +54,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/Join.do")
-	public String userJoin(UserInfoVO vo) {
+	public String userJoin(userInfoVO vo) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String securePassword = encoder.encode(vo.getUser_pw());
 		vo.setUser_pw(securePassword);
