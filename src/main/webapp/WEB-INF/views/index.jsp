@@ -1,5 +1,4 @@
 <%@page import="java.util.List"%>
-<%@page import="com.forus.domain.GoodsListVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -167,8 +166,17 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<!-- 쇼핑몰 js <script src="js/shopmain.js"></script> -->
+	<script type="text/javascript">
+	function goodsContent() {
 
+		$('')
+		
+		
+
+	}
+	
+	
+	</script>
 
 
 
