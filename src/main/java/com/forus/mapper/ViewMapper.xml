@@ -6,8 +6,7 @@
 
 
 	<select id="goodsCategory" resultType="com.forus.domain.gCategoryVO">
-		select * from gc_category_tb
+		select * from g_category_tb
 	</select>
-
 
 </mapper>

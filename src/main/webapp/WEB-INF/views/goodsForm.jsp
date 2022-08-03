@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,15 +106,12 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
+					<!-- 상품 카테고리 리스트 출력 시작 -->
 					<select class="my-select" name="gc_seq">
 						<option>카테고리를 선택 해 주세요</option>
-						<option>카테고리 1</option>
-						<option>카테고리 2</option>
-						<option>카테고리 3</option>
-						<option>카테고리 4</option>
-						<option>카테고리 5</option>
-						<option>카테고리 6</option>
-						<option>카테고리 7</option>
+					<c:forEach items="${categoryList}" var="vo" step="1">
+						<option><c:out value = "${vo.gc_name}" /></option>
+						</c:forEach>
 					</select>
 				</div>
 			</div>
