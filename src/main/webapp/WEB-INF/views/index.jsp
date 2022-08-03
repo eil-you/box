@@ -2,8 +2,8 @@
 <%@page import="com.forus.domain.GoodsListVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -112,18 +112,18 @@
 		<div class="container container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
-				<div class="card-product__img">
-					<img class="card-img" src="img/product/product1.png">
-					<div class="card-body">
-					<c:forEach items="${GoodsList}"  var="vo">
-							<input type="hidden" id="g_seq" value="${g_seq}" onclick="">
-							<h4>${vo.g_name}</h4>
+				<c:forEach items="${GoodsList}" var="vo" step="1">
+					<div class="card-product__img">
+						<img class="card-img" src="./file/${vo.g_img}">
+						<div class="card-body">
+							<input type="hidden" id="g_seq" value="${vo.g_seq}">
+							<h4><c:out value="${vo.g_name}"/></h4>
 							<br>
 							<p>${apt_name}</p>
-							<p>${vo.g_price}</p>
-					</c:forEach>
+							<p><c:out value="${vo.g_price}"/></p>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 				<!-- 끝 -->
 			</div>
 		</div>
@@ -143,9 +143,9 @@
 		<div class="foot-div">
 			<?xml version="1.0" ?>
 			<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-			
+
 		</div>
-		<div class="foot-div">https://ceodanbi.tistory.com/
+		<div class="foot-div">
 			<p>등록하기</p>
 		</div>
 		<div class="foot-div">
