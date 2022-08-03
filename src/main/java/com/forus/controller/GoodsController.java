@@ -48,6 +48,7 @@ public class GoodsController {
 		// 아파트 보내주기
 		model.addAttribute("apt_name",apt_name);
 		session.setAttribute("user_addr", user_addr);
+		session.setAttribute("user_id", user_id);
 		System.out.println(session.getAttribute("user_addr"));
 		
 	}
