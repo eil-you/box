@@ -20,4 +20,12 @@ public class ViewController {
 	public String viewjoin() {
 		return "join";
 	}
+	
+	@RequestMapping("/viewGoodsForm.do")
+	public String viewGoodsForm() {
+		
+		return"goodsForm";
+		
+		
+	}
 }
