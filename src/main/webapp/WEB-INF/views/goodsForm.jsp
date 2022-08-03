@@ -104,7 +104,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
-					<select class="my-select" name="gc_name">
+					<select class="my-select" name="gc_seq">
 						<option>카테고리를 선택 해 주세요</option>
 						<option>카테고리 1</option>
 						<option>카테고리 2</option>
