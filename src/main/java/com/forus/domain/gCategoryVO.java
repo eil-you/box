@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GoodsListVO {
-	private int g_seq;
-	private String g_name;
-	private String g_img;
-	private int g_price;
+public class gCategoryVO {
+
+	private int gc_seq;
+	private String gc_name;
+	
 }
+

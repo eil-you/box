@@ -4,7 +4,7 @@
 
 <mapper namespace="com.forus.mapper.GoodsMapper">
 	
-	<select id="goodsList" parameterType="String" resultType="com.forus.domain.GoodsListVO">
+	<select id="goodsList" parameterType="String" resultType="com.forus.domain.goodsListVO">
 		select * from goods_tb where 
 		loc_seq in (select loc_seq from g_location_tb 
 		where v_machine_seq=
@@ -18,7 +18,7 @@
 	</select>
 	
 	
-	<select id="goodsInfo" parameterType="int" resultType="com.forus.domain.GoodsVO">
+	<select id="goodsInfo" parameterType="int" resultType="com.forus.domain.goodsVO">
 		select g_seq, gc_seq, g_name, g_info, g_img, g_price,seller_id from goods_tb where g_seq = #{g_seq}
 	</select>
 

@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class UserInfoVO {
+public class userInfoVO {
 	@NonNull
 	private String user_id;
 	private String user_pw;

@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.forus.domain.GoodsListVO;
-import com.forus.domain.GoodsVO;
+import com.forus.domain.goodsListVO;
+import com.forus.domain.goodsVO;
 
 @Mapper
 public interface GoodsMapper {
 
 	
 	// goodsList
-	public List<GoodsListVO> goodsList(String user_add);
+	public List<goodsListVO> goodsList(String user_add);
 
 	
 	// 아파트 이름 가져오기
@@ -20,7 +20,7 @@ public interface GoodsMapper {
 	
 	
 	// goodsInfo
-	public GoodsVO goodsInfo(int g_seq);
+	public goodsVO goodsInfo(int g_seq);
 	
 	
 	
