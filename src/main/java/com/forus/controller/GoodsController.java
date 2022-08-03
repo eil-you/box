@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.goodsListVO;
@@ -31,7 +32,7 @@ public class GoodsController {
 	
 	// 상품 리스트 불러오기
 	@RequestMapping("/index.do")
-	public void index(Model model ,HttpServletRequest request) {
+	public void index(Model model ,HttpServletRequest request, HttpSession session) {
 		// 회원 주소에 맞는 아파트에서 상품 리스트 불러오기
 		String user_addr = request.getParameter("user_addr");
 		System.out.println(user_addr);
@@ -46,6 +47,8 @@ public class GoodsController {
 		model.addAttribute("GoodsList", result);
 		// 아파트 보내주기
 		model.addAttribute("apt_name",apt_name);
+		session.setAttribute("user_addr", user_addr);
+		System.out.println(session.getAttribute("user_addr"));
 		
 	}
 	
@@ -61,37 +64,33 @@ public class GoodsController {
 		return "goodsInfo";
 	}
 	
-//	
-//	// 상품 등록
-//	@RequestMapping("goodsInsert.do")
-//	public String goodsInsert(@RequestParam("g_img") MultipartFile file, HttpSession session, goodsVO vo) {
-//
-//		String path = session.getServletContext().getRealPath("/file");
-//
-//		System.out.println("경로 : " + path);
-//
-//		// int maxSize = 10 * 1024 * 1024;
-//		// String encoding = "UTF-8";
-//
-//		//DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
-//		//MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
-//		
-//		// 이미지 저장하기
-//        String uuid = UUID.randomUUID().toString();
-//        // file upload to system
-//        File converFile = new File(path, uuid + file.getOriginalFilename());
-//        try {
-//			file.transferTo(converFile);
-//		} catch (IllegalStateException | IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//        String msg = file.getOriginalFilename() + " is saved in server db";
-//        System.out.println(msg);
-//		
-//		return "index";
-//
-//	}
+	
+	// 상품 등록
+	@RequestMapping("goodsInsert.do")
+	public String goodsInsert(@RequestParam("g_img") MultipartFile file, HttpSession session, goodsVO vo) {
+
+		String path = session.getServletContext().getRealPath("/file");
+
+		System.out.println("경로 : " + path);
+		vo.setG_img(path);
+		
+
+		// 이미지 저장하기
+        String uuid = UUID.randomUUID().toString();
+        // file upload to system
+        File converFile = new File(path, uuid + file.getOriginalFilename());
+        try {
+			file.transferTo(converFile);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+
+        String msg = file.getOriginalFilename() + " is saved in server db";
+        System.out.println(msg);
+		
+		return "index";
+
+	}
 
 
 	
