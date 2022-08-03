@@ -9,9 +9,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.forus.domain.UserInfoVO;
 import com.forus.mapper.UserMapper;
@@ -23,12 +25,6 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 public class UserController {
-	
-	
-	
-	
-	
-		
 		
 	@Autowired // self service
 	UserMapper mapper;
@@ -37,20 +33,22 @@ public class UserController {
 
 
 	@RequestMapping("/Login.do")
-	public String userLogin(UserInfoVO vo, HttpSession session) {
+	public ModelAndView userLogin(UserInfoVO vo, ModelMap model) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 		UserInfoVO result = mapper.login(vo);
-		System.out.println(result);
+		System.out.println("로그인 확인 "+ result);
 		
 		// 암호키를 복호화 함 
 		encoder.matches(vo.getUser_pw(), result.getUser_pw());
 		
 		if(encoder.matches(vo.getUser_pw(), result.getUser_pw())) {
-			session.setAttribute("user", result);
-			return "redirect:/index.do";
+			model.addAttribute("user_addr", result.getUser_addr());
+			model.addAttribute("user_id",result.getUser_id() );
+			System.out.println("My model: " + model.getAttribute("user_addr"));
+			return new ModelAndView("redirect:/index.do", model);
 		}else {
-			return "login";
+			return new ModelAndView("login");
 		}
 	
 	}
@@ -65,15 +63,7 @@ public class UserController {
 		return "login";
 	}
 	
-	// 중복 아이디 확인
-//	@ResponseBody
-//	@RequestMapping("/CheckId.do")
-//	public String checkId(String user_id) {
-//		String result = mapper.checkId(user_id);
-//		
-//		return result;
-//	}
-//	
+
 	
 	
 	
