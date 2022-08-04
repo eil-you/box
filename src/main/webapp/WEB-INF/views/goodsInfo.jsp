@@ -75,18 +75,15 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 
-<style type="text/css">
-</style>
 
 </head>
-
 <body>
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 
-	<nav class="navbar">
+	<!--  <nav class="navbar">
 		<div class="navbar__logo">
 			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
 			<div class="dropdown">
@@ -96,66 +93,35 @@
 				</div>
 			</div>
 		</div>
-	</nav>
-	<!--  <div class="panel-heading">게시판 만들기</div> -->
-	<div class="panel-body add-body">
-			<div class="form-group">
-				<div class="col-sm-10">
-<!--  					<h2 type="text">${goodsInfo.g_name}</h2>-->
-					<h2 type="text">상품이름</h2>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<div class="col-sm-10">
-					<!--  <h4>\ ${goodsInfo.g_price}</h4> -->
-					<h4>\ 5000000</h4>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<div class="col-sm-10">
-					<!--  <img src="${goodsInfo.g_img}"/> -->
-					<img src="/img/product/product1.png">
-				</div>
-			</div>
+	</nav> -->
 
-			<div class="form-group">
-				<div class="col-sm-10">
-					<!--  <div>${goodsInfo.g_info}</div> -->
-					<div>글내용</div>
-				</div>
-			</div>
+	<div class="col-sm-10 detail-img-div">
+		<img class="detail-img" src="${goodsInfo.g_img}"/>
+	</div>
 
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-				</div>
+	<div class="panel-body info-body">
+	
+		<div class="form-group">
+			<div class="col-sm-10">
+				<h2 class="info-g-name">${goodsInfo.g_name}</h2><br>
 			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-10">
+				<div>${goodsInfo.g_info}</div>
+
+			</div>
+		</div>
+			
+			
 
 	</div>
 
 
-		<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
-			<div>
-				<img alt="" src="/img/icon/home.png">
-			</div>
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/mesaage.png">
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/add.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/location.png">
-		</div>
-		<div class="foot-div">
-			<img alt="" src="/img/icon/me.png">
+	<div class="foot-bar">
+		<div class ="detail-foot">
+			<img class="zzim" src="img/icon/heart.png">
 		</div>
 	</div>
 
@@ -163,25 +129,31 @@
      SCRIPTS 
 ============================== -->
 
-
-	<script src="js/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<!-- 쇼핑몰 js <script src="js/shopmain.js"></script> -->
 
 
 	<script type="text/javascript">
-	$(document).ready(function(){ 
-		  var fileTarget = $('#file'); 
-		  fileTarget.on('change', function(){ // 값이 변경되면
-		      var cur=$(".filebox input[type='file']").val();
-		    $(".upload-name").val(cur);
-		  }); 
-		}); 		
+		$(document).ready(changemoney)
 		
+		function changemoney() {
+		        var price = $("#g-price").text().toLocaleString('ko-KR');;
+		        
+		        console.log(price)
+		        
+		        
+		        var cPrice = price.toString()
+		          .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		        console.log(cPrice)
+		        
+		         $("#g-price").text( "\\ "+ cPrice);
+			}
+		
+
 	</script>
 
 </body>
