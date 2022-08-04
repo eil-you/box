@@ -95,6 +95,7 @@
 		</div>
 	</nav> -->
 
+	<p>${goodsInfo.seller_nick}</p>
 	<div class="col-sm-10 detail-img-div">
 		<img class="detail-img" src="${goodsInfo.g_img}"/>
 	</div>

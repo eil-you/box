@@ -137,23 +137,23 @@
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
-				<img alt="" src="/img/icon/home.png">
+				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/mesaage.png">
+			<img alt="" src="/img/icon/message-gr.png">
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/add.png">
+			<img alt="" src="/img/icon/plus-gr.png">
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/location.png">
+			<img alt="" src="/img/icon/map-gr.png">
 		</div>
 		<div class="foot-div">
-			<img alt="" src="/img/icon/me.png">
+			<img alt="" src="/img/icon/me-gr.png">
 		</div>
 	</div>
 	<!--  footer end -->
