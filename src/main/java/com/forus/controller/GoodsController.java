@@ -65,9 +65,11 @@ public class GoodsController {
 	@RequestMapping("/goodsInfo.do")
 	public String goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
 		goodsVO result =mapper.goodsInfo(g_seq);
+		mapper.seller_nickSelect(result.getSeller_id());
 		System.out.println(result);
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
+		
 		
 		return "goodsInfo";
 	}
@@ -85,23 +87,6 @@ public class GoodsController {
 		
 		
 		
-//		// 상품 등록된 상품의 loc_seq 번호 가져오기
-//		mapper.
-//		
-//		// 랜덤 자판기 비밀번호 생성 -> 비밀번호 변경 
-//		Random rd = new Random();
-//		int pw = 0;
-//		int a = 1;
-//		
-//		for(int i = 1; i<=4 ; i++) {
-//			pw= rd.nextInt(9)*a;
-//			a *= 10;
-//		}
-//		
-//		gLocationVO gvo = new gLocationVO();
-//		gvo.setV_machine_pw(pw);
-//		gvo.setLoc_seq()
-//		
 		// 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
         // file upload to system
@@ -111,15 +96,38 @@ public class GoodsController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
+        // 상품 등록 전에 비어있는 g_seq 번호 중 한개 가져오기 
+        int loc_seq = mapper.loc_seqSelect(vo.getUser_addr());
+        System.out.println(loc_seq);
         // 상품 등록
-
         String msg = file.getOriginalFilename() + " is saved in server db";
        
-        vo.setG_img(path+"\\"+uuid + file.getOriginalFilename());
+        String g_img = path+"\\"+uuid + file.getOriginalFilename();
+        vo.setG_img(g_img);
+        vo.setLoc_seq(loc_seq);
    
         mapper.goodsInsert(vo);
         
-        System.out.println(msg);
+
+		
+		// 랜덤 자판기 비밀번호 생성 
+		Random rd = new Random();
+		int pw = 0;
+		int a = 1;
+		
+		for(int i = 1; i<=4 ; i++) {
+			pw= rd.nextInt(9)*a;
+			a *= 10;
+		}
+		
+		gLocationVO gvo = new gLocationVO();
+		gvo.setV_machine_pw(pw);
+		gvo.setLoc_seq(loc_seq);
+		
+		// update로 자판기 비밀번호 변경
+		mapper.machinePwUpdate(gvo);
+	
+		
     	model.addAttribute("user_addr", vo.getUser_addr());
 		model.addAttribute("user_id",vo.getSeller_id() );
 		

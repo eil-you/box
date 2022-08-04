@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.forus.domain.gLocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsVO;
 
@@ -26,5 +27,19 @@ public interface GoodsMapper {
 	public void goodsInsert(goodsVO vo);
 	
 	
+	// g_seq 불러오기
+	public int loc_seqSelect(String user_addr);
+		
 	
-}
+
+	// v_machine_pw 비밀번호 update
+	public int machinePwUpdate(gLocationVO gvo);
+	
+	
+	
+	// 물건 파는 사람의 nickname 불러오기
+	public String seller_nickSelect(String seller_id); 
+	
+}	
+	
+
