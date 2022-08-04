@@ -127,7 +127,7 @@
 					<div class="filebox">
 						<label for="file">📷</label> <input type="file" name="g_imgg"
 							id="file" accept="image/*;capture=camera" > <input
-							class="upload-name" value="선택한 파일 없음">
+							class="upload-name" value="" readonly>
 					</div>
 				</div>
 			</div>
@@ -143,38 +143,12 @@
 				<input type="hidden" value="${user_addr}" name = "user_addr">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit"  class="btn btn-default">작성완료</button>
+					<button type="submit"  class="btn btn-default goods-commit">작성완료</button>
 				</div>
 			</div>
 		</form>
 
 	</div>
-
-
-	<div class="foot-bar">
-
-		<div class="foot-div" onclick="location.href='#'">
-			<svg aria-label="홈" class="_8-yf5 " color="white" fill="#262626"
-				height="24" role="img" viewBox="0 0 24 24" width="24">
-			<path
-					d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
-					fill="none" stroke="currentColor" stroke-linejoin="round"
-					stroke-width="2"></path></svg>
-		</div>
-		<div class="foot-div">
-			<p>커뮤니티</p>
-		</div>
-		<div class="foot-div">
-			<p>등록하기</p>
-		</div>
-		<div class="foot-div">
-			<p>위치</p>
-		</div>
-		<div class="foot-div">
-			<p>내정보</p>
-		</div>
-	</div>
-
 	<!-- =========================
      SCRIPTS 
 ============================== -->

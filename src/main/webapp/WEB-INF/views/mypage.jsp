@@ -1,10 +1,11 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 
@@ -38,7 +39,7 @@
 
 
 
-<title>BRANDY</title>
+<title>Earthbox</title>
 <!-- Google Font -->
 <link
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
@@ -74,52 +75,35 @@
 	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-
-
 </head>
+
+
 <body>
+
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 
-	<!--  <nav class="navbar">
-		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
-			<div class="dropdown">
-				<a class="menu_drop" href="">${apt_name} ▼</a>
-				<div class="dropdown-content">
-					<a style="color: black !important;" href="">아파트 설정하기</a>
-				</div>
+	<nav class="navbar">
+		<div class="navbar__logo add-header">
+			<i class="fab fa-accusoft"></i>
+			<h4 style="display: inline-block;">마이페이지</h4>
+		</div>
+	</nav>
+
+	<!-- ================ trending product section start ================= -->
+	<section class="section-margin calc-60px">
+		<div class="container container-pd">
+			<div class="row list_layout">
+				
+				
 			</div>
 		</div>
-	</nav> -->
+	</section>
+	<!-- ================ trending product section end ================= -->
 
-	<p>${goodsInfo.seller_nick}</p>
-	<div class="col-sm-10 detail-img-div">
-		<img class="detail-img" src="${goodsInfo.g_img}"/>
-	</div>
-
-	<div class="panel-body info-body">
-	
-		<div class="form-group">
-			<div class="col-sm-10">
-				<h2 class="info-g-name">${goodsInfo.g_name}</h2><br>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<div class="col-sm-10">
-				<div>${goodsInfo.g_info}</div>
-
-			</div>
-		</div>
-			
-			
-
-	</div>
-
-
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
@@ -140,40 +124,54 @@
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
 		<div class="foot-div">
-			<img alt="" src="/img/icon/me-gr.png">
+			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 
 ============================== -->
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-
-
 	<script type="text/javascript">
-		$(document).ready(changemoney)
-		
-		function changemoney() {
-		        var price = $("#g-price").text().toLocaleString('ko-KR');;
-		        
-		        console.log(price)
-		        
-		        
-		        var cPrice = price.toString()
-		          .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-		        console.log(cPrice)
-		        
-		         $("#g-price").text( "\\ "+ cPrice);
+		function goodsContent() {
+
+			$('')
+
+		}
+
+		function viewGoodsContent(g_seq,apt_name){
+            console.log(g_seq)
+            console.log(apt_name)
+			
+            var f = document.createElement("form");
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
+            
+            obj2 = document.createElement('input');
+            obj2.setAttribute('type','hidden')
+            obj2.setAttribute('name','apt_name')
+            obj2.setAttribute('value', apt_name )
+            f.appendChild(obj2);
+            
+            f.setAttribute('method','post');
+            f.setAttribute('action','goodsInfo.do')
+            document.body.appendChild(f);
+		    f.submit();
 			}
 		
-
 	</script>
+
+
 
 </body>
 

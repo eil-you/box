@@ -125,6 +125,7 @@
 							</p>
 						</div>
 					</div>
+					<div class ="goods-line"></div>
 				</c:forEach>
 				<!-- 끝 -->
 			</div>
@@ -137,7 +138,7 @@
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
-				<img alt="" src="/img/icon/home-gr.png">
+				<img alt="" src="/img/icon/home-full.png">
 			</div>
 		</div>
 
@@ -152,7 +153,7 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
+		<div class="foot-div" onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
 			<img alt="" src="/img/icon/me-gr.png">
 		</div>
 	</div>
