@@ -3,6 +3,7 @@ package com.forus.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.forus.domain.gLocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsVO;
 import com.forus.domain.userInfoVO;
@@ -28,6 +30,7 @@ import com.forus.mapper.GoodsMapper;
 
 @Controller
 public class GoodsController {
+	
 	
 	
 	@Autowired
@@ -79,8 +82,27 @@ public class GoodsController {
 		System.out.println("경로 : " + path);
 		vo.setG_img(path);
 		System.out.println("goodsvo 확인 "+ vo);
+		// 상품 등록
 		mapper.goodsInsert(vo);
-
+		
+		
+		
+//		// 상품 등록된 seq 번호 가져오기
+//		
+//		// 랜덤 자판기 비밀번호 생성 -> 비밀번호 변경 
+//		Random rd = new Random();
+//		int pw = 0;
+//		int a = 1;
+//		
+//		for(int i = 1; i<=4 ; i++) {
+//			pw= rd.nextInt(9)*a;
+//			a *= 10;
+//		}
+//		
+//		gLocationVO gvo = new gLocationVO();
+//		gvo.setV_machine_pw(pw);
+//		gvo.setLoc_seq()
+		
 		// 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
         // file upload to system
