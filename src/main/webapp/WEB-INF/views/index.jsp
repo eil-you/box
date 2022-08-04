@@ -113,7 +113,7 @@
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
 					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
-						<img class="card-img" src="../../file/${vo.g_img}">
+						<img class="card-img" src="${vo.g_img}">
 						<div class="card-body">
 							<h4>
 								<c:out value="${vo.g_name}" />
@@ -175,18 +175,25 @@
 
 		}
 
-		function viewGoodsContent(g_seq){
+		function viewGoodsContent(g_seq,apt_name){
             console.log(g_seq)
+            console.log(apt_name)
 			
             var f = document.createElement("form");
-            var obj = document.createElement('input');
-            obj.setAttribute('type','hidden')
-            obj.setAttribute('name','g_seq')
-            obj.setAttribute('value', g_seq )
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
             
-            f.appendChild(obj);
+            obj2 = document.createElement('input');
+            obj2.setAttribute('type','hidden')
+            obj2.setAttribute('name','apt_name')
+            obj2.setAttribute('value', apt_name )
+            f.appendChild(obj2);
+            
             f.setAttribute('method','post');
-            f.setAttribute('action','viewGoodsContent.do')
+            f.setAttribute('action','goodsInfo.do')
             document.body.appendChild(f);
 		    f.submit();
 			}
