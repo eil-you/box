@@ -96,21 +96,25 @@
 	</nav> -->
 
 	<div class="col-sm-10 detail-img-div">
-		<img class="detail-img" src="${goodsInfo.g_img}"/>
+		<!--  <img src="${goodsInfo.g_img}"/> -->
+		<img class="detail-img" src="/img/product/product1.png">
 	</div>
 
 	<div class="panel-body info-body">
 	
 		<div class="form-group">
 			<div class="col-sm-10">
-				<h2 class="info-g-name">${goodsInfo.g_name}</h2><br>
+				<!--<h2 class="info-g-name">${goodsInfo.g_name}</h2>-->
+				<h2 class="info-g-name">상품이름</h2>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-sm-10">
-				<div>${goodsInfo.g_info}</div>
-
+				<!--  <div>${goodsInfo.g_info}</div> -->
+				<%for (int i = 0; i<= 50; i++) { %>
+				<p>글내용 <%=i %></p>
+				<%} %>
 			</div>
 		</div>
 			
@@ -120,8 +124,26 @@
 
 
 	<div class="foot-bar">
-		<div class ="detail-foot">
-			<img class="zzim" src="img/icon/heart.png">
+		<div class="foot-div"
+			onclick="location.href='index.do?user_addr=${user_addr}'">
+			<div>
+				<img alt="" src="/img/icon/home.png">
+			</div>
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/mesaage.png">
+		</div>
+
+		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+			<img alt="" src="/img/icon/add.png">
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/location.png">
+		</div>
+		<div class="foot-div">
+			<img alt="" src="/img/icon/me.png">
 		</div>
 	</div>
 

@@ -12,13 +12,15 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- 사용자 정의 -->
 	<link href="css/other.css" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
 
 </head>
 <body>
 
 	<div class="container">
 		<div class="login-content">
-			<form action="Login.do">
+			<form action="Login.do" method="post" id="form">
 				<img src="img/logo/earthbox_logo.png">
 				<h2 class="login_title">EARTH BOX</h2><br>
            		<div class="input-div one">
@@ -42,10 +44,37 @@
             	<br>
             	<p><a class ="join_link" href="viewJoin.do">회원가입</a><p>
             	<br>
-            	<input type="submit" class="btn btn-sm login-btn" value="로그인" >
+            	<button type="button" class="btn btn-sm login-btn" onclick="login()" id ="login-go">로그인</button>
             </form>
         </div>
     </div>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+    
+    function login() {
+
+    	var id = $("input[name=user_id]").val(); 
+    	var pw = $("input[name=user_pw]").val(); 
+    	
+    	console.log(id + pw)
+    	
+    	if (id == "" || pw == "") {
+    		
+    		alert("아이디 또는 비밀번호를 입력하세요")
+    		
+    	} else {
+            $('#form').submit()
+    		
+    	}
+    	
+	
+    }
+    
+		
+            
+		
+    	
+    
+    </script>
 </body>
 </html>
