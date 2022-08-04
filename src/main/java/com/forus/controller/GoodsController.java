@@ -13,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsVO;
@@ -29,6 +32,7 @@ public class GoodsController {
 	
 	@Autowired
 	GoodsMapper mapper;
+	
 	
 	// 상품 리스트 불러오기
 	@RequestMapping("/index.do")
@@ -68,13 +72,14 @@ public class GoodsController {
 	
 	// 상품 등록
 	@RequestMapping("goodsInsert.do")
-	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo) {
+	public ModelAndView goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, ModelMap model) {
 
 		String path = session.getServletContext().getRealPath("/file");
 
 		System.out.println("경로 : " + path);
 		vo.setG_img(path);
-		
+		System.out.println("goodsvo 확인 "+ vo);
+		mapper.goodsInsert(vo);
 
 		// 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
@@ -88,8 +93,10 @@ public class GoodsController {
 
         String msg = file.getOriginalFilename() + " is saved in server db";
         System.out.println(msg);
+    	model.addAttribute("user_addr", vo.getUser_addr());
+		model.addAttribute("user_id",vo.getSeller_id() );
 		
-		return "index";
+		return new ModelAndView("redirect:/index.do", model);
 
 	}
 

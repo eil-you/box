@@ -23,14 +23,15 @@
 	</select>
 
 	<insert id="goodsInsert" parameterType="com.forus.domain.goodsVO">
-		insert into goods_tb(gc_seq,loc_seq,g_name,g_info,g_price, seller_id) values (
-			(select gc_seq where g_category_tb where gc_name =#{gc_name}),
-			     select loc_seq from goods_tb where g_status="완료" and loc_seq in
-    			(select loc_seq from g_location_tb 
-	 			where v_machine_seq = 
-     			(select v_machine_seq from v_machine_tb 
-     			where v_machine_addr = #{user_addr}) 
-     			) limit 1, #{g_name},#{g_info},#{g_price}, #{seller_id})
+		insert into goods_tb(gc_seq,loc_seq,g_name,g_info,g_price, seller_id,g_img) values(
+   			 (select gc_seq from g_category_tb where gc_name =#{gc_name}),
+    		(select g.loc_seq from goods_tb g where g_status='완료' and loc_seq in
+       		 (select loc_seq from g_location_tb 
+        		where v_machine_seq = 
+        	(select v_machine_seq from v_machine_tb 
+        	where v_machine_addr = #{user_addr}) 
+     			) limit 1),
+                #{g_name}, #{g_info}, #{g_price}, #{seller_id},#{g_img})
 	</insert>
 
 </mapper>
