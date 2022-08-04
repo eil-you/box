@@ -77,17 +77,16 @@ public class GoodsController {
 	@RequestMapping("goodsInsert.do")
 	public ModelAndView goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, ModelMap model) {
 
+
 		String path = session.getServletContext().getRealPath("/file");
 
 		System.out.println("경로 : " + path);
-		vo.setG_img(path);
 		System.out.println("goodsvo 확인 "+ vo);
-		// 상품 등록
-		mapper.goodsInsert(vo);
 		
 		
 		
-//		// 상품 등록된 seq 번호 가져오기
+//		// 상품 등록된 상품의 loc_seq 번호 가져오기
+//		mapper.
 //		
 //		// 랜덤 자판기 비밀번호 생성 -> 비밀번호 변경 
 //		Random rd = new Random();
@@ -102,7 +101,7 @@ public class GoodsController {
 //		gLocationVO gvo = new gLocationVO();
 //		gvo.setV_machine_pw(pw);
 //		gvo.setLoc_seq()
-		
+//		
 		// 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
         // file upload to system
@@ -112,8 +111,14 @@ public class GoodsController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
+        // 상품 등록
 
         String msg = file.getOriginalFilename() + " is saved in server db";
+       
+        vo.setG_img(path+"\\"+file.getOriginalFilename());
+   
+        mapper.goodsInsert(vo);
+        
         System.out.println(msg);
     	model.addAttribute("user_addr", vo.getUser_addr());
 		model.addAttribute("user_id",vo.getSeller_id() );
