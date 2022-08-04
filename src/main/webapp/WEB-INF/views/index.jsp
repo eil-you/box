@@ -113,7 +113,7 @@
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
 					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
-						<img class="card-img" src="./file/${vo.g_img}">
+						<img class="card-img" src="/src/main/webapp/file/${vo.g_img}">
 						<div class="card-body">
 							<h4>
 								<c:out value="${vo.g_name}" />
