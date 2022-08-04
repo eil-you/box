@@ -65,7 +65,7 @@ public class GoodsController {
 	@RequestMapping("/goodsInfo.do")
 	public String goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
 		goodsVO result =mapper.goodsInfo(g_seq);
-		mapper.seller_nickSelect(result.getSeller_id());
+		result.setSeller_nick(mapper.seller_nickSelect(result.getSeller_id()));
 		System.out.println(result);
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
