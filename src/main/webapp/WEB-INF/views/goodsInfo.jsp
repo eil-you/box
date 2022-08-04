@@ -87,91 +87,75 @@
 	</div>
 
 	<nav class="navbar">
-		<div class="navbar__logo add-header">
-			<i class="fab fa-accusoft"></i>
-			<h4 style="display: inline-block;">어스박스 상품등록</h4>
-		</div>
-	</nav>
-	
-
-	<!--  <div class="panel-heading">게시판 만들기</div> -->
-	<div class="panel-body add-body">
-
-		<form class="form-horizontal" action="goodsInsert.do" method="post" enctype="multipart/form-data">
-			<div class="form-group">
-				<div class="col-sm-10">
-					<input type="text" class="form-control"
-						placeholder="글 제목" name="g_name">
+		<div class="navbar__logo">
+			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
+			<div class="dropdown">
+				<a class="menu_drop" href="">${apt_name} ▼</a>
+				<div class="dropdown-content">
+					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
 			</div>
+		</div>
+	</nav>
+	<!--  <div class="panel-heading">게시판 만들기</div> -->
+	<div class="panel-body add-body">
 			<div class="form-group">
 				<div class="col-sm-10">
-					<!-- 상품 카테고리 리스트 출력 시작 -->
-					<select class="my-select" name="gc_name">
-						<option>카테고리를 선택 해 주세요</option>
-					<c:forEach items="${categoryList}" var="vo" step="1">
-						<option><c:out value = "${vo.gc_name}" /></option>
-						</c:forEach>
-					</select>
+<!--  					<h2 type="text">${goodsInfo.g_name}</h2>-->
+					<h2 type="text">상품이름</h2>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" class="form-control"
-						placeholder="가격" name="g_price">
+					<!--  <h4>\ ${goodsInfo.g_price}</h4> -->
+					<h4>\ 5000000</h4>
 				</div>
 			</div>
+			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<div class="filebox">
-						<label for="file">📷</label> <input type="file" name="g_img"
-							id="file" accept="image/*;capture=camera" > <input
-							class="upload-name" value="선택한 파일 없음">
-					</div>
+					<!--  <img src="${goodsInfo.g_img}"/> -->
+					<img src="/img/product/product1.png">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-10">
-					<textarea rows="10" class="form-control"
-						name="g_info"></textarea>
+					<!--  <div>${goodsInfo.g_info}</div> -->
+					<div>글내용</div>
 				</div>
 			</div>
 
-				<input type="hidden" value="${user_id}" name = "seller_id">
-				<input type="hidden" value="${user_addr}" name = "user_addr">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit"  class="btn btn-default">작성완료</button>
 				</div>
 			</div>
-		</form>
 
 	</div>
 
 
-	<div class="foot-bar">
+		<div class="foot-bar">
+		<div class="foot-div"
+			onclick="location.href='index.do?user_addr=${user_addr}'">
+			<div>
+				<img alt="" src="/img/icon/home.png">
+			</div>
+		</div>
 
-		<div class="foot-div" onclick="location.href='#'">
-			<svg aria-label="홈" class="_8-yf5 " color="white" fill="#262626"
-				height="24" role="img" viewBox="0 0 24 24" width="24">
-			<path
-					d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
-					fill="none" stroke="currentColor" stroke-linejoin="round"
-					stroke-width="2"></path></svg>
+		<div class="foot-div">
+			<img alt="" src="/img/icon/mesaage.png">
+		</div>
+
+		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+			<img alt="" src="/img/icon/add.png">
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/location.png">
 		</div>
 		<div class="foot-div">
-			<p>커뮤니티</p>
-		</div>
-		<div class="foot-div">
-			<p>등록하기</p>
-		</div>
-		<div class="foot-div">
-			<p>위치</p>
-		</div>
-		<div class="foot-div">
-			<p>내정보</p>
+			<img alt="" src="/img/icon/me.png">
 		</div>
 	</div>
 
