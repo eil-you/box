@@ -37,7 +37,6 @@ public class UserController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 		userInfoVO result = mapper.login(vo);
-		System.out.println("로그인 확인 "+ result);
 		
 		// 암호키를 복호화 함 
 		encoder.matches(vo.getUser_pw(), result.getUser_pw());
@@ -45,7 +44,6 @@ public class UserController {
 		if(encoder.matches(vo.getUser_pw(), result.getUser_pw())) {
 			model.addAttribute("user_addr", result.getUser_addr());
 			model.addAttribute("user_id",result.getUser_id() );
-			System.out.println("My model: " + model.getAttribute("user_addr"));
 			return new ModelAndView("redirect:/index.do", model);
 		}else {
 			return new ModelAndView("login");

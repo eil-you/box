@@ -18,6 +18,6 @@ public class goodsVO {
 	private int g_price;
 	private String seller_id;
 	private String user_addr;
-	
+	private String seller_nick;
 
 }

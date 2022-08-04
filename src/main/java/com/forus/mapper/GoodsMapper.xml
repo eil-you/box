@@ -5,11 +5,15 @@
 <mapper namespace="com.forus.mapper.GoodsMapper">
 	
 	<select id="goodsList" parameterType="String" resultType="com.forus.domain.goodsListVO">
-		select * from goods_tb where 
-		loc_seq in (select loc_seq from g_location_tb 
-		where v_machine_seq=
-		(select v_machine_seq from v_machine_tb 
-		where v_machine_addr = #{user_addr} )) and g_status = '판매'
+		select * 
+		from goods_tb 
+		where loc_seq in (
+			select loc_seq 
+			from g_location_tb 
+			where v_machine_seq=(
+				select v_machine_seq 
+				from v_machine_tb 
+				where v_machine_addr = #{user_addr} )) and g_status = '판매'
 	</select>
 
 
@@ -22,16 +26,44 @@
 		select g_seq, gc_seq, g_name, g_info, g_img, g_price,seller_id from goods_tb where g_seq = #{g_seq}
 	</select>
 
+	<!-- 상품 등록하기 -->
 	<insert id="goodsInsert" parameterType="com.forus.domain.goodsVO">
-		insert into goods_tb(gc_seq,loc_seq,g_name,g_info,g_price, seller_id,g_img) values(
-   			 (select gc_seq from g_category_tb where gc_name =#{gc_name}),
-    		(select g.loc_seq from goods_tb g where g_status='완료' and loc_seq in
-       		 (select loc_seq from g_location_tb 
-        		where v_machine_seq = 
-        	(select v_machine_seq from v_machine_tb 
-        	where v_machine_addr = #{user_addr}) 
-     			) limit 1),
-                #{g_name}, #{g_info}, #{g_price}, #{seller_id},#{g_img})
+		insert into goods_tb(gc_seq,loc_seq,g_name,g_info,g_price, seller_id,g_img) 
+		values(
+   			 (select gc_seq 
+   			  from g_category_tb 
+   			  where gc_name =#{gc_name}),
+   			  #{loc_seq}, #{g_name}, #{g_info}, #{g_price}, #{seller_id},#{g_img})
 	</insert>
+	
+	<!--  상품할 loc_seq불러오기 -->
+	<select id="loc_seqSelect" parameterType="String" resultType="int">
+		select location_tb.loc_seq
+  		from (
+    		select loc_seq 
+    		from g_location_tb, (
+      			select v_machine_seq
+      			from v_machine_tb
+				where v_machine_addr = #{user_addr}) as addr
+    		where g_location_tb.v_machine_seq = addr.v_machine_seq) as location_tb
+  		where location_tb.loc_seq not in (
+    		select loc_seq  
+    		from goods_tb 
+    		where g_status in ('예약','구매','판매')) limit 1
+	</select>
+	
+	
+	<!--  자판기 비밀번호 변경 -->
+	<update id = "machinePwUpdate" parameterType="com.forus.domain.gLocationVO">
+		update g_location_tb set v_machine_pw = #{v_machine_pw} where loc_seq = #{loc_seq}
+	</update>
 
+
+	<!-- 물건 파는 사람의 nickname 불러오기 -->
+	<select id="seller_nickSelect" resultType="String">
+		select user_nick from user_tb where user_id = #{seller_id}
+	</select>
+	
+	
+	
 </mapper>
