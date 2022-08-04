@@ -115,7 +115,7 @@ public class GoodsController {
 
         String msg = file.getOriginalFilename() + " is saved in server db";
        
-        vo.setG_img(path+"\\"+file.getOriginalFilename());
+        vo.setG_img(path+"\\"+uuid + file.getOriginalFilename());
    
         mapper.goodsInsert(vo);
         
