@@ -128,8 +128,13 @@
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
+<<<<<<< HEAD
 					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
 						<img class="card-img" src="${vo.g_img}">
+=======
+					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
+						<img class="card-img" src="file/${vo.g_img}">
+>>>>>>> branch 'master' of https://github.com/eil-you/box.git
 						<div class="card-body">
 							<h4>
 								<c:out value="${vo.g_name}" />
