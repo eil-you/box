@@ -22,11 +22,14 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.forus.domain.gCategoryVO;
 import com.forus.domain.gLocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsVO;
 import com.forus.domain.userInfoVO;
+import com.forus.domain.wishListVO;
 import com.forus.mapper.GoodsMapper;
+import com.forus.mapper.ViewMapper;
 
 @Controller
 public class GoodsController {
@@ -36,22 +39,37 @@ public class GoodsController {
 	@Autowired
 	GoodsMapper mapper;
 	
+	@Autowired
+	ViewMapper vMapper;
+	
 	
 	// 상품 리스트 불러오기
 	@RequestMapping("/index.do")
 	public void index(Model model ,HttpServletRequest request, HttpSession session) {
-		// 회원 주소에 맞는 아파트에서 상품 리스트 불러오기
+		
+		// 데이터 호출하기
 		String user_addr = request.getParameter("user_addr");
-		System.out.println(user_addr);
 		String user_id = request.getParameter("user_id");
-		System.out.println(user_id);
+		
+		
+		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
 		List<goodsListVO> result = mapper.goodsList(user_addr);
 		System.out.println("list"+result);
+		
 		// 회원 주소 아파트 이름 가져오기
 		String apt_name = mapper.selectAptName(user_addr);
 		System.out.println("apt_name"+apt_name);
+		
+		List<gCategoryVO> category=vMapper.goodsCategory();
+		System.out.println("결과 "+category);
+		model.addAttribute("categoryList", category);
+		
+		
+		
+		
 		// 제품 리스트 보내기
 		model.addAttribute("GoodsList", result);
+		
 		// 아파트 보내주기
 		model.addAttribute("apt_name",apt_name);
 		session.setAttribute("user_addr", user_addr);
@@ -63,15 +81,12 @@ public class GoodsController {
 	
 	// 상품 한개 상세 정보 불러오기
 	@RequestMapping("/goodsInfo.do")
-	public String goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
+	public void goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
 		goodsVO result =mapper.goodsInfo(g_seq);
 		result.setSeller_nick(mapper.seller_nickSelect(result.getSeller_id()));
 		System.out.println(result);
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
-		
-		
-		return "goodsInfo";
 	}
 	
 	
@@ -96,19 +111,29 @@ public class GoodsController {
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
-        // 상품 등록 전에 비어있는 g_seq 번호 중 한개 가져오기 
+        // 상품 등록 전에 비어있는 loc_seq 번호 중 한개 가져오기 
         int loc_seq = mapper.loc_seqSelect(vo.getUser_addr());
         System.out.println(loc_seq);
         // 상품 등록
         String msg = file.getOriginalFilename() + " is saved in server db";
-       
-        String g_img = path+"\\"+uuid + file.getOriginalFilename();
+        String g_img = uuid + file.getOriginalFilename();
         vo.setG_img(g_img);
         vo.setLoc_seq(loc_seq);
    
         mapper.goodsInsert(vo);
         
-
+        
+        
+        
+        // 상품 등록 후  wishlist에 기본 값 넣어주기
+        // 1) g_seq 번호 필요
+        
+        int g_seq = mapper.g_seqSelect(vo);
+        
+        wishListVO wishVO = new wishListVO(g_seq, vo.getSeller_id(),0);
+        mapper.wishDefault(wishVO);
+        
+        
 		
 		// 랜덤 자판기 비밀번호 생성 
 		Random rd = new Random();
@@ -136,6 +161,32 @@ public class GoodsController {
 	}
 
 
+	
+	
+	// 제품 판매 내역 
+	@RequestMapping("goodsSaleList.do")
+	public List<goodsListVO> goodsSaleList(String user_id) {
+		List<goodsListVO> list =mapper.goodsSaleList(user_id);
+		return list;
+	}
+	
+	// 제품 판매 완료 내역
+	@RequestMapping("goodsFinishList.do")
+	public List<goodsListVO> goodsFinishList(String user_id){
+		List<goodsListVO> list =mapper.goodsFinishList(user_id);
+		return list;
+	}
+	
+	
+	// 상품 삭제 
+	@RequestMapping("goodsDelete.do")
+	public void goodsDelete(int g_seq) {
+		int row = 0;
+		row = mapper.goodsDelete(g_seq);
+		
+		// row >0 인  경우와 아닌 경우 출력하기 
+	}
+	
 	
 	
 	

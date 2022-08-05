@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.forus.domain.gLocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsVO;
+import com.forus.domain.wishListVO;
 
 @Mapper
 public interface GoodsMapper {
@@ -27,7 +28,7 @@ public interface GoodsMapper {
 	public void goodsInsert(goodsVO vo);
 	
 	
-	// g_seq 불러오기
+	// loc_seq 불러오기
 	public int loc_seqSelect(String user_addr);
 		
 	
@@ -39,6 +40,23 @@ public interface GoodsMapper {
 	
 	// 물건 파는 사람의 nickname 불러오기
 	public String seller_nickSelect(String seller_id); 
+	
+	
+	// 물건 삭제
+	public int goodsDelete(int g_seq);
+	
+	// 판매 내역 불러오기
+	public List<goodsListVO> goodsSaleList(String user_id);
+	
+	// 판매 완료 내역
+	public List<goodsListVO> goodsFinishList(String user_id);
+	
+	
+	// wishlist 에 기본 값
+	public void wishDefault(wishListVO wishVO);
+	
+	// g_seq 번호 불러오기
+	public int g_seqSelect(goodsVO vo);
 	
 }	
 	
