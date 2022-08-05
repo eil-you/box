@@ -15,6 +15,10 @@
 	font-family: 'S-CoreDream-3Light' !important;
 }
 
+* {
+	
+}
+
 /* ---------- main page css ---------- */
 @media ( max-width :768px) {
 	.sub-title {
@@ -86,7 +90,10 @@
 		display: block;
 	}
 	.card-img {
-		width: 30%;
+		width: 28%;
+		height: 100px;
+		padding: 10px 22px;
+		border-radius: 15%;
 	}
 	.card {
 		position: static !important;
@@ -97,8 +104,8 @@
 	}
 	.list_layout {
 		display: block;
+		width: 100%;
 	}
-
 	.menu_drop {
 		font-size: 20px;
 	}
@@ -295,26 +302,35 @@
 	.pr-zzim {
 		display: inline-flex;
 	}
-	
 	.pr-zzim .price {
-	
-	width: 250px;
-	
+		width: 250px;
 	}
 	.zzim-div {
 		display: inline-flex;
 		right: 30px;
 	}
-	.zzim-div p {
-		
+	.zzim-cnt {
+		margin-left: 5px;
+		color: #c7c7c0;
 	}
-	
 	.side_bar {
 		margin-right: 30px;
 	}
+	.row {
+		margin: 0px !important;
+		padding: 5px 0px;
+	}
 	
+	.card-body h4 {
+		font-weight: bold;
+	}
 	
-	/*===========================카테고리 ================================*/
+	.list-cate{
 	
+		font-weight: bold;
+		
+	}
 	
 }
+
+/*===========================카테고리 ================================*/

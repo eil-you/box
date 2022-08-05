@@ -38,7 +38,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 49%!important;
-    height: 104px;
+    height: 98px;
 }
 .flexbox-right {
     display: flex;
@@ -98,7 +98,7 @@
 #navbar {
     top: 0;
     padding: 0;
-    width: 100%;
+    width: 0%;
     height: 100vh;
     position: fixed;
     background-color: white;
@@ -106,21 +106,36 @@
     overflow-y: auto;
     overflow-x: hidden;
     display: block;
+    
 }
 
 .cate-title{
-	
+
 	width: 100%; 
-	height: 10%; 
+	height: 11%; 
 	text-align: center;
 	background-color: white;
 	border-bottom-style: solid;
 	border-bottom-color: rgba(167, 167, 167, 0.1);
 }
 
-.cate-title h4 {
+.cate-title .side-close{
 	
-	padding-top: 25px;
+	text-align: right;
+	
+	
+}
+
+.cate-title div img{
+	
+	width: 16px;
+	margin-right:13px; 
+	margin-top:13px; 
+}
+
+
+.cate-title div h4 {
+	
 	font-weight: bold;
 	
 }

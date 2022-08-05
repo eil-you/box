@@ -73,7 +73,6 @@
 <link href="css/category.css" rel="stylesheet">
 
 <style type="text/css">
-
 </style>
 </head>
 
@@ -87,7 +86,8 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="side_bar" onclick="sidebar()">☰</a>
+			<i class="fab fa-accusoft"></i> <a class="side_bar"
+				onclick="sidebar()">☰</a>
 			<div class="dropdown">
 				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
@@ -105,55 +105,65 @@
 		</ul>
  -->
 	</nav>
-	
-	<nav id="navbar" style="color: black!important">
-	<div class ="cate-title"><h4>카테고리</h4></div>
-  <div class="navbar-items flexbox-col">
-	
-	<!-- list출력 -->
-	<c:forEach var = "i" begin ="1" end="10">
-    <div class="navbar-item flexbox-left">
-      <a class="navbar-item-inner">
-        <span class="list-cate">카테고리 ${i}</span>
-      </a>
-    </div>
-	</c:forEach>
 
-  </div>
-</nav>
+	<nav id="navbar" style="color: black !important">
+
+		<div class="cate-title">
+
+			<div class="side-close">
+				<a onclick="closeside()"><img src="/img/icon/x.png"></a>
+			</div>
+
+			<div>
+				<h4>카테고리</h4>
+			</div>
+			
+			
+
+		</div>
+		<div class="navbar-items flexbox-col">
+
+			<!-- list출력 -->
+			<c:forEach items="${categoryList}" var="vo" step="1">
+				<div class="navbar-item flexbox-left">
+					<a class="navbar-item-inner">
+					<img src="/img/cate-icon/${vo.gc_name}.png"><br>
+					<span class="list-cate"><c:out value = "${vo.gc_name}" /></span>
+					</a>
+				</div>
+			</c:forEach>
+
+		</div>
+	</nav>
 
 	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
-		<div class="container container-pd">
+		<div class=" container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
-<<<<<<< HEAD
-					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
-						<img class="card-img" src="${vo.g_img}">
-=======
-					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
+					<div class="card-product__img"
+						onclick="viewGoodsContent(${vo.g_seq})">
 						<img class="card-img" src="file/${vo.g_img}">
->>>>>>> branch 'master' of https://github.com/eil-you/box.git
 						<div class="card-body">
 							<h4>
 								<c:out value="${vo.g_name}" />
 							</h4>
 							<br>
 							<p>${apt_name}</p>
-							
+
 							<div class="pr-zzim">
 								<p class="price">
 									<c:out value="${vo.g_price}" />
 								</p>
 								<div class="zzim-div" onclick="">
-									<img class ="zzim" src="/img/icon/star-empty.png">
-									<p>5${zzim}</p>
+									<img class="zzim" src="/img/icon/star-empty.png">
+									<p class="zzim-cnt">${vo.wish_cnt}</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class ="goods-line"></div>
+					<div class="goods-line"></div>
 				</c:forEach>
 				<!-- 끝 -->
 			</div>
@@ -181,7 +191,8 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div" onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
 			<img alt="" src="/img/icon/me-gr.png">
 		</div>
 	</div>
@@ -191,7 +202,7 @@
      SCRIPTS 
 ============================== -->
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/owl.carousel.js"></script>
@@ -230,19 +241,19 @@
 
 			function sidebar() {
 				
-			
-				status = $("#navbar").css("display")
-				console.log(status)
-				if (status == 'none') {
-					
-					$("#navbar").css("display","block")
-					console.log(status)	
-				} else {
-					
-					$("#navbar").css("display","none")
-					
-				}
+				console.log()
 				
+					//$("#navbar").css("display","block")
+					$("#navbar").css("width","100%")
+				
+				
+				
+			}
+			
+			function closeside() {
+						
+						//$("#navbar").css("display","none")
+						$("#navbar").css("width","0%")
 				
 				
 			}
