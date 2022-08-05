@@ -98,9 +98,7 @@
 	.list_layout {
 		display: block;
 	}
-	.menu_bar {
-		margin-right: 30px;
-	}
+
 	.menu_drop {
 		font-size: 20px;
 	}
@@ -281,9 +279,8 @@
 	}
 	.zzim {
 		width: 16px;
-		height: 16px;
-		margin: auto;
-		display: block
+		height: 15px;
+		margin-top: 1.8px;
 	}
 	.foot-div:active {
 		background-color: #f3f3f3;
@@ -291,8 +288,33 @@
 	.goods-line {
 		width: 90%;
 		display: block;
-		border-bottom-style:solid;
-		border-bottom-color: rgba(167,167,167,0.1); 
+		border-bottom-style: solid;
+		border-bottom-color: rgba(167, 167, 167, 0.1);
 		margin: auto;
 	}
+	.pr-zzim {
+		display: inline-flex;
+	}
+	
+	.pr-zzim .price {
+	
+	width: 250px;
+	
+	}
+	.zzim-div {
+		display: inline-flex;
+		right: 30px;
+	}
+	.zzim-div p {
+		
+	}
+	
+	.side_bar {
+		margin-right: 30px;
+	}
+	
+	
+	/*===========================카테고리 ================================*/
+	
+	
 }

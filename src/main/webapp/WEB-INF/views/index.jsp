@@ -67,14 +67,14 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="js/lte-ie7.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
+<link href="css/category.css" rel="stylesheet">
+
+<style type="text/css">
+
+</style>
 </head>
 
 
@@ -87,7 +87,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
+			<i class="fab fa-accusoft"></i> <a class="side_bar" onclick="sidebar()">☰</a>
 			<div class="dropdown">
 				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
@@ -105,6 +105,22 @@
 		</ul>
  -->
 	</nav>
+	
+	<nav id="navbar" style="color: black!important">
+	<div class ="cate-title"><h4>카테고리</h4></div>
+  <div class="navbar-items flexbox-col">
+	
+	<!-- list출력 -->
+	<c:forEach var = "i" begin ="1" end="10">
+    <div class="navbar-item flexbox-left">
+      <a class="navbar-item-inner">
+        <span class="list-cate">카테고리 ${i}</span>
+      </a>
+    </div>
+	</c:forEach>
+
+  </div>
+</nav>
 
 	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
@@ -112,7 +128,7 @@
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<c:forEach items="${GoodsList}" var="vo" step="1">
-					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})">
+					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
 						<img class="card-img" src="${vo.g_img}">
 						<div class="card-body">
 							<h4>
@@ -120,9 +136,16 @@
 							</h4>
 							<br>
 							<p>${apt_name}</p>
-							<p>
-								<c:out value="${vo.g_price}" />
-							</p>
+							
+							<div class="pr-zzim">
+								<p class="price">
+									<c:out value="${vo.g_price}" />
+								</p>
+								<div class="zzim-div" onclick="">
+									<img class ="zzim" src="/img/icon/star-empty.png">
+									<p>5${zzim}</p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class ="goods-line"></div>
@@ -170,11 +193,6 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-		function goodsContent() {
-
-			$('')
-
-		}
 
 		function viewGoodsContent(g_seq,apt_name){
             console.log(g_seq)
@@ -199,7 +217,33 @@
 		    f.submit();
 			}
 		
-	</script>
+			function zzim() {
+				
+				console.log("찜~")
+				
+			}
+
+			function sidebar() {
+				
+			
+				status = $("#navbar").css("display")
+				console.log(status)
+				if (status == 'none') {
+					
+					$("#navbar").css("display","block")
+					console.log(status)	
+				} else {
+					
+					$("#navbar").css("display","none")
+					
+				}
+				
+				
+				
+			}
+			
+			</script>
+
 
 
 

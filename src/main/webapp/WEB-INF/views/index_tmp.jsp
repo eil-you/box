@@ -1,8 +1,11 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 
@@ -36,7 +39,7 @@
 
 
 
-<title>BRANDY</title>
+<title>Earthbox</title>
 <!-- Google Font -->
 <link
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
@@ -74,7 +77,9 @@
 <link href="css/other.css" rel="stylesheet">
 </head>
 
+
 <body>
+
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
@@ -84,7 +89,7 @@
 		<div class="navbar__logo">
 			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
 			<div class="dropdown">
-				<a class="menu_drop" href="">A 아파트 ▼</a>
+				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
 					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
@@ -106,66 +111,102 @@
 		<div class="container container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
-
-				<%
-				for (int i = 0; i < 6; i++) {
-				%>
-				<div class="card-product__img">
-					<img class="card-img" src="img/product/product<%=i + 1%>.png">
-					<div class="card-body">
-						<h4>상품이름</h4>
-						<br>
-						<p>상품 위치</p>
-						<p>\120,000</p>
+				<c:forEach items="${GoodsList}" var="vo" step="1">
+					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
+						<img class="card-img" src="${vo.g_img}">
+						<div class="card-body">
+							<h4>
+								<c:out value="${vo.g_name}" />
+							</h4>
+							<br>
+							<p>${apt_name}</p>
+							
+							<div class="pr-zzim">
+								<p>
+									<c:out value="${vo.g_price}" />
+								</p>
+								<div class="zzim-div" onclick="">
+									<img class ="zzim" src="/img/icon/star-empty.png">
+									<p>${zzim}</p>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<%
-				}
-				%>
+					<div class ="goods-line"></div>
+				</c:forEach>
 				<!-- 끝 -->
 			</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
 
+	<!--  footer start -->
 	<div class="foot-bar">
-		
-		<div class="foot-div" onclick="location.href='#'">
-			<svg aria-label="홈" class="_8-yf5 " color="white" fill="#262626"
-			height="24" role="img" viewBox="0 0 24 24" width="24">
-			<path
-				d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
-				fill="none" stroke="currentColor" stroke-linejoin="round"
-				stroke-width="2"></path></svg>
-		</div>
-		<div class="foot-div">
-			<p>커뮤니티</p>	
+		<div class="foot-div"
+			onclick="location.href='index.do?user_addr=${user_addr}'">
+			<div>
+				<img alt="" src="/img/icon/home-full.png">
 			</div>
-	
-		<div class="foot-div">
-			<p>등록하기</p>
 		</div>
+
 		<div class="foot-div">
-			<p>위치</p>
+			<img alt="" src="/img/icon/message-gr.png">
 		</div>
+
+		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+			<img alt="" src="/img/icon/plus-gr.png">
+		</div>
+
 		<div class="foot-div">
-			<p>내정보</p>
+			<img alt="" src="/img/icon/map-gr.png">
+		</div>
+		<div class="foot-div" onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			<img alt="" src="/img/icon/me-gr.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 
 ============================== -->
 
-
-	<script src="js/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<!-- 쇼핑몰 js <script src="js/shopmain.js"></script> -->
+	<script type="text/javascript">
 
+		function viewGoodsContent(g_seq,apt_name){
+            console.log(g_seq)
+            console.log(apt_name)
+			
+            var f = document.createElement("form");
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
+            
+            obj2 = document.createElement('input');
+            obj2.setAttribute('type','hidden')
+            obj2.setAttribute('name','apt_name')
+            obj2.setAttribute('value', apt_name )
+            f.appendChild(obj2);
+            
+            f.setAttribute('method','post');
+            f.setAttribute('action','goodsInfo.do')
+            document.body.appendChild(f);
+		    f.submit();
+			}
+		
+			function zzim() {
+				
+				console.log("찜~")
+				
+			}
+	</script>
 
 
 
