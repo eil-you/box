@@ -24,7 +24,9 @@ public interface UserMapper {
 	// 중복 아이디 확인
 	public String checkId(String user_id);
 	
-		
+	
+	// 포인트 업데이트
+	public void PointUpdate(userInfoVO infoVO);
 		
 		
 }
