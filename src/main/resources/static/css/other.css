@@ -15,6 +15,10 @@
 	font-family: 'S-CoreDream-3Light' !important;
 }
 
+* {
+	
+}
+
 /* ---------- main page css ---------- */
 @media ( max-width :768px) {
 	.sub-title {
@@ -86,7 +90,10 @@
 		display: block;
 	}
 	.card-img {
-		width: 30%;
+		width: 28%;
+		height: 100px;
+		padding: 10px 22px;
+		border-radius: 15%;
 	}
 	.card {
 		position: static !important;
@@ -97,9 +104,7 @@
 	}
 	.list_layout {
 		display: block;
-	}
-	.menu_bar {
-		margin-right: 30px;
+		width: 100%;
 	}
 	.menu_drop {
 		font-size: 20px;
@@ -281,9 +286,8 @@
 	}
 	.zzim {
 		width: 16px;
-		height: 16px;
-		margin: auto;
-		display: block
+		height: 15px;
+		margin-top: 1.8px;
 	}
 	.foot-div:active {
 		background-color: #f3f3f3;
@@ -291,8 +295,42 @@
 	.goods-line {
 		width: 90%;
 		display: block;
-		border-bottom-style:solid;
-		border-bottom-color: rgba(167,167,167,0.1); 
+		border-bottom-style: solid;
+		border-bottom-color: rgba(167, 167, 167, 0.1);
 		margin: auto;
 	}
+	.pr-zzim {
+		display: inline-flex;
+	}
+	.pr-zzim .price {
+		width: 250px;
+	}
+	.zzim-div {
+		display: inline-flex;
+		right: 30px;
+	}
+	.zzim-cnt {
+		margin-left: 5px;
+		color: #c7c7c0;
+	}
+	.side_bar {
+		margin-right: 30px;
+	}
+	.row {
+		margin: 0px !important;
+		padding: 5px 0px;
+	}
+	
+	.card-body h4 {
+		font-weight: bold;
+	}
+	
+	.list-cate{
+	
+		font-weight: bold;
+		
+	}
+	
 }
+
+/*===========================카테고리 ================================*/
