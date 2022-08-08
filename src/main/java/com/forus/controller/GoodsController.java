@@ -196,23 +196,19 @@ public class GoodsController {
 	
 	// 제품 판매중인 내역 
 	@RequestMapping("goodsSaleList.do")
-	public List<goodsListVO> goodsSaleList(String user_id) {
+	public String goodsSaleList(String user_id, Model model) {
 		List<goodsListVO> list =mapper.goodsSaleList(user_id);
-		return list;
+		model.addAttribute("GoodsList", list); 
+		return "proList";
 	}
 	
-	// 제품 판매 완료 내역
-	@RequestMapping("goodsFinishList.do")
-	public List<goodsListVO> goodsFinishList(String user_id){
-		List<goodsListVO> list =mapper.goodsFinishList(user_id);
-		return list;
-	}
-	
-	
+
 	// 제품 구매 내역
-	public List<goodsListVO> goodsPurchaseList(String user_id){
+	@RequestMapping("goodsBuyList.do")
+	public String goodsPurchaseList(String user_id, Model model){
 		List<goodsListVO> list = mapper.goodsPurchaseList(user_id);
-		return list;
+		model.addAttribute("GoodsList", list); 
+		return "buyList";
 	}
 	
 	// 상품 삭제 

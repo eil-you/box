@@ -93,54 +93,47 @@
 	</nav>
 
 	<!-- ================ trending product section start ================= -->
-	<section class="section-margin calc-60px">
-		<div class="container container-pd">
-			<div class="row list_layout">
-
-				<c:choose>
+					<c:choose>
 					<c:when test="${empty GoodsList}">
-						<div>
-							<p>비어있습니다.</p>
+						<div class="empty-list">
+							<p>구매한 내역이 없어요.</p>
 						</div>
 					</c:when>
 				</c:choose>
-					
-						<!--리스트 출력 시작 시작 -->
-						<c:forEach items="${GoodsList}" var="vo" step="1">
-							<div class="card-product__img"
-								onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
-								<img class="card-img" src="${vo.g_img}">
-								<div class="card-body">
-									<h4>
-										<c:out value="${vo.g_name}" />
-									</h4>
-									<br>
-									<p>${apt_name}</p>
+	<section class="section-margin calc-60px">
+		<div class=" container-pd">
+			<div class="row list_layout">
+				<!--리스트 출력 시작 시작 -->
+				<c:forEach items="${GoodsList}" var="vo" step="1">
+					<div class="card-product__img"
+						onclick="viewGoodsContent(${vo.g_seq})">
+						<img class="card-img" src="file/${vo.g_img}">
+						<div class="card-body">
+							<h4>
+								<c:out value="${vo.g_name}" />
+							</h4>
+							<br>
+							<p>${apt_name}</p>
 
-									<div class="pr-zzim">
-										<p>
-											<c:out value="${vo.g_price}" />
-										</p>
-										<div class="zzim-div" onclick="">
-											<img class="zzim" src="/img/icon/star-empty.png">
-											<p>${zzim}</p>
-										</div>
-									</div>
+							<div class="pr-zzim">
+								<p class="price">
+									<c:out value="${vo.g_price}" />
+								</p>
+								<div class="zzim-div" onclick="">
+									<img class="zzim" src="/img/icon/star-empty.png">
+									<p class="zzim-cnt">${vo.wish_cnt}</p>
 								</div>
 							</div>
-							<div class="goods-line"></div>
-						</c:forEach>
-						<!-- 끝 -->
-
-
-
-
+						</div>
+					</div>
+					<div class="goods-line"></div>
+				</c:forEach>
+				<!-- 끝 -->
 			</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
-
-	<!--  footer start -->
+<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
@@ -160,7 +153,8 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
 			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>

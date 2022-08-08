@@ -193,7 +193,7 @@
 		</div>
 		<div class="foot-div"
 			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-			<img alt="" src="/img/icon/me-gr.png">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
 	<!--  footer end -->

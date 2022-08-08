@@ -100,7 +100,7 @@
 				<img class="mypage-img" src="/img/icon/profile-img.png">
 				<div>
 					<p class="my-nick">${user_id}</p>
-					<p class="my-apt">${user_addr}</p>
+					<p class="my-apt">${apt_name}</p>
 				</div>
 				<div>
 					<img class="back" src="/img/icon/bk.png">
@@ -108,14 +108,14 @@
 			</div>
 
 			<div class="mypage-menu-sec">
-				<div class="mypage-sec" onclick="location.href='goodsSaleList.do?user_id=dd'">
+				<div class="mypage-sec" onclick="location.href='goodsSaleList.do?user_id=${user_id}'">
 					<div class="icon-bgc">
 						<img src="/img/icon/sell.png">
 					</div>
 					<p>판매내역</p>
 				</div>
 
-				<div class="mypage-sec" onclick="location.href='goodsFinishList.do?user_id=dd'">
+				<div class="mypage-sec" onclick="location.href='goodsBuyList.do?user_id=${user_id}'">
 					<div class="icon-bgc">
 						<img src="img/icon/cart.png">
 					</div>
@@ -140,12 +140,12 @@
 	</section>
 	<!-- ================ trending product section end ================= -->
 
-	<!--  footer start -->
+<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
-				<img alt="" src="/img/icon/home-gr.png">
+				<img alt="" src="/img/icon/home-full.png">
 			</div>
 		</div>
 
@@ -160,11 +160,13 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
 			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
 	<!--  footer end -->
+
 
 	<!-- =========================
      SCRIPTS 

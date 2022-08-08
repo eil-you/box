@@ -78,6 +78,7 @@
 </head>
 
 
+
 <body>
 
 	<!-- Preloader -->
@@ -88,123 +89,111 @@
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
 			<i class="fab fa-accusoft"></i>
-			<h4 style="display: inline-block;">마이페이지</h4>
+			<h4 style="display: inline-block;">구매내역</h4>
 		</div>
 	</nav>
 
 	<!-- ================ trending product section start ================= -->
-<section class="section-margin calc-60px">
-		<div class="container container-pd">
-			<div class="row list_layout">
-			
-				<c:choose>
-					<c:when test="${empty GoodsList}">
-						<div>비어있습니다.</div>
-					</c:when>
-				</c:choose>
-			
-				<!--리스트 출력 시작 시작 -->
-				<c:forEach items="${GoodsList}" var="vo" step="1">
-					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
-						<img class="card-img" src="file/${vo.g_img}">
-						<div class="card-body">
-							<h4>
-								<c:out value="${vo.g_name}" />
-							</h4>
-							<br>
-							<p>${apt_name}</p>
-							
-							<div class="pr-zzim">
-								<p>
-									<c:out value="${vo.g_price}" />
-								</p>
-								<div class="zzim-div" onclick="">
-									<img class ="zzim" src="/img/icon/star-empty.png">
-									<p>${zzim}</p>
+
+	<div class="row list_layout">
+
+		<section class="section-margin calc-60px">
+			<div class="container container-pd">
+				<div class="row list_layout">
+
+					<input type="hidden" value="${user_id}" id="user_id">
+					<div class="buy-select">
+						<div class="buy-sec" onclick="saleList()">
+							<p>판매중</p>
+							<div id="sale"></div>
+						</div>
+						<div class="buy-sec" onclick="finishList()">
+							<p>판매완료</p>
+							<div id='finish'></div>
+						</div>
+
+					</div>
+					
+					<c:choose>
+						<c:when test="${empty GoodsList}">
+							<div class="empty-list">
+								<p>판매중인 내역이 없어요.</p>
+							</div>
+						</c:when>
+					</c:choose>
+					
+					<!--리스트 출력 시작 시작 -->
+					<div id="product-list">
+						<c:forEach items="${GoodsList}" var="vo" step="1">
+							<div class="card-product__img"
+								onclick="viewGoodsContent(${vo.g_seq})">
+								<img class="card-img" src="file/${vo.g_img}">
+								<div class="card-body">
+									<h4>
+										<c:out value="${vo.g_name}" />
+									</h4>
+									<br>
+									<p>${apt_name}</p>
+
+									<div class="pr-zzim">
+										<p class="price">
+											<c:out value="${vo.g_price}" />
+										</p>
+										<div class="zzim-div" onclick="">
+											<img class="zzim" src="/img/icon/star-empty.png">
+											<p class="zzim-cnt">${vo.wish_cnt}</p>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							<div class="goods-line"></div>
+						</c:forEach>
 					</div>
-					<div class ="goods-line"></div>
-				</c:forEach>
-				<!-- 끝 -->
+					<!-- 끝 -->
+				</div>
+			</div>
+		</section>
+		<!-- ================ trending product section end ================= -->
+
+		<!--  footer start -->
+		<div class="foot-bar">
+			<div class="foot-div"
+				onclick="location.href='index.do?user_addr=${user_addr}'">
+				<div>
+					<img alt="" src="/img/icon/home-full.png">
+				</div>
+			</div>
+
+			<div class="foot-div">
+				<img alt="" src="/img/icon/message-gr.png">
+			</div>
+
+			<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+				<img alt="" src="/img/icon/plus-gr.png">
+			</div>
+
+			<div class="foot-div">
+				<img alt="" src="/img/icon/map-gr.png">
+			</div>
+			<div class="foot-div"
+				onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+				<img alt="" src="/img/icon/me-full.png">
 			</div>
 		</div>
-	</section>
-	<!-- ================ trending product section end ================= -->
+		<!--  footer end -->
 
-	<!--  footer start -->
-	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
 
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div">
-			<img alt="" src="/img/icon/me-full.png">
-		</div>
-	</div>
-	<!--  footer end -->
-
-	<!-- =========================
+		<!-- =========================
      SCRIPTS 
 ============================== -->
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.nicescroll.js"></script>
-	<script src="js/owl.carousel.js"></script>
-	<script src="js/wow.js"></script>
-	<script src="js/script.js"></script>
-	<script type="text/javascript">
-		function goodsContent() {
-
-			$('')
-
-		}
-
-		function viewGoodsContent(g_seq,apt_name){
-            console.log(g_seq)
-            console.log(apt_name)
-			
-            var f = document.createElement("form");
-            var obj1 = document.createElement('input');
-            obj1.setAttribute('type','hidden')
-            obj1.setAttribute('name','g_seq')
-            obj1.setAttribute('value', g_seq )
-            f.appendChild(obj1);
-            
-            obj2 = document.createElement('input');
-            obj2.setAttribute('type','hidden')
-            obj2.setAttribute('name','apt_name')
-            obj2.setAttribute('value', apt_name )
-            f.appendChild(obj2);
-            
-            f.setAttribute('method','post');
-            f.setAttribute('action','goodsInfo.do')
-            document.body.appendChild(f);
-		    f.submit();
-			}
-		
-		
-		
-		
-	</script>
-
-
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/wow.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/mypage.js"></script>
 
 </body>
 

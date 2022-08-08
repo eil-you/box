@@ -64,10 +64,6 @@ public class ViewController {
 	@RequestMapping("viewMypage.do")
 	public String viewMypage(Model model,HttpServletRequest request) {
 		
-		String user_id = request.getParameter("user_id");
-		String user_addr = request.getParameter("user_addr");
-		model.addAttribute("user_id", user_id);
-		
 		return "mypage";
 		
 	}
