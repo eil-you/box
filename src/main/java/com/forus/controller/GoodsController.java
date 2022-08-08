@@ -97,7 +97,7 @@ public class GoodsController {
 	
 	// 상품 등록
 	@RequestMapping("goodsInsert.do")
-	public ModelAndView goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, ModelMap model) {
+	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, model model) {
 
 
 		String path = session.getServletContext().getRealPath("/file");
@@ -162,16 +162,16 @@ public class GoodsController {
 		g_locationVO gVO= mapper.gLocationSelect(g_seq);
 		gVO.setStatus("제품 판매");
 		
-    	model.addAttribute("user_addr", vo.getUser_addr());
-		model.addAttribute("user_id",vo.getSeller_id() );
+    	model.addAttribute("goodsResult", gVO);
 		
-		return new ModelAndView("redirect:/index.do", model);
+    	return "goodsResult";
+		
 
 	}
 
 	// 상품 구입 
 	@RequestMapping("goodsPurchase")
-	public void goodsPurchase(goodsPuchaseVO vo, int user_point) {
+	public String goodsPurchase(goodsPuchaseVO vo, int user_point, Model model) {
 		
 		
 		mapper.goodsCosumerUpdate(vo);
@@ -188,8 +188,9 @@ public class GoodsController {
 		g_locationVO gVO = mapper.gLocationSelect(vo.getG_seq());
 		gVO.setStatus("제품 구매");
 		
-		//return 
+		model.addAttribute("goodsResult", gVO);
 		
+		return "goodsResult";
 	}
 	
 	
