@@ -170,7 +170,7 @@ public class GoodsController {
 	}
 
 	// 상품 구입 
-	@RequestMapping("goodsPurchase")
+	@RequestMapping("goodsPurchase.do")
 	public String goodsPurchase(goodsPuchaseVO vo, int user_point, Model model) {
 		
 		

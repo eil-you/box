@@ -10,6 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<mapper resource="com/forus/mapper/UserMapper.xml"/>
 			<mapper resource= "com/forus/mapper/GoodsMapper.xml"/>
 			<mapper resource= "com/forus/mapper/ViewMapper.xml"/>
+			<mapper resource= "com/forus/mapper/CommunityMapper.xml"/>
+			
 		</mappers>		
 		
 
