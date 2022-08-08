@@ -135,6 +135,11 @@
 	margin-top:13px; 
 }
 
+.cate-title div img:hover{
+	
+	cursor: pointer;
+	}
+
 
 .cate-title div h4 {
 	

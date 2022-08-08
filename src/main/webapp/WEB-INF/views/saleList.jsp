@@ -93,50 +93,43 @@
 	</nav>
 
 	<!-- ================ trending product section start ================= -->
-	<section class="section-margin calc-60px">
-		<div class="container container-pd container-my">
-
-			<div class="profile">
-				<img class="mypage-img" src="/img/icon/profile-img.png">
-				<div>
-					<p class="my-nick">${user_id}</p>
-					<p class="my-apt">${user_addr}</p>
-				</div>
-				<div>
-					<img class="back" src="/img/icon/bk.png">
-				</div>
-			</div>
-
-			<div class="mypage-menu-sec">
-				<div class="mypage-sec" onclick="location.href='goodsSaleList.do?user_id=dd'">
-					<div class="icon-bgc">
-						<img src="/img/icon/sell.png">
+<section class="section-margin calc-60px">
+		<div class="container container-pd">
+			<div class="row list_layout">
+			
+				<c:choose>
+					<c:when test="${empty GoodsList}">
+						<div>비어있습니다.</div>
+					</c:when>
+				</c:choose>
+			
+				<!--리스트 출력 시작 시작 -->
+				<c:forEach items="${GoodsList}" var="vo" step="1">
+					<div class="card-product__img" onclick="viewGoodsContent(${vo.g_seq})" ondblclick="zzim()">
+						<img class="card-img" src="${vo.g_img}">
+						<div class="card-body">
+							<h4>
+								<c:out value="${vo.g_name}" />
+							</h4>
+							<br>
+							<p>${apt_name}</p>
+							
+							<div class="pr-zzim">
+								<p>
+									<c:out value="${vo.g_price}" />
+								</p>
+								<div class="zzim-div" onclick="">
+									<img class ="zzim" src="/img/icon/star-empty.png">
+									<p>${zzim}</p>
+								</div>
+							</div>
+						</div>
 					</div>
-					<p>판매내역</p>
-				</div>
-
-				<div class="mypage-sec" onclick="location.href='goodsFinishList.do?user_id=dd'">
-					<div class="icon-bgc">
-						<img src="img/icon/cart.png">
-					</div>
-					<p>구매내역</p>
-				</div>
-
-				<div class="mypage-sec" onclick="zzimList()">
-					<div class="icon-bgc">
-						<img src="/img/icon/wish-cart.png">
-					</div>
-					<p>찜목록</p>
-				</div>
+					<div class ="goods-line"></div>
+				</c:forEach>
+				<!-- 끝 -->
 			</div>
 		</div>
-
-		<div class="mypage-div"></div>
-
-
-
-
-
 	</section>
 	<!-- ================ trending product section end ================= -->
 
