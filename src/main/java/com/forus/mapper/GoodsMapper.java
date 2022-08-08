@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.forus.domain.gLocationVO;
+import com.forus.domain.g_locationVO;
 import com.forus.domain.goodsListVO;
+import com.forus.domain.goodsPuchaseVO;
 import com.forus.domain.goodsVO;
 import com.forus.domain.wishListVO;
 
@@ -26,6 +28,12 @@ public interface GoodsMapper {
 	
 	// goodsInsert
 	public void goodsInsert(goodsVO vo);
+	
+	// wishlist 에 기본 값
+	public void wishDefault(wishListVO wishVO);
+	
+	// g_seq 번호 불러오기
+	public int g_seqSelect(goodsVO vo);
 	
 	
 	// loc_seq 불러오기
@@ -51,12 +59,14 @@ public interface GoodsMapper {
 	// 판매 완료 내역
 	public List<goodsListVO> goodsFinishList(String user_id);
 	
+	// 구입 내역
+	public List<goodsListVO> goodsPurchaseList(String user_id);
 	
-	// wishlist 에 기본 값
-	public void wishDefault(wishListVO wishVO);
+	// 상품 구매
+	public void goodsCosumerUpdate(goodsPuchaseVO vo);
 	
-	// g_seq 번호 불러오기
-	public int g_seqSelect(goodsVO vo);
+	// g_locationVO 불러오기
+	public g_locationVO gLocationSelect(int g_seq);
 	
 }	
 	

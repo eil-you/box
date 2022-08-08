@@ -22,6 +22,11 @@
 		select user_id from user_tb where user_id=#{user_id}	
 	</select>
  	
+ 	
+ 	<!-- 구매시 point 차감 -->
+ 	<update id="PointUpdate" parameterType="com.forus.domain.userInfoVO">
+ 		update user_tb set user_point =user_point -#{user_point} where user_id =#{user_id}
+ 	</update>
 
 
 

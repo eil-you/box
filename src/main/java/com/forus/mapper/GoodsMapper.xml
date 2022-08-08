@@ -83,8 +83,12 @@
 		select * from goods_tb where seller_id = #{user_id} and g_status in ('예약','완료')
 	</select>
 	
+	<!-- 구매 내역 -->
+	<select id = "goodsPurchaseList" resultType="com.forus.domain.goodsListVO">
+		select * from goods_tb where consumer_id = #{user_id}
+	</select>	
 	
-	<!--  기본 wishlist 등록 -->
+	<!--  기본 wishList 등록 -->
 	<insert id="wishDefault" parameterType="com.forus.domain.wishListVO">
 		insert into wishlist_tb(g_seq, user_id,wish_yn) values (#{g_seq},#{user_id},#{wish_yn})
 	</insert>
@@ -93,6 +97,22 @@
 	<select id="g_seqSelect" parameterType="com.forus.domain.goodsVO" resultType="int">
 		select g_seq from goods_tb where loc_seq =#{loc_seq} and seller_id = #{seller_id}
 	</select>
+	
+	<!--  제품 구매 -->
+	<update id="goodsCosumerUpdate" parameterType="com.forus.domain.goodsPuchaseVO">
+		update goods_tb set g_status = '구매', consumer_id = #{user_id} where g_seq = #{g_seq}
+	</update>
+	
+	<!-- g_locationVO 불러오기 -->
+	<select id="gLocationSelect" resultType="com.forus.domain.g_locationVO">
+		select g.g_name, v.apt_name, l.v_machine_space_no,l.v_machine_pw
+		from g_location_tb l, v_machine_tb v,(
+			select loc_seq, g_name 
+			from goods_tb 
+			where g_seq = #{g_seq}) as g
+		where l.loc_seq = g.loc_seq and l.v_machine_seq = v.v_machine_seq
+	</select>
+
 	
 	
 	

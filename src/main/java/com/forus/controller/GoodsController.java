@@ -24,11 +24,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.forus.domain.gCategoryVO;
 import com.forus.domain.gLocationVO;
+import com.forus.domain.g_locationVO;
 import com.forus.domain.goodsListVO;
+import com.forus.domain.goodsPuchaseVO;
 import com.forus.domain.goodsVO;
 import com.forus.domain.userInfoVO;
 import com.forus.domain.wishListVO;
 import com.forus.mapper.GoodsMapper;
+import com.forus.mapper.UserMapper;
 import com.forus.mapper.ViewMapper;
 
 @Controller
@@ -42,6 +45,8 @@ public class GoodsController {
 	@Autowired
 	ViewMapper vMapper;
 	
+	@Autowired
+	UserMapper uMapper;
 	
 	// 상품 리스트 불러오기
 	@RequestMapping("/index.do")
@@ -92,7 +97,7 @@ public class GoodsController {
 	
 	// 상품 등록
 	@RequestMapping("goodsInsert.do")
-	public ModelAndView goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, ModelMap model) {
+	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, model model) {
 
 
 		String path = session.getServletContext().getRealPath("/file");
@@ -153,17 +158,43 @@ public class GoodsController {
 		mapper.machinePwUpdate(gvo);
 	
 		
-    	model.addAttribute("user_addr", vo.getUser_addr());
-		model.addAttribute("user_id",vo.getSeller_id() );
+		// 상품 이름, 아파트 이름, 자판기 번호, 자판기 칸 비밀 번호 뿌려주기
+		g_locationVO gVO= mapper.gLocationSelect(g_seq);
+		gVO.setStatus("제품 판매");
 		
-		return new ModelAndView("redirect:/index.do", model);
+    	model.addAttribute("goodsResult", gVO);
+		
+    	return "goodsResult";
+		
 
 	}
 
-
+	// 상품 구입 
+	@RequestMapping("goodsPurchase")
+	public String goodsPurchase(goodsPuchaseVO vo, int user_point, Model model) {
+		
+		
+		mapper.goodsCosumerUpdate(vo);
+		
+		userInfoVO infoVO = new userInfoVO();
+		infoVO.setUser_id(vo.getConsumer_id());
+		infoVO.setUser_point(user_point);
+		
+		if (user_point >0){
+			uMapper.PointUpdate(infoVO);
+		}
+		
+		
+		g_locationVO gVO = mapper.gLocationSelect(vo.getG_seq());
+		gVO.setStatus("제품 구매");
+		
+		model.addAttribute("goodsResult", gVO);
+		
+		return "goodsResult";
+	}
 	
 	
-	// 제품 판매 내역 
+	// 제품 판매중인 내역 
 	@RequestMapping("goodsSaleList.do")
 	public List<goodsListVO> goodsSaleList(String user_id) {
 		List<goodsListVO> list =mapper.goodsSaleList(user_id);
@@ -178,14 +209,22 @@ public class GoodsController {
 	}
 	
 	
+	// 제품 구매 내역
+	public List<goodsListVO> goodsPurchaseList(String user_id){
+		List<goodsListVO> list = mapper.goodsPurchaseList(user_id);
+		return list;
+	}
+	
 	// 상품 삭제 
 	@RequestMapping("goodsDelete.do")
 	public void goodsDelete(int g_seq) {
 		int row = 0;
 		row = mapper.goodsDelete(g_seq);
 		
-		// row >0 인  경우와 아닌 경우 출력하기 
+		//삭제후 리스트 보여주
 	}
+	
+
 	
 	
 	
