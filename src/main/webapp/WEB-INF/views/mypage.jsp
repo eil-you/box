@@ -97,6 +97,18 @@
 		<div class="container container-pd">
 			<div class="row list_layout">
 				
+				<div class="profile">
+					<img class="mypage-img" src="/img/logo/earthbox_logo.png">
+					<p> 닉네임 </p>
+				
+				</div>
+				
+				
+				
+				
+				
+				
+				
 				
 			</div>
 		</div>

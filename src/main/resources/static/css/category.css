@@ -38,7 +38,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 49%!important;
-    height: 98px;
+    height: 15%;
 }
 .flexbox-right {
     display: flex;
@@ -85,6 +85,8 @@
 .list-cate {
 	
 	    margin: auto;
+	font-size: 13px;
+
 }
 /* =========
     Classes
@@ -154,8 +156,17 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    height:100%;
     
 }
+.navbar-item img {
+	
+	width: 50px;
+	height: 50px;
+	
+	
+}
+
 /* Navbar Logo */
 .navbar-logo {
     margin: 0 0 2em 0;
