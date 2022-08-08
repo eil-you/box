@@ -113,7 +113,7 @@
 		color: #f9f9ed;
 	}
 	.container-pd {
-		padding-top: 52px;
+		padding-top: 62px;
 		padding-bottom: 80px;
 	}
 	.card-img {
@@ -316,21 +316,92 @@
 	.side_bar {
 		margin-right: 30px;
 	}
+	.side_bar:hover {
+		cursor: pointer;
+	}
 	.row {
 		margin: 0px !important;
 		padding: 5px 0px;
 	}
-	
 	.card-body h4 {
 		font-weight: bold;
 	}
-	
-	.list-cate{
-	
+	.list-cate {
 		font-weight: bold;
+	}
+
+	/*마이페이지!*/
+	.profile {
+		padding: 40px 20px 0px;
+	}
+	.profile div {
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: 30px;
+	}
+	.profile .my-nick {
+		display: block;
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.profile .my-apt {
+		display: block;
+	}
+	.mypage-img {
+		width: 80px;
+		height: 80px;
+		display: inline-flex;
+	}
+	.back {
+    height: 15px;
+    position: absolute;
+    top: 130px;
+    right: 20px;
+	}
+	.mypage-menu-sec {
+		padding-top: 50px;
+		padding-bottom: 20px;
 		
+	}
+	.mypage-menu-sec .mypage-sec {
+		width: 32.5%;
+		display: inline-block;
+		text-align: center;
+	}
+	.mypage-menu-sec div img {
+		width: 50px;
+	}
+	.icon-bgc {
+		background-color: #77af7336;
+		border-radius: 70%;
+		width: 75px;
+		padding: 10px;
+		text-align: center;
+		margin: auto;
+		margin-bottom: 15px;
+	}
+	
+	.mypage-boardlist {
+		border-bottom-style: solid;
+		border-bottom-color: #f5f5f5; 
+		height: 50px;
+		font-size: 16px;
+		text-align: left;
+	}
+	
+	.mypage-div {
+		height: 20px;
+		background-color: #e9e9e9;
+	
+	}
+	
+	.container-my {
+		
+		padding-bottom: 0px;
+	}
+	
+	.mypage-menu-sec:hover{
+		cursor: pointer;
 	}
 	
 }
-
-/*===========================카테고리 ================================*/

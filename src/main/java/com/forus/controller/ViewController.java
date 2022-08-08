@@ -59,7 +59,6 @@ public class ViewController {
 		
 		System.out.println(g_seq);
 		
-		
 	}
 
 	@RequestMapping("viewMypage.do")
