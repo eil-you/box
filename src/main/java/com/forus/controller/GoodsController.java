@@ -56,7 +56,6 @@ public class GoodsController {
 		// 데이터 호출하기
 		userInfoVO userVO =(userInfoVO) session.getAttribute("user");
 		
-		
 		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
 		List<goodsListVO> result = mapper.goodsList(userVO.getUser_addr());
 		System.out.println("list"+result);
@@ -76,7 +75,7 @@ public class GoodsController {
 		model.addAttribute("GoodsList", result);
 		
 		// 아파트 보내주기
-		session.setAttribute("apt_nama", apt_name);
+		session.setAttribute("apt_name", apt_name);
 		session.setAttribute("user_addr", userVO.getUser_addr());
 		session.setAttribute("user_id", userVO.getUser_id());
 		session.setAttribute("user_nick", userVO.getUser_nick());
@@ -120,6 +119,7 @@ public class GoodsController {
         // 상품 등록 전에 비어있는 loc_seq 번호 중 한개 가져오기 
         int loc_seq = mapper.loc_seqSelect(vo.getUser_addr());
         System.out.println(loc_seq);
+        
         // 상품 등록
         String msg = file.getOriginalFilename() + " is saved in server db";
         String g_img = uuid + file.getOriginalFilename();
@@ -135,6 +135,8 @@ public class GoodsController {
         // 1) g_seq 번호 필요
         
         int g_seq = mapper.g_seqSelect(vo);
+        
+        System.out.println("상품 번호 불러오기" + g_seq);
         
         wishListVO wishVO = new wishListVO(g_seq, vo.getSeller_id(),0);
         mapper.wishDefault(wishVO);
@@ -160,9 +162,10 @@ public class GoodsController {
 	
 		
 		// 상품 이름, 아파트 이름, 자판기 번호, 자판기 칸 비밀 번호 뿌려주기
+		System.out.println("확인");
 		g_locationVO gVO= mapper.gLocationSelect(g_seq);
 		gVO.setStatus("제품 판매");
-		
+		System.out.println("제품 판매");
     	model.addAttribute("goodsResult", gVO);
 		
     	return "goodsResult";
@@ -197,10 +200,17 @@ public class GoodsController {
 	
 	// 제품 판매중인 내역 
 	@RequestMapping("proList.do")
-	public String proList(String user_id, Model model) {
+	public String proList( Model model,HttpSession session) {
+		if(session.getAttribute("user_id") !=null) {
+		String user_id = (String) session.getAttribute("user_id");
 		List<goodsListVO> list =mapper.goodsSaleList(user_id);
 		model.addAttribute("GoodsList", list); 
+		System.out.println("goodsList"+list);
 		return "proList";
+		}else {
+			return "notPage";
+		}
+		
 	}
 	
 
@@ -219,6 +229,7 @@ public class GoodsController {
 		int row = 0;
 		row = mapper.goodsDelete(g_seq);
 		System.out.println(row);
+		
 		
 		//삭제후 리스트 보여주
 	}
