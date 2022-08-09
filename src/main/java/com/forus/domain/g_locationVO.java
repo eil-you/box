@@ -2,10 +2,12 @@ package com.forus.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class g_locationVO {
 	@NonNull
 	private String g_name;
