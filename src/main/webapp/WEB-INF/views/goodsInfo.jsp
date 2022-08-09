@@ -95,29 +95,49 @@
 		</div>
 	</nav> -->
 
-	<p>${goodsInfo.seller_nick}</p>
 	<div class="col-sm-10 detail-img-div">
-		<img class="detail-img" src="${goodsInfo.g_img}"/>
+		<img class="goback" src="/img/icon/goback.png"
+			onclick="location.href='index.do'"/ > <img class="detail-img"
+			src="file/${goodsInfo.g_img}" />
+		<div>
+			<img class="back" src="/img/icon/bk.png">
+		</div>
 	</div>
 
+
+	<div class="seller-info-sec">
+		<img class="seller-img" src="/img/icon/profile-img.png">
+		<div class="seller-info">
+			<p class="seller-nick">${goodsInfo.seller_nick}</p>
+			<p class="seller-apt">${apt_name}</p>
+		</div>
+		<div class="zzim-sec">
+			<p id="g_price">${goodsInfo.g_price }</p>
+			<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
+		</div>
+	</div>
+	<div class="goods-line"></div>
 	<div class="panel-body info-body">
-	
 		<div class="form-group">
 			<div class="col-sm-10">
-				<h2 class="info-g-name">${goodsInfo.g_name}</h2><br>
+				<h4 class="info-g-name">${goodsInfo.g_name}</h4>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-sm-10">
-				<div>${goodsInfo.g_info}</div>
+				<div>${fn:replace(goodsInfo.g_info, newLine, "<br/>")}</div>
 
 			</div>
 		</div>
-			
-			
+
+
 
 	</div>
+
+
+
+
 
 
 	<div class="foot-bar">
@@ -158,21 +178,45 @@
 
 	<script type="text/javascript">
 		$(document).ready(changemoney)
-		
-		function changemoney() {
-		        var price = $("#g-price").text().toLocaleString('ko-KR');;
-		        
-		        console.log(price)
-		        
-		        
-		        var cPrice = price.toString()
-		          .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-		        console.log(cPrice)
-		        
-		         $("#g-price").text( "\\ "+ cPrice);
-			}
-		
 
+		function changemoney() {
+
+			console.log($("#g_price").text())
+			var price = $("#g_price").text().toLocaleString('ko-KR');
+
+			console.log(price)
+
+			var cPrice = price.toString().replace(
+					/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+			console.log(cPrice)
+
+			$("#g_price").text(cPrice + "원");
+		}
+
+		// 찜목록 클릭 
+
+		$(document).on('click', '#zzim', function() {
+
+			console.log("zzim")
+			document.getElementById("zzim").src="/img/icon/star-full.png";
+			$(this).removeAttr('id', 'zzim')
+			$(this).attr('id', 'nozzim')
+
+		})
+
+		$(document).on('click', '#nozzim', function() {
+
+			console.log("찜취소")
+
+			document.getElementById("nozzim").src="/img/icon/star-empty.png";
+			$(this).removeAttr('id', 'nozzim')
+			$(this).attr('id', 'zzim')
+
+			// $('#dislike').remove();
+			// $('body').prepend('<button id = "like">좋아요</button>')
+			// $('span').text('0')
+
+		})
 	</script>
 
 </body>
