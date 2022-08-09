@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.forus.domain.gCategoryVO;
 import com.forus.domain.gLocationVO;
-import com.forus.domain.g_locationVO;
+import com.forus.domain.resultlocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsPuchaseVO;
 import com.forus.domain.goodsVO;
@@ -163,7 +163,7 @@ public class GoodsController {
 		
 		// 상품 이름, 아파트 이름, 자판기 번호, 자판기 칸 비밀 번호 뿌려주기
 		System.out.println("확인");
-		g_locationVO gVO= mapper.gLocationSelect(g_seq);
+		resultlocationVO gVO= mapper.gLocationSelect(g_seq);
 		gVO.setStatus("제품 판매");
 		System.out.println("제품 판매");
     	model.addAttribute("goodsResult", gVO);
@@ -174,7 +174,7 @@ public class GoodsController {
 	}
 
 	// 상품 구입 
-	@RequestMapping("goodsPurchase.do")
+	@RequestMapping("/goodsPurchase.do")
 	public String goodsPurchase(goodsPuchaseVO vo, int user_point, Model model) {
 		
 		
@@ -189,7 +189,7 @@ public class GoodsController {
 		}
 		
 		
-		g_locationVO gVO = mapper.gLocationSelect(vo.getG_seq());
+		resultlocationVO gVO = mapper.gLocationSelect(vo.getG_seq());
 		gVO.setStatus("제품 구매");
 		
 		model.addAttribute("goodsResult", gVO);
@@ -199,8 +199,9 @@ public class GoodsController {
 	
 	
 	// 제품 판매중인 내역 
-	@RequestMapping("proList.do")
+	@RequestMapping("/proList.do")
 	public String proList( Model model,HttpSession session) {
+		System.out.println("판매중인 내역");
 		if(session.getAttribute("user_id") !=null) {
 		String user_id = (String) session.getAttribute("user_id");
 		List<goodsListVO> list =mapper.goodsSaleList(user_id);
@@ -215,7 +216,7 @@ public class GoodsController {
 	
 
 	// 제품 구매 내역
-	@RequestMapping("goodsBuyList.do")
+	@RequestMapping("/goodsBuyList.do")
 	public String goodsPurchaseList(String user_id, Model model){
 		List<goodsListVO> list = mapper.goodsPurchaseList(user_id);
 		model.addAttribute("GoodsList", list); 
@@ -224,16 +225,17 @@ public class GoodsController {
 	
 	// 상품 삭제 
 	@RequestMapping("goodsDelete.do")
-	public @ResponseBody void goodsDelete(int g_seq) {
-		System.out.println(g_seq + "에이젝스성공");
-		int row = 0;
-		row = mapper.goodsDelete(g_seq);
-		System.out.println(row);
-		
-		
-		//삭제후 리스트 보여주
-	}
-	
+	   public @ResponseBody List<goodsListVO> goodsDelete(int g_seq, HttpSession session, Model model) {
+	      System.out.println(g_seq + "에이젝스성공");
+	      int row = 0;
+	      row = mapper.goodsDelete(g_seq);
+	      System.out.println(row);
+	      
+	      String user_id = (String) session.getAttribute("user_id");
+	         List<goodsListVO> list =mapper.goodsSaleList(user_id);
+	         model.addAttribute("GoodsList", list); 
+	         return list;
+	   }
 
 	
 	

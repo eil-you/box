@@ -8,7 +8,7 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class g_locationVO {
+public class resultlocationVO {
 	@NonNull
 	private String g_name;
 	@NonNull
