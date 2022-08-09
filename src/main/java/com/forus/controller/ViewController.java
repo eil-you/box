@@ -68,4 +68,10 @@ public class ViewController {
 		
 	}
 	
+	@RequestMapping("viewBuyPage.do")
+	public String viewBuyPage(){
+		
+		return "buyPage";
+	}
+	
 }

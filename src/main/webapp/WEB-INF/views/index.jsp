@@ -153,8 +153,11 @@
 							<p>${apt_name}</p>
 
 							<div class="pr-zzim">
-								<p class="price">
+								<p class="price" id="price${vo.g_seq}">
 									<c:out value="${vo.g_price}" />
+									<script type="text/javascript">
+									
+									</script>
 								</p>
 								<div class="zzim-div" onclick="">
 									<img class="zzim" src="/img/icon/star-empty.png">
@@ -256,6 +259,24 @@
 						$("#navbar").css("width","0%")
 				
 				
+			}
+			
+			$(document).ready(changemoney)
+
+			function changemoney() {
+			
+				console.log(${vo.g_seq})
+
+				console.log($(".price${vo.g_seq}").text())
+				var price = $(".price${vo.g_seq}").text().toLocaleString('ko-KR');
+
+				console.log(price)
+
+				var cPrice = price.toString().replace(
+						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				console.log(cPrice)
+
+				$(".price${vo.g_seq}").text(cPrice +"원" );
 			}
 			
 			</script>

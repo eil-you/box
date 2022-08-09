@@ -542,53 +542,45 @@
 .seller-info-sec {
 	padding: 20px 30px 10px;
 	display: inline-flex;
-	    width: 100%;
+	width: 100%;
 }
 
 .seller-img {
 	width: 60px;
-	
 }
 
 .seller-info {
-	
 	padding-left: 20px;
-	margin: auto 25px;	
-	
+	margin: auto 25px;
 }
 
 .seller-nick {
-	
 	font-weight: bold;
-	
 }
 
 .zzim-sec {
-	
     display: inline-flex;
-    margin: auto 0px auto 100px;
+    margin: auto 0px auto 0px;
+    width: 80%;
 }
 
 .item-zzim {
-	
 	width: 25px;
 	height: 25px;
-	
-	
 }
 
-#zzim:hover{
+#zzim:hover {
 	cursor: pointer;
-	
 }
 
-#nozzim:hover{
+#nozzim:hover {
 	cursor: pointer;
-	
 }
 
-#g_price{
+#g_price {
 	padding-right: 15px;
 	font-size: 20px;
 	font-weight: bold;
+	width: 100%;
+	text-align: right;
 }
