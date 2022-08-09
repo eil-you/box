@@ -473,11 +473,11 @@
 
 .empty-list {
 	top: 340px;
-    position: relative;
-    height: 90%;
-    width: 100%;
-    margin: auto;
-    text-align: center;
+	position: relative;
+	height: 90%;
+	width: 100%;
+	margin: auto;
+	text-align: center;
 }
 
 .buy-select {
@@ -501,36 +501,94 @@
 }
 
 #sale {
-	
 	background-color: black;
-    margin: auto;
-    width: 20%;
-    height: 2px;
-    margin-top: 10px;
-	
+	margin: auto;
+	width: 20%;
+	height: 2px;
+	margin-top: 10px;
 }
 
 #finish {
-	
-	background-color:white;
-    margin: auto;
-    width: 20%;
-    height: 2px;
-    margin-top: 10px;
-	
+	background-color: white;
+	margin: auto;
+	width: 20%;
+	height: 2px;
+	margin-top: 10px;
 }
 
 .update-sec {
-
-     width: 90%;
-    margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+	width: 90%;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .update {
-	
 	width: 32%;
 	border-radius: 10px;
+}
+
+.goback {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 30px;
+}
+
+.goback:hover {
+	cursor: pointer;
+}
+
+.seller-info-sec {
+	padding: 20px 30px 10px;
+	display: inline-flex;
+	    width: 100%;
+}
+
+.seller-img {
+	width: 60px;
 	
+}
+
+.seller-info {
+	
+	padding-left: 20px;
+	margin: auto 25px;	
+	
+}
+
+.seller-nick {
+	
+	font-weight: bold;
+	
+}
+
+.zzim-sec {
+	
+    display: inline-flex;
+    margin: auto 0px auto 100px;
+}
+
+.item-zzim {
+	
+	width: 25px;
+	height: 25px;
+	
+	
+}
+
+#zzim:hover{
+	cursor: pointer;
+	
+}
+
+#nozzim:hover{
+	cursor: pointer;
+	
+}
+
+#g_price{
+	padding-right: 15px;
+	font-size: 20px;
+	font-weight: bold;
 }
