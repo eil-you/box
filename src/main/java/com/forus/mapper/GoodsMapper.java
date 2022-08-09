@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.forus.domain.gLocationVO;
-import com.forus.domain.g_locationVO;
+import com.forus.domain.resultlocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.goodsPuchaseVO;
 import com.forus.domain.goodsVO;
@@ -66,7 +66,7 @@ public interface GoodsMapper {
 	public void goodsCosumerUpdate(goodsPuchaseVO vo);
 	
 	// g_locationVO 불러오기
-	public g_locationVO gLocationSelect(int g_seq);
+	public resultlocationVO gLocationSelect(int g_seq);
 	
 }	
 	

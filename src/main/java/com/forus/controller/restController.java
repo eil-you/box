@@ -2,6 +2,8 @@ package com.forus.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,7 @@ public class restController {
 	}
 	
 	// 제품 판매 완료 내역
-	@RequestMapping("goodsFinishList.do")
+	@RequestMapping("/goodsFinishList.do")
 	public List<goodsListVO> goodsFinishList(String user_id, Model model){
 		List<goodsListVO> list =gmapper.goodsFinishList(user_id);
 		model.addAttribute("GoodsList", list); 
@@ -40,8 +42,9 @@ public class restController {
 	}
 	
 	// 제품 판매중 내역
-	@RequestMapping("goodsSale.do")
-	public List<goodsListVO> goodsSaleList(String user_id, Model model) {
+	@RequestMapping("/goodsSale.do")
+	public List<goodsListVO> goodsSaleList(HttpSession session, Model model) {
+		String user_id = (String) session.getAttribute("user_id");
 		List<goodsListVO> list =gmapper.goodsSaleList(user_id);
 		model.addAttribute("GoodsList", list); 
 		return list;

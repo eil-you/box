@@ -78,6 +78,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
