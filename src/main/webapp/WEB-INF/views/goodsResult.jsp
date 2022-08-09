@@ -78,23 +78,20 @@
 
 </head>
 <body>
-<<<<<<< HEAD
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
-
-	<!--  <nav class="navbar">
-		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
-			<div class="dropdown">
-				<a class="menu_drop" href="">${apt_name} ▼</a>
-				<div class="dropdown-content">
-					<a style="color: black !important;" href="">아파트 설정하기</a>
-				</div>
-			</div>
+	<nav class="navbar">
+		<div class="navbar__logo add-header">
+			<i class="fab fa-accusoft"></i>
+			<c:choose>
+				<c:when test=""></c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose> 
+			<h4 style="display: inline-block;"></h4>
 		</div>
-	</nav> -->
+	</nav>
 
 	
 <!--  footer start -->

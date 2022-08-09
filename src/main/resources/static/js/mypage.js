@@ -106,8 +106,6 @@ function list(data) {
 										${vo.g_name}
 									</h4>
 									<br>
-									<p> </p>
-
 									<div class="pr-zzim">
 										<p class="price">
 											${vo.g_price}

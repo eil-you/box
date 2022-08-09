@@ -118,29 +118,25 @@
 
 						<!--리스트 출력 시작 시작 -->
 						<c:forEach items="${GoodsList}" var="vo" step="1">
-							<div id="product-list">
-								<div class="card-product__img"
-									onclick="viewGoodsContent(${vo.g_seq})">
-									<img class="card-img" src="file/${vo.g_img}">
-									<div class="card-body">
-										<h4>
-											<c:out value="${vo.g_name}" />
-										</h4>
-										<br>
-										<p>${apt_name}</p>
-
-										<div class="pr-zzim">
-											<p class="price">
-												<c:out value="${vo.g_price}" />
-											</p>
-											<div class="zzim-div" onclick="">
-												<img class="zzim" src="/img/icon/star-empty.png">
-												<p class="zzim-cnt">${vo.wish_cnt}</p>
-											</div>
-										</div>
-									</div>
+							<div class="card-product__img"
+						onclick="viewGoodsContent(${vo.g_seq})">
+						<img class="card-img" src="file/${vo.g_img}">
+						<div class="card-body">
+							<h4>
+								<c:out value="${vo.g_name}" />
+							</h4>
+							<br>
+							<div class="pr-zzim">
+								<p class="price">
+									<c:out value="${vo.g_price}" />
+								</p>
+								<div class="zzim-div" onclick="">
+									<img class="zzim" src="/img/icon/star-empty.png">
+									<p class="zzim-cnt">${vo.wish_cnt}</p>
 								</div>
 							</div>
+						</div>
+					</div>
 							<div class="update-sec">
 								<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
 								<button class="btn btn-sm update" type="button"

@@ -201,12 +201,33 @@
 		// 찜목록 클릭 
 
 		$(document).on('click', '#zzim', function() {
-
-			console.log("zzim")
+			
+			var g_seq = ${goodsInfo.g_seq}
+			
+			console.log(g_seq)
 			document.getElementById("zzim").src="/img/icon/star-full.png";
 			$(this).removeAttr('id', 'zzim')
 			$(this).attr('id', 'nozzim')
 
+			$.ajax{
+				url : "updateWish.do",
+				type: "post",
+				data : {
+					"g_seq" : g_seq
+					
+				},
+				success : function () {
+					console.log("성공")
+				},
+				error : function () {
+					console.log("실패")
+				}
+				
+				
+				
+			}
+			
+			
 		})
 
 		$(document).on('click', '#nozzim', function() {

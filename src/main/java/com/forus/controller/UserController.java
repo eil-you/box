@@ -49,6 +49,7 @@ public class UserController {
 		}else {
 			return "redirect:/viewLogin.do";
 		}
+		
 		return "redirect:/viewLogin.do";
 	}
 	
