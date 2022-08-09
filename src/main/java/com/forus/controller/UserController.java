@@ -43,8 +43,7 @@ public class UserController {
 		encoder.matches(vo.getUser_pw(), result.getUser_pw());
 		
 			if(encoder.matches(vo.getUser_pw(), result.getUser_pw())) {
-				model.addAttribute("user_addr", result.getUser_addr());
-				model.addAttribute("user_id",result.getUser_id() );
+				model.addAttribute("user",result);
 				return new ModelAndView("redirect:/index.do", model);
 			}
 		}else {
