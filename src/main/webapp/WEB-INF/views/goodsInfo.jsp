@@ -209,15 +209,15 @@
 			$(this).removeAttr('id', 'zzim')
 			$(this).attr('id', 'nozzim')
 
-			$.ajax{
+			$.ajax({
 				url : "updateWish.do",
 				type: "post",
 				data : {
-					"g_seq" : g_seq
-					
+					"g_seq" : g_seq,
+					"상태" : "y"
 				},
 				success : function () {
-					console.log("성공")
+					console.log("찜 누르기 성공")
 				},
 				error : function () {
 					console.log("실패")
@@ -225,7 +225,7 @@
 				
 				
 				
-			}
+			})
 			
 			
 		})
@@ -233,14 +233,31 @@
 		$(document).on('click', '#nozzim', function() {
 
 			console.log("찜취소")
+			var g_seq = ${goodsInfo.g_seq}
 
 			document.getElementById("nozzim").src="/img/icon/star-empty.png";
 			$(this).removeAttr('id', 'nozzim')
 			$(this).attr('id', 'zzim')
 
-			// $('#dislike').remove();
-			// $('body').prepend('<button id = "like">좋아요</button>')
-			// $('span').text('0')
+
+				$.ajax({
+				url : "updateWish.do",
+				type: "post",
+				data : {
+					"g_seq" : g_seq,
+					"상태" : "n"
+				},
+				success : function () {
+					console.log("찜 취소 성공")
+				},
+				error : function () {
+					console.log("실패")
+				}
+				
+				
+				
+			})
+			
 
 		})
 	</script>
