@@ -33,23 +33,23 @@ public class UserController {
 
 
 	@RequestMapping("/Login.do")
-	public ModelAndView userLogin(userInfoVO vo, ModelMap model) {
+	public String userLogin(userInfoVO vo, HttpSession session) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		if (mapper.login(vo) != null) {
 		userInfoVO result = mapper.login(vo);
 		
-		// 암호키를 복호화 함 
+		// 값을 맞춰봄 
 		encoder.matches(vo.getUser_pw(), result.getUser_pw());
 		
 			if(encoder.matches(vo.getUser_pw(), result.getUser_pw())) {
-				model.addAttribute("user",result);
-				return new ModelAndView("redirect:/index.do", model);
+				session.setAttribute("user", result);
+				return "redirect:/index.do";
 			}
 		}else {
-			return new ModelAndView("redirect:/viewLogin.do");
+			return "redirect:/viewLogin.do";
 		}
-		return new ModelAndView("redirect:/viewLogin.do");
+		return "redirect:/viewLogin.do";
 	}
 	
 	@RequestMapping("/Join.do")

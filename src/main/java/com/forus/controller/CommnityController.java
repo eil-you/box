@@ -25,6 +25,7 @@ public class CommnityController {
 	@Autowired
 	CommunityMapper mapper;
 
+	// 게시글 list 
 	@RequestMapping("postList.do")
 	public List<CommunityVO> postList(HttpServletRequest request, Model model) {
 		

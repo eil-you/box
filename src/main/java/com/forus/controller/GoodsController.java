@@ -54,7 +54,7 @@ public class GoodsController {
 	public void index(Model model ,HttpServletRequest request, HttpSession session) {
 		
 		// 데이터 호출하기
-		userInfoVO userVO = (userInfoVO) model.getAttribute("user");
+		userInfoVO userVO =(userInfoVO) session.getAttribute("user");
 		
 		
 		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
@@ -196,8 +196,8 @@ public class GoodsController {
 	
 	
 	// 제품 판매중인 내역 
-	@RequestMapping("goodsSaleList.do")
-	public String goodsSaleList(String user_id, Model model) {
+	@RequestMapping("proList.do")
+	public String proList(String user_id, Model model) {
 		List<goodsListVO> list =mapper.goodsSaleList(user_id);
 		model.addAttribute("GoodsList", list); 
 		return "proList";

@@ -108,7 +108,7 @@
 			</div>
 
 			<div class="mypage-menu-sec">
-				<div class="mypage-sec" onclick="location.href='goodsSaleList.do?user_id=${user_id}'">
+				<div class="mypage-sec" onclick="location.href='proList.do?user_id=${user_id}'">
 					<div class="icon-bgc">
 						<img src="/img/icon/sell.png">
 					</div>
