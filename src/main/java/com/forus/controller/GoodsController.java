@@ -149,7 +149,7 @@ public class GoodsController {
 		int a = 1;
 		
 		for(int i = 1; i<=4 ; i++) {
-			pw= rd.nextInt(9)*a;
+			pw += rd.nextInt(9)*a;
 			a *= 10;
 		}
 		
