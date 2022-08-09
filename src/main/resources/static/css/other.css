@@ -509,7 +509,7 @@
 }
 
 #finish {
-	background-color: white;
+	background-color: unset;
 	margin: auto;
 	width: 20%;
 	height: 2px;
