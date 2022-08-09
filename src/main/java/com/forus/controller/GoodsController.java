@@ -89,7 +89,8 @@ public class GoodsController {
 	public void goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
 		goodsVO result =mapper.goodsInfo(g_seq);
 		result.setSeller_nick(mapper.seller_nickSelect(result.getSeller_id()));
-		System.out.println(result);
+		System.out.println("상세정보 " +result);
+	
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
 	}

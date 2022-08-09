@@ -25,7 +25,7 @@
 	
 	
 	<select id="goodsInfo" parameterType="int" resultType="com.forus.domain.goodsVO">
-		select g_seq, gc_seq, g_name, g_info, g_img, g_price,seller_id from goods_tb where g_seq = #{g_seq}
+		select g_seq, gc_seq, g_name, g_info, g_img, g_price, seller_id from goods_tb where g_seq = #{g_seq}
 	</select>
 
 	<!-- 상품 등록하기 -->
