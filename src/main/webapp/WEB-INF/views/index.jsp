@@ -261,14 +261,11 @@
 				
 			}
 			
-			$(document).ready(changemoney)
-
-			function changemoney() {
+			function changemoney(g_seq) {
 			
-				console.log(${vo.g_seq})
+				console.log(g_seq)
 
-				console.log($(".price${vo.g_seq}").text())
-				var price = $(".price${vo.g_seq}").text().toLocaleString('ko-KR');
+				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
 
 				console.log(price)
 
@@ -276,7 +273,7 @@
 						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 				console.log(cPrice)
 
-				$(".price${vo.g_seq}").text(cPrice +"원" );
+				$("#price${vo.g_seq}").text(cPrice +"원" );
 			}
 			
 			</script>
