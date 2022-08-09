@@ -96,7 +96,7 @@ public class GoodsController {
 	
 	
 	// 상품 등록
-	@RequestMapping("goodsInsert.do")
+	@RequestMapping("/goodsInsert.do")
 	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, Model model) {
 
 
@@ -149,7 +149,7 @@ public class GoodsController {
 		int a = 1;
 		
 		for(int i = 1; i<=4 ; i++) {
-			pw += rd.nextInt(9)*a;
+			pw+= rd.nextInt(9)*a;
 			a *= 10;
 		}
 		
