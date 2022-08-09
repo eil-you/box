@@ -104,7 +104,7 @@
 	</update>
 	
 	<!-- g_locationVO 불러오기 -->
-	<select id="gLocationSelect" resultType="com.forus.domain.g_locationVO">
+	<select id="gLocationSelect" resultType="com.forus.domain.g_locationVO" parameterType="int">
 		select g.g_name, v.apt_name, l.v_machine_space_no,l.v_machine_pw
 		from g_location_tb l, v_machine_tb v,(
 			select loc_seq, g_name 

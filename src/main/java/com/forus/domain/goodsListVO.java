@@ -14,4 +14,5 @@ public class goodsListVO {
 	private String g_img;
 	private int g_price;
 	private int wish_cnt;
+	private String g_status;
 }
