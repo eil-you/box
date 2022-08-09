@@ -51,7 +51,7 @@
   		where location_tb.loc_seq not in (
     		select loc_seq  
     		from goods_tb 
-    		where g_status in ('예약','구매','판매')) limit 1
+    		where g_status in ('대기','예약','구매','판매')) limit 1
 	</select>
 	
 	
