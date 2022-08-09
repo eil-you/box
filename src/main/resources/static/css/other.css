@@ -11,13 +11,13 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap')
 	;
 
-* {
-	font-family: 'S-CoreDream-3Light' !important;
-}
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 
 * {
-	
+	font-family: 'NanumSquare'!important;
 }
+
+
 
 /* ---------- main page css ---------- */
 .sub-title {
@@ -559,9 +559,9 @@
 }
 
 .zzim-sec {
-    display: inline-flex;
-    margin: auto 0px auto 0px;
-    width: 80%;
+	display: inline-flex;
+	margin: auto 0px auto 0px;
+	width: 80%;
 }
 
 .item-zzim {

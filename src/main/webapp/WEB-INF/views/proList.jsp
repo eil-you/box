@@ -104,36 +104,39 @@
 					<input type="hidden" value="${user_id}" id="user_id">
 					<div class="buy-select">
 						<div class="buy-sec" onclick="saleList()">
-							<p class="checkSale">판매중</p>
+							<p>판매중</p>
 							<div id="sale"></div>
 						</div>
 						<div class="buy-sec" onclick="finishList()">
-							<p class="checkSale">판매완료</p>
+							<p>판매완료</p>
 							<div id='finish'></div>
 						</div>
 
 					</div>
 
-					<!--리스트 출력 시작 시작 -->
-					<div id="product-list">
-						<c:forEach items="${GoodsList}" var="vo" step="1">
-							<div class="card-product__img"
-								onclick="viewGoodsContent(${vo.g_seq})">
-								<img class="card-img" src="file/${vo.g_img}">
-								<div class="card-body">
-									<h4>
-										<c:out value="${vo.g_name}" />
-									</h4>
-									<br>
-									<p>${apt_name}</p>
+					<div id="printlist">
 
-									<div class="pr-zzim">
-										<p class="price">
-											<c:out value="${vo.g_price}" />
-										</p>
-										<div class="zzim-div" onclick="">
-											<img class="zzim" src="/img/icon/star-empty.png">
-											<p class="zzim-cnt">${vo.wish_cnt}</p>
+						<!--리스트 출력 시작 시작 -->
+						<c:forEach items="${GoodsList}" var="vo" step="1">
+							<div id="product-list">
+								<div class="card-product__img"
+									onclick="viewGoodsContent(${vo.g_seq})">
+									<img class="card-img" src="file/${vo.g_img}">
+									<div class="card-body">
+										<h4>
+											<c:out value="${vo.g_name}" />
+										</h4>
+										<br>
+										<p>${apt_name}</p>
+
+										<div class="pr-zzim">
+											<p class="price">
+												<c:out value="${vo.g_price}" />
+											</p>
+											<div class="zzim-div" onclick="">
+												<img class="zzim" src="/img/icon/star-empty.png">
+												<p class="zzim-cnt">${vo.wish_cnt}</p>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -147,8 +150,8 @@
 							</div>
 							<div class="goods-line"></div>
 						</c:forEach>
+						<!-- 끝 -->
 					</div>
-					<!-- 끝 -->
 				</div>
 			</div>
 		</section>
@@ -159,7 +162,7 @@
 			<div class="foot-div"
 				onclick="location.href='index.do?user_addr=${user_addr}'">
 				<div>
-					<img alt="" src="/img/icon/home-full.png">
+					<img alt="" src="/img/icon/home-gr.png">
 				</div>
 			</div>
 
@@ -193,32 +196,28 @@
 		<script src="js/wow.js"></script>
 		<script src="js/script.js"></script>
 		<script src="js/mypage.js"></script>
-
 		<script type="text/javascript">
 		$(document).ready(checkNull)
-
-		function checkNull() {
-					
-					var GoodsList = ${GoodsList}
-					// console.log(GoodsList.length)
-					
-					if(GoodsList.length == 0 ) {
-						
-					$("body").css("background-color", "#4c4c4c1c")
-					
-						 list = `<div class="empty-list">
-								<p>판매중인 내역이 없어요.</p>
-							</div>`
-				$(".navbar").after(list);
-					
-					}
-			
-					
-		}
-
-
 		
+		
+		var GoodsList = ${GoodsList};
+		function checkNull() {
 
+			if(GoodsList.length == 0) {
+				
+				list = `<div class="empty-list">
+				<p>판매 내역이 없어요.</p>
+			</div>`
+
+			$(".navbar").after(list);
+			$("body").css("background-color", "#4c4c4c1c")
+				
+			}
+				
+
+			}
+		
+		
 		</script>
 </body>
 

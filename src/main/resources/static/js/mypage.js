@@ -76,27 +76,27 @@ function finishList() {
 function list(data) {
 
 	console.log(data)
-	$("#product-list").html("");
+	$("#printlist").html("");
 
 	var list = "";
 
 	if (data.length == 0) {
 
-		list = `
-					<div class="empty-list">
-						<p>판매 내역이 없어요.</p>
-					</div>`
+		list = ` <div class="empty-list">
+					<p>판매 내역이 없어요.</p>
+				</div>`
+		
 		$(".navbar").after(list);
 		$("body").css("background-color", "#4c4c4c1c")
 
 	} else {
 
 		$(".empty-list").html("");
+		$("body").css("background-color", "white")
+		
 		for (let i = 0; i < data.length; i++) {
-
 			var vo = data[i]
-			console.log(data.g_name)
-			$("body").css("background-color", "white")
+			console.log(vo.g_name)
 			list = `<div id="product-list">
 							<div class="card-product__img"
 								onclick="viewGoodsContent(${vo.g_seq})">
@@ -118,6 +118,7 @@ function list(data) {
 										</div>
 									</div>
 							</div>
+						</div>
 							<div class="update-sec">
 								<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
 								<button class="btn btn-sm update" type="button"
@@ -126,9 +127,8 @@ function list(data) {
 									onclick="deleteGoods(${vo.g_seq})">삭제하기</button>
 							</div>
 							<div class="goods-line"></div>
-					</div>
 					`
-			$("#product-list").append(list);
+			$("#printlist").append(list);
 
 		}
 	}
@@ -143,12 +143,12 @@ function deleteGoods(g_seq) {
 		type: "post",
 		data: {
 			"g_seq": g_seq
-			},
-		success : list,
+		},
+		success: list,
 
-			error: function() {
-				alert("실패")
-			}
-		})
+		error: function() {
+			alert("실패")
+		}
+	})
 
 }

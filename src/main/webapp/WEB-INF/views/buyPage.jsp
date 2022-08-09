@@ -132,48 +132,6 @@
 	<script src="js/script.js"></script>
 
 
-	<script type="text/javascript">
-		$(document).ready(changemoney)
-
-		function changemoney() {
-
-			console.log($("#g_price").text())
-			var price = $("#g_price").text().toLocaleString('ko-KR');
-
-			console.log(price)
-
-			var cPrice = price.toString().replace(
-					/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-			console.log(cPrice)
-
-			$("#g_price").text(cPrice + "원");
-		}
-
-		// 찜목록 클릭 
-
-		$(document).on('click', '#zzim', function() {
-
-			console.log("zzim")
-			document.getElementById("zzim").src="/img/icon/star-full.png";
-			$(this).removeAttr('id', 'zzim')
-			$(this).attr('id', 'nozzim')
-
-		})
-
-		$(document).on('click', '#nozzim', function() {
-
-			console.log("찜취소")
-
-			document.getElementById("nozzim").src="/img/icon/star-empty.png";
-			$(this).removeAttr('id', 'nozzim')
-			$(this).attr('id', 'zzim')
-
-			// $('#dislike').remove();
-			// $('body').prepend('<button id = "like">좋아요</button>')
-			// $('span').text('0')
-
-		})
-	</script>
 
 </body>
 
