@@ -145,7 +145,7 @@
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
-				<img alt="" src="/img/icon/home-full.png">
+				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
 
