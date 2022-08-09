@@ -89,7 +89,7 @@
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
 			<i class="fab fa-accusoft"></i>
-			<h4 style="display: inline-block;">구매내역</h4>
+			<h4 style="display: inline-block;">판매내역</h4>
 		</div>
 	</nav>
 
@@ -104,24 +104,16 @@
 					<input type="hidden" value="${user_id}" id="user_id">
 					<div class="buy-select">
 						<div class="buy-sec" onclick="saleList()">
-							<p>판매중</p>
+							<p class="checkSale">판매중</p>
 							<div id="sale"></div>
 						</div>
 						<div class="buy-sec" onclick="finishList()">
-							<p>판매완료</p>
+							<p class="checkSale">판매완료</p>
 							<div id='finish'></div>
 						</div>
 
 					</div>
-					
-					<c:choose>
-						<c:when test="${empty GoodsList}">
-							<div class="empty-list">
-								<p>판매중인 내역이 없어요.</p>
-							</div>
-						</c:when>
-					</c:choose>
-					
+
 					<!--리스트 출력 시작 시작 -->
 					<div id="product-list">
 						<c:forEach items="${GoodsList}" var="vo" step="1">
@@ -145,6 +137,13 @@
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="update-sec">
+								<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
+								<button class="btn btn-sm update" type="button"
+									onclick="updateGoods()">수정하기</button>
+								<button class="btn btn-sm update"
+									onclick="deleteGoods(${vo.g_seq})">삭제하기</button>
 							</div>
 							<div class="goods-line"></div>
 						</c:forEach>
@@ -195,6 +194,32 @@
 		<script src="js/script.js"></script>
 		<script src="js/mypage.js"></script>
 
+		<script type="text/javascript">
+		$(document).ready(checkNull)
+
+		function checkNull() {
+					
+					var GoodsList = ${GoodsList}
+					// console.log(GoodsList.length)
+					
+					if(GoodsList.length == 0 ) {
+						
+					$("body").css("background-color", "#4c4c4c1c")
+					
+						 list = `<div class="empty-list">
+								<p>판매중인 내역이 없어요.</p>
+							</div>`
+				$(".navbar").after(list);
+					
+					}
+			
+					
+		}
+
+
+		
+
+		</script>
 </body>
 
 </html>

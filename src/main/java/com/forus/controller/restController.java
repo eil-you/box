@@ -39,6 +39,7 @@ public class restController {
 		return list;
 	}
 	
+	// 제품 판매중 내역
 	@RequestMapping("goodsSale.do")
 	public List<goodsListVO> goodsSaleList(String user_id, Model model) {
 		List<goodsListVO> list =gmapper.goodsSaleList(user_id);

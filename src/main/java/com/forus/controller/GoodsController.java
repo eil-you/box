@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -213,9 +214,11 @@ public class GoodsController {
 	
 	// 상품 삭제 
 	@RequestMapping("goodsDelete.do")
-	public void goodsDelete(int g_seq) {
+	public @ResponseBody void goodsDelete(int g_seq) {
+		System.out.println(g_seq + "에이젝스성공");
 		int row = 0;
 		row = mapper.goodsDelete(g_seq);
+		System.out.println(row);
 		
 		//삭제후 리스트 보여주
 	}
