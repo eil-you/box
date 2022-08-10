@@ -22,5 +22,10 @@
 	<select id="wishInfo" parameterType="com.forus.domain.wishListVO" resultType="String">
 		select wish_yn from wishlist_tb where g_seq = #{g_seq} and user_id = #{user_id}
 	</select>
+	
+	<!-- 게시글 카테고리 가져오기 -->
+	<select id="communityCategory" resultType="com.forus.domain.cCategoryVO">
+		select * from c_category_tb
+	</select>
 
 </mapper>
