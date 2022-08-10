@@ -25,7 +25,6 @@
 				<h2 class="login_title">EARTH BOX</h2><br>
            		<div class="input-div one">
            		   <div class="i">
-           		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
            		   		<h5>아이디</h5>
@@ -34,7 +33,6 @@
            		</div>
            		<div class="input-div pass">
            		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
            		    	<h5>비밀번호</h5>

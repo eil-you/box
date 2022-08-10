@@ -255,12 +255,20 @@
 					console.log("실패")
 				}
 				
-				
-				
 			})
 			
-			
 		})
+		
+		$(document).ready(checkZzim)
+		
+		
+		function () {
+			
+			//내가 찜했는지 안했는 지 여부 판단하기
+			
+			
+		}
+		
 
 		$(document).on('click', '#nozzim', function() {
 

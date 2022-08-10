@@ -86,8 +86,15 @@
 	</div>
 
 	<nav class="navbar">
-		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">${apt_name}커뮤니티</h4>
+		<div class="navbar__logo">
+			 <a class="side_bar"
+				onclick="sidebar()">☰</a>
+			<div class="dropdown">
+				<a class="menu_drop" href="">${apt_name} 커뮤니티</a>
+				<div class="dropdown-content">
+					<a style="color: black !important;" href="">아파트 설정하기</a>
+				</div>
+			</div>
 		</div>
 	</nav>
 
@@ -96,9 +103,9 @@
 	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
 		<div class=" container-pd community-sec">
-			<div class="row list_layout">
+			<div class=" list_layout">
 				<!--리스트 출력 시작 시작 -->
-				<div class="buy-select">
+				<div class="cate-select">
 					<div class="choose-cate" >
 						<c:forEach var="i" begin="1" end="5" step="1">
 						<button class="btn btn-sm c-cate" value="i">카테고리${i}</button>
@@ -110,10 +117,25 @@
 						<span class="cate">카테고리1</span>
 						<br>
 						<div class="board-text">
-						글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
+						<span class="board-nick">단추누나  </span>글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
+						안녕하세여
+						아이패드
+						가데이터
 						</div>					
+						
+						<img class="board-img"src="/img/ipad.jpg">
+						<div class="">
+							<img class="reaction" src="/img/icon/smile.png">
+							<span>공감하기</span>
+							<img class="reaction" src="/img/icon/mal.png">
+							<span>댓글달기</span>
+						</div>
+						
 					</div>
-
+					
+					<div class="seper-line"></div>
+					
+				<div class="write-board" onclick="location.href='viewBoardForm.do'">+</div>
 
 			</div>
 		</div>

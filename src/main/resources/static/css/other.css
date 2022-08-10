@@ -7,6 +7,13 @@
 	font-style: normal;
 }
 
+@font-face {
+    font-family: 'NanumSquareRound';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap')
 	;
@@ -16,7 +23,7 @@
 	;
 
 * {
-	font-family: 'NanumSquare' !important;
+	font-family: 'NanumSquareRound' !important;
 }
 
 /* ---------- main page css ---------- */
@@ -622,6 +629,9 @@
 .c-cate {
 	width: 17%;
 	margin: 0% 1%;
+    border: 1px solid #00000029;
+    border-radius: 4px;
+    background-color: white
 }
 
 .choose-cate {
@@ -633,32 +643,91 @@
 
 .community-sec {
 	
-	padding: 62px 20px;
+	padding: 58px 20px;
 	
 }
 
 .board-sec{
 	
-	padding: 2% 2%;
+	padding: 5% 2%;
 	
 }
 
 .cate {
 	
-	background-color: gray;
+	background-color: #d9d9d98f;
 	display: inline-block;
     padding: 6px 12px;
     border-radius:2px;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
-	
 }
 
 .board-text{
 	
 	padding: 2% 0%;
+	font-size: 16px;
+	
+}
+
+.seper-line{
+	
+    height: 10px;
+    background-color: #d9d9d98f;
+    margin: auto -20px;
+	
+}
+
+.board-img {
+	
+	width: 100%;
+	height: 30%;
+	border-radius: 10px;
+	margin: 4% 0px;
+}
+
+.cate-select {
+	background-color: #d9d9d98f;
+    margin: auto -4.5%;
+    display: block;
+    height: 50px;
+	
+	
+}
+
+.board-nick{
+	
+	font-weight: bold;
+	color : #599555;
+	
+}
+
+.reaction {
+	
+	width: 30px
+}
+
+.write-board{
+	
+    height: 50px;
+    width: 51px;
+    background-color: d9d9d98f!important;
+    background: #599555;
+    text-align: center;
+    position: absolute;
+    bottom: 90px;
+    right: 15px;
+    border-radius: 100%;
+    font-size: 38px;
+    color: white;
+	
+}
+
+.write-board:hover{
+	
+	cursor: pointer;
 	
 }
