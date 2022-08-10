@@ -28,8 +28,10 @@
  		update user_tb set user_point =user_point -#{user_point} where user_id =#{user_id}
  	</update>
 
-
-
+	<!-- 구매할때 회원 포인트 가져오기 -->
+	<select id="pointSelect" resultType="int">
+		select user_point from user_tb where user_id = #{user_id}
+	</select>
 
 
 

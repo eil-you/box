@@ -9,20 +9,16 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.hql.internal.ast.tree.SessionFactoryAwareNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.forus.domain.buyListVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.domain.gLocationVO;
 import com.forus.domain.resultlocationVO;
@@ -253,7 +249,32 @@ public class GoodsController {
 	         model.addAttribute("GoodsList", list); 
 	         return list;
 	   }
-
+	   
+	   // 상품 구매 버튼 누르면 가격, 이미지, title  + 회원 포인트 값 뿌려주기
+	   @RequestMapping("/viewBuyPage.do")
+	   private String viewBuyPage(int g_seq, HttpSession session, Model model) {
+		 
+		   String user_id = (String) session.getAttribute("user_id");
+		   if(user_id != null) {
+			   // 상품 구매 버튼 누르면 데이터 값 가져오기
+			   buyListVO buyVO = mapper.buySelect(g_seq);
+			   System.out.println("buyVO" +buyVO);
+			   // 회원 포인트 값 가져오기
+			   int user_point = uMapper.pointSelect(user_id);
+			   
+			   System.out.println("회원 포인트 " + user_point);
+			   
+			   model.addAttribute("buyVO", buyVO);
+			   model.addAttribute("user_point", user_point);
+			   
+			   return "buyPage";
+		   }
+		   
+		   return "notPage";
+		   
+		  
+		   
+	}
 	
 	
 	

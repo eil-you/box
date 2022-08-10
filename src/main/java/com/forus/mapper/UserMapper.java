@@ -28,5 +28,8 @@ public interface UserMapper {
 	// 포인트 업데이트
 	public void PointUpdate(userInfoVO infoVO);
 		
+	
+	// 포인트 값 가져오기
+	public int pointSelect(String user_id);
 		
 }
