@@ -78,15 +78,6 @@ public class ViewController {
 		
 	}
 	
-	@RequestMapping("viewBuyPage.do")
-	public String viewBuyPage(int g_seq){
-		
-		System.out.println(g_seq);
-		goodsVO result =gmapper.goodsInfo(g_seq);
-		System.out.println("상세정보 " +result);
-		
-		return "buyPage";
-	}
 	
 	@RequestMapping("/updateWish.do")
 	public @ResponseBody  void updateWish (HttpSession session ,int g_seq, int status) {

@@ -54,8 +54,10 @@ public class CommnityController {
 			String user_addr = (String)session.getAttribute("user_addr");
 		
 			
-			System.out.println("파일 가져오기 " + file);
-			if (file != null) {
+			System.out.println("파일 가져오기 " + file.getOriginalFilename());
+			System.out.println(file.getOriginalFilename().length());
+			if (!file.getOriginalFilename().equals("")) {
+				System.out.println("들어옴");
 				// 주소 알기
 				String path = session.getServletContext().getRealPath("/file");
 				

@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 public class goodsVO {
 	private int g_seq;
-	
 	private String gc_name;
 	private int loc_seq;
 	private String g_name;

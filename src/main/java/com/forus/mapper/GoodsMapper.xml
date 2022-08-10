@@ -113,8 +113,10 @@
 		where l.loc_seq = g.loc_seq and l.v_machine_seq = v.v_machine_seq
 	</select>
 
-	
-	
+	<!--  상품 구매 할때 데이터 가져오기  -->
+	<select id="buySelect" resultType="com.forus.domain.buyListVO">
+		select g_seq, g_price, g_img, g_name from goods_tb where g_seq = #{g_seq}
+	</select>
 	
 	
 </mapper>
