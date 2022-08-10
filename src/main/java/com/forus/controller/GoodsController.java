@@ -238,7 +238,7 @@ public class GoodsController {
 	
 	// 상품 삭제 
 	@RequestMapping("goodsDelete.do")
-	   public @ResponseBody List<goodsListVO> goodsDelete(int g_seq, HttpSession session, Model model) {
+   public @ResponseBody List<goodsListVO> goodsDelete(int g_seq, HttpSession session, Model model) {
 	      System.out.println(g_seq + "에이젝스성공");
 	      int row = 0;
 	      row = mapper.goodsDelete(g_seq);
@@ -250,9 +250,9 @@ public class GoodsController {
 	         return list;
 	   }
 	   
-	   // 상품 구매 버튼 누르면 가격, 이미지, title  + 회원 포인트 값 뿌려주기
-	   @RequestMapping("/viewBuyPage.do")
-	   private String viewBuyPage(int g_seq, HttpSession session, Model model) {
+   // 상품 구매 버튼 누르면 가격, 이미지, title  + 회원 포인트 값 보내주기
+   @RequestMapping("/viewBuyPage.do")
+   public String viewBuyPage(int g_seq, HttpSession session, Model model) {
 		 
 		   String user_id = (String) session.getAttribute("user_id");
 		   if(user_id != null) {
@@ -276,7 +276,17 @@ public class GoodsController {
 		   
 	}
 	
-	
+   // 회원이 찜한 리스트 가져오기
+   @RequestMapping("/likeList.do")
+   public void likeList(HttpSession session ) {
+	   // 주소 값, 아이디 값 가져오기
+	   String user_id= (String) session.getAttribute("user_id");
+	   
+	   List<goodsListVO> likeList = mapper.likeList(user_id);
+	   
+	   
+   }
+   
 	
 	
 }

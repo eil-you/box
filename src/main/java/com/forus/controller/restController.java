@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.forus.domain.goodsListVO;
+import com.forus.domain.resultlocationVO;
 import com.forus.mapper.GoodsMapper;
 import com.forus.mapper.UserMapper;
 
@@ -52,8 +53,21 @@ public class restController {
 	
 	
 	
-	// 상품 카테고리 
+	// 판매내역에서 비밀 번호 확인하기
+	@RequestMapping("/pwCheck.do")
+	public resultlocationVO pwCheck(int g_seq) {
+		resultlocationVO gVO= gmapper.gLocationSelect(g_seq);
+		return gVO;
+	}
 	
+	// 카테고리 별 제품 리스트 불러오기
+	@RequestMapping("/gcList.do")
+	public List<goodsListVO> gcList(HttpSession session, String gc_name){
+		String user_addr = (String) session.getAttribute("user_addr");
+		List<goodsListVO> gList =gmapper.gcList(user_addr, gc_name);
+		return gList;
+		
+	}
 	
 
 

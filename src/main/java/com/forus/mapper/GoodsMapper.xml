@@ -118,5 +118,35 @@
 		select g_seq, g_price, g_img, g_name from goods_tb where g_seq = #{g_seq}
 	</select>
 	
+	<!-- 회원이 찜한 제품 리스트만 가져오기 -->
+	<select id="likeList" resultType="com.forus.domain.goodsListVO">
+		select g.g_seq, g.g_name, g.g_img, g.g_price, sum(w.wish_yn) as wish_cnt
+		from goods_tb g,(
+			select g_seq 
+			from wishlist_tb 
+			where user_id = #{user_id} and wish_yn = 1) as w
+		where g.g_seq = w.g_seq
+		group by g.g_seq;
+	</select>	
+	
+	<!-- 카테고리 별 데이터 가져오기  -->
+	<select id="gcList" resultType="com.forus.domain.goodsListVO">
+		select g.g_seq, g_name, g_img, g_price, sum(w.wish_yn) as wish_cnt
+		from goods_tb g, wishlist_tb w, (
+		        select gc_seq 
+		        from g_category_tb
+		        where gc_name = #{gc_name}) as c
+		where loc_seq in (
+		        select loc_seq 
+		        from g_location_tb l, (
+						select v_machine_seq 
+		        		from v_machine_tb 
+						where v_machine_addr = #{user_addr} ) v
+		        where l.v_machine_seq= v.v_machine_seq)
+		        and g_status = '판매' and g.g_seq = w.g_seq and g.gc_seq = c.gc_seq
+		group by g.g_seq
+	</select>
+	
+	
 	
 </mapper>
