@@ -85,7 +85,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">마이페이지</h4>
+			<h4 style="display: inline-block;">구매페이지</h4>
 		</div>
 	</nav>
 

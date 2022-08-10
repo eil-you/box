@@ -152,32 +152,34 @@
 		</section>
 		<!-- ================ trending product section end ================= -->
 
-		<!--  footer start -->
-		<div class="foot-bar">
-			<div class="foot-div"
-				onclick="location.href='index.do?user_addr=${user_addr}'">
-				<div>
-					<img alt="" src="/img/icon/home-gr.png">
-				</div>
-			</div>
-
-			<div class="foot-div">
-				<img alt="" src="/img/icon/message-gr.png">
-			</div>
-
-			<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-				<img alt="" src="/img/icon/plus-gr.png">
-			</div>
-
-			<div class="foot-div">
-				<img alt="" src="/img/icon/map-gr.png">
-			</div>
-			<div class="foot-div"
-				onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-				<img alt="" src="/img/icon/me-full.png">
+<!--  footer start -->
+	<div class="foot-bar">
+		<div class="foot-div"
+			onclick="location.href='index.do?user_addr=${user_addr}'">
+			<div>
+				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
-		<!--  footer end -->
+
+		<div class="foot-div" onclick="location.href='viewBoard.do'">
+			<div>
+				<img alt="" src="/img/icon/message-gr.png">
+			</div>
+		</div>
+
+		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
+			<img alt="" src="/img/icon/plus-gr.png">
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/map-gr.png">
+		</div>
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			<img alt="" src="/img/icon/me-full.png">
+		</div>
+	</div>
+	<!--  footer end -->
 
 
 		<!-- =========================

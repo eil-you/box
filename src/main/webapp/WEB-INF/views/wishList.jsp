@@ -136,8 +136,10 @@
 			</div>
 		</div>
 
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
+		<div class="foot-div" onclick="location.href='viewBoard.do'">
+			<div>
+				<img alt="" src="/img/icon/message-gr.png">
+			</div>
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">

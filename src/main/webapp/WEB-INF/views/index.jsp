@@ -183,7 +183,7 @@
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewBoard.do'">
+		<div class="foot-div" onclick="location.href='postList.do'">
 			<div>
 				<img alt="" src="/img/icon/message-gr.png">
 			</div>
@@ -263,14 +263,14 @@
 				
 			}
 			
+			$(document).ready(changemoney);
+			
 			function changemoney(g_seq) {
 			
-				console.log(g_seq)
+				console.log($("#price${vo.g_seq}").text());
 
 				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
-
 				console.log(price)
-
 				var cPrice = price.toString().replace(
 						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 				console.log(cPrice)
