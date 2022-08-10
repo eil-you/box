@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.goodsVO;
+import com.forus.domain.wishListVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.mapper.GoodsMapper;
 import com.forus.mapper.ViewMapper;
@@ -28,6 +29,9 @@ public class ViewController {
 	
 	@Autowired
 	ViewMapper mapper;
+	@Autowired
+	GoodsMapper gMapper;
+	
 	
 	@Autowired
 	GoodsMapper gmapper;
@@ -84,9 +88,35 @@ public class ViewController {
 	}
 	
 	@RequestMapping("/updateWish.do")
-	public @ResponseBody  void updateWish (int g_seq) {
+	public @ResponseBody  void updateWish (HttpSession session ,int g_seq, int status) {
 		
+		if (session.getAttribute("user_id")!=null) {
 		System.out.println(g_seq);
+		// 아이디 가져오기
+		String user_id = (String) session.getAttribute("user_id");
+		
+
+		wishListVO vo = new wishListVO(g_seq, user_id, status);
+		
+		// 찜 내용 업데이트 하기 전에 찜 기록 있는 지 확인 하고 없으며 insert 있으면 update 
+		int wish_seq = 0;
+		wish_seq = mapper.wishCheck(vo);
+		int row = 0;
+			if (wish_seq >0 ) {
+				// wishUpdate
+				row = mapper.wishUpdate(vo);
+				System.out.println("찜 내용 업데이트 완료" + row);
+				
+				
+			}else {
+				// 기록 삽입
+				row = gMapper.wishInsert(vo);
+				System.out.println("찜 내용 삽입" + row);
+			
+			}
+		}
+		
+		
 	}
 	
 	@RequestMapping("/viewBoard.do")

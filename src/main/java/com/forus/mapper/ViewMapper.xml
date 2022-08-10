@@ -8,5 +8,14 @@
 	<select id="goodsCategory" resultType="com.forus.domain.gCategoryVO">
 		select * from g_category_tb
 	</select>
+	
+	<update id= "wishUpdate" parameterType="com.forus.domain.wishListVO">
+		update 
+	
+	</update>
+	
+	<select id="wishCheck"  parameterType="com.forus.domain.wishListVO">
+		select wish_seq from wishilist_tb where g_seq = #{g_seq} and user_id = #{user_id}
+	</select>
 
 </mapper>

@@ -29,8 +29,8 @@ public interface GoodsMapper {
 	// goodsInsert
 	public void goodsInsert(goodsVO vo);
 	
-	// wishlist 에 기본 값
-	public void wishDefault(wishListVO wishVO);
+	// wishlist 데이터 삽입
+	public int wishInsert(wishListVO wishVO);
 	
 	// g_seq 번호 불러오기
 	public int g_seqSelect(goodsVO vo);

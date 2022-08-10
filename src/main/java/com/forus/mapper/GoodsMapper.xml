@@ -89,7 +89,7 @@
 	</select>	
 	
 	<!--  기본 wishList 등록 -->
-	<insert id="wishDefault" parameterType="com.forus.domain.wishListVO">
+	<insert id="wishInsert" parameterType="com.forus.domain.wishListVO">
 		insert into wishlist_tb(g_seq, user_id,wish_yn) values (#{g_seq},#{user_id},#{wish_yn})
 	</insert>
 	
