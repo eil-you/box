@@ -140,7 +140,7 @@ public class GoodsController {
         System.out.println("상품 번호 불러오기" + g_seq);
         
         wishListVO wishVO = new wishListVO(g_seq, vo.getSeller_id(),0);
-        mapper.wishDefault(wishVO);
+        mapper.wishInsert(wishVO);
         
         
 		
