@@ -6,12 +6,13 @@
 
 
 	<select id="postList" resultType="com.forus.domain.CommunityVO">
-		select c.article_seq, c.article_title, c.article_content, c.article_date,c.article_file, u.user_nick, g.c_category_name, v.apt_name
-		from community_tb c , user_tb u, c_category_tb g, (
-			select v_machine_seq, apt_name 
-			from v_machien_tb 
-			where v_machine_addr = #{user_addr}) as v
-		where c.user_id = u.user_id and c.c_category_seq = g.c_category_seq and c.v_machine_seq = v.v_machine_seq 
+	select c.article_seq, c.article_content, c.article_date,c.article_file, u.user_nick, g.c_category_name, v.apt_name, sum(m.c_like) as c_like 
+	from community_tb c , user_tb u, c_category_tb g, comment_tb m,(
+	        select v_machine_seq, apt_name 
+	    	from v_machine_tb 
+	    	where v_machine_addr = #{user_addr}) as v
+	where c.user_id = u.user_id and c.c_category_seq = g.c_category_seq and c.v_machine_seq = v.v_machine_seq and c.article_seq = m.article_seq
+	group by c.article_seq;
 	</select>
 
 	<!-- 게시글 등록하기 -->
@@ -25,6 +26,15 @@
 		select v_machine_seq from v_machine_tb where v_machine_addr=#{user_addr}
 	</select>
 	
-
+	<!-- article_seq 번호 가져오기  -->
+	<select id="art_seqSelect" parameterType="com.forus.domain.CommunityVO" resultType="int">
+		select article_seq from community_tb where user_id = #{user_id} and article_content= #{article_content}
+	</select>
+	
+	<!-- 게시글 좋아요 insert 값 해주기 -->
+	<insert id="likeInsert" parameterType="com.forus.domain.commentVO">
+		insert into comment_tb(article_seq, user_id, c_like, cmt_date)
+		values(#{article_seq}, #{user_id}, #{c_like}, now())
+	</insert>
 
 </mapper> 
