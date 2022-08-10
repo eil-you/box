@@ -135,7 +135,7 @@
 								<span id = "cnt">0</span>
 							</div>	
 						
-							<div class="reac-div" onclick ="reply()">
+							<div class="reac-div" onclick ="location.href='boardInfo.do'">
 								<img class="reac" src="/img/icon/datggle.png">
 								<span>댓글달기</span>
 							</div>
