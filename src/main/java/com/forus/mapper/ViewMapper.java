@@ -18,7 +18,11 @@ public interface ViewMapper {
 	public int wishUpdate(wishListVO vo);
 	
 	
-	public int wishCheck(wishListVO vo);	
+	public String wishCheck(wishListVO vo);	
+	
+	
+	// 제품에 대한 찜 기록 가져오기
+	public String wishInfo(wishListVO vo);
 	
 	
 	

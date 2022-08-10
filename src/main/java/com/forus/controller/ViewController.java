@@ -99,10 +99,10 @@ public class ViewController {
 		wishListVO vo = new wishListVO(g_seq, user_id, status);
 		
 		// 찜 내용 업데이트 하기 전에 찜 기록 있는 지 확인 하고 없으며 insert 있으면 update 
-		int wish_seq = 0;
+		String wish_seq = null;
 		wish_seq = mapper.wishCheck(vo);
 		int row = 0;
-			if (wish_seq >0 ) {
+			if (wish_seq !=null ) {
 				// wishUpdate
 				row = mapper.wishUpdate(vo);
 				System.out.println("찜 내용 업데이트 완료" + row);

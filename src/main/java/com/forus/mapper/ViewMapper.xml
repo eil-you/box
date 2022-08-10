@@ -10,12 +10,17 @@
 	</select>
 	
 	<update id= "wishUpdate" parameterType="com.forus.domain.wishListVO">
-		update 
-	
+		update wishlist_tb set wish_yn= #{wish_yn} where g_seq = #{g_seq} and user_id = #{user_id}
 	</update>
 	
-	<select id="wishCheck"  parameterType="com.forus.domain.wishListVO">
-		select wish_seq from wishilist_tb where g_seq = #{g_seq} and user_id = #{user_id}
+	<select id="wishCheck"  parameterType="com.forus.domain.wishListVO" resultType="String">
+		select wish_seq from wishlist_tb where g_seq = #{g_seq} and user_id = #{user_id}
+	</select>
+	
+	
+	<!-- 찜 기록 가져오기 -->
+	<select id="wishInfo" parameterType="com.forus.domain.wishListVO" resultType="String">
+		select wish_yn from wishlist_tb where g_seq = #{g_seq} and user_id = #{user_id}
 	</select>
 
 </mapper>

@@ -86,13 +86,27 @@ public class GoodsController {
 	
 	// 상품 한개 상세 정보 불러오기
 	@RequestMapping("/goodsInfo.do")
-	public void goodsInfo(int g_seq, String apt_name, HttpServletRequest request) {
+	public void goodsInfo(int g_seq, String apt_name, HttpServletRequest request,HttpSession session) {
+		// 특정 상품 정보 불러오기
 		goodsVO result =mapper.goodsInfo(g_seq);
+		
+		// 아이디 불러오기
+		String user_id = (String)session.getAttribute("user_id");
+		wishListVO vo = new wishListVO(g_seq, user_id);
+		
+		String wish_yn =vMapper.wishInfo(vo);
+		
+		if(wish_yn == null) {
+			wish_yn = "0";
+		}
+		System.out.println("찜 기록 : " + wish_yn);
+		// 상품 정보에 nick_name 값 대입하기
 		result.setSeller_nick(mapper.seller_nickSelect(result.getSeller_id()));
 		System.out.println("상세정보 " +result);
 	
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
+		request.setAttribute("wish", wish_yn);
 	}
 	
 	
