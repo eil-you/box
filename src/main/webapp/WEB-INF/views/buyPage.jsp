@@ -85,15 +85,55 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">구매페이지</h4>
+			<h4 style="display: inline-block;">${buyVO.g_name}구매하기</h4>
 		</div>
 	</nav>
 
-	
+
+	<section class="section-margin calc-60px">
+		<div class="row list_layout buypage-sec">
+			<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
+
+			<div class="buy-info">
+				<span id="buy_name">${buyVO.g_name }</span> <span id="price">
+					${buyVO.g_price}</span>
+			</div>
+			<div class="section-line"></div>
+				
+				<div class="point-info">
+				<div class="point-sec">
+					<img src="/img/icon/profile-img.png" class="point-logo">
+					<span >포인트</span>
+				</div>
+					<span id="point">보유 ${user_point}</span>
+				</div>
+
+
+			<br>
+
+			<button class="btn btn-sm gobuy" onclick="">결제하기</button>
+
+
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do'">
+		<div class="foot-div" onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
@@ -110,8 +150,7 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do'">
+		<div class="foot-div" onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
@@ -127,6 +166,32 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script type="text/javascript">
+	$(document).ready(changemoney)
+
+	function changemoney() {
+
+		console.log($("#price").text())
+		var price = $("#price").text().toLocaleString('ko-KR');
+		var point = $("#point").text().toLocaleString('ko-KR');
+
+
+		var cPrice = price.toString().replace(
+				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		
+		var cpoint = point.toString().replace(
+				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+
+		$("#price").text(cPrice + "원");
+		$("#point").text(cpoint + "원");
+		
+		
+		point
+	}
+
+	
+	</script>
 
 
 

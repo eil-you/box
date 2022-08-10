@@ -581,6 +581,7 @@
 
 .buypage-sec {
 	text-align: center;
+	padding: 11% 0%;
 }
 
 .buypage-img {
@@ -734,8 +735,71 @@
 	margin: auto -29px 13px;
 }
 
-.apt_name{
+.apt_name {
 	font-size: 20px;
 	padding-left: 10px;
+}
+
+.buy-img {
+	height: 30%;
+	width: 100%;
+}
+
+#price {
+	padding-top: 30px;
+	font-size: 20px;
+}
+
+.gobuy {
+	width: 40%;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #599555
+}
+
+.point-logo {
+	width: 25px;
+}
+
+.point-sec {
 	
+}
+
+.buy-info {
+	height: 7rem;
+}
+
+#buy_name {
+	position: relative;
+	right: 29%;
+	top: 35%;
+	font-size: 20px;
+}
+
+#price {
+	position: relative;
+	left: 33%;
+	top: 35%;
+	font-size: 20px;
+}
+
+.point-sec{
+    position: relative;
+    right: 24%;
+    top: 10%;
+    font-size: 20px;
+    display: inline-flex;
+	
+}
+
+#point{
+    position: relative;
+    left: 26%;
+    top: -5%;
+    font-size: 20px;
+	
+}
+
+.point-info{
+	height: 7rem;
 }
