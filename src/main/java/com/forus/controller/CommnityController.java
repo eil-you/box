@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.CommunityVO;
@@ -44,28 +45,51 @@ public class CommnityController {
 	
 	
 	// 게시글 등록
-	@RequestMapping("postInsert.do")
-	private void postInsert(MultipartFile file, HttpSession session, CommunityVO vo) {
-		// 주소 알기
-		String path = session.getServletContext().getRealPath("/file");
+	@RequestMapping("/boardInsert.do")
+	private String boardInsert(@RequestParam("img2")MultipartFile file, HttpSession session, CommunityVO vo) {
 		
-		// 이미지 저장하기
-		String uuid = UUID.randomUUID().toString();
-		// file upload to system
-		File converFile = new File(path, uuid + file.getOriginalFilename());
-		try {
-			file.transferTo(converFile);
-		} catch (IllegalStateException |IOException e) {
-			e.printStackTrace();
-		} 
+		if(session.getAttribute("user_id")!= null){
+			// 아이디 가져오기
+			String user_id = (String)session.getAttribute("user_id");
+			String user_addr = (String)session.getAttribute("user_addr");
 		
-		String cFile = uuid + file.getOriginalFilename();
-		vo.setArticle_file(cFile);
+			
+			System.out.println("파일 가져오기 " + file);
+			if (file != null) {
+				// 주소 알기
+				String path = session.getServletContext().getRealPath("/file");
+				
+				// 이미지 저장하기
+				String uuid = UUID.randomUUID().toString();
+				// file upload to system
+				File converFile = new File(path, uuid + file.getOriginalFilename());
+				try {
+					file.transferTo(converFile);
+				} catch (IllegalStateException |IOException e) {
+					e.printStackTrace();
+				} 
+				
+				String cFile = uuid + file.getOriginalFilename();
+				vo.setArticle_file(cFile);
+				}
+			
+			vo.setUser_id(user_id);
 		
-		// 게시글 등록 mapper
-		//mapper.articleInsert(vo);
-		
-		
+			
+			
+			// V_machine_seq 알아오기
+			int machine_seq =mapper.machine_seqSelect(user_addr);
+			System.out.println("자판기 번호" + machine_seq);
+			vo.setV_machine_seq(machine_seq);
+			
+			
+			System.out.println("vo 값 가져오기 " + vo);
+			
+			// 게시글 등록 mapper
+			mapper.articleInsert(vo);
+			
+		}
+		return "board";
 	}
 	
 	

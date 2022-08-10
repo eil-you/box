@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.goodsVO;
 import com.forus.domain.wishListVO;
+import com.forus.domain.cCategoryVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.mapper.GoodsMapper;
 import com.forus.mapper.ViewMapper;
@@ -125,4 +126,14 @@ public class ViewController {
 		return "board";
 		
 	}
+	
+	//  게시글 작성하는 페이지 이동(카테고리 가져오기)
+	@RequestMapping("/viewBoardForm.do")
+	public String boardForm(Model model) {
+		List<cCategoryVO> category =mapper.communityCategory();
+		model.addAttribute("categoryList", category);
+		return "boardForm";
+	}
+	
+	
 }

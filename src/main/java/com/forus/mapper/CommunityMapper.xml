@@ -14,6 +14,17 @@
 		where c.user_id = u.user_id and c.c_category_seq = g.c_category_seq and c.v_machine_seq = v.v_machine_seq 
 	</select>
 
+	<!-- 게시글 등록하기 -->
+	<insert id="articleInsert" parameterType="com.forus.domain.CommunityVO">
+		insert into community_tb(article_content, article_file, c_category_seq, user_id, v_machine_seq) values(
+		#{article_content},#{article_file}, #{c_category_seq}, #{user_id}, #{v_machine_seq})
+	</insert>
+	
+	<!-- 게시글 등록하기 위해 v_mahcine_seq 번호 알아오기 -->
+	<select id="machine_seqSelect" parameterType="String" resultType="int">
+		select v_machine_seq from v_machine_tb where v_machine_addr=#{user_addr}
+	</select>
+	
 
 
 </mapper> 
