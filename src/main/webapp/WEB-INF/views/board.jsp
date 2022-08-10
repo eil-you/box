@@ -92,7 +92,7 @@
 				<div class="dropdown-content">
 					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
-				<span class="apt_name"></span>
+				<span class="apt_name">${apt_name}</span>
 			</div>
 		</div>
 	</nav>

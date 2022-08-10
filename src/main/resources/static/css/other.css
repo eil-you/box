@@ -633,7 +633,7 @@
 }
 
 .board-sec {
-	padding: 5% 2%;
+	padding: 5% 2% 0px;
 }
 
 .cate {
@@ -732,4 +732,10 @@
 	height: 1px;
 	background-color: #d9d9d98f;
 	margin: auto -29px 13px;
+}
+
+.apt_name{
+	font-size: 20px;
+	padding-left: 10px;
+	
 }
