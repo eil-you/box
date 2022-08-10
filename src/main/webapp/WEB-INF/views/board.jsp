@@ -112,6 +112,8 @@
 						</c:forEach>
 					</div>
 				</div>
+				
+				<%for (int i = 0; i<=5; i++) {%>
 					
 					<div class="board-sec">
 						<span class="cate">카테고리1</span>
@@ -124,18 +126,29 @@
 						</div>					
 						
 						<img class="board-img"src="/img/ipad.jpg">
-						<div class="">
-							<img class="reaction" src="/img/icon/smile.png">
-							<span>공감하기</span>
-							<img class="reaction" src="/img/icon/mal.png">
-							<span>댓글달기</span>
+						
+						<div class="section-line"></div>
+						<div class="like">
+							<div class="reac-div reaction">
+								<img class="reac" src="/img/icon/gonggam.png">
+								<span>공감하기</span>
+								<span id = "cnt">0</span>
+							</div>	
+						
+							<div class="reac-div" onclick ="reply()">
+								<img class="reac" src="/img/icon/datggle.png">
+								<span>댓글달기</span>
+							</div>
 						</div>
 						
+					<div class="seper-line"></div>
 					</div>
 					
-					<div class="seper-line"></div>
+					<%} %>
 					
-				<div class="write-board" onclick="location.href='viewBoardForm.do'">+</div>
+					
+					
+				<img  class="write-board" onclick="location.href='viewBoardForm.do'" src="/img/icon/pen.png">
 
 			</div>
 		</div>
@@ -187,6 +200,39 @@
 
 
      })
+     
+     
+
+     $(document).on("click" , ".reaction" , function () {
+	
+    	 
+    	 var img = $(this).children("img").attr("src")
+    	 var 
+    	 console.log(img)
+    	 
+    	if(img == "/img/icon/gonggam.png") {
+    		
+	    	$(this).children("img").attr("src", "/img/icon/love-gr.png");
+	    	var cnt = parseInt($(this).children("#cnt").html());
+	    	cnt = cnt+1
+	    	console.log($(this).children("#cnt").html(cnt))
+	    		
+    		
+    	} else {
+    		
+    		$(this).children("img").attr("src", "/img/icon/gonggam.png");
+	    	var cnt = parseInt($(this).children("#cnt").html());
+	    	cnt = cnt-1
+	    	console.log($(this).children("#cnt").html(cnt))
+    		
+    	}
+    	
+    	
+     	
+     })
+     
+     
+	
 	
 	
 	</script>

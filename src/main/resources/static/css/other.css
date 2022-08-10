@@ -8,10 +8,12 @@
 }
 
 @font-face {
-    font-family: 'NanumSquareRound';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @import
@@ -629,9 +631,9 @@
 .c-cate {
 	width: 17%;
 	margin: 0% 1%;
-    border: 1px solid #00000029;
-    border-radius: 4px;
-    background-color: white
+	border: 1px solid #00000029;
+	border-radius: 4px;
+	background-color: white
 }
 
 .choose-cate {
@@ -642,47 +644,37 @@
 }
 
 .community-sec {
-	
 	padding: 58px 20px;
-	
 }
 
-.board-sec{
-	
+.board-sec {
 	padding: 5% 2%;
-	
 }
 
 .cate {
-	
 	background-color: #d9d9d98f;
 	display: inline-block;
-    padding: 6px 12px;
-    border-radius:2px;
-    margin-bottom: 0;
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
+	padding: 6px 12px;
+	border-radius: 2px;
+	margin-bottom: 0;
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
 }
 
-.board-text{
-	
+.board-text {
 	padding: 2% 0%;
 	font-size: 16px;
-	
 }
 
-.seper-line{
-	
-    height: 10px;
-    background-color: #d9d9d98f;
-    margin: auto -20px;
-	
+.seper-line {
+	height: 10px;
+	background-color: #d9d9d98f;
+	margin: auto -29px;
 }
 
 .board-img {
-	
 	width: 100%;
 	height: 30%;
 	border-radius: 10px;
@@ -691,43 +683,77 @@
 
 .cate-select {
 	background-color: #d9d9d98f;
-    margin: auto -4.5%;
-    display: block;
-    height: 50px;
-	
-	
+	margin: -1.2% -4.3%;
+	display: block;
+	height: 50px;
 }
 
-.board-nick{
-	
+.board-nick {
 	font-weight: bold;
-	color : #599555;
-	
+	color: #599555;
 }
 
-.reaction {
-	
-	width: 30px
+.reac {
+	width: 25px;
+	margin-right: 5px;
 }
 
-.write-board{
-	
-    height: 50px;
-    width: 51px;
-    background-color: d9d9d98f!important;
-    background: #599555;
-    text-align: center;
-    position: absolute;
-    bottom: 90px;
-    right: 15px;
-    border-radius: 100%;
-    font-size: 38px;
-    color: white;
-	
+
+.write-board {
+	height: 50px;
+	width: 51px;
+	background-color: d9d9d98f !important;
+	background: #599555;
+	text-align: center;
+	position: fixed;
+	bottom: 90px;
+	right: 15px;
+	border-radius: 100%;
+	font-size: 38px;
+	color: white;
+	padding: 6px;
 }
 
-.write-board:hover{
+.write-board:hover {
+	cursor: pointer;
+}
+
+.like .reac-div {
+	display: inline-flex;
+	margin-right: 10px;
+}
+
+.reac-div span {
+	margin: auto;
+}
+
+.reac-div:hover{
 	
 	cursor: pointer;
 	
+}
+
+.write-board img {
+	width: 3c0px;
+	
+}
+
+.like {
+	
+	padding-bottom:10px; 
+	
+}
+
+#cnt {
+	
+	margin-left: 5px;
+	
+}
+
+.section-line {
+	
+	margin-bottom:5px;
+	height: 1px;
+	background-color: #d9d9d98f;
+	margin: auto -29px 13px;
 }
