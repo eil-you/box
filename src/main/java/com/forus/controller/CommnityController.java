@@ -27,13 +27,13 @@ public class CommnityController {
 	CommunityMapper mapper;
 
 	// 게시글 list 
-	@RequestMapping("postList.do")
-	public List<CommunityVO> postList(HttpServletRequest request, Model model) {
+	@RequestMapping("/postList.do")
+	public List<CommunityVO> postList(HttpSession session, Model model) {
 		
 		
-		// 데이터 호출하기
-		String user_addr = request.getParameter("user_addr");
-		String user_id = request.getParameter("user_id");
+		System.out.println("호롤롤로");
+		// 데이터 user_addr  값 가져오기
+		String user_addr = (String) session.getAttribute("user_addr");
 		
 		
 		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
