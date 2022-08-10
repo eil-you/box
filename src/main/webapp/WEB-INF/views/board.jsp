@@ -87,13 +87,12 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			 <a class="side_bar"
-				onclick="sidebar()">☰</a>
 			<div class="dropdown">
-				<a class="menu_drop" href="">${apt_name} 커뮤니티</a>
+				<a class="menu_drop" href="">☰</a>
 				<div class="dropdown-content">
 					<a style="color: black !important;" href="">아파트 설정하기</a>
 				</div>
+				<span class="apt_name"></span>
 			</div>
 		</div>
 	</nav>
@@ -106,49 +105,45 @@
 			<div class=" list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<div class="cate-select">
-					<div class="choose-cate" >
+					<div class="choose-cate">
 						<c:forEach var="i" begin="1" end="5" step="1">
-						<button class="btn btn-sm c-cate" value="i">카테고리${i}</button>
+							<button class="btn btn-sm c-cate" value="i">카테고리${i}</button>
 						</c:forEach>
 					</div>
 				</div>
-				
+
 				<%for (int i = 0; i<=5; i++) {%>
-					
-					<div class="board-sec">
-						<span class="cate">카테고리1</span>
-						<br>
-						<div class="board-text">
-						<span class="board-nick">단추누나  </span>글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
-						안녕하세여
-						아이패드
-						가데이터
-						</div>					
-						
-						<img class="board-img"src="/img/ipad.jpg">
-						
-						<div class="section-line"></div>
-						<div class="like">
-							<div class="reac-div reaction">
-								<img class="reac" src="/img/icon/gonggam.png">
-								<span>공감하기</span>
-								<span id = "cnt">0</span>
-							</div>	
-						
-							<div class="reac-div" onclick ="location.href='boardInfo.do'">
-								<img class="reac" src="/img/icon/datggle.png">
-								<span>댓글달기</span>
-							</div>
-						</div>
-						
-					<div class="seper-line"></div>
+
+				<div class="board-sec">
+					<span class="cate">카테고리1</span> <br>
+					<div class="board-text">
+						<span class="board-nick">단추누나 </span>글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
+						안녕하세여 아이패드 가데이터
 					</div>
-					
-					<%} %>
-					
-					
-					
-				<img  class="write-board" onclick="location.href='viewBoardForm.do'" src="/img/icon/pen.png">
+
+					<img class="board-img" src="/img/ipad.jpg">
+
+					<div class="section-line"></div>
+					<div class="like">
+						<div class="reac-div reaction">
+							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
+							<span id="cnt">0</span>
+						</div>
+
+						<div class="reac-div" onclick="location.href='boardInfo.do'">
+							<img class="reac" src="/img/icon/datggle.png"> <span>댓글달기</span>
+						</div>
+					</div>
+
+					<div class="seper-line"></div>
+				</div>
+
+				<%} %>
+
+
+
+				<img class="write-board" onclick="location.href='viewBoardForm.do'"
+					src="/img/icon/pen.png">
 
 			</div>
 		</div>

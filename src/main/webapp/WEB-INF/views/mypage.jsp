@@ -201,6 +201,7 @@
             obj2.setAttribute('type','hidden')
             obj2.setAttribute('name','apt_name')
             obj2.setAttribute('value', apt_name )
+            console.log(obj2)
             f.appendChild(obj2);
             
             f.setAttribute('method','post');

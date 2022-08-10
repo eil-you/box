@@ -37,8 +37,6 @@
 <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
 
 
-
-<title>BRANDY</title>
 <!-- Google Font -->
 <link
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
@@ -74,9 +72,6 @@
 	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-
-<style type="text/css">
-</style>
 
 </head>
 
