@@ -5,7 +5,7 @@
 <mapper namespace="com.forus.mapper.GoodsMapper">
 	
 	<select id="goodsList" parameterType="String" resultType="com.forus.domain.goodsListVO">
-		select g.g_seq, g_name, g_img, g_price, sum(w.wish_yn)
+		select g.g_seq, g_name, g_img, g_price, sum(w.wish_yn) as wish_cnt
 		from goods_tb g, wishlist_tb w 
 		where loc_seq in (
 		        select loc_seq 
