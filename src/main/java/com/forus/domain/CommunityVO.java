@@ -16,4 +16,6 @@ public class CommunityVO {
 	private String user_id;
 	private String c_category_seq;
 	private int v_machine_seq;
+	private int c_like;
+	
 }
