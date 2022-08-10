@@ -196,8 +196,6 @@
 
 		$(".c-cate").css("background-color", "#f0f4f5") 
          $(this).css("background-color", "#599555")
-		
-
 
      })
      
@@ -207,21 +205,35 @@
 	
     	 
     	 var img = $(this).children("img").attr("src")
-    	 var 
-    	 console.log(img)
+    	 var cnt = parseInt($(this).children("#cnt").html())
+    	 var status = "";
     	 
     	if(img == "/img/icon/gonggam.png") {
     		
 	    	$(this).children("img").attr("src", "/img/icon/love-gr.png");
-	    	var cnt = parseInt($(this).children("#cnt").html());
 	    	cnt = cnt+1
 	    	console.log($(this).children("#cnt").html(cnt))
+	    	
+	    	$.ajax({
+	    		
+	    		url : "",
+	    		type : "post",
+	    		data : {
+	    			"status" : 1,
+						// 시퀀스 보내주기	    			
+	    		}
+	    		
+	    	
+	    	})
+	    	
+	    	
+	    	
+	    	
 	    		
     		
     	} else {
     		
     		$(this).children("img").attr("src", "/img/icon/gonggam.png");
-	    	var cnt = parseInt($(this).children("#cnt").html());
 	    	cnt = cnt-1
 	    	console.log($(this).children("#cnt").html(cnt))
     		

@@ -99,6 +99,8 @@ public class GoodsController {
 		if(wish_yn == null) {
 			wish_yn = "0";
 		}
+		
+		System.out.println(wish_yn);
 		System.out.println("찜 기록 : " + wish_yn);
 		// 상품 정보에 nick_name 값 대입하기
 		result.setSeller_nick(mapper.seller_nickSelect(result.getSeller_id()));

@@ -108,7 +108,7 @@
 }
 
 .card-img {
-	width: 28%;
+	width: 25%;
 	height: 100px;
 	padding: 10px 22px;
 	border-radius: 15%;
@@ -150,6 +150,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: 15px;
+	width: 60%;
 }
 
 .goods-title {
@@ -353,10 +354,11 @@
 
 .pr-zzim {
 	display: inline-flex;
+	width: 95%;
 }
 
 .pr-zzim .price {
-	width: 250px;
+	width: 85%;
 }
 
 .zzim-div {
@@ -698,7 +700,6 @@
 	margin-right: 5px;
 }
 
-
 .write-board {
 	height: 50px;
 	width: 51px;
@@ -727,32 +728,24 @@
 	margin: auto;
 }
 
-.reac-div:hover{
-	
+.reac-div:hover {
 	cursor: pointer;
-	
 }
 
 .write-board img {
 	width: 3c0px;
-	
 }
 
 .like {
-	
-	padding-bottom:10px; 
-	
+	padding-bottom: 10px;
 }
 
 #cnt {
-	
 	margin-left: 5px;
-	
 }
 
 .section-line {
-	
-	margin-bottom:5px;
+	margin-bottom: 5px;
 	height: 1px;
 	background-color: #d9d9d98f;
 	margin: auto -29px 13px;

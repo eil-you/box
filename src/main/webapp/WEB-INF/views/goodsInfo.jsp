@@ -118,7 +118,16 @@
 		</div>
 		<div class="zzim-sec">
 			<p id="g_price">${goodsInfo.g_price }</p>
-			<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
+			<input type="hidden" value="${wish}" id="wishyn">
+			<c:choose>
+				<c:when test="${wish == 0}">
+					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
+				</c:when>
+				
+				<c:otherwise>
+					<img class="item-zzim" id="nozzim" src="/img/icon/star-full.png">
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<div class="goods-line"></div>
@@ -218,6 +227,7 @@
 
 		function changemoney() {
 
+			console.log("위시와이앤 : "+$("#wishyn").val())
 			console.log($("#g_price").text())
 			var price = $("#g_price").text().toLocaleString('ko-KR');
 
@@ -259,15 +269,7 @@
 			
 		})
 		
-		$(document).ready(checkZzim)
 		
-		
-		function () {
-			
-			//내가 찜했는지 안했는 지 여부 판단하기
-			
-			
-		}
 		
 
 		$(document).on('click', '#nozzim', function() {
