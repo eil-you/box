@@ -86,7 +86,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="side_bar"
+			 <a class="side_bar"
 				onclick="sidebar()">☰</a>
 			<div class="dropdown">
 				<a class="menu_drop" href="">${apt_name} ▼</a>
@@ -183,8 +183,10 @@
 			</div>
 		</div>
 
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
+		<div class="foot-div" onclick="location.href='viewBoard.do'">
+			<div>
+				<img alt="" src="/img/icon/message-gr.png">
+			</div>
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">

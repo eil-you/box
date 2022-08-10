@@ -123,29 +123,32 @@
 	</div>
 
 
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
 			<div>
-				<img alt="" src="/img/icon/home.png">
+				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/mesaage.png">
+			<img alt="" src="/img/icon/message-gr.png">
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/add.png">
+			<img alt="" src="/img/icon/plus-gr.png">
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/location.png">
+			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
-			<img alt="" src="/img/icon/me.png">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 

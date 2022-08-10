@@ -11,13 +11,13 @@
 	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap')
 	;
 
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import
+	url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css')
+	;
 
 * {
-	font-family: 'NanumSquare'!important;
+	font-family: 'NanumSquare' !important;
 }
-
-
 
 /* ---------- main page css ---------- */
 .sub-title {
@@ -583,4 +583,82 @@
 	font-weight: bold;
 	width: 100%;
 	text-align: right;
+}
+
+.buypage-sec {
+	text-align: center;
+}
+
+.buypage-img {
+	width: 120px;
+}
+
+.buyinfo {
+	width: 80%;
+	margin: auto;
+}
+
+.buy-title {
+	font-weight: bold;
+}
+
+.gomain {
+	width: 40%;
+	height: 40px;
+	border-radius: 10px;
+}
+
+.buy-product {
+	position: fixed;
+	right: 15px;
+	bottom: 80px;
+	height: 40px;
+	width: 100px;
+	border-radius: 7px;
+	background-color: #599555;
+	color: white;
+}
+
+.c-cate {
+	width: 17%;
+	margin: 0% 1%;
+}
+
+.choose-cate {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.community-sec {
+	
+	padding: 62px 20px;
+	
+}
+
+.board-sec{
+	
+	padding: 2% 2%;
+	
+}
+
+.cate {
+	
+	background-color: gray;
+	display: inline-block;
+    padding: 6px 12px;
+    border-radius:2px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+	
+}
+
+.board-text{
+	
+	padding: 2% 0%;
+	
 }

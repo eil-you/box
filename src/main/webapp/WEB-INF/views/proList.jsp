@@ -88,7 +88,6 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<i class="fab fa-accusoft"></i>
 			<h4 style="display: inline-block;">판매내역</h4>
 		</div>
 	</nav>

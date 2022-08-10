@@ -87,56 +87,49 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">구매목록</h4>
+			<h4 style="display: inline-block;">${apt_name}커뮤니티</h4>
 		</div>
 	</nav>
 
-	<!-- ================ trending product section start ================= -->
 
+
+	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
-		<div class=" container-pd">
+		<div class=" container-pd community-sec">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
-				<c:forEach items="${GoodsList}" var="vo" step="1">
-					<div class="card-product__img"
-						onclick="viewGoodsContent(${vo.g_seq})">
-						<img class="card-img" src="file/${vo.g_img}">
-						<div class="card-body">
-							<h4>
-								<c:out value="${vo.g_name}" />
-							</h4>
-							<br>
-							<p>${apt_name}</p>
-
-							<div class="pr-zzim">
-								<p class="price">
-									<c:out value="${vo.g_price}" />
-								</p>
-								<div class="zzim-div" onclick="">
-									<img class="zzim" src="/img/icon/star-empty.png">
-									<p class="zzim-cnt">${vo.wish_cnt}</p>
-								</div>
-							</div>
-						</div>
+				<div class="buy-select">
+					<div class="choose-cate" >
+						<c:forEach var="i" begin="1" end="5" step="1">
+						<button class="btn btn-sm c-cate" value="i">카테고리${i}</button>
+						</c:forEach>
 					</div>
-					<div class="goods-line"></div>
-				</c:forEach>
-				<!-- 끝 -->
+				</div>
+					
+					<div class="board-sec">
+						<span class="cate">카테고리1</span>
+						<br>
+						<div class="board-text">
+						글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
+						</div>					
+					</div>
+
+
 			</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
-<!--  footer start -->
+
+	<!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
+		<div class="foot-div" onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
+			<img alt="" src="/img/icon/message-full.png">
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
@@ -146,9 +139,8 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-			<img alt="" src="/img/icon/me-full.png">
+		<div class="foot-div" onclick="location.href='viewMypage.do'">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
 	<!--  footer end -->
@@ -164,32 +156,18 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
+	
+	 $(document).on('click','.c-cate',function(){
 
-		$(document).ready(checkNull)	
+		$(".c-cate").css("background-color", "#f0f4f5") 
+         $(this).css("background-color", "#599555")
 		
-		function checkNull() {
-			
-			var GoodsList = ${GoodsList}
-			// console.log(GoodsList.length)
-			
-			if(GoodsList.length == 0 ) {
-				
-			$("body").css("background-color", "#4c4c4c1c")
-			
-			list = `<div class="empty-list">
-						<p>구매한 내역이 없어요.</p>
-					</div>`
-		$(".navbar").after(list);
-			
-			}
-			
-			
-		}
-		
-		
-		
+
+
+     })
+	
+	
 	</script>
-
 
 
 </body>

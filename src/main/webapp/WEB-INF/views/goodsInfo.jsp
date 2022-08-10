@@ -90,7 +90,7 @@
 
 	<!--  <nav class="navbar">
 		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
+			<a class="menu_bar">☰</a>
 			<div class="dropdown">
 				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
@@ -103,7 +103,7 @@
 	<div class="col-sm-10 detail-img-div">
 		<img class="goback" src="/img/icon/goback.png"
 			onclick="location.href='index.do'"/ > <img class="detail-img"
-			src="file/${goodsInfo.g_img}" />
+			src="file/${goodsInfo.g_img}"/>
 		<div>
 			<img class="back" src="/img/icon/bk.png">
 		</div>
@@ -142,9 +142,16 @@
 
 
 
-
-
-
+	<c:choose>
+		<c:when test="${user_id eq goodsInfo.seller_id}">
+		</c:when>
+		
+		<c:otherwise>
+			<button class="buy-product btn btn-sm" onclick="buypage(${goodsInfo.g_seq})">구매하기</button>
+		</c:otherwise>
+		
+	</c:choose>
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">
@@ -164,10 +171,12 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
-			<img alt="" src="/img/icon/me-gr.png">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 
@@ -182,6 +191,29 @@
 
 
 	<script type="text/javascript">
+	
+	function buypage(g_seq) {
+		
+			
+            var f = document.createElement("form");
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
+            
+            f.setAttribute('method','post');
+            f.setAttribute('action','viewBuyPage.do')
+            document.body.appendChild(f);
+		    f.submit();
+		
+		
+		
+	}
+	
+	
+	
+	
 		$(document).ready(changemoney)
 
 		function changemoney() {
@@ -214,7 +246,7 @@
 				type: "post",
 				data : {
 					"g_seq" : g_seq,
-					"상태" : "y"
+					"status" : 1
 				},
 				success : function () {
 					console.log("찜 누르기 성공")
@@ -234,6 +266,7 @@
 
 			console.log("찜취소")
 			var g_seq = ${goodsInfo.g_seq}
+			
 
 			document.getElementById("nozzim").src="/img/icon/star-empty.png";
 			$(this).removeAttr('id', 'nozzim')
@@ -245,7 +278,7 @@
 				type: "post",
 				data : {
 					"g_seq" : g_seq,
-					"상태" : "n"
+					"status" : 0
 				},
 				success : function () {
 					console.log("찜 취소 성공")

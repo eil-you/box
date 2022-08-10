@@ -83,22 +83,17 @@
 		<div id="status">&nbsp;</div>
 	</div>
 
-	<!--  <nav class="navbar">
-		<div class="navbar__logo">
-			<i class="fab fa-accusoft"></i> <a class="menu_bar">☰</a>
-			<div class="dropdown">
-				<a class="menu_drop" href="">${apt_name} ▼</a>
-				<div class="dropdown-content">
-					<a style="color: black !important;" href="">아파트 설정하기</a>
-				</div>
-			</div>
+	<nav class="navbar">
+		<div class="navbar__logo add-header">
+			<h4 style="display: inline-block;">마이페이지</h4>
 		</div>
-	</nav> -->
+	</nav>
 
 	
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
+			onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
@@ -115,10 +110,12 @@
 		<div class="foot-div">
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
-		<div class="foot-div">
-			<img alt="" src="/img/icon/me-gr.png">
+		<div class="foot-div"
+			onclick="location.href='viewMypage.do'">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 

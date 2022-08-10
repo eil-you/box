@@ -84,17 +84,55 @@
 	</div>
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<i class="fab fa-accusoft"></i>
-			<c:choose>
-				<c:when test=""></c:when>
-				<c:otherwise></c:otherwise>
-			</c:choose> 
-			<h4 style="display: inline-block;"></h4>
+			<h4 style="display: inline-block;">${goodsResult.status}</h4>
 		</div>
 	</nav>
 
-	
-<!--  footer start -->
+	<section class="section-margin calc-60px">
+		<div class=" container-pd">
+			<div class="row list_layout">
+				<div class="buypage-sec">
+					<h3 class="buy-title">상품 등록이 완료되었습니다.</h3>
+					<br>
+					<p>24시간 내에 지정된 어스박스 내에 상품을 넣어주세요!</p>
+					<br> <img class="buypage-img" src="/img/icon/profile-img.png">
+
+					<h3 class="buy-title">등록된 상품 정보</h3><br>
+
+					<table class="buyinfo table">
+		
+						<tr>
+							<td>상품 이름</td>
+							<td>${goodsResult.g_name}</td>
+						</tr>
+
+						<tr>
+							<td>아파트</td>
+							<td>${goodsResult.apt_name}</td>
+						</tr>
+
+						<tr>
+							<td>박스번호</td>
+							<td>${goodsResult.v_machine_space_no}</td>
+						</tr>
+
+						<tr>
+							<td>박스 비밀번호</td>
+							<td>${goodsResult.v_machine_pw}</td>
+						</tr>
+
+					</table><br>
+					
+					<button class="btn btn-sm gomain" onclick="location.href='index.do'">메인으로 돌아가기</button>
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do?user_addr=${user_addr}'">

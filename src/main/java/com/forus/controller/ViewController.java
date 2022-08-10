@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.goodsVO;
 import com.forus.domain.gCategoryVO;
+import com.forus.mapper.GoodsMapper;
 import com.forus.mapper.ViewMapper;
 
 @Controller
@@ -27,6 +28,9 @@ public class ViewController {
 	
 	@Autowired
 	ViewMapper mapper;
+	
+	@Autowired
+	GoodsMapper gmapper;
 	
 	@RequestMapping("/")
 	public String main() {
@@ -70,7 +74,11 @@ public class ViewController {
 	}
 	
 	@RequestMapping("viewBuyPage.do")
-	public String viewBuyPage(){
+	public String viewBuyPage(int g_seq){
+		
+		System.out.println(g_seq);
+		goodsVO result =gmapper.goodsInfo(g_seq);
+		System.out.println("상세정보 " +result);
 		
 		return "buyPage";
 	}
@@ -79,5 +87,12 @@ public class ViewController {
 	public @ResponseBody  void updateWish (int g_seq) {
 		
 		System.out.println(g_seq);
+	}
+	
+	@RequestMapping("/viewBoard.do")
+	public String viewBoard(String apt_name) {
+		
+		return "board";
+		
 	}
 }

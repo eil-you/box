@@ -88,7 +88,6 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<i class="fab fa-accusoft"></i>
 			<h4 style="display: inline-block;">어스박스 상품등록</h4>
 		</div>
 	</nav>
@@ -101,7 +100,7 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<input type="text" class="form-control"
-						placeholder="글 제목" name="g_name">
+						placeholder="상품 이름" name="g_name">
 				</div>
 			</div>
 			<div class="form-group">
