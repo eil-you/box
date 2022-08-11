@@ -115,18 +115,11 @@ pageContext.setAttribute("newLine", "\n");
 			<p class="seller-nick">${goodsInfo.seller_nick}</p>
 			<p class="seller-apt">아파트이름</p>
 		</div>
+		
+		<div>
+		</div>
 		<div class="zzim-sec">
-			<p id="g_price">${goodsInfo.g_price }</p>
-			<input type="hidden" value="${wish}" id="wishyn">
-			<c:choose>
-				<c:when test="${wish == 0}">
-					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
-				</c:when>
-
-				<c:otherwise>
-					<img class="item-zzim" id="nozzim" src="/img/icon/star-full.png">
-				</c:otherwise>
-			</c:choose>
+			<button class="btn btn-sm goods-chat">채팅하기</button>
 		</div>
 	</div>
 	<div class="goods-line"></div>

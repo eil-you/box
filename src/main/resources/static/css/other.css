@@ -542,7 +542,8 @@
 }
 
 .seller-img {
-	width: 65px; height : 65px;
+	width: 65px;
+	height: 65px;
 	border-radius: 100%;
 	box-shadow: 0px 0px 1px 3px #77af7373;
 	height: 65px;
@@ -550,7 +551,7 @@
 
 .seller-info {
 	margin: 10px 25px 0px;
-	width: 18%
+	width: 50%
 }
 
 .seller-nick {
@@ -560,7 +561,6 @@
 .zzim-sec {
 	display: inline-flex;
 	margin: auto 0px auto 0px;
-	width: 50%;
 }
 
 .item-zzim {
@@ -829,7 +829,7 @@
 	background: #599555;
 	text-align: center;
 	position: fixed;
-	bottom:90px;
+	bottom: 90px;
 	right: 30px;
 	border-radius: 100%;
 	font-size: 38px;
@@ -850,7 +850,7 @@
 
 .write-challenge {
 	height: 38px;
-    width: 38px;
+	width: 38px;
 	background: #599555;
 	text-align: center;
 	position: fixed;
@@ -864,13 +864,23 @@
 }
 
 .write-challenge:hover {
-	
 	cursor: pointer;
 }
 
 input:-internal-autofill-selected {
-    appearance: menulist-button;
-    background-image: none !important;
-    background-color: -internal-light-dark(rgb(0,0, 0), rgba(0, 0, 0, 0)) !important;
-    color: fieldtext !important;
+	appearance: menulist-button;
+	background-image: none !important;
+	background-color: -internal-light-dark(rgb(0, 0, 0), rgba(0, 0, 0, 0))
+		!important;
+	color: fieldtext !important;
+}
+
+.goods-chat {
+	width: 100px;
+	border-radius: 7px;
+	background-color: #599555;
+	color: white;
+	box-shadow: 1px 1px 3px 1px #dadce0;
+	height: 40px;
+	margin-top: 11px;
 }
