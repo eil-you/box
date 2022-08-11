@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -96,7 +97,8 @@
 		<div class="container container-pd container-my">
 
 			<div class="profile">
-				<img class="mypage-img" src="/img/icon/profile-img.png">
+
+				<img class="mypage-img" src="#">
 				<div>
 					<p class="my-nick">${user_id}</p>
 					<p class="my-apt">${apt_name}</p>
@@ -116,14 +118,14 @@
 
 				<div class="mypage-sec" onclick="location.href='goodsBuyList.do?user_id=${user_id}'">
 					<div class="icon-bgc">
-						<img src="img/icon/cart.png">
+						<img src="img/icon/basket.png">
 					</div>
 					<p>구매내역</p>
 				</div>
 
 				<div class="mypage-sec" onclick="location.href='likeList.do'">
 					<div class="icon-bgc">
-						<img src="/img/icon/wish-cart.png">
+						<img src="/img/icon/star.png">
 					</div>
 					<p>찜목록</p>
 				</div>
@@ -148,14 +150,14 @@
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewBoard.do'">
+		<div class="foot-div" onclick="location.href='postList.do'">
 			<div>
 				<img alt="" src="/img/icon/message-gr.png">
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">
@@ -180,6 +182,17 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
+	
+		$(document).ready(changeImg)
+	function changeImg() {
+			var rn = Math.ceil(Math.random()*4)
+			console.log(rn)
+			
+			
+			
+			$(".mypage-img").attr("src","/img/profile/user"+rn+".jpg")
+			
+	}
 
 		function viewGoodsContent(g_seq,apt_name){
             console.log(g_seq)

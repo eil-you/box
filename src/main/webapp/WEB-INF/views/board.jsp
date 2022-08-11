@@ -173,8 +173,8 @@
 			<img alt="" src="/img/icon/message-full.png">
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">

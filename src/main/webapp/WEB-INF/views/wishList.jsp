@@ -152,14 +152,14 @@
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewBoard.do'">
+		<div class="foot-div" onclick="location.href='postList.do'">
 			<div>
 				<img alt="" src="/img/icon/message-gr.png">
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">

@@ -126,5 +126,10 @@ public class ViewController {
 		return "boardForm";
 	}
 	
-	
+	@RequestMapping("/viewChallenge.do")
+	public String viewChallenge() {
+		
+		return "challengeList";
+		
+	}
 }
