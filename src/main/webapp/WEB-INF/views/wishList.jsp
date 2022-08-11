@@ -67,14 +67,13 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="js/lte-ie7.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
+<link href="css/list.css" rel="stylesheet">
+
+<style type="text/css">
+</style>
 </head>
 
 
@@ -87,13 +86,25 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<i class="fab fa-accusoft"></i>
-			<h4 style="display: inline-block;">마이페이지</h4>
+			<h4 style="display: inline-block;">찜목록</h4>
 		</div>
 	</nav>
 
-	<!-- ================ trending product section start ================= -->
+		<!-- 
+		<ul class="navbar__menu">
+			<li><a href="login.do">로그인</a></li>
+			<li><a href="">Gallery</a></li>
+			<li><a href="">Wedding</a></li>
+			<li><a href="">FAQ</a></li>
+			<li><a href="">Booking</a></li>
+		</ul>
+ -->
+	</nav>
 
+
+
+
+	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
 		<div class=" container-pd">
 			<div class="row list_layout">
@@ -110,8 +121,11 @@
 							<p>${apt_name}</p>
 
 							<div class="pr-zzim">
-								<p class="price">
+								<p class="price" id="price${vo.g_seq}">
 									<c:out value="${vo.g_price}" />
+									<script type="text/javascript">
+									
+									</script>
 								</p>
 								<div class="zzim-div" onclick="">
 									<img class="zzim" src="/img/icon/star-empty.png">
@@ -126,11 +140,13 @@
 			</div>
 		</div>
 	</section>
+	<p class="write-goods-form" onclick="location.href='viewGoodsForm.do'">+</p>
 	<!-- ================ trending product section end ================= -->
+
 <!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
+			onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
@@ -150,7 +166,7 @@
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
 		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
@@ -168,26 +184,6 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 
-		$(document).ready(checkNull)	
-		
-		function checkNull() {
-			
-			var GoodsList = ${GoodsList}
-			// console.log(GoodsList.length)
-			
-			if(GoodsList.length == 0 ) {
-				
-			$("body").css("background-color", "#4c4c4c1c")
-			
-			list = `<div class="empty-list">
-						<p>구매한 내역이 없어요.</p>
-					</div>`
-		$(".navbar").after(list);
-			
-			}
-			
-			
-		}
 		function viewGoodsContent(g_seq,apt_name){
             console.log(g_seq)
             console.log(apt_name)
@@ -211,10 +207,43 @@
 		    f.submit();
 			}
 		
-		
-		
-		
-	</script>
+
+			function sidebar() {
+				
+				console.log()
+				
+					//$("#navbar").css("display","block")
+					$("#navbar").css("width","100%")
+				
+				
+				
+			}
+			
+			function closeside() {
+						
+						//$("#navbar").css("display","none")
+						$("#navbar").css("width","0%")
+				
+				
+			}
+			
+			$(document).ready(changemoney);
+			
+			function changemoney(g_seq) {
+			
+				console.log($("#price${vo.g_seq}").text());
+
+				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
+				console.log(price)
+				var cPrice = price.toString().replace(
+						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				console.log(cPrice)
+
+				$("#price${vo.g_seq}").text(cPrice +"원" );
+			}
+			
+			</script>
+
 
 
 

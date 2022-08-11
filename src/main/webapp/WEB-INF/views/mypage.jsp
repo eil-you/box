@@ -142,7 +142,7 @@
 <!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
+			onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
@@ -162,7 +162,7 @@
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
 		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>

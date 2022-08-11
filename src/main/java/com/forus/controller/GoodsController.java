@@ -285,7 +285,8 @@ public class GoodsController {
 	   String user_id= (String)session.getAttribute("user_id");
 	   System.out.println("user_id :" +user_id);
 	   List<goodsListVO> likeList = mapper.likeList(user_id);
-	   model.addAttribute("likeList", likeList);
+	   System.out.println(likeList);
+	   model.addAttribute("GoodsList", likeList);
 	   return "wishList";
 	   
    }

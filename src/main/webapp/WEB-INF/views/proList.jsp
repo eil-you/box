@@ -75,6 +75,7 @@
 	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
+<link href="css/list.css" rel="stylesheet">
 </head>
 
 
@@ -97,7 +98,7 @@
 	<div class="row list_layout">
 
 		<section class="section-margin calc-60px">
-			<div class="container container-pd">
+			<div class="container-pd">
 				<div class="row list_layout">
 
 					<input type="hidden" value="${user_id}" id="user_id">
@@ -155,7 +156,7 @@
 <!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
+			onclick="location.href='index.do'">
 			<div>
 				<img alt="" src="/img/icon/home-gr.png">
 			</div>
@@ -175,12 +176,11 @@
 			<img alt="" src="/img/icon/map-gr.png">
 		</div>
 		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
+			onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
 	<!--  footer end -->
-
 
 		<!-- =========================
      SCRIPTS 

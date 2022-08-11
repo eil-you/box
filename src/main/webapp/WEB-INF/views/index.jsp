@@ -72,8 +72,6 @@
 <link href="css/other.css" rel="stylesheet">
 <link href="css/category.css" rel="stylesheet">
 
-<style type="text/css">
-</style>
 </head>
 
 
@@ -118,8 +116,6 @@
 				<h4>카테고리</h4>
 			</div>
 			
-			
-
 		</div>
 		<div class="navbar-items flexbox-col">
 
