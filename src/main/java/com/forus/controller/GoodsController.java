@@ -3,6 +3,8 @@ package com.forus.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -278,12 +280,13 @@ public class GoodsController {
 	
    // 회원이 찜한 리스트 가져오기
    @RequestMapping("/likeList.do")
-   public void likeList(HttpSession session ) {
+   public String likeList(HttpSession session, Model model ) {
 	   // 주소 값, 아이디 값 가져오기
 	   String user_id= (String) session.getAttribute("user_id");
 	   
 	   List<goodsListVO> likeList = mapper.likeList(user_id);
-	   
+	   model.addAttribute("likeList", likeList);
+	   return "wishList";
 	   
    }
    
