@@ -282,8 +282,8 @@ public class GoodsController {
    @RequestMapping("/likeList.do")
    public String likeList(HttpSession session, Model model ) {
 	   // 주소 값, 아이디 값 가져오기
-	   String user_id= (String) session.getAttribute("user_id");
-	   
+	   String user_id= (String)session.getAttribute("user_id");
+	   System.out.println("user_id :" +user_id);
 	   List<goodsListVO> likeList = mapper.likeList(user_id);
 	   model.addAttribute("likeList", likeList);
 	   return "wishList";
