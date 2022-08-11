@@ -107,7 +107,7 @@
 				<div class="cate-select">
 					<div class="choose-cate">
 						<c:forEach items="${cCategory}" var="vo" step="1">
-							<button class="btn btn-sm c-cate"
+							<button type = "button" class="btn btn-sm c-cate"
 								onclick="choiceCategory(${vo.c_category_seq})">${vo.c_category_name}</button>
 						</c:forEach>
 					</div>
@@ -276,11 +276,11 @@
 			
 			
 			
-			console.log("함수실행쓰" + c_category_seq)
+			console.log("시퀀스번호" + c_category_seq)
 			
 			$.ajax({
 				
-				url : "viewCommunityCategory.do",
+				url : "gcList.do",
 				type:"post",
 				data : {
 					"c_category_seq" : c_category_seq
