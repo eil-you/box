@@ -3,7 +3,6 @@ package com.forus.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +13,7 @@ public class CommunityVO {
 	private String article_date;
 	private String article_file;
 	private String user_id;
-	private String c_category_name;
+	private String c_category_seq;
 	private int v_machine_seq;
 	private int c_like;
 	
