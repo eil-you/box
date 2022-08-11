@@ -649,6 +649,7 @@
 	font-weight: 400;
 	line-height: 1.42857143;
 	text-align: center;
+	color: #959595;
 }
 
 .board-text {
@@ -694,7 +695,7 @@
 	text-align: center;
 	position: fixed;
 	bottom: 90px;
-	right: 15px;
+	right: 20px;
 	border-radius: 100%;
 	font-size: 38px;
 	color: white;
@@ -815,10 +816,6 @@
 	
 }
 
-.sysdate {
-	
-	
-}
 
 .board-nick {
 	
@@ -835,7 +832,7 @@
     text-align: center;
     position: fixed;
     bottom: 80px;
-    right: 15px;
+    right: 20px;
     border-radius: 100%;
     font-size: 38px;
     color: white;

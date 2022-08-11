@@ -107,38 +107,37 @@
 				<div class="cate-select">
 					<div class="choose-cate">
 						<c:forEach items="${cCategory}" var="vo" step="1">
-							<button class="btn btn-sm c-cate" value="i">${vo.c_category_name}</button>
-							<input type="hidden" value="${vo.c_category_seq}">
+							<button class="btn btn-sm c-cate"
+								onclick="choiceCategory(${vo.c_category_seq})">${vo.c_category_name}</button>
 						</c:forEach>
 					</div>
 				</div>
-		
-		<c:forEach items="${boardList}" var="vo" step="1">
-			<!-- 반목분 시작 -->
+
+				<c:forEach items="${boardList}" var="vo" step="1">
+					<!-- 반목분 시작 -->
 					<div class="board-sec">
-						<span class="cate">${vo.c_category_seq}</span> <br>
-						<div class="board-text">
-							${vo.article_content}
-						</div>
+						<span class="cate">${vo.c_category_name}</span> <br>
+						<div class="board-text">${vo.article_content}</div>
 
 						<c:choose>
 							<c:when test="${vo.article_file == null}">
 							</c:when>
-							
+
 							<c:otherwise>
 								<img class="board-img" src="/file/${vo.article_file}">
 							</c:otherwise>
-				
+
 						</c:choose>
-						
-							<div class="board-foot">
-								<p class="board-nick">단추누나 </p>
-								<p class="sysdate">${vo.article_date}</p>
-							</div>
+
+						<div class="board-foot">
+							<p class="board-nick">${vo.user_id}</p>
+							<p class="sysdate">${vo.article_date}</p>
+						</div>
 						<div class="section-line"></div>
 						<div class="like">
 							<div class="reac-div reaction">
 								<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
+								<input type="hidden" value="${vo.article_seq}" id="article_seq">
 								<span id="cnt">${vo.c_like}</span>
 							</div>
 
@@ -149,7 +148,7 @@
 
 						<div class="seper-line"></div>
 					</div>
-			<!-- 반목분 종료 -->
+					<!-- 반목분 종료 -->
 				</c:forEach>
 
 
@@ -200,17 +199,19 @@
 	<script type="text/javascript">
 		$(document).on('click', '.c-cate', function() {
 
-			$(".c-cate").css("background-color", "#f0f4f5")
+			console.log("함수실행")
+			$(".c-cate").css("background-color", "white")
 			$(this).css("background-color", "#599555")
 
 		})
 
-		$(document).on("click", ".reaction", function() {
+		$(document).on("click", ".reaction", function(article_seq) {
 
 			var img = $(this).children("img").attr("src")
 			var cnt = parseInt($(this).children("#cnt").html())
 			var status = "";
-			console.log("시퀀스번호" + ${article_seq})
+			var article_seq = $(this).children("#article_seq").val();
+			console.log("자식 : " + article_seq)
 
 			if (img == "/img/icon/gonggam.png") {
 
@@ -224,8 +225,18 @@
 					type : "post",
 					data : {
 						"status" : 1,
-					// 시퀀스 보내주기	    			
+						"article_seq" : article_seq,
+					},
+					success : function () {
+						
+					console.log("성공")
+
+					},
+					
+					error : function () {
+						console.log("실패")
 					}
+					
 
 				})
 
@@ -234,10 +245,62 @@
 				$(this).children("img").attr("src", "/img/icon/gonggam.png");
 				cnt = cnt - 1
 				console.log($(this).children("#cnt").html(cnt))
+				
+				$.ajax({
+
+					url : "reaction.do",
+					type : "post",
+					data : {
+						"status" : 0,
+						"article_seq" : article_seq,
+					},
+					success : function () {
+						
+					console.log("성공")
+
+					},
+					
+					error : function () {
+						console.log("실패")
+					}
+					
+
+				})
 
 			}
 
 		})
+
+				
+		function choiceCategory(c_category_seq) {
+			
+			
+			
+			console.log("함수실행쓰" + c_category_seq)
+			
+			$.ajax({
+				
+				url : "viewCommunityCategory.do",
+				type:"post",
+				data : {
+					"c_category_seq" : c_category_seq
+				},
+				success: function (data) {
+					console.log(data)
+				},
+				error : function () {
+					console.log("카테고리 실패")
+				}
+				
+			
+			})
+			
+			
+		}
+		
+		
+		
+		
 	</script>
 
 
