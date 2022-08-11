@@ -119,10 +119,10 @@
 	</select>
 	
 	<!-- 회원이 찜한 제품 리스트만 가져오기 -->
-	<select id="likeList" resultType="com.forus.domain.goodsListVO">
+	<select id="likeList" parameterType="String" resultType="com.forus.domain.goodsListVO">
 		select g.g_seq, g.g_name, g.g_img, g.g_price, sum(w.wish_yn) as wish_cnt
 		from goods_tb g,(
-			select g_seq 
+			select g_seq,wish_yn 
 			from wishlist_tb 
 			where user_id = #{user_id} and wish_yn = 1) as w
 		where g.g_seq = w.g_seq
