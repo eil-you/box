@@ -84,8 +84,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo">
-			 <a class="side_bar"
-				onclick="sidebar()">☰</a>
+			<a class="side_bar" onclick="sidebar()">☰</a>
 			<div class="dropdown">
 				<a class="menu_drop" href="">${apt_name} ▼</a>
 				<div class="dropdown-content">
@@ -115,16 +114,18 @@
 			<div>
 				<h4>카테고리</h4>
 			</div>
-			
+
 		</div>
 		<div class="navbar-items flexbox-col">
 
 			<!-- list출력 -->
-			<c:forEach items="${categoryList}" var="vo" step="1">
-				<div class="navbar-item flexbox-left">
-					<a class="navbar-item-inner">
-					<img src="/img/cate-icon/${vo.gc_name}.png"><br>
-					<span class="list-cate"><c:out value = "${vo.gc_name}" /></span>
+			<c:forEach items="${categoryList}" var="c" step="1">
+				<div class="navbar-item flexbox-left" id="goodsCateList"
+					onclick="good('${c.gc_name}')">
+					<a class="navbar-item-inner bob"> <img
+						src="/img/cate-icon/${c.gc_name}.png"><br> <input
+						type="hidden" value="${c.gc_name}" class="gc_name"> <span
+						class="list-cate"><c:out value="${c.gc_name}" /></span>
 					</a>
 				</div>
 			</c:forEach>
@@ -186,8 +187,8 @@
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">
@@ -213,8 +214,6 @@
 	<script type="text/javascript">
 
 		function viewGoodsContent(g_seq,apt_name){
-            console.log(g_seq)
-            console.log(apt_name)
 			
             var f = document.createElement("form");
             var obj1 = document.createElement('input');
@@ -234,28 +233,22 @@
             document.body.appendChild(f);
 		    f.submit();
 			}
-		
-			function zzim() {
-				
-				console.log("찜~")
-				
-			}
+	
 
 			function sidebar() {
 				
-				console.log()
 				
 					//$("#navbar").css("display","block")
 					$("#navbar").css("width","100%")
-				
-				
-				
+					$(".write-goods-form").css("display","none");
+					
 			}
 			
 			function closeside() {
 						
 						//$("#navbar").css("display","none")
 						$("#navbar").css("width","0%")
+						$(".write-goods-form").css("display","block");
 				
 				
 			}
@@ -275,6 +268,85 @@
 				$("#price${vo.g_seq}").text(cPrice +"원" );
 			}
 			
+			function good(gc_name) {
+				
+				$.ajax({
+					
+					url : "gcList.do",
+					type : "post",
+					data : {
+						"gc_name" : gc_name
+					},
+					success : list,
+					error : function () {
+						console.log("슬패,,")
+					}
+				
+				
+				
+				
+				})
+				
+			}
+			
+			
+			function list(data) {
+				$("#navbar").css("width","0%")
+				$(".write-goods-form").css("display","block");
+				
+				console.log(data)
+				$(".list_layout").html("");
+
+				var list = "";
+
+				if (data.length == 0) {
+					
+					$(".empty-list").html("")
+					
+					list = ` <div class="empty-list">
+								<p>판매중인 제품이 없어요.</p>
+							</div>`
+					
+					$(".navbar").after(list);
+					$("body").css("background-color", "#4c4c4c1c")
+
+				} else {
+
+					$("body").css("background-color", "white")
+					$(".empty-list").html("")
+					
+					for (let i = 0; i < data.length; i++) {
+						var vo = data[i]
+						console.log(vo.g_name)
+						list = `<div id="product-list">
+										<div class="card-product__img"
+											onclick="viewGoodsContent(${vo.g_seq})">
+											<img class="card-img" src="file/\${vo.g_img}">
+											<div class="card-body">
+												<h4>
+													\${vo.g_name}
+												</h4>
+												<br>
+												<p>${apt_name}</p>
+												<div class="pr-zzim">
+													<p class="price">
+														\${vo.g_price}
+													</p>
+													<div class="zzim-div" onclick="">
+														<img class="zzim" src="/img/icon/star-empty.png">
+														<p class="zzim-cnt">\${vo.wish_cnt}</p>
+													</div>
+												</div>
+										</div>
+									</div>
+										<div class="goods-line"></div>`;
+						$(".list_layout").append(list);
+
+					}
+				}
+
+			}
+
 			</script>
 
 

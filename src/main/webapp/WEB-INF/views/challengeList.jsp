@@ -67,12 +67,7 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="js/lte-ie7.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 <link href="css/list.css" rel="stylesheet">
@@ -81,53 +76,29 @@
 
 <body>
 
-	<!-- Preloader -->
+		<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">구매목록</h4>
+			<h4 style="display: inline-block;">챌린지</h4>
 		</div>
 	</nav>
 
-	<!-- ================ trending product section start ================= -->
 
-	<section class="section-margin calc-60px">
-		<div class=" container-pd">
-			<div class="row list_layout">
-				<!--리스트 출력 시작 시작 -->
-				<c:forEach items="${GoodsList}" var="vo" step="1">
-					<div class="card-product__img"
-						onclick="viewGoodsContent(${vo.g_seq})">
-						<img class="card-img" src="file/${vo.g_img}">
-						<div class="card-body">
-							<h4>
-								<c:out value="${vo.g_name}" />
-							</h4>
-							<br>
-							<p>${apt_name}</p>
 
-							<div class="pr-zzim">
-								<p class="price">
-									<c:out value="${vo.g_price}" />
-								</p>
-								<div class="zzim-div" onclick="">
-									<img class="zzim" src="/img/icon/star-empty.png">
-									<p class="zzim-cnt">${vo.wish_cnt}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="goods-line"></div>
-				</c:forEach>
-				<!-- 끝 -->
-			</div>
-		</div>
-	</section>
-	<!-- ================ trending product section end ================= -->
-<!--  footer start -->
+
+
+
+
+
+
+
+<img src="/img/icon/pen.png" class="write-challenge"></div>
+
+	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
 			onclick="location.href='index.do'">
@@ -143,7 +114,7 @@
 		</div>
 
 		<div class="foot-div" onclick="location.href='viewChallenge.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
+			<img class=" main-btn" alt="" src="/img/icon/earth.png">
 		</div>
 
 		<div class="foot-div">
@@ -151,7 +122,7 @@
 		</div>
 		<div class="foot-div"
 			onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
+			<img alt="" src="/img/icon/me-gr2.png">
 		</div>
 	</div>
 	<!--  footer end -->
@@ -168,30 +139,71 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 
-		$(document).ready(checkNull)	
+		function viewGoodsContent(g_seq,apt_name){
+            console.log(g_seq)
+            console.log(apt_name)
+			
+            var f = document.createElement("form");
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
+            
+            obj2 = document.createElement('input');
+            obj2.setAttribute('type','hidden')
+            obj2.setAttribute('name','apt_name')
+            obj2.setAttribute('value', apt_name )
+            f.appendChild(obj2);
+            
+            f.setAttribute('method','post');
+            f.setAttribute('action','goodsInfo.do')
+            document.body.appendChild(f);
+		    f.submit();
+			}
 		
-		function checkNull() {
-			
-			var GoodsList = ${GoodsList}
-			// console.log(GoodsList.length)
-			
-			if(GoodsList.length == 0 ) {
+			function zzim() {
 				
-			$("body").css("background-color", "#4c4c4c1c")
-			
-			list = `<div class="empty-list">
-						<p>구매한 내역이 없어요.</p>
-					</div>`
-		$(".navbar").after(list);
-			
+				console.log("찜~")
+				
+			}
+
+			function sidebar() {
+				
+				console.log()
+				
+					//$("#navbar").css("display","block")
+					$("#navbar").css("width","100%")
+				
+				
+				
 			}
 			
+			function closeside() {
+						
+						//$("#navbar").css("display","none")
+						$("#navbar").css("width","0%")
+				
+				
+			}
 			
-		}
-		
-		
-		
-	</script>
+			$(document).ready(changemoney);
+			
+			function changemoney(g_seq) {
+			
+				console.log($("#price${vo.g_seq}").text());
+
+				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
+				console.log(price)
+				var cPrice = price.toString().replace(
+						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+				console.log(cPrice)
+
+				$("#price${vo.g_seq}").text(cPrice +"원" );
+			}
+			
+			</script>
+
 
 
 

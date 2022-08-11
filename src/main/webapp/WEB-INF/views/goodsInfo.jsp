@@ -4,8 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
-
- 	pageContext.setAttribute("newLine","\n" );
+pageContext.setAttribute("newLine", "\n");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +102,7 @@
 	<div class="col-sm-10 detail-img-div">
 		<img class="goback" src="/img/icon/goback.png"
 			onclick="location.href='index.do'"/ > <img class="detail-img"
-			src="file/${goodsInfo.g_img}"/>
+			src="file/${goodsInfo.g_img}" />
 		<div>
 			<img class="back" src="/img/icon/bk.png">
 		</div>
@@ -111,10 +110,10 @@
 
 
 	<div class="seller-info-sec">
-		<img class="seller-img" src="/img/icon/profile-img.png">
+		<img class="seller-img" src="/img/profile/user1.jpg">
 		<div class="seller-info">
 			<p class="seller-nick">${goodsInfo.seller_nick}</p>
-			<p class="seller-apt">${apt_name}</p>
+			<p class="seller-apt">아파트이름</p>
 		</div>
 		<div class="zzim-sec">
 			<p id="g_price">${goodsInfo.g_price }</p>
@@ -123,7 +122,7 @@
 				<c:when test="${wish == 0}">
 					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
 				</c:when>
-				
+
 				<c:otherwise>
 					<img class="item-zzim" id="nozzim" src="/img/icon/star-full.png">
 				</c:otherwise>
@@ -154,11 +153,12 @@
 	<c:choose>
 		<c:when test="${user_id eq goodsInfo.seller_id}">
 		</c:when>
-		
+
 		<c:otherwise>
-			<button class="buy-product btn btn-sm" onclick="buypage(${goodsInfo.g_seq})">구매하기</button>
+			<button class="buy-product btn btn-sm"
+				onclick="buypage(${goodsInfo.g_seq})">구매하기</button>
 		</c:otherwise>
-		
+
 	</c:choose>
 	<!--  footer start -->
 	<div class="foot-bar">
@@ -173,8 +173,8 @@
 			<img alt="" src="/img/icon/message-gr.png">
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">
@@ -223,7 +223,18 @@
 	
 	
 	
-		$(document).ready(changemoney)
+	$(document).ready(changemoney)
+	$(document).ready(changeImg)
+		
+	function changeImg() {
+			var rn = Math.ceil(Math.random()*4)
+			console.log(rn)
+			
+			
+			
+			$(".seller-img").attr("src","/img/profile/user"+rn+".jpg")
+			
+	}
 
 		function changemoney() {
 
