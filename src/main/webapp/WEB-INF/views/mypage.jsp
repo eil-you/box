@@ -121,7 +121,7 @@
 					<p>구매내역</p>
 				</div>
 
-				<div class="mypage-sec" onclick="zzimList()">
+				<div class="mypage-sec" onclick="location.href='likeList.do'">
 					<div class="icon-bgc">
 						<img src="/img/icon/wish-cart.png">
 					</div>
@@ -180,11 +180,6 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-		function goodsContent() {
-
-			$('')
-
-		}
 
 		function viewGoodsContent(g_seq,apt_name){
             console.log(g_seq)
