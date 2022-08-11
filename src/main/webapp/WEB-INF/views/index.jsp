@@ -172,6 +172,7 @@
 			</div>
 		</div>
 	</section>
+	<p class="write-goods-form" onclick="location.href='viewGoodsForm.do'">+</p>
 	<!-- ================ trending product section end ================= -->
 
 	<!--  footer start -->

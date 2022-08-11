@@ -106,39 +106,51 @@
 				<!--리스트 출력 시작 시작 -->
 				<div class="cate-select">
 					<div class="choose-cate">
-						<c:forEach var="i" begin="1" end="5" step="1">
-							<button class="btn btn-sm c-cate" value="i">카테고리${i}</button>
+						<c:forEach items="${cCategory}" var="vo" step="1">
+							<button class="btn btn-sm c-cate" value="i">${vo.c_category_name}</button>
+							<input type="hidden" value="${vo.c_category_seq}">
 						</c:forEach>
 					</div>
 				</div>
-
-				<%for (int i = 0; i<=5; i++) {%>
-
-				<div class="board-sec">
-					<span class="cate">카테고리1</span> <br>
-					<div class="board-text">
-						<span class="board-nick">단추누나 </span>글내용 어쩌구저쩌구 블라블라 굿굿 졍말조아오
-						안녕하세여 아이패드 가데이터
-					</div>
-
-					<img class="board-img" src="/img/ipad.jpg">
-
-					<div class="section-line"></div>
-					<div class="like">
-						<div class="reac-div reaction">
-							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
-							<span id="cnt">0</span>
+		
+		<c:forEach items="${boardList}" var="vo" step="1">
+			<!-- 반목분 시작 -->
+					<div class="board-sec">
+						<span class="cate">${vo.c_category_seq}</span> <br>
+						<div class="board-text">
+							${vo.article_content}
 						</div>
 
-						<div class="reac-div" onclick="location.href='boardInfo.do'">
-							<img class="reac" src="/img/icon/datggle.png"> <span>댓글달기</span>
+						<c:choose>
+							<c:when test="${vo.article_file == null}">
+							</c:when>
+							
+							<c:otherwise>
+								<img class="board-img" src="/file/${vo.article_file}">
+							</c:otherwise>
+				
+						</c:choose>
+						
+							<div class="board-foot">
+								<p class="board-nick">단추누나 </p>
+								<p class="sysdate">${vo.article_date}</p>
+							</div>
+						<div class="section-line"></div>
+						<div class="like">
+							<div class="reac-div reaction">
+								<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
+								<span id="cnt">${vo.c_like}</span>
+							</div>
+
+							<div class="reac-div" onclick="location.href='boardInfo.do'">
+								<img class="reac" src="/img/icon/datggle.png"> <span>댓글달기</span>
+							</div>
 						</div>
+
+						<div class="seper-line"></div>
 					</div>
-
-					<div class="seper-line"></div>
-				</div>
-
-				<%} %>
+			<!-- 반목분 종료 -->
+				</c:forEach>
 
 
 
@@ -186,62 +198,46 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-	
-	 $(document).on('click','.c-cate',function(){
+		$(document).on('click', '.c-cate', function() {
 
-		$(".c-cate").css("background-color", "#f0f4f5") 
-         $(this).css("background-color", "#599555")
+			$(".c-cate").css("background-color", "#f0f4f5")
+			$(this).css("background-color", "#599555")
 
-     })
-     
-     
+		})
 
-     $(document).on("click" , ".reaction" , function () {
-	
-    	 
-    	 var img = $(this).children("img").attr("src")
-    	 var cnt = parseInt($(this).children("#cnt").html())
-    	 var status = "";
-    	 
-    	if(img == "/img/icon/gonggam.png") {
-    		
-	    	$(this).children("img").attr("src", "/img/icon/love-gr.png");
-	    	cnt = cnt+1
-	    	console.log($(this).children("#cnt").html(cnt))
-	    	
-	    	$.ajax({
-	    		
-	    		url : "",
-	    		type : "post",
-	    		data : {
-	    			"status" : 1,
-						// 시퀀스 보내주기	    			
-	    		}
-	    		
-	    	
-	    	})
-	    	
-	    	
-	    	
-	    	
-	    		
-    		
-    	} else {
-    		
-    		$(this).children("img").attr("src", "/img/icon/gonggam.png");
-	    	cnt = cnt-1
-	    	console.log($(this).children("#cnt").html(cnt))
-    		
-    	}
-    	
-    	
-     	
-     })
-     
-     
-	
-	
-	
+		$(document).on("click", ".reaction", function() {
+
+			var img = $(this).children("img").attr("src")
+			var cnt = parseInt($(this).children("#cnt").html())
+			var status = "";
+			console.log("시퀀스번호" + ${article_seq})
+
+			if (img == "/img/icon/gonggam.png") {
+
+				$(this).children("img").attr("src", "/img/icon/love-gr.png");
+				cnt = cnt + 1
+				console.log($(this).children("#cnt").html(cnt))
+
+				$.ajax({
+
+					url : "reaction.do",
+					type : "post",
+					data : {
+						"status" : 1,
+					// 시퀀스 보내주기	    			
+					}
+
+				})
+
+			} else {
+
+				$(this).children("img").attr("src", "/img/icon/gonggam.png");
+				cnt = cnt - 1
+				console.log($(this).children("#cnt").html(cnt))
+
+			}
+
+		})
 	</script>
 
 
