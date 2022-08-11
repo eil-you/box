@@ -96,7 +96,7 @@
 
 
 
-<img src="/img/icon/pen.png" class="write-challenge"></div>
+<img src="/img/icon/pen.png" onclick = "location.href='writeChallenge.do'" class="write-challenge"></div>
 
 	<!--  footer start -->
 	<div class="foot-bar">
