@@ -132,4 +132,10 @@ public class ViewController {
 		return "challengeList";
 		
 	}
+	
+	@RequestMapping("/writeChallenge.do")
+	public String writeChallenge() {
+		
+		return "writeChallenge";
+	}
 }
