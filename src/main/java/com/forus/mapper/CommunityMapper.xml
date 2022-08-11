@@ -6,7 +6,7 @@
 
 
 	<select id="postList" resultType="com.forus.domain.CommunityVO">
-	select c.article_seq, c.article_content, c.article_date,c.article_file, (u.user_nick) as user_id, g.c_category_name, sum(m.c_like) as c_like 
+	select c.article_seq, c.article_content, c.article_date,c.article_file, (u.user_nick) as user_id, (g.c_category_name) as c_category_seq, sum(m.c_like) as c_like 
 	from community_tb c , user_tb u, c_category_tb g, comment_tb m,(
 	        select v_machine_seq, apt_name 
 	    	from v_machine_tb 
