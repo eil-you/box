@@ -119,7 +119,7 @@ pageContext.setAttribute("newLine", "\n");
 		<div>
 		</div>
 		<div class="zzim-sec">
-			<button class="btn btn-sm goods-chat">채팅하기</button>
+			<button class="btn btn-sm goods-chat" onclick="location.href='createRoom?g_seq=${goodsInfo.g_seq}'">채팅하기</button>
 		</div>
 	</div>
 	<div class="goods-line"></div>
