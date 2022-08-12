@@ -71,6 +71,9 @@ public interface GoodsMapper {
 
 	// 카테고리 별 데이터 가져오기
 	public List<goodsListVO> gcList(String user_addr, String gc_name);
+	
+	// 채팅 룸 만들기 위한 데이터 가져오기
+	public goodsVO goodsRoom(int g_seq);
 
 
 }	

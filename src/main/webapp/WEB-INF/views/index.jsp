@@ -187,7 +187,7 @@
 			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+		<div class="foot-div" onclick="location.href='challengeList.do'">
 			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 

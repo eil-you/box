@@ -88,9 +88,12 @@
 	
 	function createRoom(){
 		$("#createRoom").click(function(){
-			var msg = {	roomName : $('#roomName').val()	};
-
-			commonAjax('/createRoom', msg, 'post', function(result){
+			//var msg = {	roomName : $('#roomName').val()	};
+			//var g_seq = {g_seq : $('#g_seq').val()};
+			var g_seq = {g_seq : 73};
+			//commonAjax('/createRoom', msg, 'post', function(result){
+			commonAjax('/createRoom', g_seq, 'post', function(result){
+	
 				createChatingRoom(result);
 			});
 
