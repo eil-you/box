@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class goodsVO {
 	private int g_seq;
 	private String gc_name;
