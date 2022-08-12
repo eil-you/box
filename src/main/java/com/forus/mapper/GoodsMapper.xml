@@ -83,6 +83,8 @@
 		select * from goods_tb where seller_id = #{user_id} and g_status in ('예약','완료')
 	</select>
 	
+	
+	
 	<!-- 구매 내역 -->
 	<select id = "goodsPurchaseList" resultType="com.forus.domain.goodsListVO">
 		select * from goods_tb where consumer_id = #{user_id}
@@ -147,6 +149,14 @@
 		group by g.g_seq
 	</select>
 	
+	<!-- 채팅을 위해 판매자 닉네임과 사진 가져오기 -->
+	<select id="goodsRoom" resultType="com.forus.domain.goodsVO">
+		select g.g_seq, g.g_name, g.g_img, (u.user_nick) as seller_nick 
+		from goods_tb g, (
+			select user_nick, user_id
+			from user_tb) as u
+		where g_seq = #{g_seq} and u.user_id = g.seller_id;
+	</select>
 	
 	
 </mapper>

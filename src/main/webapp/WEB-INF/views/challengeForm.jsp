@@ -76,22 +76,22 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">챌린지 상품등록</h4>
+			<h4 style="display: inline-block;">챌린지 인증</h4>
 		</div>
 	</nav>
 
 	<div class="panel-body add-body">
 
-		<form action="boardInsert.do" id="insertboard" method="post"
+		<form action="chalInsert.do" id="insertboard" method="post"
 			enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="col-sm-10">
 					<!-- 상품 카테고리 리스트 출력 시작 -->
-					<select class="my-select" name="c_category_seq">
-						<option>게시글의 주제를 선택해주세요</option>
-						<c:forEach items="${categoryList}" var="vo" step="1">
-							<option value="${vo.c_category_seq}"><c:out
-									value="${vo.c_category_name}" /></option>
+					<select class="my-select" name="chal_content">
+						<option>챌린지의 주제를 선택해주세요</option>
+						<c:forEach items="${challenge}" var="vo" step="1">
+							<option ><c:out
+									value="${vo.chal_content}" /></option>
 						</c:forEach>
 					</select>
 				</div>
@@ -100,14 +100,14 @@
 
 			<div class="form-group">
 				<div class="col-sm-10">
-					<textarea rows="10" placeholder="아파트 이웃에게 질문하거나 이야기를 해보세요"
-						class="form-control" name="article_content"></textarea>
+					<textarea rows="10" placeholder="챌린지 인증을 이웃에게 이야기 해보세요"
+						class="form-control" name="uc_content"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-10">
 					<div class="filebox">
-						<label for="file">📷</label> <input type="file" name="img2"
+						<label for="file">📷</label> <input type="file" name="c_img"
 							id="file" accept="image/*;capture=camera"> <input
 							class="upload-name" readonly>
 					</div>

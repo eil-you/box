@@ -1,10 +1,6 @@
 package com.forus.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,16 +8,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.forus.domain.goodsVO;
 import com.forus.domain.wishListVO;
 import com.forus.domain.cCategoryVO;
+import com.forus.domain.challengeVO;
 import com.forus.domain.gCategoryVO;
+import com.forus.mapper.ChallengeMapper;
 import com.forus.mapper.GoodsMapper;
 import com.forus.mapper.ViewMapper;
 
@@ -30,12 +24,12 @@ public class ViewController {
 	
 	@Autowired
 	ViewMapper mapper;
+	
 	@Autowired
 	GoodsMapper gMapper;
 	
-	
 	@Autowired
-	GoodsMapper gmapper;
+	ChallengeMapper cMapper;
 	
 	@RequestMapping("/")
 	public String main() {
@@ -126,16 +120,27 @@ public class ViewController {
 		return "boardForm";
 	}
 	
-	@RequestMapping("/viewChallenge.do")
-	public String viewChallenge() {
-		
-		return "challengeList";
-		
-	}
+	
+//	@RequestMapping("/viewChallenge.do")
+//	public String viewChallenge() {
+//		
+//		return "challengeList";
+//		
+//	}
+	
+	// 챌린지 인증 게시글 작성 form으로 이동
 	
 	@RequestMapping("/writeChallenge.do")
-	public String writeChallenge() {
+	public String writeChallenge(Model model) {
 		
-		return "writeChallenge";
+		List<challengeVO> vo = cMapper.challengeAll();
+		System.out.println("챌린지 "+vo);
+		model.addAttribute("challenge", vo);
+		
+		return "challengeForm";
 	}
+	
+	
+	
+	
 }
