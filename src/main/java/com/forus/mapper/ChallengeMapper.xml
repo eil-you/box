@@ -29,6 +29,15 @@
 		    from challenge_tb) as h
 		where c.user_id = u.user_id and h.chal_seq = c.chal_seq;
 	</select>
+	
+	<!-- 챌린지 인증 후 포인트 지급하기 -->
+	<update id="addPoint" >
+		update user_tb set user_point = user_point -(   
+    			select  chal_point 
+    			from challenge_tb 
+    			where chal_content = #{chal_content})
+		where user_id = #{user_id};
+	</update>
 
 
 
