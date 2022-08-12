@@ -118,9 +118,20 @@ pageContext.setAttribute("newLine", "\n");
 		
 		<div>
 		</div>
+		
+		<c:choose>
+		<c:when test="${user_id eq goodsInfo.seller_id}">
+		</c:when>
+
+		<c:otherwise>
 		<div class="zzim-sec">
 			<button class="btn btn-sm goods-chat" onclick="location.href='createRoom?g_seq=${goodsInfo.g_seq}'">채팅하기</button>
 		</div>
+		</c:otherwise>
+
+	</c:choose>
+		
+
 	</div>
 	<div class="goods-line"></div>
 	<div class="panel-body info-body">
