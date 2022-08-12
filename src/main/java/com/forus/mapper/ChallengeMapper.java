@@ -21,7 +21,7 @@ public interface ChallengeMapper {
 	public List<uChallengeVO> chalListAll();
 	
 	// 챌린지 인증 후 포인트 지급하기
-	public 
+	public int addPoint(String chal_content, String user_id);
 	
 	
 	
