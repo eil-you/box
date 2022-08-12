@@ -74,6 +74,7 @@
 	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 
 
 </head>
@@ -91,7 +92,7 @@
 
 
 	<section class="section-margin calc-60px">
-		<div class="row list_layout buypage-sec">
+		<div class="row buypage-sec">
 			<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
 
 			<div class="buy-info">
