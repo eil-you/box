@@ -116,7 +116,7 @@
 				<c:forEach items="${boardList}" var="vo" step="1">
 					<!-- 반목분 시작 -->
 					<div class="board-sec">
-						<span class="cate">${vo.c_category_name}</span> <br>
+						<span class="cate">${vo.c_category_seq}</span> <br>
 						<div class="board-text">${vo.article_content}</div>
 
 						<c:choose>
