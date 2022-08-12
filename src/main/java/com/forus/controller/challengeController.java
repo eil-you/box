@@ -77,10 +77,11 @@ public class challengeController {
 	
 	// 챌린지 listALL 보여주기
 	@RequestMapping("/challengeList.do")
-	public List<uChallengeVO> chalListAll(){
+	public String chalListAll(Model model){
 		List<uChallengeVO> list=mapper.chalListAll();
 		System.out.println(list);
-		return list;
+		model.addAttribute("list",list);
+		return "challengeList";
 	}
 	
 }

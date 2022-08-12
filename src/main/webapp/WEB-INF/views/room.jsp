@@ -93,13 +93,14 @@
 			var g_seq = {g_seq : 73};
 			//commonAjax('/createRoom', msg, 'post', function(result){
 			commonAjax('/createRoom', g_seq, 'post', function(result){
-	
+				
 				createChatingRoom(result);
 			});
 
 			$("#roomName").val("");
 		});
 	}
+		
 
 	function goRoom(number, name){
 		location.href="/moveChating?roomName="+name+"&"+"roomNumber="+number;

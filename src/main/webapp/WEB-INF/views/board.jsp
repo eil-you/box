@@ -108,7 +108,7 @@
 					<div class="choose-cate">
 						<c:forEach items="${cCategory}" var="vo" step="1">
 							<button type = "button" class="btn btn-sm c-cate"
-								onclick="choiceCategory(${vo.c_category_seq})">${vo.c_category_name}</button>
+								onclick="choiceCategory(${vo.c_category_seq})">${vo.c_category_seq}</button>
 						</c:forEach>
 					</div>
 				</div>
