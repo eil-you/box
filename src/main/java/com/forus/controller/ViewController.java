@@ -1,5 +1,6 @@
 package com.forus.controller;
 
+import java.security.PublicKey;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -140,6 +141,11 @@ public class ViewController {
 		return "challengeForm";
 	}
 	
+	@RequestMapping("/viewBoardInfo.do")
+	public String viewBoardInfo(int article_seq) {
+		
+		return"boardInfo";
+	}
 	
 	
 	

@@ -103,9 +103,6 @@ pageContext.setAttribute("newLine", "\n");
 		<img class="goback" src="/img/icon/goback.png"
 			onclick="location.href='index.do'"/ > <img class="detail-img"
 			src="file/${goodsInfo.g_img}" />
-		<div>
-			<img class="back" src="/img/icon/bk.png">
-		</div>
 	</div>
 
 
@@ -115,22 +112,22 @@ pageContext.setAttribute("newLine", "\n");
 			<p class="seller-nick">${goodsInfo.seller_nick}</p>
 			<p class="seller-apt">아파트이름</p>
 		</div>
-		
-		<div>
-		</div>
-		
+
+		<div></div>
+
 		<c:choose>
-		<c:when test="${user_id eq goodsInfo.seller_id}">
-		</c:when>
+			<c:when test="${user_id eq goodsInfo.seller_id}">
+			</c:when>
 
-		<c:otherwise>
-		<div class="zzim-sec">
-			<button class="btn btn-sm goods-chat" onclick="location.href='createRoom?g_seq=${goodsInfo.g_seq}'">채팅하기</button>
-		</div>
-		</c:otherwise>
+			<c:otherwise>
+				<div class="zzim-sec">
+					<button class="btn btn-sm goods-chat"
+						onclick="location.href='createRoom?g_seq=${goodsInfo.g_seq}'">채팅하기</button>
+				</div>
+			</c:otherwise>
 
-	</c:choose>
-		
+		</c:choose>
+
 
 	</div>
 	<div class="goods-line"></div>
@@ -154,16 +151,30 @@ pageContext.setAttribute("newLine", "\n");
 
 
 
-	<c:choose>
-		<c:when test="${user_id eq goodsInfo.seller_id}">
-		</c:when>
+		<div class="buy-div">
+		<div class="goodsinfo-foot">
+			<input type="hidden" value="${wish}" id="wishyn">
+			<c:choose>
+				<c:when test="${wish == 0}">
+					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
+				</c:when>
 
-		<c:otherwise>
-			<button class="buy-product btn btn-sm"
-				onclick="buypage(${goodsInfo.g_seq})">구매하기</button>
-		</c:otherwise>
+				<c:otherwise>
+					<img class="item-zzim" id="nozzim" src="/img/icon/star-full.png">
+				</c:otherwise>
+			</c:choose>
+			<p id="g_price">${goodsInfo.g_price}</p>
+		<c:choose>
+			<c:when test="${user_id eq goodsInfo.seller_id}">
+			</c:when>
 
-	</c:choose>
+			<c:otherwise>
+				<button class="buy-product btn btn-sm"
+					onclick="buypage(${goodsInfo.g_seq})">구매하기</button>
+			</c:otherwise>
+		</c:choose>
+		</div>
+	</div>
 	<!--  footer start -->
 	<div class="foot-bar">
 		<div class="foot-div"
@@ -173,20 +184,21 @@ pageContext.setAttribute("newLine", "\n");
 			</div>
 		</div>
 
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
+		<div class="foot-div" onclick="location.href='postList.do'">
+			<div>
+				<img alt="" src="/img/icon/commu-gr.png">
+			</div>
 		</div>
 
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+		<div class="foot-div" onclick="location.href='challengeList.do'">
 			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
+			<img alt="" src="/img/icon/message-gr.png">
 		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-			<img alt="" src="/img/icon/me-gr2.png">
+		<div class="foot-div" onclick="location.href='viewMypage.do'">
+			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
 	<!--  footer end -->

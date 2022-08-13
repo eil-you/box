@@ -141,20 +141,22 @@
 			</div>
 		</div>
 
+		<div class="foot-div" onclick="location.href='postList.do'">
+			<div>
+				<img alt="" src="/img/icon/commu-gr.png">
+			</div>
+		</div>
+
+		<div class="foot-div" onclick="location.href='challengeList.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
+		</div>
+
 		<div class="foot-div">
 			<img alt="" src="/img/icon/message-gr.png">
 		</div>
-
-		<div class="foot-div" onclick="location.href='viewGoodsForm.do'">
-			<img alt="" src="/img/icon/plus-gr.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
 		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-			<img alt="" src="/img/icon/me-gr2.png">
+			onclick="location.href='viewMypage.do'">
+			<img alt="" src="/img/icon/me-full.png">
 		</div>
 	</div>
 	<!--  footer end -->

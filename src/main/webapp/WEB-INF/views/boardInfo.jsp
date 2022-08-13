@@ -1,11 +1,8 @@
-<%@page import="com.forus.domain.uChallengeVO"%>
-<%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -70,10 +67,14 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="js/lte-ie7.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-<link href="css/list.css" rel="stylesheet">
 </head>
 
 
@@ -85,63 +86,77 @@
 	</div>
 
 	<nav class="navbar">
-		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">챌린지</h4>
-		</div>
+		<div class="navbar__logo">ㅇㄻㄹ</div>
 	</nav>
 
-		<div class="challenge-layout">
-			<c:forEach items="${list}" var="vo" step="1">
 
-				<!-- 반목분 시작 -->
-				<div class="chell-sec">
-					<div class="chell-top">
-					<span class="chell cate">${vo.chal_content}</span>
-					<p class="chell-nick">${vo.user_id}</p>
+
+	<!-- ================ trending product section start ================= -->
+	<section class="section-margin calc-60px">
+		<div class=" container-pd community-sec">
+			<div class=" list_layout">
+
+				<div class="board-sec">
+					<span class="cate">취미생활</span> <br>
+
+					<div class="board-foot">
+						<p class="board-nick" style="margin: 3% 0%;">wonjuzzang</p>
 					</div>
 
-					<img class="board-img" src="/file/${vo.uc_img}">
-					
+					<div class="board-text">취미생활 추천해줏요 운동종류면좋겠어요</div>
 
-					<div class="chell-foot">
-					<div class="board-text">${vo.uc_content}</div>
-						<!-- 기본값 분단위 -->
-						<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
-							integerOnly="true" />
+					<!-- 
 						<c:choose>
-							<c:when test="${a == 0}">
-								<p class="sysdate">${vo.uc_date}분전</p>
+							<c:when test="${vo.article_file == null}">
 							</c:when>
 
 							<c:otherwise>
-								<c:choose>
-									<c:when test="${a < 24}">
-										<p class="sysdate">${a}시간전</p>
-									</c:when>
-
-									<c:otherwise>
-										<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
-										<p class="sysdate">${b}일전</p>
-									</c:otherwise>
-								</c:choose>
+								<img class="board-img" src="/file/${vo.article_file}">
 							</c:otherwise>
-						</c:choose>
 
+						</c:choose>
+						 -->
+
+					<img class="board-img" src="/img/product/product1.png">
+
+					<div class="section-line"></div>
+					<div class="like">
+						<div class="reac-div reaction">
+							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
+							<span id="cnt">5</span>
+						</div>
+
+						<div class="reac-div" onclick="location.href='boardInfo.do'">
+							<img class="reac" src="/img/icon/datggle.png"> <span>댓글 2</span>
+						</div>
 					</div>
 
 				</div>
-				<div class="chell-sec-line"></div>
-				<!-- 반목분 종료 -->
-			</c:forEach>
+
+			<div class="comment-sec">
+				<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
+				<div class="comment">
+					<p class="board-nick">단추네 누나</p>
+					<div>주짓수 추천합니당</div>
+				</div>
+				
+				
+
+				<div class="comment">
+					<p class="board-nick">단추는 귀여워</p>
+					<div>태권도가 좋은 것 가 ㅌ아요 태권도 추천합니당</div>
+				</div>
+			</div>
 
 
-			<img src="/img/icon/pen.png"
-				onclick="location.href='writeChallenge.do'" class="write-challenge">
+			</div>
 		</div>
-
-
-
-
+	</section>
+	<!-- ================ trending product section end ================= -->
+	<div class="insert-comment col-sm-10 col-sm-10">
+		<input class="form-control comment-form" placeholder="댓글을 입력해주세요." type="text">
+		<button class="ok" onclick="location.href='insertComment.do'">√</button>
+	</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
 	<!--  footer end -->
@@ -156,7 +171,9 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<script src="js/challenge-foot.js"></script>
+	<script src="js/board-foot.js"></script>
+
+
 
 </body>
 

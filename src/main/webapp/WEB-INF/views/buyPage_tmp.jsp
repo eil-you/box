@@ -1,14 +1,10 @@
-<%@page import="com.forus.domain.uChallengeVO"%>
-<%@page import="org.springframework.ui.Model"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="utf-8">
 
@@ -42,7 +38,7 @@
 
 
 
-<title>Earthbox</title>
+<title>BRANDY</title>
 <!-- Google Font -->
 <link
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
@@ -70,15 +66,19 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="js/lte-ie7.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-<link href="css/list.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+
+
 </head>
-
-
 <body>
-
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
@@ -86,64 +86,75 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">챌린지</h4>
+			<h4 style="display: inline-block;">${buyVO.g_name} 구매하기</h4>
 		</div>
 	</nav>
 
-		<div class="challenge-layout">
-			<c:forEach items="${list}" var="vo" step="1">
 
-				<!-- 반목분 시작 -->
-				<div class="chell-sec">
-					<div class="chell-top">
-					<span class="chell cate">${vo.chal_content}</span>
-					<p class="chell-nick">${vo.user_id}</p>
-					</div>
+	<section class="section-margin calc-60px">
+		<div class="row buypage-sec">
+			<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
 
-					<img class="board-img" src="/file/${vo.uc_img}">
-					
-
-					<div class="chell-foot">
-					<div class="board-text">${vo.uc_content}</div>
-						<!-- 기본값 분단위 -->
-						<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
-							integerOnly="true" />
-						<c:choose>
-							<c:when test="${a == 0}">
-								<p class="sysdate">${vo.uc_date}분전</p>
-							</c:when>
-
-							<c:otherwise>
-								<c:choose>
-									<c:when test="${a < 24}">
-										<p class="sysdate">${a}시간전</p>
-									</c:when>
-
-									<c:otherwise>
-										<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
-										<p class="sysdate">${b}일전</p>
-									</c:otherwise>
-								</c:choose>
-							</c:otherwise>
-						</c:choose>
-
-					</div>
-
+		<div>
+				<p id="buy_name">${buyVO.g_name}</p> 
+				<p id="price">${buyVO.g_price}</p>
+			<div class="section-line"></div>
+				
+				<div class="point-info">
+				<div class="point-sec">
+					<img src="/img/icon/profile-img.png" class="point-logo">
+					<p>포인트</p>
 				</div>
-				<div class="chell-sec-line"></div>
-				<!-- 반목분 종료 -->
-			</c:forEach>
+					<span id="point">보유 ${user_point}</span>
+				</div>
 
-
-			<img src="/img/icon/pen.png"
-				onclick="location.href='writeChallenge.do'" class="write-challenge">
+			<br>
+			<button class="btn btn-sm gobuy" onclick="">결제하기</button>
 		</div>
+
+
+
+
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 	<!--  footer start -->
-	<div class="foot-bar"></div>
+	<div class="foot-bar">
+		<div class="foot-div" onclick="location.href='index.do'">
+			<div>
+				<img alt="" src="/img/icon/home-gr.png">
+			</div>
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/message-gr.png">
+		</div>
+
+		<div class="foot-div" onclick="location.href='viewChallenge.do'">
+			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
+		</div>
+
+		<div class="foot-div">
+			<img alt="" src="/img/icon/map-gr.png">
+		</div>
+		<div class="foot-div" onclick="location.href='viewMypage.do'">
+			<img alt="" src="/img/icon/me-gr2.png">
+		</div>
+	</div>
 	<!--  footer end -->
 
 	<!-- =========================
@@ -156,7 +167,34 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<script src="js/challenge-foot.js"></script>
+	<script type="text/javascript">
+	$(document).ready(changemoney)
+
+	function changemoney() {
+
+		console.log($("#price").text())
+		var price = $("#price").text().toLocaleString('ko-KR');
+		var point = $("#point").text().toLocaleString('ko-KR');
+
+
+		var cPrice = price.toString().replace(
+				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		
+		var cpoint = point.toString().replace(
+				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+
+		$("#price").text(cPrice + "원");
+		$("#point").text(cpoint + "원");
+		
+		
+		point
+	}
+
+	
+	</script>
+
+
 
 </body>
 

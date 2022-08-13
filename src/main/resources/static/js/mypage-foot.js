@@ -24,7 +24,7 @@ function loadFooter() {
 
 		<div class="foot-div" onclick="location.href='postList.do'">
 			<div>
-				<img alt="" src="/img/icon/commu-gr.png">
+				<img alt="" src="/img/icon/community-gr.png">
 			</div>
 		</div>
 

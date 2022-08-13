@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -151,7 +152,7 @@
 
 							<div class="pr-zzim">
 								<p class="price" id="price${vo.g_seq}">
-									<c:out value="${vo.g_price}" />
+								<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
 									<script type="text/javascript">
 									
 									</script>

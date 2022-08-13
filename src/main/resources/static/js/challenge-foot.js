@@ -12,7 +12,7 @@ function loadFooter() {
 
 		<div class="foot-div" onclick="location.href='postList.do'">
 			<div>
-				<img alt="" src="/img/icon/message-gr.png">
+				<img alt="" src="/img/icon/community-gr.png">
 			</div>
 		</div>
 
@@ -21,7 +21,7 @@ function loadFooter() {
 		</div>
 
 		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
+			<img alt="" src="/img/icon/message-gr.png">
 		</div>
 		<div class="foot-div" onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-gr2.png">

@@ -76,7 +76,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">어스박스 상품등록</h4>
+			<h4 style="display: inline-block;">커뮤니티 글쓰기</h4>
 		</div>
 	</nav>
 

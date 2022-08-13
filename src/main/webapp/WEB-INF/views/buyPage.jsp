@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,49 +87,50 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">${buyVO.g_name}구매하기</h4>
+			<h4 style="display: inline-block;">${buyVO.g_name} 구매하기</h4>
 		</div>
 	</nav>
 
 
-	<section class="section-margin calc-60px">
-		<div class="row buypage-sec">
-			<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
+	<div class=" buypage-sec">
+		<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
 
-			<div class="buy-info">
-				<span id="buy_name">${buyVO.g_name }</span> <span id="price">
-					${buyVO.g_price}</span>
+		<div class="buy-info">
+			<div class="buy_goods_info">
+				<p class="buy_name">${buyVO.g_name }</p>
+				<div class="buy-price-sec">
+					<p class="b-price-t">결제금액</p>
+					<p class="b-price-info">
+						<span style="font-weight: bold;"><fmt:formatNumber
+								value="${buyVO.g_price }" pattern="#,###" /></span>&nbsp원
+					</p>
+				</div>
 			</div>
-			<div class="section-line"></div>
-				
-				<div class="point-info">
-				<div class="point-sec">
-					<img src="/img/icon/profile-img.png" class="point-logo">
-					<span >포인트</span>
-				</div>
-					<span id="point">보유 ${user_point}</span>
-				</div>
 
+			<div class="point-info">
+				<p class="b-point-t">보유포인트</p>
+				<p class="b-point-info" id="canPoint">${user_point}&nbspp</p>
 
-			<br>
+				<input class="form-group form-control use-point" id="use-point"
+					placeholder="0p" type="number">
+				<button class="btn"
+					onclick="usingPoint(${buyVO.g_price},${user_point })">사용하기</button>
+			</div>
 
-			<button class="btn btn-sm gobuy" onclick="">결제하기</button>
-
-
+			<div class="final-info">
+				<p class="b-price-t">최종결제금액</p>
+				<p class="b-price-info">
+					<span id="final-price" style="font-weight: bold;"><fmt:formatNumber
+							value="${buyVO.g_price}" pattern="#,###" /></span>&nbsp원
+				</p>
+			</div>
 		</div>
-	</section>
+		<button class="btn btn-sm gobuy" onclick="">결제하기</button>
 
 
 
 
-
-
-
-
-
-
-
-
+	</div>
 
 
 
@@ -168,28 +170,43 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
-	$(document).ready(changemoney)
-
-	function changemoney() {
-
-		console.log($("#price").text())
-		var price = $("#price").text().toLocaleString('ko-KR');
-		var point = $("#point").text().toLocaleString('ko-KR');
-
-
-		var cPrice = price.toString().replace(
-				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		
-		var cpoint = point.toString().replace(
-				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-
-
-		$("#price").text(cPrice + "원");
-		$("#point").text(cpoint + "원");
+	$('#use-point').on('propertychange change keyup paste input', function() {
+		var CanPoint = parseInt($("#canPoint").html())
+	    var point =  parseInt($("#use-point").val());
+		
+		console.log("사용할포인뚜 : "+point)
+		console.log("사용가눙한 : "+CanPoint)
+		console.log("함수싫행")
+	    
+		if(point > CanPoint) {
+			
+			$("#use-point").val(CanPoint)
+			
+		}
+		
+	    });
+	
+	function usingPoint(g_price,user_point) {
 		
 		
-		point
+		
+		var price = parseInt(g_price)
+		var point = parseInt($("#use-point").val())
+		
+		console.log("가격 : "+price)
+		console.log("포인투 : "+point)
+		
+		
+		var fPrice = price-point
+		console.log(fPrice)
+		
+		 fPrice = fPrice.toString().replace(
+					/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		
+		$("#final-price").html(fPrice)
 	}
+	
 
 	
 	</script>
