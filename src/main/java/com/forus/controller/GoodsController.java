@@ -84,9 +84,21 @@ public class GoodsController {
 	
 	// 상품 한개 상세 정보 불러오기
 	@RequestMapping("/goodsInfo.do")
-	public void goodsInfo(int g_seq, String apt_name, HttpServletRequest request,HttpSession session) {
+	public void goodsInfo(int g_seq, HttpServletRequest request,HttpSession session) {
+		
+		System.out.println("상세정보 들어옴");
+		
+		System.out.println("g_seq :" +g_seq);
+		
+		String apt_name=(String)session.getAttribute("apt_name");
+		
 		// 특정 상품 정보 불러오기
 		goodsVO result =mapper.goodsInfo(g_seq);
+		
+		
+		
+		System.out.println("상세 정보 출력 " + result);
+		
 		
 		// 아이디 불러오기
 		String user_id = (String)session.getAttribute("user_id");
