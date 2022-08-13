@@ -59,6 +59,31 @@ public class CommnityController {
 		return "board";
 	}
 	
+	@RequestMapping("/myBoardList.do")
+	public String mypostList(HttpSession session, Model model) {
+		
+		
+		System.out.println("호롤롤로");
+		// 데이터 user_addr  값 가져오기
+		String user_addr = (String) session.getAttribute("user_addr");
+		
+		
+		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
+		List<CommunityVO> result = mapper.postList(user_addr);
+		System.out.println("postList"+result);
+		
+		// 게시글 카테고리 뿌려주기
+		List<cCategoryVO> cVO=vMapper.communityCategory();
+		
+		
+		
+		model.addAttribute("boardList", result);
+		
+		
+		return "myBoardList";
+	}
+	
+	
 	
 	// 게시글 등록
 	@RequestMapping("/boardInsert.do")

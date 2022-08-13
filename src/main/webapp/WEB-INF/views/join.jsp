@@ -28,7 +28,6 @@
 				<br>
 				<div class="input-div join-input">
 					<div class="i">
-						<i class="fas fa-lock"></i>
 					</div>
 					<div class="div">
 						<h5>닉네임</h5>
@@ -38,7 +37,6 @@
 
 				<div class="input-div join-input">
 					<div class="i">
-						<i class="fas fa-lock"></i>
 					</div>
 					<div class="div">
 						<h5>아이디</h5> 
@@ -49,7 +47,6 @@
 
 				<div class="input-div join-input">
 					<div class="i">
-						<i class="fas fa-lock"></i>
 					</div>
 					<div class="div">
 						<h5>비밀번호</h5>
@@ -70,7 +67,6 @@
 
 				<div class="input-div join-input">
 					<div class="i">
-						<i class="fas fa-lock"></i>
 					</div>
 					<div class="div">
 						<h5>이메일</h5>
@@ -80,7 +76,6 @@
 
 				<div class="input-div join-input">
 					<div class="i">
-						<i class="fas fa-lock"></i>
 					</div>
 					<div class="div">
 						<h5>아파트 설정하기</h5>

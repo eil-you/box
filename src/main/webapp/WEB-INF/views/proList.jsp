@@ -119,24 +119,24 @@
 						<!--리스트 출력 시작 시작 -->
 						<c:forEach items="${GoodsList}" var="vo" step="1">
 							<div class="card-product__img"
-						onclick="viewGoodsContent(${vo.g_seq})">
-						<img class="card-img" src="file/${vo.g_img}">
-						<div class="card-body">
-							<h4>
-								<c:out value="${vo.g_name}" />
-							</h4>
-							<br>
-							<div class="pr-zzim">
-								<p class="price">
-									<c:out value="${vo.g_price}" />
-								</p>
-								<div class="zzim-div" onclick="">
-									<img class="zzim" src="/img/icon/star-empty.png">
-									<p class="zzim-cnt">${vo.wish_cnt}</p>
+								onclick="viewGoodsContent(${vo.g_seq})">
+								<img class="card-img" src="file/${vo.g_img}">
+								<div class="card-body">
+									<h4>
+										<c:out value="${vo.g_name}" />
+									</h4>
+									<br>
+									<div class="pr-zzim">
+										<p class="price">
+											<c:out value="${vo.g_price}" />
+										</p>
+										<div class="zzim-div" onclick="">
+											<img class="zzim" src="/img/icon/star-empty.png">
+											<p class="zzim-cnt">${vo.wish_cnt}</p>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
 							<div class="update-sec">
 								<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
 								<button class="btn btn-sm update" type="button"
@@ -153,11 +153,9 @@
 		</section>
 		<!-- ================ trending product section end ================= -->
 
-<!--  footer start -->
-	<div class="foot-bar">
-		
-	</div>
-	<!--  footer end -->
+		<!--  footer start -->
+		<div class="foot-bar"></div>
+		<!--  footer end -->
 
 		<!-- =========================
      SCRIPTS 
@@ -169,15 +167,16 @@
 		<script src="js/owl.carousel.js"></script>
 		<script src="js/wow.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/mypage.js"></script>
 		<script src="/js/mypage-foot.js"></script>
+		<script src="js/mypage.js"></script>
 		<script type="text/javascript">
-		$(document).ready(checkNull)
+$(document).ready(checkNull)
 		
+		
+		
+		function checkNull() {
 		
 		var GoodsList = ${GoodsList};
-		function checkNull() {
-
 			if(GoodsList.length == 0) {
 				
 				list = `<div class="empty-list">

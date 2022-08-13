@@ -248,6 +248,7 @@ public class GoodsController {
 	@RequestMapping("/goodsBuyList.do")
 	public String goodsPurchaseList(String user_id, Model model){
 		List<goodsListVO> list = mapper.goodsPurchaseList(user_id);
+		System.out.println(list);
 		model.addAttribute("GoodsList", list); 
 		return "buyList";
 	}

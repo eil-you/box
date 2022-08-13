@@ -85,8 +85,13 @@
 		<div id="status">&nbsp;</div>
 	</div>
 
-	<nav class="navbar">
-		<div class="navbar__logo">ㅇㄻㄹ</div>
+	<nav class="navbar" style="height: 57.8px">
+		<div class="navbar__logo" >
+	<img class="goback" src="/img/icon/backk.png"
+			onclick="location.href='index.do'"/ >
+	<img  class="gohomee" src="/img/icon/homee.png"
+	onclick="location.href='challengeList.do'"/	>
+		</div>
 	</nav>
 
 
@@ -100,10 +105,10 @@
 					<span class="cate">취미생활</span> <br>
 
 					<div class="board-foot">
-						<p class="board-nick" style="margin: 3% 0%;">wonjuzzang</p>
+						<p class="board-nick" style="margin: 3% 0%;">dd</p>
 					</div>
 
-					<div class="board-text">취미생활 추천해줏요 운동종류면좋겠어요</div>
+					<div class="board-text">저랑 같이 운동하실분 계신가요?! 퇴근하고 같이 할 운동 찾아봐요!</div>
 
 					<!-- 
 						<c:choose>
@@ -117,19 +122,20 @@
 						</c:choose>
 						 -->
 
-					<img class="board-img" src="/img/product/product1.png">
+					 <img class="board-img" src="/file/zzanggu.jpg">
 
 					<div class="section-line"></div>
 					<div class="like">
 						<div class="reac-div reaction">
 							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
-							<span id="cnt">5</span>
+							<span id="cnt">0</span>
 						</div>
 
 						<div class="reac-div" onclick="location.href='boardInfo.do'">
 							<img class="reac" src="/img/icon/datggle.png"> <span>댓글 2</span>
 						</div>
 					</div>
+					<div class="section-line"></div>
 
 				</div>
 
@@ -137,14 +143,14 @@
 				<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
 				<div class="comment">
 					<p class="board-nick">단추네 누나</p>
-					<div>주짓수 추천합니당</div>
+					<div>저요!! 주짓수 어떠신가요??ㅎㅎ</div>
 				</div>
 				
 				
 
 				<div class="comment">
 					<p class="board-nick">단추는 귀여워</p>
-					<div>태권도가 좋은 것 가 ㅌ아요 태권도 추천합니당</div>
+					<div>태권도가 좋은 것 같아요 태권도 추천합니당</div>
 				</div>
 			</div>
 

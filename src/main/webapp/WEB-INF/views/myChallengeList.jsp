@@ -1,9 +1,11 @@
-<%@page import="java.util.Random"%>
+<%@page import="com.forus.domain.uChallengeVO"%>
+<%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -68,15 +70,10 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="js/lte-ie7.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-<link href="css/mypage.css" rel="stylesheet">
+<link href="css/list.css" rel="stylesheet">
 </head>
 
 
@@ -89,80 +86,74 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">마이페이지</h4>
+			<h4 style="display: inline-block;">챌린지</h4>
 		</div>
 	</nav>
 
-	<!-- ================ trending product section start ================= -->
-	<section class="section-margin calc-60px">
-		<div class="container container-pd container-my">
 
-			<div class="profile">
+	<div class="challenge-layout">
+		<c:forEach items="${list}" var="vo" step="1">
+			<c:choose>
+				<c:when test="${user_id eq vo.user_id }">
+					<!-- 반목분 시작 -->
+					<div class="chell-sec">
+						<div class="chell-top">
+							<span class="chell cate">${vo.chal_content}</span>
+							<p class="chell-nick">${vo.user_id}</p>
+						</div>
 
-				<img class="mypage-img" src="#">
-				<div>
-					<p class="my-nick">${user_id}</p>
-					<p class="my-apt">${apt_name}</p>
-				</div>
-				<div>
-					<img class="back" src="/img/icon/bk.png">
-				</div>
-			</div>
+						<img class="chall-img" src="/file/${vo.uc_img}">
 
-			<div class="mypage-menu-sec">
-				<div class="mypage-sec" onclick="location.href='proList.do?user_id=${user_id}'">
-					<div class="icon-bgc">
-						<img src="/img/icon/sell.png">
+
+						<div class="chell-foot">
+							<div class="board-text">${vo.uc_content}</div>
+							<!-- 기본값 분단위 -->
+							<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
+								integerOnly="true" />
+							<c:choose>
+								<c:when test="${a == 0}">
+									<p class="sysdate">${vo.uc_date}분전</p>
+								</c:when>
+
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${a < 24}">
+											<p class="sysdate">${a}시간전</p>
+										</c:when>
+
+										<c:otherwise>
+											<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
+											<p class="sysdate">${b}일전</p>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+
+						</div>
+						<div class="update-sec">
+							<button class="btn btn-sm update-c" type="button"
+								onclick="updateGoods()">수정하기</button>
+							<button class="btn btn-sm update-c"
+								onclick="deletechall(${vo.uc_seq})">삭제하기</button>
+						</div>
 					</div>
-					<p>판매내역</p>
-				</div>
+					<div class="chell-sec-line"></div>
+					<!-- 반목분 종료 -->
+				</c:when>
 
-				<div class="mypage-sec" onclick="location.href='goodsBuyList.do?user_id=${user_id}'">
-					<div class="icon-bgc">
-						<img src="img/icon/basket.png">
-					</div>
-					<p>구매내역</p>
-				</div>
+			</c:choose>
+		</c:forEach>
 
-				<div class="mypage-sec" onclick="location.href='likeList.do'">
-					<div class="icon-bgc">
-						<img src="/img/icon/star.png">
-					</div>
-					<p>찜목록</p>
-				</div>
-			</div>
-		</div>
 
-		<div class="mypage-div"></div>
-		
-			<div class="my-list">
-		
-				<div class="my-mid">
-					<p onclick='location.href="myChallengeList.do"'><img class = "mypage-icon"  src="/img/icon/unearth.png">&nbsp 내가 작성한 챌린지 글</p>
-				</div>
-				<div class="my-mid">
-					<p onclick='location.href="myBoardList.do"'><img class = "mypage-icon" src="/img/icon/community-gr.png"> &nbsp내가 작성한 커뮤니티 글</p>
-				</div>
-				
-			</div>
-			
-			<div class="mypage-div"></div>	
-			<div class="my-mid">
-				<p><img class = "mypage-icon" src="/img/icon/qna.png"> &nbsp Q & A</p>
-			</div>
-			
-			<div class="my-mid">
-				<p><img class = "mypage-icon" src="/img/icon/mic.png"> &nbsp공지사항</p>
-			</div>
-
-	</section>
-	<!-- ================ trending product section end ================= -->
-
-<!--  footer start -->
-	<div class="foot-bar">
 	</div>
-	<!--  footer end -->
 
+
+
+
+
+	<!--  footer start -->
+	<div class="foot-bar"></div>
+	<!--  footer end -->
 
 	<!-- =========================
      SCRIPTS 
@@ -174,9 +165,30 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<script src="/js/mypage-foot.js"></script>
+	<script src="js/challenge-foot.js"></script>
+	<script type="text/javascript">
+	function deletchall(uc_seq) {
 
+		$.ajax({
 
+			url: "challengeDelete.do",
+			type: "post",
+			data: {
+				"uc_seq": uc_seq
+			},
+			success: function () {
+				window.location.reload();
+			},
+
+			error: function() {
+				alert("실패")
+			}
+		})
+
+	}
+	
+	
+	</script>
 
 </body>
 

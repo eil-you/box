@@ -530,11 +530,35 @@
 	border-radius: 10px;
 }
 
+.update-c{
+		width: 44.4%;
+	border-radius: 10px;
+}
+
+.my-b-u {
+	width:100%;
+	text-align: center;
+	padding-bottom: 10px;
+	
+}
+
 .goback {
 	position: absolute;
 	top: 10px;
 	left: 10px;
 	width: 30px;
+}
+
+.gohomee {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+}
+
+.gohomee:hover {
+	cursor: pointer;
+	
 }
 
 .goback:hover {
@@ -634,7 +658,7 @@
 }
 
 .use-point {
-	width: 81.8%;
+	width: 80.8%;
 	display: inline-table;
 }
 
@@ -730,7 +754,7 @@
 }
 
 .board-text {
-	padding: 2% 0%;
+	padding: 3% 0% 5%;
 	font-size: 16px;
 }
 
@@ -991,8 +1015,8 @@ input:-internal-autofill-selected {
 }
 
 .comment-sec {
-	margin-bottom: 70px;
-}
+    padding: 0% 3% 70px;
+	}
 
 .comment {
 	padding: 3% 0%;
@@ -1024,3 +1048,4 @@ input:-internal-autofill-selected {
 	height: 45px;
 	margin-bottom: 2%;
 }
+

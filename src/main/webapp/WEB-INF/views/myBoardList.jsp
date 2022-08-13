@@ -1,10 +1,11 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 
@@ -38,7 +39,7 @@
 
 
 
-<title>BRANDY</title>
+<title>Earthbox</title>
 <!-- Google Font -->
 <link
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
@@ -74,87 +75,81 @@
 	<![endif]-->
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-
-
 </head>
+
+
 <body>
+
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
 
 	<nav class="navbar">
-		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">${buyVO.g_name} 구매하기</h4>
+		<div class="navbar__logo">
+			<div class="dropdown">
+				<a class="menu_drop" href="">☰</a>
+				<div class="dropdown-content">
+					<a style="color: black !important;" href="">아파트 설정하기</a>
+				</div>
+				<span class="apt_name">${apt_name}</span>
+			</div>
 		</div>
 	</nav>
 
 
+
+	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
-		<div class="row buypage-sec">
-			<img class="buy-img" src="/file/${buyVO.g_img}"> <br>
+		<div class=" container-pd community-sec">
+			<div class=" list_layout">
+				<!--리스트 출력 시작 시작 -->
+				<c:forEach items="${boardList}" var="vo" step="1">
+					<c:if test="${vo.user_id eq user_id }">
+						<!-- 반목분 시작 -->
+						<div class="board-sec"
+							onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq }'">
+							<span class="cate">${vo.c_category_seq}</span> <br>
+							<div class="board-text">${vo.article_content}</div>
 
-		<div>
-				<p id="buy_name">${buyVO.g_name}</p> 
-				<p id="price">${buyVO.g_price}</p>
-			<div class="section-line"></div>
-				
-				<div class="point-info">
-				<div class="point-sec">
-					<img src="/img/icon/profile-img.png" class="point-logo">
-					<p>포인트</p>
-				</div>
-					<span id="point">보유 ${user_point}</span>
-				</div>
+							<c:choose>
+								<c:when test="${vo.article_file == null}">
+								</c:when>
 
-			<br>
-			<button class="btn btn-sm gobuy" onclick="">결제하기</button>
-		</div>
+								<c:otherwise>
+									<img class="board-img" src="/file/${vo.article_file}">
+								</c:otherwise>
 
+							</c:choose>
 
+							<div class="board-foot">
+								<p class="board-nick">${vo.user_id}</p>
+								<p class="sysdate">${vo.article_date}</p>
+							</div>
+							<div class="my-b-u">
+							<button class="btn btn-sm update-c" type="button"
+								onclick="updateGoods()">수정하기</button>
+							<button class="btn btn-sm update-c"
+								onclick="deleteboard(${vo.article_seq})">삭제하기</button>
+							</div>
 
-
-		</div>
-	</section>
-
-
-
-
-
-
+							<div class="seper-line"></div>
+						</div>
+						<!-- 반목분 종료 -->
+					</c:if>
+				</c:forEach>
 
 
+				<img class="write-board" onclick="location.href='viewBoardForm.do'"
+					src="/img/icon/pen.png">
 
-
-
-
-
-
-
-	<!--  footer start -->
-	<div class="foot-bar">
-		<div class="foot-div" onclick="location.href='index.do'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
 			</div>
 		</div>
+	</section>
+	<!-- ================ trending product section end ================= -->
 
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div" onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-gr2.png">
-		</div>
-	</div>
+	<!--  footer start -->
+	<div class="foot-bar"></div>
 	<!--  footer end -->
 
 	<!-- =========================
@@ -167,33 +162,30 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<script type="text/javascript">
-	$(document).ready(changemoney)
+	<script src="js/board-foot.js"></script>
+<script type="text/javascript">
 
-	function changemoney() {
+function deletboard(article_seq) {
 
-		console.log($("#price").text())
-		var price = $("#price").text().toLocaleString('ko-KR');
-		var point = $("#point").text().toLocaleString('ko-KR');
+	$.ajax({
 
+		url: "challengeDelete.do",
+		type: "post",
+		data: {
+			"article_seq": article_seq
+		},
+		success: function () {
+			window.location.reload();
+		},
 
-		var cPrice = price.toString().replace(
-				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-		
-		var cpoint = point.toString().replace(
-				/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		error: function() {
+			alert("실패")
+		}
+	})
 
+}
 
-		$("#price").text(cPrice + "원");
-		$("#point").text(cpoint + "원");
-		
-		
-		point
-	}
-
-	
-	</script>
-
+</script>
 
 
 </body>
