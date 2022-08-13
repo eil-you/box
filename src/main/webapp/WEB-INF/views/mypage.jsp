@@ -134,39 +134,11 @@
 
 		<div class="mypage-div"></div>
 
-
-
-
-
 	</section>
 	<!-- ================ trending product section end ================= -->
 
 <!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/message-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
-		</div>
 	</div>
 	<!--  footer end -->
 
@@ -181,47 +153,7 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
-	<script type="text/javascript">
-	
-		$(document).ready(changeImg)
-	function changeImg() {
-			var rn = Math.ceil(Math.random()*4)
-			console.log(rn)
-			
-			
-			
-			$(".mypage-img").attr("src","/img/profile/user"+rn+".jpg")
-			
-	}
-
-		function viewGoodsContent(g_seq,apt_name){
-            console.log(g_seq)
-            console.log(apt_name)
-			
-            var f = document.createElement("form");
-            var obj1 = document.createElement('input');
-            obj1.setAttribute('type','hidden')
-            obj1.setAttribute('name','g_seq')
-            obj1.setAttribute('value', g_seq )
-            f.appendChild(obj1);
-            
-            obj2 = document.createElement('input');
-            obj2.setAttribute('type','hidden')
-            obj2.setAttribute('name','apt_name')
-            obj2.setAttribute('value', apt_name )
-            console.log(obj2)
-            f.appendChild(obj2);
-            
-            f.setAttribute('method','post');
-            f.setAttribute('action','goodsInfo.do')
-            document.body.appendChild(f);
-		    f.submit();
-			}
-		
-		
-		
-		
-	</script>
+	<script src="/js/mypage-foot.js"></script>
 
 
 

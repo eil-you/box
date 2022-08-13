@@ -1,8 +1,11 @@
+<%@page import="com.forus.domain.uChallengeVO"%>
+<%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -76,7 +79,7 @@
 
 <body>
 
-		<!-- Preloader -->
+	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
 	</div>
@@ -87,44 +90,60 @@
 		</div>
 	</nav>
 
+	<section class="section-margin calc-60px">
+		<div class="challenge-layout">
+			<c:forEach items="${list}" var="vo" step="1">
+
+				<!-- 반목분 시작 -->
+				<div class="board-sec">
+					<span class="cate">${vo.chal_content}</span> <br>
+					<p class="board-nick">${vo.user_id}</p>
+
+					<img class="board-img" src="/file/${vo.uc_img}">
+					<div class="board-text">${vo.uc_content}</div>
+
+					<div class="board-foot">
+						<!-- 기본값 분단위 -->
+						<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
+							integerOnly="true" />
+						<c:choose>
+							<c:when test="${a == 0}">
+								<p class="sysdate">${vo.uc_date}분전</p>
+							</c:when>
+
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${a < 24}">
+										<p class="sysdate">${a}시간전</p>
+									</c:when>
+
+									<c:otherwise>
+										<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
+										<p class="sysdate">${b}일전</p>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+
+					</div>
+					<div class="section-line"></div>
+
+					<div class="seper-line"></div>
+				</div>
+				<!-- 반목분 종료 -->
+			</c:forEach>
+
+
+			<img src="/img/icon/pen.png"
+				onclick="location.href='writeChallenge.do'" class="write-challenge">
+		</div>
+	</section>
 
 
 
-
-
-
-
-
-
-<img src="/img/icon/pen.png" onclick = "location.href='writeChallenge.do'" class="write-challenge"></div>
 
 	<!--  footer start -->
-	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/message-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
-			<img class=" main-btn" alt="" src="/img/icon/earth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-gr2.png">
-		</div>
-	</div>
+	<div class="foot-bar"></div>
 	<!--  footer end -->
 
 	<!-- =========================
@@ -137,76 +156,16 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/challenge-foot.js"></script>
+
 	<script type="text/javascript">
-
-		function viewGoodsContent(g_seq,apt_name){
-            console.log(g_seq)
-            console.log(apt_name)
-			
-            var f = document.createElement("form");
-            var obj1 = document.createElement('input');
-            obj1.setAttribute('type','hidden')
-            obj1.setAttribute('name','g_seq')
-            obj1.setAttribute('value', g_seq )
-            f.appendChild(obj1);
-            
-            obj2 = document.createElement('input');
-            obj2.setAttribute('type','hidden')
-            obj2.setAttribute('name','apt_name')
-            obj2.setAttribute('value', apt_name )
-            f.appendChild(obj2);
-            
-            f.setAttribute('method','post');
-            f.setAttribute('action','goodsInfo.do')
-            document.body.appendChild(f);
-		    f.submit();
-			}
+	function changedate() {
 		
-			function zzim() {
-				
-				console.log("찜~")
-				
-			}
-
-			function sidebar() {
-				
-				console.log()
-				
-					//$("#navbar").css("display","block")
-					$("#navbar").css("width","100%")
-				
-				
-				
-			}
-			
-			function closeside() {
-						
-						//$("#navbar").css("display","none")
-						$("#navbar").css("width","0%")
-				
-				
-			}
-			
-			$(document).ready(changemoney);
-			
-			function changemoney(g_seq) {
-			
-				console.log($("#price${vo.g_seq}").text());
-
-				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
-				console.log(price)
-				var cPrice = price.toString().replace(
-						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-				console.log(cPrice)
-
-				$("#price${vo.g_seq}").text(cPrice +"원" );
-			}
-			
-			</script>
+		$(".sysdate")
 
 
-
-
+							}
+							</script>
 </body>
 
 </html>

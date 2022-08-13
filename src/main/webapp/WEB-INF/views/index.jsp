@@ -173,32 +173,7 @@
 	<!-- ================ trending product section end ================= -->
 
 	<!--  footer start -->
-	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
-			<div>
-				<img alt="" src="/img/icon/home-full.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/message-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='challengeList.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do?user_id=${user_id}&user_addr=${user_addr}'">
-			<img alt="" src="/img/icon/me-gr2.png">
-		</div>
-	</div>
+	<div class="foot-bar"></div>
 	<!--  footer end -->
 
 	<!-- =========================
@@ -211,143 +186,88 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/main-foot.js"></script>
 	<script type="text/javascript">
-
-		function viewGoodsContent(g_seq,apt_name){
-			
-            var f = document.createElement("form");
-            var obj1 = document.createElement('input');
-            obj1.setAttribute('type','hidden')
-            obj1.setAttribute('name','g_seq')
-            obj1.setAttribute('value', g_seq )
-            f.appendChild(obj1);
-            
-            obj2 = document.createElement('input');
-            obj2.setAttribute('type','hidden')
-            obj2.setAttribute('name','apt_name')
-            obj2.setAttribute('value', apt_name )
-            f.appendChild(obj2);
-            
-            f.setAttribute('method','post');
-            f.setAttribute('action','goodsInfo.do')
-            document.body.appendChild(f);
-		    f.submit();
-			}
 	
-
-			function sidebar() {
-				
-				
-					//$("#navbar").css("display","block")
-					$("#navbar").css("width","100%")
-					$(".write-goods-form").css("display","none");
-					
+	function good(gc_name) {
+		
+		$.ajax({
+			
+			url : "gcList.do",
+			type : "post",
+			data : {
+				"gc_name" : gc_name
+			},
+			success : clist,
+			error : function () {
+				console.log("슬패,,")
 			}
 			
-			function closeside() {
-						
-						//$("#navbar").css("display","none")
-						$("#navbar").css("width","0%")
-						$(".write-goods-form").css("display","block");
-				
-				
-			}
-			
-			$(document).ready(changemoney);
-			
-			function changemoney(g_seq) {
-			
-				console.log($("#price${vo.g_seq}").text());
+		})
+		
+	}
+	
+	
+	function clist(data) {
+		$("#navbar").css("width","0%")
+		$(".write-goods-form").css("display","block");
+		
+		console.log(data)
+		$(".list_layout").html("");
 
-				var price = $("#price${vo.g_seq}").text().toLocaleString('ko-KR');
-				console.log(price)
-				var cPrice = price.toString().replace(
-						/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-				console.log(cPrice)
+		var list = "";
 
-				$("#price${vo.g_seq}").text(cPrice +"원" );
-			}
+		if (data.length == 0) {
 			
-			function good(gc_name) {
-				
-				$.ajax({
-					
-					url : "gcList.do",
-					type : "post",
-					data : {
-						"gc_name" : gc_name
-					},
-					success : list,
-					error : function () {
-						console.log("슬패,,")
-					}
-				
-				
-				
-				
-				})
-				
-			}
+			$(".empty-list").html("")
 			
+			list = ` <div class="empty-list">
+						<p>판매중인 제품이 없어요.</p>
+					</div>`
 			
-			function list(data) {
-				$("#navbar").css("width","0%")
-				$(".write-goods-form").css("display","block");
-				
-				console.log(data)
-				$(".list_layout").html("");
+			$(".navbar").after(list);
+			$("body").css("background-color", "#4c4c4c1c")
 
-				var list = "";
+		} else {
 
-				if (data.length == 0) {
-					
-					$(".empty-list").html("")
-					
-					list = ` <div class="empty-list">
-								<p>판매중인 제품이 없어요.</p>
-							</div>`
-					
-					$(".navbar").after(list);
-					$("body").css("background-color", "#4c4c4c1c")
-
-				} else {
-
-					$("body").css("background-color", "white")
-					$(".empty-list").html("")
-					
-					for (let i = 0; i < data.length; i++) {
-						var vo = data[i]
-						console.log(vo.g_name)
-						list = `<div id="product-list">
-										<div class="card-product__img"
-											onclick="viewGoodsContent(${vo.g_seq})">
-											<img class="card-img" src="file/\${vo.g_img}">
-											<div class="card-body">
-												<h4>
-													\${vo.g_name}
-												</h4>
-												<br>
-												<p>${apt_name}</p>
-												<div class="pr-zzim">
-													<p class="price">
-														\${vo.g_price}
-													</p>
-													<div class="zzim-div" onclick="">
-														<img class="zzim" src="/img/icon/star-empty.png">
-														<p class="zzim-cnt">\${vo.wish_cnt}</p>
-													</div>
-												</div>
+			$("body").css("background-color", "white")
+			$(".empty-list").html("")
+			
+			for (let i = 0; i < data.length; i++) {
+				var vo = data[i]
+				console.log(vo.g_name)
+				list = `<div id="product-list">
+								<div class="card-product__img"
+									onclick="viewGoodsContent(${vo.g_seq})">
+									<img class="card-img" src="file/\${vo.g_img}">
+									<div class="card-body">
+										<h4>
+											\${vo.g_name}
+										</h4>
+										<br>
+										<p>${apt_name}</p>
+										<div class="pr-zzim">
+											<p class="price">
+												\${vo.g_price}
+											</p>
+											<div class="zzim-div" onclick="">
+												<img class="zzim" src="/img/icon/star-empty.png">
+												<p class="zzim-cnt">\${vo.wish_cnt}</p>
+											</div>
 										</div>
-									</div>
-										<div class="goods-line"></div>`;
-						$(".list_layout").append(list);
-
-					}
-				}
+								</div>
+							</div>
+								<div class="goods-line"></div>`;
+				$(".list_layout").append(list);
 
 			}
+		}
 
-			</script>
+	}
+	</script>
+
+
+
 
 
 

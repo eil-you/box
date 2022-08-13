@@ -69,7 +69,7 @@ public class challengeController {
         
  
 		
-    	return "goodsResult";
+    	return "redirect:/challengeList.do";
 		}
 		return "notPage";
 

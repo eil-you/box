@@ -129,30 +129,7 @@
 	<!-- ================ trending product section end ================= -->
 <!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
 
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/message-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='viewChallenge.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/map-gr.png">
-		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
-		</div>
 	</div>
 	<!--  footer end -->
 
@@ -166,6 +143,7 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script src="/js/mypage-foot.js"></script>
 	<script type="text/javascript">
 
 		$(document).ready(checkNull)	
