@@ -27,8 +27,8 @@ public class chatController {
 	
 	//List<Room> roomList = new ArrayList<Room>();
 	List<chatRoomVO> roomList = new ArrayList<chatRoomVO>();
-	
 	static int roomNumber = 0;
+
 	
 	@Autowired
 	GoodsMapper gMapper;
@@ -61,7 +61,7 @@ public class chatController {
 	 */
 	// g_seq 번호 가져오기
 	@RequestMapping("/createRoom")
-	public @ResponseBody String createRoom(@RequestParam HashMap<Object, Object> params, HttpSession session){
+	public String createRoom(@RequestParam HashMap<Object, Object> params, HttpSession session){
 		//String roomName = (String) params.get("roomName");
 		String user_id = (String)session.getAttribute("user_id");
 		System.out.println("user_id : " + user_id);
@@ -97,7 +97,10 @@ public class chatController {
 		}
 		//return roomList;
 //		/moveChating?roomName="+name+"&"+"roomNumber="+number
-		return "redirct:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq();
+		System.out.println("redirect:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq());
+		
+		return "redirect:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq();
+		//return "redirect:/moveChating";
 	}
 	
 //	/**
@@ -116,9 +119,11 @@ public class chatController {
 	 */
 	@RequestMapping("/moveChating")
 	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
+		
+		System.out.println("채팅방 입장");
 		ModelAndView mv = new ModelAndView();
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
-		
+		System.out.println(roomNumber);
 		List<chatRoomVO> new_list = roomList.stream().filter(o->o.getCr_seq()==roomNumber).collect(Collectors.toList());
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
@@ -127,6 +132,7 @@ public class chatController {
 		}else {
 			mv.setViewName("room");
 		}
+		System.out.println("mv : " + mv);
 		return mv;
 	}
 }
