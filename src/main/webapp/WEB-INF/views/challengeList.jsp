@@ -100,7 +100,7 @@
 					<p class="chell-nick">${vo.user_id}</p>
 					</div>
 
-					<img class="board-img" src="/file/${vo.uc_img}">
+					<img class="chall-img" src="/file/${vo.uc_img}">
 					
 
 					<div class="chell-foot">

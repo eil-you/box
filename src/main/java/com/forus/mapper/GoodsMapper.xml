@@ -104,7 +104,7 @@
 	
 	<!--  제품 구매 -->
 	<update id="goodsCosumerUpdate" parameterType="com.forus.domain.goodsPuchaseVO">
-		update goods_tb set g_status = '구매', consumer_id = #{user_id} where g_seq = #{g_seq}
+		update goods_tb set g_status = '구매', consumer_id = #{consumer_id} where g_seq = #{g_seq}
 	</update>
 	
 	<!-- g_locationVO 불러오기 -->

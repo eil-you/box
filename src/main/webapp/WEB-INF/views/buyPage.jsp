@@ -97,7 +97,7 @@
 
 		<div class="buy-info">
 			<div class="buy_goods_info">
-				<p class="buy_name">${buyVO.g_name }</p>
+				<p class="buy_name">${buyVO.g_name}</p>
 				<div class="buy-price-sec">
 					<p class="b-price-t">결제금액</p>
 					<p class="b-price-info">
@@ -114,7 +114,7 @@
 				<input class="form-group form-control use-point" id="use-point"
 					placeholder="0p" type="number">
 				<button class="btn"
-					onclick="usingPoint(${buyVO.g_price},${user_point })">사용하기</button>
+					onclick="usingPoint(${buyVO.g_price},${user_point})">사용하기</button>
 			</div>
 
 			<div class="final-info">
@@ -125,7 +125,7 @@
 				</p>
 			</div>
 		</div>
-		<button class="btn btn-sm gobuy" onclick="">결제하기</button>
+		<button class="btn btn-sm gobuy" onclick="goodsPurchase(${buyVO.g_seq},'${user_id }')">결제하기</button>
 
 
 
@@ -189,10 +189,9 @@
 	
 	function usingPoint(g_price,user_point) {
 		
-		
-		
 		var price = parseInt(g_price)
 		var point = parseInt($("#use-point").val())
+		console.log()
 		
 		console.log("가격 : "+price)
 		console.log("포인투 : "+point)
@@ -205,8 +204,45 @@
 					/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		
 		$("#final-price").html(fPrice)
+		
 	}
 	
+	function goodsPurchase(g_seq,user_id) {
+		
+		var user_point = parseInt($("#use-point").val())
+		
+		// nan값 처리
+		if (isNaN(user_point)) {
+			user_point = 0;
+		}
+		console.log("뽀인뚜" +user_point)
+		console.log(g_seq)
+		
+		var f = document.createElement("form");
+            var obj1 = document.createElement('input');
+            obj1.setAttribute('type','hidden')
+            obj1.setAttribute('name','g_seq')
+            obj1.setAttribute('value', g_seq )
+            f.appendChild(obj1);
+            
+            var obj2 = document.createElement('input');
+            obj2.setAttribute('type','hidden')
+            obj2.setAttribute('name','user_point')
+            obj2.setAttribute('value', user_point )
+            f.appendChild(obj2);
+            
+            var obj3 = document.createElement('input');
+            obj3.setAttribute('type','hidden')
+            obj3.setAttribute('name','user_id')
+            obj3.setAttribute('value', user_id )
+            f.appendChild(obj3);
+            
+            f.setAttribute('method','post');
+            f.setAttribute('action','goodsPurchase.do')
+            document.body.appendChild(f);
+		    f.submit();
+		
+	}
 
 	
 	</script>

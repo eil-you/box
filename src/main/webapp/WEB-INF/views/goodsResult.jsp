@@ -91,13 +91,24 @@
 	<section class="section-margin calc-60px">
 		<div class=" container-pd">
 			<div class="row list_layout">
-				<div class="buypage-sec">
+				<div class="result-sec">
+					<c:choose>
+						<c:when test="${goodsResult.status eq '제품 구매'}">
+							<h3 class="buy-title">정상적으로 상품이 구매되었습니다.</h3>
+							<p>하단 정보 확인 후 상품을 가져가세요!</p>						
+						</c:when>
+						<c:otherwise>
 					<h3 class="buy-title">상품 등록이 완료되었습니다.</h3>
-					<br>
 					<p>24시간 내에 지정된 어스박스 내에 상품을 넣어주세요!</p>
+						</c:otherwise>
+					</c:choose>
+					<br>
+					
+					
+					
 					<br> <img class="buypage-img" src="/img/icon/profile-img.png">
 
-					<h3 class="buy-title">등록된 상품 정보</h3><br>
+					<h3 class="buy-title">상품 정보</h3><br>
 
 					<table class="buyinfo table">
 		
@@ -134,30 +145,6 @@
 
 	<!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/commu-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='challengeList.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
-		</div>
-		<div class="foot-div"
-			onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
-		</div>
 	</div>
 	<!--  footer end -->
 
@@ -171,6 +158,8 @@
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/goodinfo-foot.js"></script>
+	
 
 
 

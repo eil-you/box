@@ -202,10 +202,12 @@ public class GoodsController {
 
 	// 상품 구입 
 	@RequestMapping("/goodsPurchase.do")
-	public String goodsPurchase(goodsPuchaseVO vo, int user_point, Model model) {
+	public String goodsPurchase(String user_id , goodsPuchaseVO vo, int user_point, Model model) {
 		
-		
+		System.out.println("유저포인트 : " + user_point);
+		System.out.println(user_id);
 		mapper.goodsCosumerUpdate(vo);
+		vo.setConsumer_id(user_id);
 		
 		userInfoVO infoVO = new userInfoVO();
 		infoVO.setUser_id(vo.getConsumer_id());
@@ -221,7 +223,7 @@ public class GoodsController {
 		
 		model.addAttribute("goodsResult", gVO);
 		
-		return "goodsResult";
+		return"goodsResult";
 	}
 	
 	

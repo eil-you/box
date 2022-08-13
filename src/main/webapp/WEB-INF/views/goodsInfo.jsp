@@ -110,7 +110,7 @@ pageContext.setAttribute("newLine", "\n");
 		<img class="seller-img" src="/img/profile/user1.jpg">
 		<div class="seller-info">
 			<p class="seller-nick">${goodsInfo.seller_nick}</p>
-			<p class="seller-apt">아파트이름</p>
+			<p class="seller-apt">한국 아델리움</p>
 		</div>
 
 		<div></div>
@@ -177,29 +177,7 @@ pageContext.setAttribute("newLine", "\n");
 	</div>
 	<!--  footer start -->
 	<div class="foot-bar">
-		<div class="foot-div"
-			onclick="location.href='index.do?user_addr=${user_addr}'">
-			<div>
-				<img alt="" src="/img/icon/home-gr.png">
-			</div>
-		</div>
 
-		<div class="foot-div" onclick="location.href='postList.do'">
-			<div>
-				<img alt="" src="/img/icon/commu-gr.png">
-			</div>
-		</div>
-
-		<div class="foot-div" onclick="location.href='challengeList.do'">
-			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
-		</div>
-
-		<div class="foot-div">
-			<img alt="" src="/img/icon/message-gr.png">
-		</div>
-		<div class="foot-div" onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
-		</div>
 	</div>
 	<!--  footer end -->
 
@@ -213,6 +191,7 @@ pageContext.setAttribute("newLine", "\n");
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
+	<script src="js/goodinfo-foot.js"></script>
 
 
 	<script type="text/javascript">
