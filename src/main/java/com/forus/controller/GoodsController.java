@@ -202,15 +202,17 @@ public class GoodsController {
 
 	// 상품 구입 
 	@RequestMapping("/goodsPurchase.do")
-	public String goodsPurchase(String user_id , goodsPuchaseVO vo, int user_point, Model model) {
+	public String goodsPurchase(HttpSession session, goodsPuchaseVO vo, int user_point, Model model) {
 		
+		String user_id =(String)session.getAttribute("user_id");
+		if(user_id != null) {
 		System.out.println("유저포인트 : " + user_point);
-		System.out.println(user_id);
-		mapper.goodsCosumerUpdate(vo);
+		// 판매 -> 구매
 		vo.setConsumer_id(user_id);
+		mapper.goodsCosumerUpdate(vo);
 		
 		userInfoVO infoVO = new userInfoVO();
-		infoVO.setUser_id(vo.getConsumer_id());
+		infoVO.setUser_id(user_id);
 		infoVO.setUser_point(user_point);
 		
 		if (user_point >0){
@@ -224,6 +226,10 @@ public class GoodsController {
 		model.addAttribute("goodsResult", gVO);
 		
 		return"goodsResult";
+		}else {
+			return "notPage";
+		}
+		
 	}
 	
 	
@@ -246,10 +252,13 @@ public class GoodsController {
 
 	// 제품 구매 내역
 	@RequestMapping("/goodsBuyList.do")
-	public String goodsPurchaseList(String user_id, Model model){
+	public String goodsPurchaseList(HttpSession session, Model model){
+		String user_id = (String)session.getAttribute("user_id");
+		if( user_id != null) {
 		List<goodsListVO> list = mapper.goodsPurchaseList(user_id);
 		System.out.println(list);
 		model.addAttribute("GoodsList", list); 
+		}
 		return "buyList";
 	}
 	
