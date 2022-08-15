@@ -54,6 +54,7 @@ public class GoodsController {
 		// 데이터 호출하기
 		userInfoVO userVO =(userInfoVO) session.getAttribute("user");
 		
+		if(userVO != null) {
 		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
 		List<goodsListVO> result = mapper.goodsList(userVO.getUser_addr());
 		System.out.println("list"+result);
@@ -78,6 +79,8 @@ public class GoodsController {
 		session.setAttribute("user_id", userVO.getUser_id());
 		session.setAttribute("user_nick", userVO.getUser_nick());
 		System.out.println(session.getAttribute("user_addr"));
+		}
+		
 		
 	}
 	
@@ -91,7 +94,7 @@ public class GoodsController {
 		System.out.println("g_seq :" +g_seq);
 		
 		String apt_name=(String)session.getAttribute("apt_name");
-		
+		if(apt_name!= null) {
 		// 특정 상품 정보 불러오기
 		goodsVO result =mapper.goodsInfo(g_seq);
 		
@@ -119,20 +122,19 @@ public class GoodsController {
 		request.setAttribute("goodsInfo", result);
 		request.setAttribute("apt_name", apt_name);
 		request.setAttribute("wish", wish_yn);
-	}
 	
+		}
+	}
 	
 	// 상품 등록
 	@RequestMapping("/goodsInsert.do")
 	public String goodsInsert(@RequestParam("g_imgg") MultipartFile file, HttpSession session, goodsVO vo, Model model) {
 
-
+		if(session.getAttribute("user_id")!= null) {
 		String path = session.getServletContext().getRealPath("/file");
 
 		System.out.println("경로 : " + path);
 		System.out.println("goodsvo 확인 "+ vo);
-		
-		
 		
 		// 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
@@ -155,9 +157,6 @@ public class GoodsController {
    
         mapper.goodsInsert(vo);
         
-        
-        
-        
         // 상품 등록 후  wishlist에 기본 값 넣어주기
         // 1) g_seq 번호 필요
         
@@ -168,8 +167,6 @@ public class GoodsController {
         wishListVO wishVO = new wishListVO(g_seq, vo.getSeller_id(),0);
         mapper.wishInsert(wishVO);
         
-        
-		
 		// 랜덤 자판기 비밀번호 생성 
 		Random rd = new Random();
 		int pw = 0;
@@ -197,7 +194,10 @@ public class GoodsController {
 		
     	return "goodsResult";
 		
-
+		}else {
+			return "notPage";
+		}
+		
 	}
 
 	// 상품 구입 
@@ -265,15 +265,18 @@ public class GoodsController {
 	// 상품 삭제 
 	@RequestMapping("goodsDelete.do")
    public @ResponseBody List<goodsListVO> goodsDelete(int g_seq, HttpSession session, Model model) {
-	      System.out.println(g_seq + "에이젝스성공");
-	      int row = 0;
-	      row = mapper.goodsDelete(g_seq);
-	      System.out.println(row);
+	   		String user_id = (String) session.getAttribute("user_id");
+	   		if(user_id != null) {
+	   		System.out.println(g_seq + "에이젝스성공");
+	   		int row = 0;
+	   		row = mapper.goodsDelete(g_seq);
+	   		System.out.println(row);
 	      
-	      String user_id = (String) session.getAttribute("user_id");
-	         List<goodsListVO> list =mapper.goodsSaleList(user_id);
-	         model.addAttribute("GoodsList", list); 
-	         return list;
+	   		}
+	   		List<goodsListVO> list =mapper.goodsSaleList(user_id);
+	   		model.addAttribute("GoodsList", list); 
+	   		return list;
+	   		
 	   }
 	   
    // 상품 구매 버튼 누르면 가격, 이미지, title  + 회원 포인트 값 보내주기
@@ -307,11 +310,15 @@ public class GoodsController {
    public String likeList(HttpSession session, Model model ) {
 	   // 주소 값, 아이디 값 가져오기
 	   String user_id= (String)session.getAttribute("user_id");
+	   if (user_id != null) {
 	   System.out.println("user_id :" +user_id);
 	   List<goodsListVO> likeList = mapper.likeList(user_id);
 	   System.out.println(likeList);
 	   model.addAttribute("GoodsList", likeList);
 	   return "wishList";
+	   } else {
+		   return "notPage";
+	   }
 	   
    }
    

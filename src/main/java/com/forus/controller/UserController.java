@@ -63,6 +63,11 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping("/logout.do")
+	public String userLogout(HttpSession session) {
+		session.invalidate();
+		return "main";
+	}
 
 	
 	
