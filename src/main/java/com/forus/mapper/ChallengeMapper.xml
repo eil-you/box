@@ -21,7 +21,7 @@
 
 	<!-- 챌린지 글 모두 가져오기 -->
 	<select id="chalListAll" resultType="com.forus.domain.uChallengeVO">
-		select (u.user_nick) as user_id, h.chal_content, (TIMESTAMPDIFF (minute,uc_date,now())) as uc_date, c.uc_content, c.uc_img
+		select (u.user_nick) as user_id, h.chal_content, (TIMESTAMPDIFF (minute,uc_date,now())) as uc_date, c.uc_content, c.uc_img, c.uc_seq
 		from user_challenge_tb as c, (
 		    select user_nick, user_id
 		    from user_tb) as u, 
