@@ -87,7 +87,7 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<!-- 상품 카테고리 리스트 출력 시작 -->
-					<select class="my-select" name="c_category_name">
+					<select class="my-select" name="c_category_seq">
 						<option>게시글의 주제를 선택해주세요</option>
 						<c:forEach items="${categoryList}" var="vo" step="1">
 							<option value="${vo.c_category_seq}">

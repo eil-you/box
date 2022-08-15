@@ -94,7 +94,7 @@ public class CommnityController {
 			String user_id = (String)session.getAttribute("user_id");
 			String user_addr = (String)session.getAttribute("user_addr");
 		
-			
+			System.out.println("c_category_Seq"+vo.getC_category_seq());
 			System.out.println("파일 가져오기 " + file.getOriginalFilename());
 			System.out.println(file.getOriginalFilename().length());
 			if (!file.getOriginalFilename().equals("")) {
