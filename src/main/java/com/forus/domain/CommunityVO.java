@@ -13,7 +13,7 @@ public class CommunityVO {
 	private String article_date;
 	private String article_file;
 	private String user_id;
-	private String c_category_seq;
+	private String article_category;
 	private int v_machine_seq;
 	private int c_like;
 	

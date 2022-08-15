@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.forus.domain.wishListVO;
-import com.forus.domain.cCategoryVO;
 import com.forus.domain.challengeVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.mapper.ChallengeMapper;
@@ -116,8 +115,6 @@ public class ViewController {
 	//  게시글 작성하는 페이지 이동(카테고리 가져오기)
 	@RequestMapping("/viewBoardForm.do")
 	public String boardForm(Model model) {
-		List<cCategoryVO> category =mapper.communityCategory();
-		model.addAttribute("categoryList", category);
 		return "boardForm";
 	}
 	

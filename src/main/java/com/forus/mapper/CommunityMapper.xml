@@ -6,19 +6,19 @@
 
 
 	<select id="postList" resultType="com.forus.domain.CommunityVO">
-	select c.article_seq, c.article_content, c.article_date,c.article_file, (u.user_nick) as user_id, g.c_category_name as c_category_seq, sum(m.c_like) as c_like 
-	from community_tb c , user_tb u, c_category_tb g, comment_tb m,(
+	select c.article_seq, c.article_content, c.article_date,c.article_file, (u.user_nick) as user_id, c.article_category, sum(m.c_like) as c_like 
+	from community_tb c , user_tb u, comment_tb m,(
 	        select v_machine_seq, apt_name 
 	    	from v_machine_tb 
 	    	where v_machine_addr = #{user_addr}) as v
-	where c.user_id = u.user_id and c.c_category_seq = g.c_category_seq and c.v_machine_seq = v.v_machine_seq and c.article_seq = m.article_seq
-	group by c.article_seq;
+	where c.user_id = u.user_id and c.v_machine_seq = v.v_machine_seq and c.article_seq = m.article_seq
+	group by c.article_seq
 	</select>
 
 	<!-- 게시글 등록하기 -->
 	<insert id="articleInsert" parameterType="com.forus.domain.CommunityVO">
-		insert into community_tb(article_content, article_file, c_category_seq, user_id, v_machine_seq) values(
-		#{article_content},#{article_file}, #{c_category_seq}, #{user_id}, #{v_machine_seq})
+		insert into community_tb(article_content, article_file, article_category, user_id, v_machine_seq) values(
+		#{article_content},#{article_file}, #{article_category}, #{user_id}, #{v_machine_seq})
 	</insert>
 	
 	<!-- 게시글 등록하기 위해 v_mahcine_seq 번호 알아오기 -->

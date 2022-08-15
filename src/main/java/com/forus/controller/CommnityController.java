@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.forus.domain.CommunityVO;
-import com.forus.domain.cCategoryVO;
 import com.forus.domain.commentVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.domain.goodsListVO;
@@ -47,11 +46,7 @@ public class CommnityController {
 		System.out.println("postList"+result);
 		
 		// 게시글 카테고리 뿌려주기
-		List<cCategoryVO> cVO=vMapper.communityCategory();
-		
 		model.addAttribute("boardList", result);
-		model.addAttribute("cCategory", cVO);
-		
 		return "board";
 		}else {
 			return "notPage";
@@ -67,12 +62,9 @@ public class CommnityController {
 		String user_addr = (String) session.getAttribute("user_addr");
 		if(user_addr!=null) {
 		
-		//회원 주소에 맞는 아파트에서 상품 리스트 불러오기
+		//회원 주소에 맞는 아파트에서 게시글 리스트 불러오기
 		List<CommunityVO> result = mapper.postList(user_addr);
 		System.out.println("postList"+result);
-		
-		// 게시글 카테고리 뿌려주기
-		List<cCategoryVO> cVO=vMapper.communityCategory();
 		
 		model.addAttribute("boardList", result);
 		
@@ -93,7 +85,7 @@ public class CommnityController {
 			String user_id = (String)session.getAttribute("user_id");
 			String user_addr = (String)session.getAttribute("user_addr");
 		
-			System.out.println("c_category_Seq"+vo.getC_category_seq());
+			System.out.println("article_category"+vo.getArticle_category());
 			System.out.println("파일 가져오기 " + file.getOriginalFilename());
 			System.out.println(file.getOriginalFilename().length());
 			if (!file.getOriginalFilename().equals("")) {
