@@ -14,6 +14,4 @@ public class commentVO {
 	private String cmt_date;
 	private String user_id;
 	private String cmt_seq;
-	
-	
 }
