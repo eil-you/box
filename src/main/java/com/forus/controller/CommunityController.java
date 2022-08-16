@@ -23,7 +23,7 @@ import com.forus.mapper.CommunityMapper;
 import com.forus.mapper.ViewMapper;
 
 @Controller
-public class CommnityController {
+public class CommunityController {
 	
 	@Autowired
 	CommunityMapper mapper;
@@ -53,6 +53,7 @@ public class CommnityController {
 		}
 	}
 	
+	// 사용자가 작성한 게시글
 	@RequestMapping("/myBoardList.do")
 	public String mypostList(HttpSession session, Model model) {
 		
@@ -139,6 +140,28 @@ public class CommnityController {
 			
 		}
 		return "redirect:/postList.do";
+	}
+	
+	
+	// 게시글 상세페이지
+	@RequestMapping("/viewBoardInfo.do")
+	public String viewBoardInfo(int article_seq, HttpSession session, Model model) {
+		System.out.println("article_seq:"+article_seq);
+		if(session.getAttribute("user_id")!= null){
+			
+			CommunityVO result=mapper.communityInfo(article_seq);
+			System.out.println("커뮤니티 상세정보 : "+ result);
+			List<commentVO> list = mapper.commentList(article_seq);
+			System.out.println("댓글 LIST 가져오기 : " + list);
+			model.addAttribute("community", result);
+			model.addAttribute("list", list);
+			
+			return"boardInfo";
+		}else {
+			return "notPage";
+		}
+		
+		
 	}
 	
 	

@@ -36,5 +36,14 @@
 		insert into comment_tb(article_seq, user_id, c_like, cmt_date)
 		values(#{article_seq}, #{user_id}, #{c_like}, now())
 	</insert>
+	
+	<!-- 커뮤니티 상세정보 -->
+	<select id ="communityInfo" resultType="com.forus.domain.CommunityVO">
+		select * from community_tb where article_seq = #{article_seq}
+	</select>
 
+	<!-- 커뮤니티 댓글 정보 가져오기 -->
+	<select id="commentList" resultType="com.forus.domain.commentVO">
+		select * from comment_tb where article_seq = #{article_seq}
+	</select>
 </mapper> 
