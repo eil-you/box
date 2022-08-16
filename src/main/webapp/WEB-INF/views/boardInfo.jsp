@@ -93,7 +93,7 @@
 	onclick="location.href='challengeList.do'"/	>
 		</div>
 	</nav>
-
+commentVO
 
 
 	<!-- ================ trending product section start ================= -->
@@ -131,14 +131,14 @@
 							<span id="cnt">0</span>
 						</div>
 
-						<div class="reac-div" onclick="location.href='boardInfo.do'">
-							<img class="reac" src="/img/icon/datggle.png"> <span>댓글 2</span>
+						<div class="reac-div">
+							<img class="reac" src="/img/icon/datggle.png"><span>댓글 2</span>
 						</div>
 					</div>
 					<div class="section-line"></div>
-
 				</div>
 
+	
 			<div class="comment-sec">
 				<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
 				<div class="comment">
@@ -161,7 +161,7 @@
 	<!-- ================ trending product section end ================= -->
 		<div class="insert-comment col-sm-10 col-sm-10">
 			<input class="form-control comment-form" placeholder="댓글을 입력해주세요." type="text" id="comment">
-			<button class="ok" onclick="insertComment()'">√</button>
+			<button class="ok" onclick="insertComment(${list.article_seq})'">√</button>
 		</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
@@ -181,7 +181,7 @@
 	
 	<script type="text/javascript">
 	
-	function insertComment() {
+	function insertComment(article_seq) {
 		
 		
 		comment = $("#comment").val()
@@ -191,11 +191,14 @@
 			url : "insertComment.do",
 			type: "post",
 			data : {
-				"comment" : comment,
-				"seq" : seq,
+				"cmt_coment" : comment,
+				"article_seq" : article_seq,
 			}, 
-			success:{
-				window.
+			success: function () {
+				conosole.log("성공")
+			},
+			error : function () {
+				console.log("실패")
 			}
 			
 			
