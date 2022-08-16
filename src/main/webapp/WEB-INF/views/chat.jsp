@@ -62,7 +62,9 @@
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		let url = "ws://" + location.host + "/chating/" + $("#roomNumber").val();
+		ws = new WebSocket(url);
+		console.log(ws);
 		wsEvt();
 	}
 		
@@ -152,9 +154,8 @@
 </script>
 <body>
 	<div id="container" class="container">
-		<h1>${roomName}의 채팅방</h1>
 		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="${roomNumber}">
+		<input type="hidden" id="roomNumber" value="1">
 		
 		<div id="chating" class="chating">
 		</div>

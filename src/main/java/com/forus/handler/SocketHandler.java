@@ -1,4 +1,4 @@
-package com.forus.Handler;
+package com.forus.handler;
 
 import java.io.File;
 import java.io.FileOutputStream;

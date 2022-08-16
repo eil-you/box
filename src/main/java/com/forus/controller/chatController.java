@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.forus.domain.Room;
 import com.forus.domain.chatRoomVO;
 import com.forus.domain.goodsVO;
 import com.forus.mapper.ChallengeMapper;
@@ -95,12 +94,8 @@ public class chatController {
 			
 			
 		}
-		//return roomList;
-//		/moveChating?roomName="+name+"&"+"roomNumber="+number
-		System.out.println("redirect:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq());
 		
 		return "redirect:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq();
-		//return "redirect:/moveChating";
 	}
 	
 //	/**
@@ -108,10 +103,10 @@ public class chatController {
 //	 * @param params
 //	 * @return
 //	 */
-//	@RequestMapping("/getRoom")
-//	public @ResponseBody List<Room> getRoom(@RequestParam HashMap<Object, Object> params){
-//		return roomList;
-//	}
+	@RequestMapping("/getRoom")
+	public @ResponseBody List<chatRoomVO> getRoom(@RequestParam HashMap<Object, Object> params){
+		return roomList;
+	}
 	
 	/**
 	 * 채팅방
@@ -125,6 +120,7 @@ public class chatController {
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
 		System.out.println(roomNumber);
 		List<chatRoomVO> new_list = roomList.stream().filter(o->o.getCr_seq()==roomNumber).collect(Collectors.toList());
+		System.out.println( "new_list"+new_list);
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
