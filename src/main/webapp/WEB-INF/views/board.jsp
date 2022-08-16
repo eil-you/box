@@ -106,17 +106,23 @@
 				<!--리스트 출력 시작 시작 -->
 				<div class="cate-select">
 					<div class="choose-cate">
-						<c:forEach items="${cCategory}" var="vo" step="1">
 							<button type = "button" class="btn btn-sm c-cate"
-								onclick="choiceCategory(${vo.c_category_seq})">${vo.c_category_name}</button>
-						</c:forEach>
+							onclick="choiceCategory(취미생활)">취미생활</button>
+							<button type = "button" class="btn btn-sm c-cate"
+							onclick="choiceCategory(분실센터)">분실센터</button>
+							<button type = "button" class="btn btn-sm c-cate"
+							onclick="choiceCategory(아파트질문)">아파트질문</button>
+							<button type = "button" class="btn btn-sm c-cate"
+							onclick="choiceCategory(아파트소식)">아파트소식</button>
+							<button type = "button" class="btn btn-sm c-cate"
+							onclick="choiceCategory(근처맛집)">근처맛집</button>
 					</div>
 				</div>
 
 				<c:forEach items="${boardList}" var="vo" step="1">
 					<!-- 반목분 시작 -->
 					<div class="board-sec" onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq }'">
-						<span class="cate">${vo.c_category_seq}</span> <br>
+						<span class="cate">${vo.article_category}</span> <br>
 						<div class="board-text">${vo.article_content}</div>
 
 						<c:choose>

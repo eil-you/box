@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.forus.domain.cCategoryVO;
 import com.forus.domain.gCategoryVO;
 import com.forus.domain.wishListVO;
 
@@ -25,7 +24,5 @@ public interface ViewMapper {
 	// 제품에 대한 찜 기록 가져오기
 	public String wishInfo(wishListVO vo);
 	
-	// 게시글 카테고리 가져오기
-	public List<cCategoryVO> communityCategory();
 	
 }

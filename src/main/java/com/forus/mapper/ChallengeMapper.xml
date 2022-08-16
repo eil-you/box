@@ -21,7 +21,7 @@
 
 	<!-- 챌린지 글 모두 가져오기 -->
 	<select id="chalListAll" resultType="com.forus.domain.uChallengeVO">
-		select (u.user_nick) as user_id, h.chal_content, (TIMESTAMPDIFF (minute,uc_date,now())) as uc_date, c.uc_content, c.uc_img
+		select (u.user_nick) as user_id, h.chal_content, (TIMESTAMPDIFF (minute,uc_date,now())) as uc_date, c.uc_content, c.uc_img, c.uc_seq
 		from user_challenge_tb as c, (
 		    select user_nick, user_id
 		    from user_tb) as u, 
@@ -32,7 +32,7 @@
 	
 	<!-- 챌린지 인증 후 포인트 지급하기 -->
 	<update id="addPoint" >
-		update user_tb set user_point = user_point -(   
+		update user_tb set user_point = user_point +(   
     			select  chal_point 
     			from challenge_tb 
     			where chal_content = #{chal_content})

@@ -87,12 +87,13 @@
 			<div class="form-group">
 				<div class="col-sm-10">
 					<!-- 상품 카테고리 리스트 출력 시작 -->
-					<select class="my-select" name="c_category_name">
+					<select class="my-select" name="article_category">
 						<option>게시글의 주제를 선택해주세요</option>
-						<c:forEach items="${categoryList}" var="vo" step="1">
-							<option value="${vo.c_category_seq}">
-							<c:out value="${vo.c_category_name}" /></option>
-						</c:forEach>
+							<option value="취미생활">취미생활</option>
+							<option value="분실센터">분실센터</option>
+							<option value="아파트질문">아파트질문</option>
+							<option value="아파트소식">아파트소식</option>
+							<option value="근처맛집">근처맛집</option>
 					</select>
 				</div>
 			</div>

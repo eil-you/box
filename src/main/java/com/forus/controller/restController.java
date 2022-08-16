@@ -36,9 +36,13 @@ public class restController {
 	
 	// 제품 판매 완료 내역
 	@RequestMapping("/goodsFinishList.do")
-	public List<goodsListVO> goodsFinishList(String user_id, Model model){
-		List<goodsListVO> list =gmapper.goodsFinishList(user_id);
-		model.addAttribute("GoodsList", list); 
+	public List<goodsListVO> goodsFinishList(HttpSession session, Model model){
+		String user_id = (String)session.getAttribute("user_id");
+		List<goodsListVO> list  = null;
+		if(user_id != null) {
+			list =gmapper.goodsFinishList(user_id);
+			model.addAttribute("GoodsList", list); 
+		}
 		return list;
 	}
 	
@@ -46,8 +50,12 @@ public class restController {
 	@RequestMapping("/goodsSale.do")
 	public List<goodsListVO> goodsSaleList(HttpSession session, Model model) {
 		String user_id = (String) session.getAttribute("user_id");
-		List<goodsListVO> list =gmapper.goodsSaleList(user_id);
+		List<goodsListVO> list  = null;
+		if(user_id != null) {
+		list =gmapper.goodsSaleList(user_id);
 		model.addAttribute("GoodsList", list); 
+		
+		}
 		return list;
 	}
 	
@@ -55,8 +63,11 @@ public class restController {
 	
 	// 판매내역에서 비밀 번호 확인하기
 	@RequestMapping("/pwCheck.do")
-	public resultlocationVO pwCheck(int g_seq) {
-		resultlocationVO gVO= gmapper.gLocationSelect(g_seq);
+	public resultlocationVO pwCheck(int g_seq,HttpSession session) {
+		resultlocationVO gVO = null;
+		if(session.getAttribute("user_id")!= null){
+		gVO= gmapper.gLocationSelect(g_seq);
+		}
 		return gVO;
 	}
 	
@@ -64,7 +75,10 @@ public class restController {
 	@RequestMapping("/gcList.do")
 	public List<goodsListVO> gcList(HttpSession session, String gc_name){
 		String user_addr = (String) session.getAttribute("user_addr");
-		List<goodsListVO> gList =gmapper.gcList(user_addr, gc_name);
+		List<goodsListVO> gList = null;
+		if(user_addr != null) {
+		gList =gmapper.gcList(user_addr, gc_name);
+		}
 		return gList;
 		
 	}

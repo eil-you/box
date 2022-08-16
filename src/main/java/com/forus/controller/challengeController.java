@@ -77,20 +77,28 @@ public class challengeController {
 	
 	// 챌린지 listALL 보여주기
 	@RequestMapping("/challengeList.do")
-	public String chalListAll(Model model){
+	public String chalListAll(Model model, HttpSession session){
+		if(session.getAttribute("user_id")!= null) {
 		List<uChallengeVO> list=mapper.chalListAll();
 		System.out.println(list);
 		model.addAttribute("list",list);
 		return "challengeList";
+		}else {
+			return "notPage";
+		}
 	}
 	
 	// 챌린지 listALL 보여주기
 	@RequestMapping("/myChallengeList.do")
-	public String myChalListAll(Model model){
+	public String myChalListAll(Model model, HttpSession session){
+		if(session.getAttribute("user_id")!=null) {
 		List<uChallengeVO> list=mapper.chalListAll();
 		System.out.println(list);
 		model.addAttribute("list",list);
 		return "myChallengeList";
+		}else {
+			return "notPage";
+		}
 	}
 	
 }
