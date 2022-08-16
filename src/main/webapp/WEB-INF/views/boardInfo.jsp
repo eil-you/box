@@ -86,14 +86,13 @@
 	</div>
 
 	<nav class="navbar" style="height: 57.8px">
-		<div class="navbar__logo" >
-	<img class="goback" src="/img/icon/backk.png"
-			onclick="location.href='index.do'"/ >
-	<img  class="gohomee" src="/img/icon/homee.png"
-	onclick="location.href='challengeList.do'"/	>
+		<div class="navbar__logo">
+			<img class="goback" src="/img/icon/backk.png"
+				onclick="location.href='index.do'"/ > <img class="gohomee"
+				src="/img/icon/homee.png" onclick="location.href='challengeList.do'"/	>
 		</div>
 	</nav>
-commentVO
+	commentVO
 
 
 	<!-- ================ trending product section start ================= -->
@@ -122,7 +121,7 @@ commentVO
 						</c:choose>
 						 -->
 
-					 <img class="board-img" src="/file/zzanggu.jpg">
+					<img class="board-img" src="/file/zzanggu.jpg">
 
 					<div class="section-line"></div>
 					<div class="like">
@@ -132,37 +131,39 @@ commentVO
 						</div>
 
 						<div class="reac-div">
-							<img class="reac" src="/img/icon/datggle.png"><span>댓글 2</span>
+							<img class="reac" src="/img/icon/datggle.png"><span>댓글
+								2</span>
 						</div>
 					</div>
 					<div class="section-line"></div>
 				</div>
 
-	
-			<div class="comment-sec">
-				<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
-				<div class="comment">
-					<p class="board-nick">단추네 누나</p>
-					<div>저요!! 주짓수 어떠신가요??ㅎㅎ</div>
-				</div>
-				
-				
 
-				<div class="comment">
-					<p class="board-nick">단추는 귀여워</p>
-					<div>태권도가 좋은 것 같아요 태권도 추천합니당</div>
+				<div class="comment-sec">
+					<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
+					<div class="comment">
+						<p class="board-nick">단추네 누나</p>
+						<div>저요!! 주짓수 어떠신가요??ㅎㅎ</div>
+					</div>
+
+
+
+					<div class="comment">
+						<p class="board-nick">단추는 귀여워</p>
+						<div>태권도가 좋은 것 같아요 태권도 추천합니당</div>
+					</div>
 				</div>
-			</div>
 
 
 			</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
-		<div class="insert-comment col-sm-10 col-sm-10">
-			<input class="form-control comment-form" placeholder="댓글을 입력해주세요." type="text" id="comment">
-			<button class="ok" onclick="insertComment(${list.article_seq})'">√</button>
-		</div>
+	<div class="insert-comment col-sm-10 col-sm-10">
+		<input class="form-control comment-form" placeholder="댓글을 입력해주세요."
+			type="text" id="comment">
+		<button class="ok" onclick="insertComment(${list.article_seq})'">√</button>
+	</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
 	<!--  footer end -->
@@ -178,7 +179,7 @@ commentVO
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/board-foot.js"></script>
-	
+
 	<script type="text/javascript">
 	
 	function insertComment(article_seq) {
@@ -201,12 +202,7 @@ commentVO
 				console.log("실패")
 			}
 			
-			
-			
-			
-			
 		})
-		
 		
 	}
 
