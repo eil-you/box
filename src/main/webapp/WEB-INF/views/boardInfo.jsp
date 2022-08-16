@@ -101,38 +101,35 @@
 			<div class=" list_layout">
 
 				<div class="board-sec">
-					<span class="cate">취미생활</span> <br>
+					<span class="cate">${community.article_category}</span> <br>
 
 					<div class="board-foot">
-						<p class="board-nick" style="margin: 3% 0%;">dd</p>
+						<p class="board-nick" style="margin: 3% 0%;">${community.user_id}</p>
 					</div>
 
-					<div class="board-text">저랑 같이 운동하실분 계신가요?! 퇴근하고 같이 할 운동 찾아봐요!</div>
+					<div class="board-text">${community.article_content}</div>
 
-					<!-- 
-						<c:choose>
-							<c:when test="${vo.article_file == null}">
-							</c:when>
 
-							<c:otherwise>
-								<img class="board-img" src="/file/${vo.article_file}">
-							</c:otherwise>
+					<c:choose>
+						<c:when test='${community.article_file eq ""}'>
+						</c:when>
 
-						</c:choose>
-						 -->
+						<c:otherwise>
+							<img class="board-img" src="/file/${community.article_file}">
+						</c:otherwise>
 
-					<img class="board-img" src="/file/zzanggu.jpg">
+					</c:choose>
 
 					<div class="section-line"></div>
 					<div class="like">
 						<div class="reac-div reaction">
 							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
-							<span id="cnt">0</span>
+							<span id="cnt">${community.c_like}</span>
 						</div>
 
 						<div class="reac-div">
 							<img class="reac" src="/img/icon/datggle.png"><span>댓글
-								2</span>
+								</span>
 						</div>
 					</div>
 					<div class="section-line"></div>
@@ -140,18 +137,27 @@
 
 
 				<div class="comment-sec">
+					<c:choose>
+						<c:when test='${list eq ""}'>
+						</c:when>
+
+						<c:otherwise>
+							<c:forEach items="${list}" var="vo">
+
+
+								<div class="comment">
+									<p class="board-nick">${vo.user_id}</p>
+									<div>${vo.cmt_content}</div>
+								</div>
+
+							</c:forEach>
+						</c:otherwise>
+
+					</c:choose>
+
 					<!-- 반목분 시작 댓글작성자 닉/ 내용 -->
-					<div class="comment">
-						<p class="board-nick">단추네 누나</p>
-						<div>저요!! 주짓수 어떠신가요??ㅎㅎ</div>
-					</div>
 
 
-
-					<div class="comment">
-						<p class="board-nick">단추는 귀여워</p>
-						<div>태권도가 좋은 것 같아요 태권도 추천합니당</div>
-					</div>
 				</div>
 
 
@@ -162,7 +168,7 @@
 	<div class="insert-comment col-sm-10 col-sm-10">
 		<input class="form-control comment-form" placeholder="댓글을 입력해주세요."
 			type="text" id="comment">
-		<button class="ok" onclick="insertComment(${list.article_seq})'">√</button>
+		<button class="ok" onclick="insertComment(${community.article_seq})'">√</button>
 	</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
