@@ -1,60 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-	<title>Chating</title>
-	<style>
-		*{
-			margin:0;
-			padding:0;
-		}
-		.container{
-			width: 500px;
-			margin: 0 auto;
-			padding: 25px
-		}
-		.container h1{
-			text-align: left;
-			padding: 5px 5px 5px 15px;
-			color: #FFBB00;
-			border-left: 3px solid #FFBB00;
-			margin-bottom: 20px;
-		}
-		.chating{
-			background-color: #000;
-			width: 500px;
-			height: 500px;
-			overflow: auto;
-		}
-		.chating .me{
-			color: #F6F6F6;
-			text-align: right;
-		}
-		.chating .others{
-			color: #FFE400;
-			text-align: left;
-		}
-		input{
-			width: 330px;
-			height: 25px;
-		}
-		#yourMsg{
-			display: none;
-		}
-		.msgImg{
-			width: 200px;
-			height: 125px;
-		}
-		.clearBoth{
-			clear: both;
-		}
-		.img{
-			float: right;
-		}
-	</style>
+<title>Chating</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 500px;
+	margin: 0 auto;
+	padding: 25px
+}
+
+.container h1 {
+	text-align: left;
+	padding: 5px 5px 5px 15px;
+	color: #FFBB00;
+	border-left: 3px solid #FFBB00;
+	margin-bottom: 20px;
+}
+
+.chating {
+	background-color: #000;
+	width: 500px;
+	height: 500px;
+	overflow: auto;
+}
+
+.chating .me {
+	color: #F6F6F6;
+	text-align: right;
+}
+
+.chating .others {
+	color: #FFE400;
+	text-align: left;
+}
+
+input {
+	width: 330px;
+	height: 25px;
+}
+
+#yourMsg {
+	display: none;
+}
+
+.msgImg {
+	width: 200px;
+	height: 125px;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+.img {
+	float: right;
+}
+</style>
 </head>
 
 <script type="text/javascript">
@@ -110,14 +121,10 @@
 
 	function chatName(){
 		var userName = $("#userName").val();
-		if(userName == null || userName.trim() == ""){
-			alert("사용자 이름을 입력해주세요.");
-			$("#userName").focus();
-		}else{
+		
 			wsOpen();
 			$("#yourName").hide();
 			$("#yourMsg").show();
-		}
 	}
 
 	function send() {
@@ -151,21 +158,21 @@
 		};
 		fileReader.readAsArrayBuffer(file);
 	}
+
+	$(document).ready(chatName)
 </script>
+
 <body>
 	<div id="container" class="container">
-		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="${roomNumber}">
-		
-		<div id="chating" class="chating">
-		</div>
-		
+		<input type="hidden" id="sessionId" value=""> <input
+			type="hidden" id="roomNumber" value="${roomNumber}">
+
+		<div id="chating" class="chating"></div>
+
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
-					<th>사용자명</th>
-					<th><input type="text" name="userName" id="userName"></th>
-					<th><button onclick="chatName()" id="startBtn">이름 등록</button></th>
+					<th><input type="hidden" name="userName" id="userName" value="${user_id }"></th>
 				</tr>
 			</table>
 		</div>
@@ -175,11 +182,6 @@
 					<th>메시지</th>
 					<th><input id="chatting" placeholder="보내실 메시지를 입력하세요."></th>
 					<th><button onclick="send()" id="sendBtn">보내기</button></th>
-				</tr>
-				<tr>
-					<th>파일업로드</th>
-					<th><input type="file" id="fileUpload"></th>
-					<th><button onclick="fileSend()" id="sendFileBtn">파일올리기</button></th>
 				</tr>
 			</table>
 		</div>
