@@ -121,7 +121,7 @@
 
 				<c:forEach items="${boardList}" var="vo" step="1">
 					<!-- 반목분 시작 -->
-					<div class="board-sec" onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq }'">
+					<div class="board-sec" onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq}'">
 						<span class="cate">${vo.article_category}</span> <br>
 						<div class="board-text">${vo.article_content}</div>
 

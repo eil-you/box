@@ -86,7 +86,7 @@
 
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">챌린지</h4>
+			<h4 style="display: inline-block;">내가 쓴 챌린지 목록</h4>
 		</div>
 	</nav>
 

@@ -120,6 +120,9 @@
 							</div>
 						</div>
 					</div>
+					<div class="update-sec">
+					<button class="btn btn-sm search-pw" onclick="findGoodsPw()">비밀번호확인</button>
+					</div>
 					<div class="goods-line"></div>
 				</c:forEach>
 				<!-- 끝 -->

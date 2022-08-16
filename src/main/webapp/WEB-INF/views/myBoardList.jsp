@@ -86,14 +86,8 @@
 	</div>
 
 	<nav class="navbar">
-		<div class="navbar__logo">
-			<div class="dropdown">
-				<a class="menu_drop" href="">☰</a>
-				<div class="dropdown-content">
-					<a style="color: black !important;" href="">아파트 설정하기</a>
-				</div>
-				<span class="apt_name">${apt_name}</span>
-			</div>
+		<div class="navbar__logo add-header">
+			<h4 style="display: inline-block;">내가 쓴 커뮤니티 목록</h4>
 		</div>
 	</nav>
 
@@ -109,7 +103,7 @@
 						<!-- 반목분 시작 -->
 						<div class="board-sec"
 							onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq }'">
-							<span class="cate">${vo.c_category_seq}</span> <br>
+							<span class="cate">${vo.article_category}</span> <br>
 							<div class="board-text">${vo.article_content}</div>
 
 							<c:choose>
@@ -138,10 +132,6 @@
 						<!-- 반목분 종료 -->
 					</c:if>
 				</c:forEach>
-
-
-				<img class="write-board" onclick="location.href='viewBoardForm.do'"
-					src="/img/icon/pen.png">
 
 			</div>
 		</div>

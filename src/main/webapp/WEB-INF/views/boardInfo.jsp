@@ -159,10 +159,10 @@
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
-	<div class="insert-comment col-sm-10 col-sm-10">
-		<input class="form-control comment-form" placeholder="댓글을 입력해주세요." type="text">
-		<button class="ok" onclick="location.href='insertComment.do'">√</button>
-	</div>
+		<div class="insert-comment col-sm-10 col-sm-10">
+			<input class="form-control comment-form" placeholder="댓글을 입력해주세요." type="text" id="comment">
+			<button class="ok" onclick="insertComment()'">√</button>
+		</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
 	<!--  footer end -->
@@ -178,6 +178,39 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/board-foot.js"></script>
+	
+	<script type="text/javascript">
+	
+	function insertComment() {
+		
+		
+		comment = $("#comment").val()
+		
+		$.ajax({
+			
+			url : "insertComment.do",
+			type: "post",
+			data : {
+				"comment" : comment,
+				"seq" : seq,
+			}, 
+			success:{
+				window.
+			}
+			
+			
+			
+			
+			
+		})
+		
+		
+	}
+
+	
+	dcomment
+	
+	</script>
 
 
 

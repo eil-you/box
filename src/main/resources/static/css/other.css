@@ -1049,3 +1049,9 @@ input:-internal-autofill-selected {
 	margin-bottom: 2%;
 }
 
+.search-pw {
+	
+		width: 96%;
+	border-radius: 10px;
+	
+}
