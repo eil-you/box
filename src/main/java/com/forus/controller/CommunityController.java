@@ -122,21 +122,7 @@ public class CommunityController {
 			
 			// 게시글 등록 mapper
 			mapper.articleInsert(vo);
-			
-			// 게시글 좋아요  값 insert 해주기
-			// 1) article_seq 번호 가져오기 
-			int article_seq = mapper.art_seqSelect(vo);
-			System.out.println("article_seq : " + article_seq);
-			
-			// 2) 게시글 좋아요 값 insert 해주기
-			commentVO cVO = new commentVO();
-			cVO.setArticle_seq(article_seq);
-			cVO.setUser_id(user_id);
-			cVO.setC_like(0);
-			System.out.println("게시글 좋아요 하기 위한 cVO : " +cVO);
-			int row = mapper.likeInsert(cVO);
-			System.out.println("게시글 좋아요 기본 값 결과 출력 : "  + row );
-			
+		
 			
 		}
 		return "redirect:/postList.do";
