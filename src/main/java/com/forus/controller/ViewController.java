@@ -58,6 +58,7 @@ public class ViewController {
 
 	}
 	
+
 	@RequestMapping("viewGoodsContent.do")
 	public void viewGoodsContent(int g_seq) {
 		
@@ -119,12 +120,6 @@ public class ViewController {
 	}
 	
 	
-//	@RequestMapping("/viewChallenge.do")
-//	public String viewChallenge() {
-//		
-//		return "challengeList";
-//		
-//	}
 	
 	// 챌린지 인증 게시글 작성 form으로 이동
 	
@@ -138,11 +133,6 @@ public class ViewController {
 		return "challengeForm";
 	}
 	
-	@RequestMapping("/viewBoardInfo.do")
-	public String viewBoardInfo(int article_seq) {
-		
-		return"boardInfo";
-	}
 	
 	
 	

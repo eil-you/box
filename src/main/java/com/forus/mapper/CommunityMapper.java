@@ -29,4 +29,13 @@ public interface CommunityMapper {
 	// 게시글 좋아요 값 insert
 	public int likeInsert(commentVO vo);
 	
-	}
+	
+	// 게시글 상세 정보
+	public CommunityVO communityInfo(int article_seq);
+
+	// 게시글 댓글 정보
+	public List<commentVO> commentList(int article_seq);
+	
+
+}
+
