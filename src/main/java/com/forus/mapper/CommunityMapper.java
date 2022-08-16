@@ -36,6 +36,9 @@ public interface CommunityMapper {
 	// 게시글 댓글 정보
 	public List<commentVO> commentList(int article_seq);
 	
+	// 댓글 insert
+	public int commentInsert(commentVO vo);
+	
 
 }
 

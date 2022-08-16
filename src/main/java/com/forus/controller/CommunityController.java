@@ -160,8 +160,18 @@ public class CommunityController {
 		}else {
 			return "notPage";
 		}
+	}
+	
+	// 댓글
+	@RequestMapping("/insertComment.do")
+	public void insertComment(commentVO vo, HttpSession session) {
 		
-		
+		String user_id = (String)session.getAttribute("user_id");
+		vo.setUser_id(user_id);
+		System.out.println("vo 출력 : " + vo);
+		if(user_id != null) {
+			mapper.commentInsert(vo);
+		}
 	}
 	
 	
