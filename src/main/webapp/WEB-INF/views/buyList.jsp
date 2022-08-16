@@ -170,6 +170,12 @@
 			
 		}
 		
+		function findGoodsPw() {
+			
+			
+			
+		}
+		
 		
 		
 	</script>
