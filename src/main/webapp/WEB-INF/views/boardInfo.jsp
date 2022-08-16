@@ -111,7 +111,7 @@
 
 
 					<c:choose>
-						<c:when test='${community.article_file eq ""}'>
+						<c:when test='${community.article_file == null}'>
 						</c:when>
 
 						<c:otherwise>
@@ -168,7 +168,7 @@
 	<div class="insert-comment col-sm-10 col-sm-10">
 		<input class="form-control comment-form" placeholder="댓글을 입력해주세요."
 			type="text" id="comment">
-		<button class="ok" onclick="insertComment(${community.article_seq})'">√</button>
+		<button class="ok" onclick="insertComment(${community.article_seq})">√</button>
 	</div>
 	<!--  footer start -->
 	<div class="foot-bar"></div>
@@ -212,8 +212,6 @@
 		
 	}
 
-	
-	dcomment
 	
 	</script>
 
