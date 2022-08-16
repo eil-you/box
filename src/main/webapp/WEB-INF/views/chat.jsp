@@ -155,7 +155,7 @@
 <body>
 	<div id="container" class="container">
 		<input type="hidden" id="sessionId" value="">
-		<input type="hidden" id="roomNumber" value="1">
+		<input type="hidden" id="roomNumber" value="${roomNumber}">
 		
 		<div id="chating" class="chating">
 		</div>
