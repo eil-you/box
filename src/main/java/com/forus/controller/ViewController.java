@@ -122,7 +122,6 @@ public class ViewController {
 	
 	
 	// 챌린지 인증 게시글 작성 form으로 이동
-	
 	@RequestMapping("/writeChallenge.do")
 	public String writeChallenge(Model model) {
 		
@@ -132,6 +131,10 @@ public class ViewController {
 		
 		return "challengeForm";
 	}
+	
+
+	
+	
 	
 	
 	

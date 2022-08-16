@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.forus.domain.gLocationVO;
 import com.forus.domain.goodsListVO;
 import com.forus.domain.resultlocationVO;
 import com.forus.mapper.GoodsMapper;
@@ -80,6 +81,18 @@ public class restController {
 		gList =gmapper.gcList(user_addr, gc_name);
 		}
 		return gList;
+		
+	}
+	
+	// 제품 보관 비밀번호 확인
+	@RequestMapping("/pwinfo.do")
+	public resultlocationVO pwinfo(int g_seq, HttpSession session) {
+		String user_id=(String)session.getAttribute("user_id");
+		resultlocationVO vo = null;
+		if(user_id != null) {
+			vo =gmapper.gLocationSelect(g_seq);
+		}
+		return vo;
 		
 	}
 	
