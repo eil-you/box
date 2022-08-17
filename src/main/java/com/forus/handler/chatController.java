@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.forus.domain.chatRoomVO;
+import com.forus.domain.chatVO;
 import com.forus.domain.goodsVO;
 import com.forus.mapper.ChallengeMapper;
 import com.forus.mapper.ChatMapper;
@@ -139,4 +140,19 @@ public class chatController {
 		System.out.println("mv : " + mv);
 		return mv;
 	}
+	
+	
+	// 채팅 내용 저장
+	@RequestMapping("/chatInsert.do")
+	public @ResponseBody void chatInsert(chatVO vo, HttpSession session) {
+		String user_id = (String) session.getAttribute("user_id");
+		vo.setTalker_id(user_id);
+		if (user_id != null) {
+			cMapper.chatInsert(vo);
+		}
+		
+		
+	}
+	
+	
 }
