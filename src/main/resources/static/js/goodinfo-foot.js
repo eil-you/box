@@ -21,9 +21,10 @@ function loadFooter() {
 			<img class=" main-btn" alt="" src="/img/icon/unearth.png">
 		</div>
 
-		<div class="foot-div">
+		<div class="foot-div" onclick="location.href='room'">
 			<img alt="" src="/img/icon/message-gr.png">
 		</div>
+		
 		<div class="foot-div" onclick="location.href='viewMypage.do'">
 			<img alt="" src="/img/icon/me-gr.png">
 		</div>`

@@ -54,6 +54,7 @@ public class chatController {
 		if(user_id != null) {
 			
 		List<chatRoomVO> list =cMapper.roomList(user_id);
+		System.out.println(list);
 		mv.addObject("chatRoomList", list);
 		mv.setViewName("room");
 		}

@@ -48,6 +48,8 @@
 </head>
 
 <script type="text/javascript">
+
+	$(document).ready(chatName)
 	var ws;
 
 	function wsOpen(){
@@ -93,14 +95,9 @@
 
 	function chatName(){
 		var userName = $("#userName").val();
-		if(userName == null || userName.trim() == ""){
-			alert("사용자 이름을 입력해주세요.");
-			$("#userName").focus();
-		}else{
 			wsOpen();
 			$("#yourName").hide();
 			$("#yourMsg").show();
-		}
 	}
 
 	function send() {
