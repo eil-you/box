@@ -123,12 +123,12 @@ public class chatController {
 	 * @return
 	 */
 	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, HttpServletRequest request) {
+	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
 		
-		String roomName = request.getParameter("roomName");
-		String Number =  request.getParameter("roomNumber");
+//		String roomName = request.getParameter("roomName");
+//		int roomNumber =  Integer.parseInt(request.getParameter("roomNumber"));
 		
-		System.out.println("통신 넘어감?" + Number  + roomName);
+		//System.out.println("통신 넘어감?" + Number  + roomName);
 		
 		System.out.println("채팅방 입장");
 		ModelAndView mv = new ModelAndView();
