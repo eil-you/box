@@ -90,54 +90,61 @@
 		</div>
 	</nav>
 
-		<div class="challenge-layout">
-			<c:forEach items="${list}" var="vo" step="1">
+	<div class="challenge-layout">
+		<c:forEach items="${list}" var="vo" step="1">
 
-				<!-- 반목분 시작 -->
-				<div class="chell-sec">
-					<div class="chell-top">
+			<!-- 반목분 시작 -->
+			<div class="chell-sec">
+				<div class="chell-top">
 					<span class="chell cate">${vo.chal_content}</span>
 					<p class="chell-nick">${vo.user_id}</p>
-					</div>
+				</div>
 
-					<img class="chall-img" src="/file/${vo.uc_img}">
-					
+				<img class="chall-img" src="/file/${vo.uc_img}">
 
-					<div class="chell-foot">
+
+				<div class="chell-foot">
 					<div class="board-text">${vo.uc_content}</div>
-						<!-- 기본값 분단위 -->
-						<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
-							integerOnly="true" />
-						<c:choose>
-							<c:when test="${a == 0}">
-								<p class="sysdate">${vo.uc_date}분전</p>
-							</c:when>
+					<!-- 기본값 분단위 -->
+					<fmt:parseNumber var="a" value="${vo.uc_date / 60}"
+						integerOnly="true" />
+					<c:choose>
+						<c:when test="${a == 0}">
+							<c:choose>
+								<c:when test="${vo.uc_date == 0}">
+									<p class="sysdate">방금전</p>
+								</c:when>
+								<c:otherwise>
+									<p class="sysdate">${vo.uc_date}분전</p>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
 
-							<c:otherwise>
-								<c:choose>
-									<c:when test="${a < 24}">
-										<p class="sysdate">${a}시간전</p>
-									</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${a < 24}">
+									<p class="sysdate">${a}시간전</p>
+								</c:when>
 
-									<c:otherwise>
-										<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
-										<p class="sysdate">${b}일전</p>
-									</c:otherwise>
-								</c:choose>
-							</c:otherwise>
-						</c:choose>
-
-					</div>
+								<c:otherwise>
+									<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
+									<p class="sysdate">${b}일전</p>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>
 
 				</div>
-				<div class="chell-sec-line"></div>
-				<!-- 반목분 종료 -->
-			</c:forEach>
+
+			</div>
+			<div class="chell-sec-line"></div>
+			<!-- 반목분 종료 -->
+		</c:forEach>
 
 
-			<img src="/img/icon/pen.png"
-				onclick="location.href='writeChallenge.do'" class="write-challenge">
-		</div>
+		<img src="/img/icon/pen.png"
+			onclick="location.href='writeChallenge.do'" class="write-challenge">
+	</div>
 
 
 

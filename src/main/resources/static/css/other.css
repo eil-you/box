@@ -530,16 +530,15 @@
 	border-radius: 10px;
 }
 
-.update-c{
-		width: 44.4%;
+.update-c {
+	width: 44.4%;
 	border-radius: 10px;
 }
 
 .my-b-u {
-	width:100%;
+	width: 100%;
 	text-align: center;
 	padding-bottom: 10px;
-	
 }
 
 .goback {
@@ -558,7 +557,6 @@
 
 .gohomee:hover {
 	cursor: pointer;
-	
 }
 
 .goback:hover {
@@ -630,14 +628,12 @@
 	padding: 5% 5% 0%;
 }
 
-
-
-
 .b-price-t {
 	display: inline-flex;
 	font-size: 16px;
 	width: 50%
 }
+
 .b-point-t {
 	display: inline-flex;
 	font-size: 16px;
@@ -648,13 +644,12 @@
 	display: inline-flex;
 	font-size: 16px;
 	float: right;
-
 }
+
 .b-point-info {
 	display: inline-flex;
 	font-size: 16px;
 	float: right;
-
 }
 
 .use-point {
@@ -674,10 +669,11 @@
 	font-size: 20px;
 	font-weight: bold;
 }
-.final-info{
-	font-size:20px;
+
+.final-info {
+	font-size: 20px;
 	font-weight: bold;
-	padding:5% 0%; 
+	padding: 5% 0%;
 }
 
 .buy-title {
@@ -761,7 +757,7 @@
 .seper-line {
 	height: 10px;
 	background-color: #d9d9d98f;
-	margin: auto -29px;
+	margin: auto -20px;
 }
 
 .board-img {
@@ -771,12 +767,12 @@
 	margin: 0% 0px 4%;
 }
 
-.result-sec{
+.result-sec {
 	padding: 0px 5%;
 	text-align: center;
 }
 
-.chall-img{
+.chall-img {
 	width: 100%;
 	height: 30%;
 	margin: 0% 0px 4%;
@@ -848,7 +844,7 @@
 	margin-bottom: 5px;
 	height: 1px;
 	background-color: #d9d9d98f;
-	margin: auto -29px 13px;
+	margin: auto -20px 13px;
 }
 
 .apt_name {
@@ -857,7 +853,7 @@
 }
 
 .buy-img {
-	height:230px;
+	height: 230px;
 	width: 100%;
 }
 
@@ -871,16 +867,15 @@
 	height: 45px;
 	background-color: #599555;
 	font-size: 16px;
-    color: white;
-    border-radius: unset;
+	color: white;
+	border-radius: unset;
 	position: fixed;
-    bottom: 70px;
+	bottom: 70px;
 }
 
 .point-logo {
 	width: 25px;
 }
-
 
 #price {
 	position: relative;
@@ -1015,8 +1010,8 @@ input:-internal-autofill-selected {
 }
 
 .comment-sec {
-    padding: 0% 3% 70px;
-	}
+	padding: 0% 3% 70px;
+}
 
 .comment {
 	padding: 3% 0%;
@@ -1050,8 +1045,18 @@ input:-internal-autofill-selected {
 }
 
 .search-pw {
-	
-		width: 96%;
+	width: 96%;
 	border-radius: 10px;
-	
+}
+
+.datecnt {
+	float: right;
+}
+
+.my-mid p:hover {
+	cursor: pointer;
+} 
+
+.my-d {
+	padding-bottom: 80px;
 }
