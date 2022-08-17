@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.internal.build.AllowSysOut;
@@ -122,7 +123,12 @@ public class chatController {
 	 * @return
 	 */
 	@RequestMapping("/moveChating")
-	public ModelAndView chating(@RequestParam HashMap<Object, Object> params) {
+	public ModelAndView chating(@RequestParam HashMap<Object, Object> params, HttpServletRequest request) {
+		
+		String roomName = request.getParameter("roomName");
+		String Number =  request.getParameter("roomNumber");
+		
+		System.out.println("통신 넘어감?" + Number  + roomName);
 		
 		System.out.println("채팅방 입장");
 		ModelAndView mv = new ModelAndView();

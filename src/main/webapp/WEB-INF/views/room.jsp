@@ -164,8 +164,15 @@
 	</nav>
 	<div id="roomContainer" class="roomContainer">
 		<c:forEach items="${chatRoomList}" var="vo">
-			<div>
-				<p class="chat-user">${vo.cr_title}님</p>
+			<div class="chat-room-div" onclick="viewChat(${vo.cr_seq}, '${vo.cr_title}')">
+				<c:choose>
+					<c:when test="${vo.cr_title == user_id }">
+						<p class="chat-user">${vo.user_id}</p>
+					</c:when>
+					<c:otherwise>
+						<p class="chat-user">${vo.cr_title}님</p>
+					</c:otherwise>
+				</c:choose>
 				<!-- 기본값 분단위 -->
 				<fmt:parseNumber var="a" value="${vo.cr_opendate/60}"
 					integerOnly="true" />
@@ -197,7 +204,7 @@
 				</c:choose>
 
 			</div>
-
+	
 		</c:forEach>
 
 
@@ -212,5 +219,25 @@
 
 	<script src="js/message-foot.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+	
+		function viewChat(cr_seq , cr_title) {
+			
+			var name = cr_title
+			console.log("roomName=" + name)
+			var number = cr_seq
+			console.log("roomNumber=" + number)			
+
+			
+			location.href="/moveChating?roomName=" + name + "&" + "roomNumber="
+			+ number;
+
+			
+			
+		}
+	
+	
+	
+	</script>
 </body>
 </html>

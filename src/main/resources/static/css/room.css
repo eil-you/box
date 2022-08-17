@@ -1,5 +1,4 @@
-
- h3 {
+h3 {
 	text-align: left;
 	padding: 5px 5px 5px 15px;
 	color: black;
@@ -8,7 +7,7 @@
 
 .roomContainer {
 	overflow: auto;
-	padding: 12% 5%;
+	padding: 12% 0%;
 }
 
 .roomList {
@@ -62,16 +61,22 @@ button {
 }
 
 .chat-user {
-    padding: 5% 0%;
-    font-weight: bold;
-    font-size: 16px;
-    display: inline-flex;
+	font-weight: bold;
+	font-size: 16px;
+	display: inline-flex;
 	margin-right: 15px;
 }
 
 .chat-time {
-	
-	color : #a9a9a9;
-    display: inline-flex;
-	
+	color: #a9a9a9;
+	display: inline-flex;
+}
+
+.chat-room-div {
+	padding: 5% 5%;
+	border-bottom: 1px #c3c3c399 solid;
+}
+
+.chat-room-div:hover {
+	cursor: pointer;
 }
