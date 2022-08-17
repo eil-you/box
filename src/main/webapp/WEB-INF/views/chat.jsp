@@ -173,7 +173,16 @@
 <body>
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
-			<h4 style="display: inline-block;">${roomName}</h4>
+			<c:choose>
+				<c:when test="${roomName == user_id}">
+					<h4 style="display: inline-block;">${chat.talker_id}</h4>				
+				</c:when>
+				
+				<c:otherwise>
+					<h4 style="display: inline-block;">${roomName}</h4>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 	</nav>
 	<input type="hidden" id="sessionId" value="">
