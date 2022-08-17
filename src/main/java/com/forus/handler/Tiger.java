@@ -1,4 +1,4 @@
-package com.forus.controller;
+package com.forus.handler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

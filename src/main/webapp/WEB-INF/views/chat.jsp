@@ -172,7 +172,7 @@ input {
 		<div id="yourName">
 			<table class="inputTable">
 				<tr>
-					<th><input type="hidden" name="userName" id="userName" value="${user_id }"></th>
+					<th><input type="hidden" name="userName" id="userName" value="${user_id}"></th>
 				</tr>
 			</table>
 		</div>

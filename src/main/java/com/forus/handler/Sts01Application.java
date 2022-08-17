@@ -1,3 +1,4 @@
+package com.forus.handler;
 //package com.forus.controller;
 //
 //import org.mybatis.spring.annotation.MapperScan;

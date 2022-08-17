@@ -1,4 +1,4 @@
-package com.forus.controller;
+package com.forus.handler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
