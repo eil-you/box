@@ -190,6 +190,7 @@
 	
 	function insertComment(article_seq) {
 		
+		console.log(article_seq)
 		
 		comment = $("#comment").val()
 		
@@ -198,11 +199,11 @@
 			url : "insertComment.do",
 			type: "post",
 			data : {
-				"cmt_coment" : comment,
+				"cmt_content" : comment,
 				"article_seq" : article_seq,
 			}, 
 			success: function () {
-				conosole.log("성공")
+				location.reload();
 			},
 			error : function () {
 				console.log("실패")
