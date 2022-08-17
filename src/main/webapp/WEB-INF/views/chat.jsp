@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,89 +82,91 @@
 </head>
 
 <script type="text/javascript">
-
 	$(document).ready(chatName)
 	var ws;
 
-	function wsOpen(){
+	function wsOpen() {
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		ws = new WebSocket("ws://" + location.host + "/chating/"
+				+ $("#roomNumber").val());
 		wsEvt();
 	}
-		
+
 	function wsEvt() {
-		ws.onopen = function(data){
+		ws.onopen = function(data) {
 			//소켓이 열리면 동작
 		}
-		
+
 		ws.onmessage = function(data) {
 			//메시지를 받으면 동작
 			var msg = data.data;
-			if(msg != null && msg.trim() != ''){
+			if (msg != null && msg.trim() != '') {
 				var d = JSON.parse(msg);
-				if(d.type == "getId"){
+				if (d.type == "getId") {
 					var si = d.sessionId != null ? d.sessionId : "";
-					if(si != ''){
-						$("#sessionId").val(si); 
+					if (si != '') {
+						$("#sessionId").val(si);
 					}
-				}else if(d.type == "message"){
-					if(d.sessionId == $("#sessionId").val()){
-						$(".chatting-sec").append("<div class='from-me'>" + d.msg + "</div> <div class='clear'></div>");	
-					}else{
-						$(".chatting-sec").append("<div class='from-them'>" + d.msg + "</div> <div class='clear'></div>");
+				} else if (d.type == "message") {
+					if (d.sessionId == $("#sessionId").val()) {
+						$(".chatting-sec").append(
+								"<div class='from-me'>" + d.msg
+										+ "</div> <div class='clear'></div>");
+					} else {
+						$(".chatting-sec").append(
+								"<div class='from-them'>" + d.msg
+										+ "</div> <div class='clear'></div>");
 					}
-						
-				}else{
+
+				} else {
 					console.warn("unknown type!")
 				}
 			}
 		}
 
-		document.addEventListener("keypress", function(e){
-			if(e.keyCode == 13){ //enter press
+		document.addEventListener("keypress", function(e) {
+			if (e.keyCode == 13) { //enter press
 				send();
 			}
 		});
 	}
 
-	function chatName(){
+	function chatName() {
 		var userName = $("#userName").val();
-			wsOpen();
-			$("#yourName").hide();
-			$("#yourMsg").show();
+
+		wsOpen();
+		$("#yourName").hide();
+		$("#yourMsg").show();
 	}
 
 	function send() {
-		var option ={
-			type: "message",
-			roomNumber: $("#roomNumber").val(),
+		var option = {
+			type : "message",
+			roomNumber : $("#roomNumber").val(),
 			sessionId : $("#sessionId").val(),
 			userName : $("#userName").val(),
 			msg : $("#chatting").val()
 		}
 		ws.send(JSON.stringify(option))
-		var roomNumber= $("#roomNumber").val(),
-		chatting =$('#chatting').val();		
+		var roomNumber = $("#roomNumber").val(), chatting = $('#chatting')
+				.val();
 		$.ajax({
 			url : "chatInsert.do",
 			type : 'post',
 			data : {
 				'talk_content' : chatting,
 				'cr_seq' : roomNumber
-			}, 
-			success : function(){
+			},
+			success : function() {
 				console.log("성공");
-			}, 
-			error : function(){
+			},
+			error : function() {
 				console.log("실패")
 			}
-		
-		
+
 		})
-		chatting =$('#chatting').val("");
-		
-	
-	
+		chatting = $('#chatting').val("");
+
 	}
 </script>
 
@@ -175,7 +180,32 @@
 	<input type="hidden" id="roomNumber" value="${roomNumber}">
 
 	<div id="chating" class="chating">
-	<section class="chatting-sec"></section>
+		<section class="chatting-sec">
+			<!-- ㅍ출력 -->
+			<c:choose>
+				<c:when test="${chat == null}">
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${chat}" var="vo">
+						<c:choose>
+							<c:when test="${vo.talker_id == user_id }">
+								<div class='from-me'>${vo.talk_content}</div>
+								<div class='clear'></div>
+							</c:when>
+
+							<c:otherwise>
+								<div class='from-them'>${vo.talk_content}</div>
+								<div class='clear'></div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+
+
+
+
+		</section>
 	</div>
 
 	<div id="yourName">
@@ -190,14 +220,15 @@
 	</div>
 	<div id="yourMsg">
 		<div class="inputTable">
-				<input id="chatting" class="form-control chat-form" placeholder="보내실 메시지를 입력하세요."></th>
-				<button onclick="send()" id="sendBtn" class="btn">보내기</button>
-		</table>
-	</div>
-	<!--  footer start -->
-	<div class="foot-bar"></div>
-	<!--  footer end -->
+			<input id="chatting" class="form-control chat-form"
+				placeholder="보내실 메시지를 입력하세요.">
+			</th>
+			<button onclick="send()" id="sendBtn" class="btn">보내기</button>
+			</table>
+		</div>
+		<!--  footer start -->
+		<div class="foot-bar"></div>
+		<!--  footer end -->
 
-	<script src="js/message-foot.js"></script>
-
+		<script src="js/message-foot.js"></script>
 </body>
