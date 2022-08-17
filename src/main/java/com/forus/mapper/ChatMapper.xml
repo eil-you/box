@@ -36,5 +36,11 @@
 		insert into chatting_tb(talker_id, talk_content, talk_time, cr_seq)
 		values(#{talker_id}, #{talk_content},now(),#{cr_seq})
 	</insert>
+	
+	
+	<!--  채팅 내용 가져오기 -->
+	<select id="chatList" resultType="com.forus.domain.chatVO">
+		select * from chatting_tb where cr_seq = #{cr_seq}
+	</select>
 
 </mapper>

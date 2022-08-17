@@ -129,16 +129,20 @@ public class chatController {
 //		int roomNumber =  Integer.parseInt(request.getParameter("roomNumber"));
 		
 		//System.out.println("통신 넘어감?" + Number  + roomName);
-		
 		System.out.println("채팅방 입장");
 		ModelAndView mv = new ModelAndView();
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
+		List <chatVO> chatList = cMapper.chatList(roomNumber);
+		System.out.println("chatList : "+chatList);
+		
+		
 		System.out.println(roomNumber);
 		List<chatRoomVO> new_list = roomList.stream().filter(o->o.getCr_seq()==roomNumber).collect(Collectors.toList());
 		System.out.println( "new_list"+new_list);
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
+			mv.addObject("chat", chatList);
 			mv.setViewName("chat");
 		}else {
 			mv.setViewName("room");

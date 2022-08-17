@@ -14,4 +14,6 @@ public class chatRoomVO {
 	private String user_id;   // 채팅 건 사람 id (구매자)
 	private int g_seq;
 	private String cr_opendate;
+	private String g_img;
+
 }
