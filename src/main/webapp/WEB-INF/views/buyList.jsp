@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -120,7 +121,7 @@
 
 							<div class="pr-zzim">
 								<p class="price">
-									<c:out value="${vo.g_price}" />
+									<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
 								</p>
 								<div class="zzim-div" onclick="">
 									<img class="zzim" src="/img/icon/star-empty.png">
