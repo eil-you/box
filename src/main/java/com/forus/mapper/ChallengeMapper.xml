@@ -27,7 +27,8 @@
 		    from user_tb) as u, 
 		    (select chal_content, chal_seq
 		    from challenge_tb) as h
-		where c.user_id = u.user_id and h.chal_seq = c.chal_seq;
+		where c.user_id = u.user_id and h.chal_seq = c.chal_seq
+		order by uc_date
 	</select>
 	
 	<!-- 챌린지 인증 후 포인트 지급하기 -->

@@ -45,13 +45,15 @@ public class chatController {
 	/**
 	 * 방 페이지
 	 * @return
-	 */
-	@RequestMapping("/room")
-	public ModelAndView room() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("room");
-		return mv;
-	}
+//	 */
+//	@RequestMapping("/room")
+//	public ModelAndView room() {
+//		ModelAndView mv = new ModelAndView();
+//		List<chatRoomVO> list =cMaperr.
+//		
+//		mv.setViewName("room");
+//		return mv;
+//	}
 	
 	/**
 	 * 방 생성하기
