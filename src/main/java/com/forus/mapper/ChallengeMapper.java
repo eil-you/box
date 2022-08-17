@@ -24,6 +24,9 @@ public interface ChallengeMapper {
 	public int addPoint(String chal_content, String user_id);
 	
 	
+	// 챌린지 삭제
+	public void chalDelete(int uc_seq);
+	
 	
 	
 	

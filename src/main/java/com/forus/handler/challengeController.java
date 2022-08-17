@@ -102,8 +102,13 @@ public class challengeController {
 		}
 	}
 	
-//	// 챌린지 삭제하기
-//	@RequestMapping("/chalDelte.do")
-//	public @ResponseBody void chalDelte(int )
-//	
+	// 챌린지 삭제하기
+	@RequestMapping("/chalDelete.do")
+	public @ResponseBody void chalDelete(int uc_seq, HttpSession session) {
+		String user_id = (String)session.getAttribute("user_id");
+		if(user_id != null) {
+		mapper.chalDelete(uc_seq);
+		}
+	}
+	
 }

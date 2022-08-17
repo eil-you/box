@@ -40,6 +40,10 @@
 		where user_id = #{user_id};
 	</update>
 
+	<!-- 챌린지 삭제 -->
+	<delete id="chalDelete" >
+	 delete from user_challenge_tb where uc_seq = #{uc_seq}
+	</delete>
 
 
 </mapper>
