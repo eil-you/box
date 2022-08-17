@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.forus.domain.chatRoomVO;
+import com.forus.domain.chatVO;
 
 @Mapper
 public interface ChatMapper {
@@ -17,5 +18,9 @@ public interface ChatMapper {
 	
 	// 채팅방 리스트 가져오기
 	public List<chatRoomVO> roomList(String user_id);
+	
+	// 채팅 내용 저장
+	public void chatInsert(chatVO vo);
+	
 	
 }

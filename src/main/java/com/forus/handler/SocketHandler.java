@@ -24,8 +24,6 @@ public class SocketHandler extends TextWebSocketHandler {
 	List<HashMap<String, Object>> rls = new ArrayList<>(); //웹소켓 세션을 담아둘 리스트 ---roomListSessions
 	
 	
-	@Autowired
-	ChatMapper mapper;
 	
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {

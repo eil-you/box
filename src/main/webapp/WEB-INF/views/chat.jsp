@@ -109,7 +109,28 @@
 			msg : $("#chatting").val()
 		}
 		ws.send(JSON.stringify(option))
-		$('#chatting').val("");
+		var roomNumber= $("#roomNumber").val(),
+		chatting =$('#chatting').val();		
+		$.ajax({
+			url : "chatInsert.do",
+			type : 'post',
+			data : {
+				'talk_content' : chatting,
+				'cr_seq' : roomNumber
+			}, 
+			success : function(){
+				console.log("성공");
+			}, 
+			error : function(){
+				console.log("실패")
+			}
+		
+		
+		})
+		chatting =$('#chatting').val("");
+		
+	
+	
 	}
 </script>
 <body>
