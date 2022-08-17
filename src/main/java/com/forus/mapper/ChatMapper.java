@@ -23,4 +23,8 @@ public interface ChatMapper {
 	public void chatInsert(chatVO vo);
 	
 	
+	// 채팅 내용 가져오기
+	public List<chatVO> chatList(int cr_seq);
+	
+	
 }

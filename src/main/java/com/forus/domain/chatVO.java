@@ -16,7 +16,7 @@ public class chatVO {
 	private String talk_content;
 	private String talk_time;
 	private int cr_seq;
-	private String g_img;
+
 	
 
 }
