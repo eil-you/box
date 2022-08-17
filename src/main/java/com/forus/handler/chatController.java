@@ -45,20 +45,20 @@ public class chatController {
 	/**
 	 * 방 페이지
 	 * @return
-//	 */
-//	@RequestMapping("/room")
-//	public ModelAndView room(HttpSession session) {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		String user_id = (String)session.getAttribute("user_id");
-//		if(user_id != null) {
-//			
-//		List<chatRoomVO> list =cMaperr.roomList(user_id);
-//		
-//		mv.setViewName("room");
-//		}
-//		return mv;
-//	}
+	 */
+	@RequestMapping("/room")
+	public ModelAndView room(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		String user_id = (String)session.getAttribute("user_id");
+		if(user_id != null) {
+			
+		List<chatRoomVO> list =cMapper.roomList(user_id);
+		mv.addObject("chatRoomList", list);
+		mv.setViewName("room");
+		}
+		return mv;
+	}
 	
 	/**
 	 * 방 생성하기

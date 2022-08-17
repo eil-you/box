@@ -18,5 +18,17 @@
 	<select id="cr_seqSelect" resultType="com.forus.domain.chatRoomVO">
 		select * from chattingroom_tb where g_seq = #{g_seq} and user_id = #{user_id}
 	</select>
+	
+	<!-- 채팅방 리스트 가져오기 -->
+	<select id="roomList" resultType="com.forus.domain.chatRoomVO">
+		select c.cr_seq, u.user_nick as cr_title, c.g_seq, c.user_id,(TIMESTAMPDIFF (minute,c.cr_opendate,now())) as cr_opendate
+		from chattingroom_tb c, user_tb u 
+		where c.user_id = #{user_id} and c.cr_title = u.user_id
+		union 
+		select c.cr_seq, c.cr_title, c.g_seq, u.user_nick as user_id ,(TIMESTAMPDIFF (minute,c.cr_opendate,now())) as cr_opendate
+		from chattingroom_tb c, user_tb u
+		where c.cr_title = #{user_id} and c.user_id = u.user_id
+		order by cr_opendate
+	</select>
 
 </mapper>
