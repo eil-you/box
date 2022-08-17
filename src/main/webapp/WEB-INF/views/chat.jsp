@@ -83,6 +83,8 @@
 
 <script type="text/javascript">
 	$(document).ready(chatName)
+
+	
 	var ws;
 
 	function wsOpen() {
@@ -134,6 +136,10 @@
 	function chatName() {
 		var userName = $("#userName").val();
 
+		var talker_id = $("#talker_id").val()
+		console.log(talker_id)
+		
+		$("#t").html(talker_id)
 		wsOpen();
 		$("#yourName").hide();
 		$("#yourMsg").show();
@@ -175,7 +181,7 @@
 		<div class="navbar__logo add-header">
 			<c:choose>
 				<c:when test="${roomName == user_id}">
-					<h4 style="display: inline-block;">${chat.talker_id}</h4>				
+					<h4 id = "t" style="display: inline-block;"></h4>				
 				</c:when>
 				
 				<c:otherwise>
@@ -204,6 +210,7 @@
 
 							<c:otherwise>
 								<div class='from-them'>${vo.talk_content}</div>
+								<input type="hidden" value="${vo.talker_id}" id="talker_id"/>
 								<div class='clear'></div>
 							</c:otherwise>
 						</c:choose>
