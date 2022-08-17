@@ -13,7 +13,7 @@
 	    	where v_machine_addr = #{user_addr}) as v
 	where c.user_id = u.user_id and c.v_machine_seq = v.v_machine_seq 
 	group by c.article_seq
-	order by c.article_date
+	order by article_date
 	</select>
 
 	<!-- 게시글 등록하기 -->

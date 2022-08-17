@@ -47,11 +47,16 @@ public class chatController {
 	 * @return
 //	 */
 //	@RequestMapping("/room")
-//	public ModelAndView room() {
+//	public ModelAndView room(HttpSession session) {
 //		ModelAndView mv = new ModelAndView();
-//		List<chatRoomVO> list =cMaperr.
+//		
+//		String user_id = (String)session.getAttribute("user_id");
+//		if(user_id != null) {
+//			
+//		List<chatRoomVO> list =cMaperr.roomList(user_id);
 //		
 //		mv.setViewName("room");
+//		}
 //		return mv;
 //	}
 	
