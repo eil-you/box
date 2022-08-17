@@ -79,7 +79,7 @@
 
 
 </head>
-<body>
+<body style="overflow: visible;">
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status">&nbsp;</div>
@@ -113,7 +113,7 @@
 
 				<input class="form-group form-control use-point" id="use-point"
 					placeholder="0p" type="number">
-				<button class="btn"
+				<button class="btn u-p"
 					onclick="usingPoint(${buyVO.g_price},${user_point})">사용하기</button>
 			</div>
 

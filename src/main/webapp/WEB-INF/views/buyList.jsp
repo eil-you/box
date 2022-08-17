@@ -76,6 +76,7 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 <link href="css/list.css" rel="stylesheet">
+<link href="css/dropdown.css" rel="stylesheet">
 </head>
 
 
@@ -98,9 +99,17 @@
 		<div class=" container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
+				<input type="hidden" value="${GoodsList}" id="lgth">
 				<c:forEach items="${GoodsList}" var="vo" step="1">
+				<div class="dropdown zzzmenu">
+									<button class="dropbtn ">⁝</button>
+									<div class="dropdown-content">
+										<a id="finpw">비밀번호 확인</a> 
+									</div>
+								</div>
 					<div class="card-product__img"
 						onclick="viewGoodsContent(${vo.g_seq})">
+						<input type="hidden" value="${vo.g_seq }" id="g_seq">
 						<img class="card-img" src="file/${vo.g_img}">
 						<div class="card-body">
 							<h4>
@@ -119,9 +128,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="update-sec">
-					<button class="btn btn-sm search-pw" onclick="findGoodsPw()">비밀번호확인</button>
 					</div>
 					<div class="goods-line"></div>
 				</c:forEach>
@@ -147,38 +153,10 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script src="/js/mypage-foot.js"></script>
+	<script src="/js/mypage.js"></script>
 	<script type="text/javascript">
 
-		$(document).ready(checkNull)	
-		
-		function checkNull() {
-			
-			var GoodsList = ${GoodsList}
-			// console.log(GoodsList.length)
-			
-			if(GoodsList.length == 0 ) {
-				
-			$("body").css("background-color", "#4c4c4c1c")
-			
-			list = `<div class="empty-list">
-						<p>구매한 내역이 없어요.</p>
-					</div>`
-		$(".navbar").after(list);
-			
-			}
-			
-			
-		}
-		
-		function findGoodsPw() {
-			
-			
-			
-			
-		}
-		
-		
-		
+	
 	</script>
 
 

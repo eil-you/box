@@ -80,7 +80,7 @@
 </head>
 
 
-<body>
+<body style="overflow: visible;">
 
 	<!-- Preloader -->
 	<div id="preloader">
@@ -94,7 +94,7 @@
 	</nav>
 
 	<!-- ================ trending product section start ================= -->
-	<section class="section-margin calc-60px">
+	<section class="section-margin calc-60px my-d">
 		<div class="container container-pd container-my">
 
 			<div class="profile">
@@ -154,6 +154,7 @@
 			<div class="my-mid">
 				<p><img class = "mypage-icon" src="/img/icon/mic.png"> &nbsp공지사항</p>
 			</div>
+			
 
 	</section>
 	<!-- ================ trending product section end ================= -->

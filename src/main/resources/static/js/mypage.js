@@ -98,10 +98,24 @@
 				
 				for (let i = 0; i < data.length; i++) {
 					var vo = data[i]
+					
+					var price =  vo.g_price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+					console.log("가굑" + price)
+					
 					console.log(vo.g_name)
 					list = `<div id="product-list">
+							<div class="dropdown zzzmenu">
+									<button class="dropbtn ">⁝</button>
+									
+									<div class="dropdown-content">
+										<a id="finpw">비밀번호 확인</a> 
+										<a onclick="updateGoods()">수정하기</a>
+										<a onclick="deleteGoods(${vo.g_seq})">삭제하기</a>
+									</div>
+								</div>
 									<div class="card-product__img"
 										onclick="viewGoodsContent(${vo.g_seq})">
+										<input type="hidden" value="${vo.g_seq}" id="g_seq">
 										<img class="card-img" src="file/${vo.g_img}">
 										<div class="card-body">
 											<h4>
@@ -109,9 +123,7 @@
 											</h4>
 											<br>
 											<div class="pr-zzim">
-												<p class="price">
-													${vo.g_price}
-												</p>
+												<p class="price">${price}</p>
 												<div class="zzim-div" onclick="">
 													<img class="zzim" src="/img/icon/star-empty.png">
 													<p class="zzim-cnt">${vo.wish_cnt}</p>
@@ -119,14 +131,8 @@
 											</div>
 									</div>
 								</div>
-									<div class="update-sec">
-										<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
-										<button class="btn btn-sm update" type="button"
-											onclick="updateGoods()">수정하기</button>
-										<button class="btn btn-sm update"
-											onclick="deleteGoods(${vo.g_seq})">삭제하기</button>
-									</div>
-									<div class="goods-line"></div>
+
+								<div class="goods-line"></div>
 							`
 					$("#printlist").append(list);
 
@@ -155,4 +161,55 @@
 
 		}
 		
+		// 페이지 비었는지 확인
+		
+		$(document).ready(checkNull)	
+		
+		function checkNull() {
+		
+		let lgth = $("#lgth").val();
+			console.log(lgth.length)
+		
+			if(lgth.length == '2') {
+				
+				$(".empty-list").html("");
+				
+				list = `<div class="empty-list">
+				<p>판매 내역이 없어요.</p>
+			</div>`
+
+			$(".navbar").after(list);
+			$("body").css("background-color", "#4c4c4c1c")
+				
+			} 
+			}
+
+		
+		$(document).on("click", "#finpw" , function () {
+			
+			var g_seq = $("#g_seq").val()
+			
+			console.log("함수실행" + g_seq )
+			
+			$.ajax({
+				
+			url : "pwinfo.do",
+			type : "post",
+			data : {
+				"g_seq" : g_seq
+			},
+			success : function (data) {
+				
+				var pw = data.v_machine_pw;
+				alert("비밀번호는 " + pw + "입니다")
+				
+			},
+			
+			error : function () {
+				console.log("실패")
+			}
+			
+			})
+			
+		})
 		

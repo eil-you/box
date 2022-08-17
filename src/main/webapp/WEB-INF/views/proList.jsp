@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -76,6 +77,7 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 <link href="css/list.css" rel="stylesheet">
+<link href="css/dropdown.css" rel="stylesheet">
 </head>
 
 
@@ -117,9 +119,20 @@
 					<div id="printlist">
 
 						<!--리스트 출력 시작 시작 -->
+						<input type="hidden" value="${GoodsList}" id="lgth">
 						<c:forEach items="${GoodsList}" var="vo" step="1">
+							<div class="dropdown zzzmenu">
+								<button class="dropbtn ">⁝</button>
+								<div class="dropdown-content">
+									<a id="finpw">비밀번호 확인</a> 
+									<a onclick="updateGoods()">수정하기</a> 
+									<a onclick="deleteGoods(${vo.g_seq})" >삭제하기</a>
+									</div>
+								</div>
+						
 							<div class="card-product__img"
 								onclick="viewGoodsContent(${vo.g_seq})">
+								<input type="hidden" value="${vo.g_seq }" id="g_seq">
 								<img class="card-img" src="file/${vo.g_img}">
 								<div class="card-body">
 									<h4>
@@ -128,7 +141,7 @@
 									<br>
 									<div class="pr-zzim">
 										<p class="price">
-											<c:out value="${vo.g_price}" />
+											<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
 										</p>
 										<div class="zzim-div" onclick="">
 											<img class="zzim" src="/img/icon/star-empty.png">
@@ -136,13 +149,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="update-sec">
-								<button class="btn btn-sm update" onclick="findGoodsPw()">비밀번호확인</button>
-								<button class="btn btn-sm update" type="button"
-									onclick="updateGoods()">수정하기</button>
-								<button class="btn btn-sm update"
-									onclick="deleteGoods(${vo.g_seq})">삭제하기</button>
 							</div>
 							<div class="goods-line"></div>
 						</c:forEach>
@@ -169,27 +175,7 @@
 		<script src="js/script.js"></script>
 		<script src="/js/mypage-foot.js"></script>
 		<script src="js/mypage.js"></script>
-		<script type="text/javascript">
-$(document).ready(checkNull)
-		
-		
-		
-		function checkNull() {
-		
-		var GoodsList = ${GoodsList};
-			if(GoodsList.length == 0) {
-				
-				list = `<div class="empty-list">
-				<p>판매 내역이 없어요.</p>
-			</div>`
-
-			$(".navbar").after(list);
-			$("body").css("background-color", "#4c4c4c1c")
-				
-			}
-				
-
-			}
+		<script>
 		
 		
 		</script>

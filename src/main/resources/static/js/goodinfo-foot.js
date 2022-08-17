@@ -25,7 +25,7 @@ function loadFooter() {
 			<img alt="" src="/img/icon/message-gr.png">
 		</div>
 		<div class="foot-div" onclick="location.href='viewMypage.do'">
-			<img alt="" src="/img/icon/me-full.png">
+			<img alt="" src="/img/icon/me-gr.png">
 		</div>`
 
 	$(".foot-bar").html(list);

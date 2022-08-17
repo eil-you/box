@@ -91,10 +91,10 @@
 }
 
 .card-img {
-	width: 25%;
-	height: 100px;
-	padding: 10px 22px;
-	border-radius: 15%;
+    width: 25%;
+    height: 100px;
+    padding: 10px 22px;
+    border-radius: 22%;
 }
 
 .card {
@@ -133,7 +133,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: 15px;
-	width: 60%;
+	width: 50%;
 }
 
 .goods-title {
@@ -526,12 +526,13 @@
 }
 
 .update {
-	width: 27.3%;
+	width: 26.3%;
 	border-radius: 10px;
+	
 }
 
 .update-c {
-	width: 44.4%;
+	width: 42.4%;
 	border-radius: 10px;
 }
 
@@ -653,8 +654,8 @@
 }
 
 .use-point {
-	width: 80.8%;
-	display: inline-table;
+	width: 75.8%;
+    display: inline-table;
 }
 
 .use-point::placeholder {
@@ -673,7 +674,7 @@
 .final-info {
 	font-size: 20px;
 	font-weight: bold;
-	padding: 5% 0%;
+	padding: 5% 0% 25%
 }
 
 .buy-title {
@@ -700,11 +701,12 @@
 
 .buy-div {
 	position: fixed;
-	bottom: 80px;
+	bottom: 70px;
 	width: 100%;
 	padding: 0px 5%;
 	border-top: 1px #d7d7d770 solid;
 	background: white;
+	padding: 1.6% 5%;
 }
 
 .c-cate {
@@ -713,6 +715,10 @@
 	border: 1px solid #00000029;
 	border-radius: 4px;
 	background-color: white
+}
+
+.u-p {
+	width: 22%;
 }
 
 .choose-cate {
@@ -901,6 +907,7 @@
 
 .point-info {
 	height: 7rem;
+	height: 30%;
 }
 
 .board-foot {
@@ -1060,3 +1067,19 @@ input:-internal-autofill-selected {
 .my-d {
 	padding-bottom: 80px;
 }
+
+.buy_goods_info {
+	    height: 30%;
+}
+
+.zzzmenu {
+	
+    width: 5%;
+    height: 10%;
+    float: right;
+    margin-right: 5%;
+    margin-top: 4%;
+   
+}
+	
+

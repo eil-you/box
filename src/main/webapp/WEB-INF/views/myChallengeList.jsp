@@ -74,6 +74,7 @@
 <!-- 사용자 정의 -->
 <link href="css/other.css" rel="stylesheet">
 <link href="css/list.css" rel="stylesheet">
+<link href="css/dropdown.css" rel="stylesheet">
 </head>
 
 
@@ -96,6 +97,13 @@
 			<c:choose>
 				<c:when test="${user_id eq vo.user_id }">
 					<!-- 반목분 시작 -->
+									<div class="dropdown zzzmenu">
+									<button class="dropbtn ">⁝</button>
+									<div class="dropdown-content">
+										<a onclick="findGoodsPw()">수정하기</a> 
+										<a >삭제하기</a> 
+									</div>
+								</div>
 					<div class="chell-sec">
 						<div class="chell-top">
 							<span class="chell cate">${vo.chal_content}</span>
@@ -112,7 +120,14 @@
 								integerOnly="true" />
 							<c:choose>
 								<c:when test="${a == 0}">
-									<p class="sysdate">${vo.uc_date}분전</p>
+								<c:choose>
+										<c:when test="${vo.uc_date == 0}">
+											<p class="datecnt">방금전</p>
+										</c:when>
+										<c:otherwise>
+											<p class="datecnt">${vo.uc_date}분전</p>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
 
 								<c:otherwise>
@@ -130,12 +145,7 @@
 							</c:choose>
 
 						</div>
-						<div class="update-sec">
-							<button class="btn btn-sm update-c" type="button"
-								onclick="updateGoods()">수정하기</button>
-							<button class="btn btn-sm update-c"
-								onclick="deletechall(${vo.uc_seq})">삭제하기</button>
-						</div>
+
 					</div>
 					<div class="chell-sec-line"></div>
 					<!-- 반목분 종료 -->
