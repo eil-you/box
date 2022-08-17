@@ -1,3 +1,12 @@
+body {
+overflow: visible; 
+position: absolute; 
+top: 0; 
+left: 0; 
+right: 0; 
+bottom: 0;
+}
+
 h3 {
 	text-align: left;
 	padding: 5px 5px 5px 15px;
@@ -41,15 +50,6 @@ h3 {
 	text-align: center;
 }
 
-button {
-	background-color: #FFBB00;
-	font-size: 14px;
-	color: #000;
-	border: 1px solid #000;
-	border-radius: 5px;
-	padding: 3px;
-	margin: 3px;
-}
 
 .inputTable th {
 	padding: 5px;

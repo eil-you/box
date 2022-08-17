@@ -155,8 +155,7 @@
 	}
 </script>
 
-<body
-	style="overflow: visible; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+<body>
 	<nav class="navbar">
 		<div class="navbar__logo add-header">
 			<h4 style="display: inline-block;">${user_id}님의 채팅</h4>

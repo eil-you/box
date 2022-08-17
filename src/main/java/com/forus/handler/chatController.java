@@ -143,6 +143,7 @@ public class chatController {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
 			mv.addObject("chat", chatList);
+			System.out.println(chatList);
 			mv.setViewName("chat");
 		}else {
 			mv.setViewName("room");

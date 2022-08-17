@@ -91,10 +91,10 @@
 }
 
 .card-img {
-    width: 25%;
-    height: 100px;
-    padding: 10px 22px;
-    border-radius: 22%;
+	width: 25%;
+	height: 100px;
+	padding: 10px 22px;
+	border-radius: 22%;
 }
 
 .card {
@@ -153,6 +153,7 @@
 	bottom: 0;
 	height: 70px;
 	display: inline-flex;
+	z-index: 10;
 }
 
 .foot-div {
@@ -528,7 +529,6 @@
 .update {
 	width: 26.3%;
 	border-radius: 10px;
-	
 }
 
 .update-c {
@@ -655,7 +655,7 @@
 
 .use-point {
 	width: 75.8%;
-    display: inline-table;
+	display: inline-table;
 }
 
 .use-point::placeholder {
@@ -1062,24 +1062,20 @@ input:-internal-autofill-selected {
 
 .my-mid p:hover {
 	cursor: pointer;
-} 
+}
 
 .my-d {
 	padding-bottom: 80px;
 }
 
 .buy_goods_info {
-	    height: 30%;
+	height: 30%;
 }
 
 .zzzmenu {
-	
-    width: 5%;
-    height: 10%;
-    float: right;
-    margin-right: 5%;
-    margin-top: 4%;
-   
+	width: 5%;
+	height: 10%;
+	float: right;
+	margin-right: 5%;
+	margin-top: 4%;
 }
-	
-
