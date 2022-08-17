@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -102,26 +103,26 @@
 	<!-- ================ trending product section start ================= -->
 	<section class="section-margin calc-60px">
 		<div class=" container-pd community-sec">
-			<div class=" list_layout">
 				<!--리스트 출력 시작 시작 -->
 				<div class="cate-select">
 					<div class="choose-cate">
-							<button type = "button" class="btn btn-sm c-cate"
+						<button type="button" class="btn btn-sm c-cate"
 							onclick="choiceCategory(취미생활)">취미생활</button>
-							<button type = "button" class="btn btn-sm c-cate"
+						<button type="button" class="btn btn-sm c-cate"
 							onclick="choiceCategory(분실센터)">분실센터</button>
-							<button type = "button" class="btn btn-sm c-cate"
+						<button type="button" class="btn btn-sm c-cate"
 							onclick="choiceCategory(아파트질문)">아파트질문</button>
-							<button type = "button" class="btn btn-sm c-cate"
+						<button type="button" class="btn btn-sm c-cate"
 							onclick="choiceCategory(아파트소식)">아파트소식</button>
-							<button type = "button" class="btn btn-sm c-cate"
+						<button type="button" class="btn btn-sm c-cate"
 							onclick="choiceCategory(근처맛집)">근처맛집</button>
 					</div>
 				</div>
 
 				<c:forEach items="${boardList}" var="vo" step="1">
 					<!-- 반목분 시작 -->
-					<div class="board-sec" onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq}'">
+					<div class="board-sec"
+						onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq}'">
 						<span class="cate">${vo.article_category}</span> <br>
 						<div class="board-text">${vo.article_content}</div>
 
@@ -137,40 +138,66 @@
 
 						<div class="board-foot">
 							<p class="board-nick">${vo.user_id}</p>
-							<p class="sysdate">${vo.article_date}</p>
-						</div>
-						<div class="section-line"></div>
-						<div class="like">
-							<div class="reac-div reaction">
-								<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
-								<input type="hidden" value="${vo.article_seq}" id="article_seq">
-								<span id="cnt">${vo.c_like}</span>
-							</div>
+							<!--  ff -->
+							<!-- 기본값 분단위 -->
+							<fmt:parseNumber var="a" value="${vo.article_date/60}"
+								integerOnly="true" />
+							<c:choose>
+								<c:when test="${a == 0}">
+									<c:choose>
+										<c:when test="${vo.article_date == 0}">
+											<p class="datecnt">방금전</p>
+										</c:when>
+										<c:otherwise>
+											<p class="datecnt">${vo.article_date}분전</p>
+										</c:otherwise>
 
-							<div class="reac-div" onclick="location.href='boardInfo.do'">
-								<img class="reac" src="/img/icon/datggle.png"> <span>댓글달기</span>
-							</div>
-						</div>
+									</c:choose>
+								</c:when>
 
-						<div class="seper-line"></div>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${a < 24}">
+											<p class="datecnt">${a}시간전</p>
+										</c:when>
+
+										<c:otherwise>
+											<fmt:parseNumber var="b" value="${a / 24}" integerOnly="true" />
+											<p class="datecnt">${b}일전</p>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+
+						</div>
 					</div>
-					<!-- 반목분 종료 -->
-				</c:forEach>
+					<div class="section-line"></div>
+					<div class="like">
+						<div class="reac-div reaction">
+							<img class="reac" src="/img/icon/gonggam.png"> <span>공감하기</span>
+							<input type="hidden" value="${vo.article_seq}" id="article_seq">
+							<span id="cnt">${vo.c_like}</span>
+						</div>
 
+						<div class="reac-div" onclick="location.href='boardInfo.do'">
+							<img class="reac" src="/img/icon/datggle.png"> <span>댓글달기</span>
+						</div>
+					</div>
 
+					<div class="seper-line"></div>
+			</c:forEach>
+			<!-- 반목분 종료 -->
 
-				<img class="write-board" onclick="location.href='viewBoardForm.do'"
-					src="/img/icon/pen.png">
+			<img class="write-board" onclick="location.href='viewBoardForm.do'"
+				src="/img/icon/pen.png">
 
-			</div>
+		</div>
 		</div>
 	</section>
 	<!-- ================ trending product section end ================= -->
 
 	<!--  footer start -->
-	<div class="foot-bar">
-		
-	</div>
+	<div class="foot-bar"></div>
 	<!--  footer end -->
 
 	<!-- =========================
@@ -184,7 +211,7 @@
 	<script src="js/wow.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/board-foot.js"></script>
-		
+
 
 
 </body>
