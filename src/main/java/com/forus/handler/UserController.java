@@ -1,4 +1,4 @@
-package com.forus.controller;
+package com.forus.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
