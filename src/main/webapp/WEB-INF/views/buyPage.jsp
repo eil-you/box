@@ -171,6 +171,8 @@
 	<script src="js/script.js"></script>
 	<script type="text/javascript">
 		
+	
+	//사용자의 input박스 작성을 인식하여 사용하려는 포인트가 현재 보유포인트보다 클 시 현재 보유포인트로 변하게 함
 	$('#use-point').on('propertychange change keyup paste input', function() {
 		var CanPoint = parseInt($("#canPoint").html())
 	    var point =  parseInt($("#use-point").val());
@@ -187,6 +189,8 @@
 		
 	    });
 	
+	
+	// 이거는 최종 결제금액 대체
 	function usingPoint(g_price,user_point) {
 		
 		var price = parseInt(g_price)
@@ -207,6 +211,7 @@
 		
 	}
 	
+	// 값 전송하기
 	function goodsPurchase(g_seq,user_id) {
 		
 		var user_point = parseInt($("#use-point").val())

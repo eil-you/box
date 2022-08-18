@@ -1,9 +1,20 @@
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	Map<Integer, String> urlMap = new HashMap();
+	urlMap.put(1, "https://morestore.co.kr/");
+	urlMap.put(2, "https://www.jigushop.co.kr/");
+	urlMap.put(3, "https://www.thanksto.co.kr/");
+	urlMap.put(4, "https://socialecho.kr/");
+	urlMap.put(5, "https://morestore.co.kr/");
+	urlMap.put(6, "https://morestore.co.kr/");
+	urlMap.put(7, "https://www.revation.co.kr/");
+	urlMap.put(8, "https://www.orenlife.com/");	
+%>
 
 <!DOCTYPE html>
 <html>
@@ -139,7 +150,7 @@
 		<div class=" container-pd">
 			<div class="row list_layout">
 				<!--리스트 출력 시작 시작 -->
-				<c:forEach items="${GoodsList}" var="vo" step="1">
+				<c:forEach items="${GoodsList}" var="vo" step="1" varStatus="status">
 					<div class="card-product__img"
 						onclick="viewGoodsContent(${vo.g_seq})">
 						<img class="card-img" src="file/${vo.g_img}">
@@ -152,7 +163,7 @@
 
 							<div class="pr-zzim">
 								<p class="price" id="price${vo.g_seq}">
-								<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
+									<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
 									<script type="text/javascript">
 									
 									</script>
@@ -165,6 +176,17 @@
 						</div>
 					</div>
 					<div class="goods-line"></div>
+
+
+
+					<c:if test="${status.count%2 == 0}">
+						<%	int adIndex = (int)java.lang.Math.floor(java.lang.Math.random()*8+1); %>
+						<a href="<%=urlMap.get(adIndex)%>" target="_blank""> <img
+							class="banner" src="/img/banner/banner<%=adIndex%>.png"
+							style="width: 100%;">
+						</a>
+					</c:if>
+
 				</c:forEach>
 				<!-- 끝 -->
 			</div>
@@ -172,6 +194,8 @@
 	</section>
 	<p class="write-goods-form" onclick="location.href='viewGoodsForm.do'">+</p>
 	<!-- ================ trending product section end ================= -->
+
+
 
 	<!--  footer start -->
 	<div class="foot-bar"></div>
@@ -190,10 +214,16 @@
 	<script src="js/main-foot.js"></script>
 	<script type="text/javascript">
 	
+	
+	function goSite() {
+
+		var imgsrc = $(this).
+		
+	}
+	
 	function good(gc_name) {
 		
-		$.ajax({
-			
+		$.ajax({		
 			url : "gcList.do",
 			type : "post",
 			data : {

@@ -1,12 +1,19 @@
 <%@page import="com.forus.domain.uChallengeVO"%>
 <%@page import="org.springframework.ui.Model"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%
+	Map<Integer, String> urlMap = new HashMap();
+	urlMap.put(1, "https://www.thanksto.co.kr/");
+	urlMap.put(2, "https://www.orenlife.com/");
+	urlMap.put(3, "https://www.thanksto.co.kr/");
+	urlMap.put(4, "https://thepicker.net/");
+	urlMap.put(5, "https://lifelike.so/");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +98,8 @@
 	</nav>
 
 	<div class="challenge-layout">
-		<c:forEach items="${list}" var="vo" step="1">
+
+		<c:forEach items="${list}" var="vo" step="1" varStatus="status">
 
 			<!-- 반목분 시작 -->
 			<div class="chell-sec">
@@ -137,6 +145,13 @@
 				</div>
 
 			</div>
+			<c:if test="${status.count%3 == 0}">
+				<%	int adIndex = (int)java.lang.Math.floor(java.lang.Math.random()*5+1); %>
+				<a href="<%=urlMap.get(adIndex)%>" target="_blank""> <img
+					class="banner" src="/img/bbanner/b-banner<%=adIndex%>.png"
+					style="width: 100%;">
+				</a>
+			</c:if>
 			<div class="chell-sec-line"></div>
 			<!-- 반목분 종료 -->
 		</c:forEach>

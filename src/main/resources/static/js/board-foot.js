@@ -38,7 +38,6 @@ $(document).on("click", ".reaction", function(article_seq) {
 				console.log("실패")
 			}
 
-
 		})
 
 	} else {

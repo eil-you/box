@@ -201,7 +201,7 @@
 						</c:choose>
 					</c:otherwise>
 				</c:choose>
-
+			<img src="/file/${vo.g_img}">
 			</div>
 	
 		</c:forEach>
@@ -215,7 +215,14 @@
 	<!--  footer start -->
 	<div class="foot-bar"></div>
 	<!--  footer end -->
-
+	
+	<script src="js/message-foot.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/wow.js"></script>
+	<script src="js/script.js"></script>
 	<script src="js/message-foot.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
@@ -230,8 +237,6 @@
 			
 			location.href="/moveChating?roomName=" + name + "&" + "roomNumber="
 			+ number;
-
-			
 			
 		}
 	
