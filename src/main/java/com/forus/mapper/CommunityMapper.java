@@ -39,6 +39,8 @@ public interface CommunityMapper {
 	// 댓글 insert
 	public int commentInsert(commentVO vo);
 	
+	// 게시글 삭제하기
+	public void deleteCommunity(int article_seq);
 
 }
 

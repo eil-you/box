@@ -48,4 +48,11 @@
 		insert into comment_tb(article_seq, c_like, cmt_content, cmt_date, user_id)
 		values(#{article_seq}, 0,#{cmt_content}, now(), #{user_id})
 	</insert>
+	
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteCommunity">
+		delete from community_tb where article_seq = #{article_seq}	
+	</delete>
+	
 </mapper> 

@@ -74,41 +74,43 @@ public class challengeController {
       }
       return "notPage";
 
-   }
-   
-   // 챌린지 listALL 보여주기
-   @RequestMapping("/challengeList.do")
-   public String chalListAll(Model model, HttpSession session){
-      if(session.getAttribute("user_id")!= null) {
-      List<uChallengeVO> list=mapper.chalListAll();
-      System.out.println(list);
-      model.addAttribute("list",list);
-      return "challengeList";
-      }else {
-         return "notPage";
-      }
-   }
-   
-   // 챌린지 listALL 보여주기
-   @RequestMapping("/myChallengeList.do")
-   public String myChalListAll(Model model, HttpSession session){
-      if(session.getAttribute("user_id")!=null) {
-      List<uChallengeVO> list=mapper.chalListAll();
-      System.out.println(list);
-      model.addAttribute("list",list);
-      return "myChallengeList";
-      }else {
-         return "notPage";
-      }
-   }
-   
-   // 챌린지 삭제하기
-   @RequestMapping("/chalDelete.do")
-   public @ResponseBody void chalDelete(int uc_seq, HttpSession session) {
-      String user_id = (String)session.getAttribute("user_id");
-      if(user_id != null) {
-      mapper.chalDelete(uc_seq);
-      }
-   }
-   
+	}
+	
+	// 챌린지 listALL 보여주기
+	@RequestMapping("/challengeList.do")
+	public String chalListAll(Model model, HttpSession session){
+		if(session.getAttribute("user_id")!= null) {
+		List<uChallengeVO> list=mapper.chalListAll();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "challengeList";
+		}else {
+			return "notPage";
+		}
+	}
+	
+	// 챌린지 listALL 보여주기
+	@RequestMapping("/myChallengeList.do")
+	public String myChalListAll(Model model, HttpSession session){
+		if(session.getAttribute("user_id")!=null) {
+		List<uChallengeVO> list=mapper.chalListAll();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "myChallengeList";
+		}else {
+			return "notPage";
+		}
+	}
+	
+	// 챌린지 삭제하기
+	@RequestMapping("/chalDelete.do")
+	public @ResponseBody void chalDelete(int uc_seq, HttpSession session) {
+		String user_id = (String)session.getAttribute("user_id");
+		if(user_id != null) {
+		mapper.chalDelete(uc_seq);
+		}
+	}
+	
 }
+
+
