@@ -114,10 +114,16 @@
 						$(".chatting-sec").append(
 								"<div class='from-me'>" + d.msg
 										+ "</div> <div class='clear'></div>");
+					    let chat = document.querySelector('#chating');
+					    chat.scrollTop = chat.scrollHeight;
+						
 					} else {
 						$(".chatting-sec").append(
 								"<div class='from-them'>" + d.msg
 										+ "</div> <div class='clear'></div>");
+					    let chat = document.querySelector('#chating');
+					    chat.scrollTop = chat.scrollHeight;
+						
 					}
 
 				} else {
@@ -175,13 +181,8 @@
 
 	}
 	
-	window.setInterval(
-			function() {
-		  var elem = document.getElementById('chating');
-		  elem.scrollTop = elem.scrollHeight;
-		}
-		
-		);
+	
+
 </script>
 
 <body>
@@ -231,7 +232,7 @@
 
 		</section>
 	</div>
-
+	
 	<div id="yourName">
 		<table class="inputTable">
 			<tr>

@@ -164,6 +164,8 @@
 	<div id="roomContainer" class="roomContainer">
 		<c:forEach items="${chatRoomList}" var="vo">
 			<div class="chat-room-div" onclick="viewChat(${vo.cr_seq}, '${vo.cr_title}')">
+				<div style="width: 87%;
+				    display: inline-block;}">
 				<c:choose>
 					<c:when test="${vo.cr_title == user_id }">
 						<p class="chat-user">${vo.user_id}</p>
@@ -201,6 +203,7 @@
 						</c:choose>
 					</c:otherwise>
 				</c:choose>
+				</div>
 			<img src="/file/${vo.g_img}">
 			</div>
 	

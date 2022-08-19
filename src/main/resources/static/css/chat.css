@@ -42,10 +42,11 @@ input {
 	padding: 2% 5%;
 	background-color: white;
 	z-index: 3;
+    min-width: 430px;
 }
 
 .chat-form {
-	width: 84%;
+	width: 81%;
 	display: inline;
 }
 
