@@ -164,7 +164,7 @@
 	<div id="roomContainer" class="roomContainer">
 		<c:forEach items="${chatRoomList}" var="vo">
 			<div class="chat-room-div" onclick="viewChat(${vo.cr_seq}, '${vo.cr_title}')">
-				<div style="width: 87%;
+				<div style="width: 83%;
 				    display: inline-block;}">
 				<c:choose>
 					<c:when test="${vo.cr_title == user_id }">
