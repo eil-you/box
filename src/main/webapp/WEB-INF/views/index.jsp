@@ -179,7 +179,7 @@
 
 
 
-					<c:if test="${status.count%2 == 0}">
+					<c:if test="${status.count%3 == 0}">
 						<%	int adIndex = (int)java.lang.Math.floor(java.lang.Math.random()*8+1); %>
 						<a href="<%=urlMap.get(adIndex)%>" target="_blank""> <img
 							class="banner" src="/img/banner/banner<%=adIndex%>.png"
