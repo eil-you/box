@@ -10,6 +10,7 @@ import com.forus.domain.uChallengeVO;
 @Mapper
 public interface ChallengeMapper {
 
+
 	// 챌린지 정보 가져오기
 	public List<challengeVO> challengeAll();
 	

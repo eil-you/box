@@ -181,14 +181,14 @@
 		<div class="navbar__logo add-header">
 			<c:choose>
 				<c:when test="${roomName == user_id}">
-					<h4 id = "t" style="display: inline-block;"></h4>				
+					<h4 id="t" style="display: inline-block;"></h4>
 				</c:when>
-				
+
 				<c:otherwise>
 					<h4 style="display: inline-block;">${roomName}</h4>
 				</c:otherwise>
 			</c:choose>
-			
+
 		</div>
 	</nav>
 	<input type="hidden" id="sessionId" value="">
@@ -210,7 +210,7 @@
 
 							<c:otherwise>
 								<div class='from-them'>${vo.talk_content}</div>
-								<input type="hidden" value="${vo.talker_id}" id="talker_id"/>
+								<input type="hidden" value="${vo.talker_id}" id="talker_id" />
 								<div class='clear'></div>
 							</c:otherwise>
 						</c:choose>
@@ -247,4 +247,10 @@
 		<!--  footer end -->
 
 		<script src="js/message-foot.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.nicescroll.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/wow.js"></script>
+		<script src="js/script.js"></script>
 </body>

@@ -1,10 +1,20 @@
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%
+	Map<Integer, String> urlMap = new HashMap();
+	urlMap.put(1, "https://morestore.co.kr/");
+	urlMap.put(2, "https://www.jigushop.co.kr/");
+	urlMap.put(3, "https://www.thanksto.co.kr/");
+	urlMap.put(4, "https://socialecho.kr/");
+	urlMap.put(5, "https://morestore.co.kr/");
+	urlMap.put(6, "https://morestore.co.kr/");
+	urlMap.put(7, "https://www.revation.co.kr/");
+	urlMap.put(8, "https://www.orenlife.com/");	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,7 +129,7 @@
 					</div>
 				</div>
 
-				<c:forEach items="${boardList}" var="vo" step="1">
+				<c:forEach items="${boardList}" var="vo" step="1" varStatus="status">
 					<!-- 반목분 시작 -->
 					<div class="board-sec"
 						onclick="location.href='viewBoardInfo.do?article_seq=${vo.article_seq}'">
@@ -185,6 +195,13 @@
 					</div>
 
 					<div class="seper-line"></div>
+					<c:if test="${status.count%3 == 0}">
+						<%	int adIndex = (int)java.lang.Math.floor(java.lang.Math.random()*8+1); %>
+						<a href="<%=urlMap.get(adIndex)%>" target="_blank""> <img
+							class="banner" src="/img/banner/banner<%=adIndex%>.png"
+							style="width: 100%;">
+						</a>
+					</c:if>
 			</c:forEach>
 			<!-- 반목분 종료 -->
 

@@ -108,7 +108,7 @@
 						<div class="dropdown zzzmenu">
 									<button class="dropbtn ">⁝</button>
 									<div class="dropdown-content">
-										<a >수정하기</a> 
+										<a href="">수정하기</a> 
 										<a >삭제하기</a> 
 									</div>
 								</div>

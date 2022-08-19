@@ -25,35 +25,35 @@ import com.forus.mapper.ChallengeMapper;
 
 @Controller
 public class challengeController {
-	
-	@Autowired
-	ChallengeMapper mapper;
-	
-	
-	// 챌린지 인증 글 올리기
-	@RequestMapping("/chalInsert.do")
-	public String chalInsert(@RequestParam("c_img") MultipartFile file, HttpSession session, uChallengeVO vo, Model model) {
-		
-		
-		String user_id=(String) session.getAttribute("user_id");
-		if(user_id != null) {
+   
+   @Autowired
+   ChallengeMapper mapper;
+   
+   
+   // 챌린지 인증 글 올리기
+   @RequestMapping("/chalInsert.do")
+   public String chalInsert(@RequestParam("c_img") MultipartFile file, HttpSession session, uChallengeVO vo, Model model) {
+      
+      
+      String user_id=(String) session.getAttribute("user_id");
+      if(user_id != null) {
 
-		String path = session.getServletContext().getRealPath("/file");
+      String path = session.getServletContext().getRealPath("/file");
 
-		System.out.println("경로 : " + path);
-		System.out.println("uChallengeVO 확인 "+ vo);
-		
-		
-		
-		// 이미지 저장하기
+      System.out.println("경로 : " + path);
+      System.out.println("uChallengeVO 확인 "+ vo);
+      
+      
+      
+      // 이미지 저장하기
         String uuid = UUID.randomUUID().toString();
         // file upload to system
         File converFile = new File(path, uuid + file.getOriginalFilename());
         try {
-			file.transferTo(converFile);
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
+         file.transferTo(converFile);
+      } catch (IllegalStateException | IOException e) {
+         e.printStackTrace();
+      }
 
         
         // 유저 챌린지 게시글 저장하기
@@ -69,10 +69,10 @@ public class challengeController {
         mapper.addPoint(vo.getChal_content(), vo.getUser_id());
         
  
-		
-    	return "redirect:/challengeList.do";
-		}
-		return "notPage";
+      
+       return "redirect:/challengeList.do";
+      }
+      return "notPage";
 
 	}
 	
@@ -112,3 +112,5 @@ public class challengeController {
 	}
 	
 }
+
+
