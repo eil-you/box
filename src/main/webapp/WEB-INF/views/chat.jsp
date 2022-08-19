@@ -174,6 +174,14 @@
 		chatting = $('#chatting').val("");
 
 	}
+	
+	window.setInterval(
+			function() {
+		  var elem = document.getElementById('chating');
+		  elem.scrollTop = elem.scrollHeight;
+		}
+		
+		);
 </script>
 
 <body>
