@@ -108,8 +108,8 @@
 						<div class="dropdown zzzmenu">
 									<button class="dropbtn ">⁝</button>
 									<div class="dropdown-content">
-										<a href="">수정하기</a> 
-										<a >삭제하기</a> 
+										<a >수정하기</a> 
+										<a onclick="deletboard(${vo.article_seq})">삭제하기</a> 
 									</div>
 								</div>
 						<div class="board-sec"
@@ -206,7 +206,7 @@ function deletboard(article_seq) {
 
 	$.ajax({
 
-		url: "challengeDelete.do",
+		url: "deleteCommunity.do",
 		type: "post",
 		data: {
 			"article_seq": article_seq

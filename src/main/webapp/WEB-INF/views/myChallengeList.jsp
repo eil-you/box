@@ -100,8 +100,8 @@
 									<div class="dropdown zzzmenu">
 									<button class="dropbtn ">⁝</button>
 									<div class="dropdown-content">
-										<a onclick="findGoodsPw()">수정하기</a> 
-										<a >삭제하기</a> 
+										<a >수정하기</a> 
+										<a onclick="deletchall(${vo.uc_seq})">삭제하기</a> 
 									</div>
 								</div>
 					<div class="chell-sec">
@@ -181,7 +181,7 @@
 
 		$.ajax({
 
-			url: "challengeDelete.do",
+			url: "chalDelete.do",
 			type: "post",
 			data: {
 				"uc_seq": uc_seq
