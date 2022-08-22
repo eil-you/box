@@ -156,11 +156,11 @@ pageContext.setAttribute("newLine", "\n");
 			<input type="hidden" value="${wish}" id="wishyn">
 			<c:choose>
 				<c:when test="${wish == 0}">
-					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png">
+					<img class="item-zzim" id="zzim" src="/img/icon/star-empty.png" onclick="addZzim(${goodsInfo.g_seq})">
 				</c:when>
 
 				<c:otherwise>
-					<img class="item-zzim" id="nozzim" src="/img/icon/star-full.png">
+					<img class="item-zzim" id="zzim" src="/img/icon/star-full.png" onclick="addZzim(${goodsInfo.g_seq})">
 				</c:otherwise>
 			</c:choose>
 			<p id="g_price">${goodsInfo.g_price}</p>
@@ -211,21 +211,14 @@ pageContext.setAttribute("newLine", "\n");
             document.body.appendChild(f);
 		    f.submit();
 		
-		
-		
 	}
 	
-	
-	
-	
-	$(document).ready(changemoney)
 	$(document).ready(changeImg)
+	$(document).ready(changemoney)
 		
 	function changeImg() {
 			var rn = Math.ceil(Math.random()*4)
 			console.log(rn)
-			
-			
 			
 			$(".seller-img").attr("src","/img/profile/user"+rn+".jpg")
 			
@@ -248,67 +241,63 @@ pageContext.setAttribute("newLine", "\n");
 
 		// 찜목록 클릭 
 
-		$(document).on('click', '#zzim', function() {
-			
-			var g_seq = ${goodsInfo.g_seq}
+		function addZzim(g_seq) {
 			
 			console.log(g_seq)
-			document.getElementById("zzim").src="/img/icon/star-full.png";
-			$(this).removeAttr('id', 'zzim')
-			$(this).attr('id', 'nozzim')
-
-			$.ajax({
-				url : "updateWish.do",
-				type: "post",
-				data : {
-					"g_seq" : g_seq,
-					"status" : 1
-				},
-				success : function () {
-					console.log("찜 누르기 성공")
-				},
-				error : function () {
-					console.log("실패")
-				}
-				
-			})
+			console.log("찜 css : " + $("#zzim").attr("src"))
+			imgSrc = $("#zzim").attr("src");
 			
-		})
-		
-		
-		
+			if (imgSrc == '/img/icon/star-full.png') {
+		         
+				$("#zzim").attr("src","/img/icon/star-empty.png")
 
-		$(document).on('click', '#nozzim', function() {
+	            console.log("찜취소")
+	               
+	            $.ajax({
+	               url : "updateWish.do",
+	               type: "post",
+	               data : {
+	                  "g_seq" : g_seq,
+	                  "status" : 0
+	               },
+	               success : function () {
+	                  console.log("찜 취소 성공")
+	               },
+	               error : function () {
+	                  console.log("실패")
+	               }
+	               
+	            });
+	         }
+	         
+	         else if (imgSrc == '/img/icon/star-empty.png') {
+	            
+        		$("#zzim").attr("src","/img/icon/star-full.png")
 
-			console.log("찜취소")
-			var g_seq = ${goodsInfo.g_seq}
+	            console.log("찜성공")
+	               
+	            
+	            $.ajax({
+	               url : "updateWish.do",
+	               type: "post",
+	               data : {
+	                  "g_seq" : g_seq,
+	                  "status" : 1
+	               },
+	               success : function () {
+	                  console.log("찜 취소 성공")
+	               },
+	               error : function () {
+	                  console.log("실패")
+	               }
+	               
+	            });
+	            
+	            
+	         }
 			
+		}
 
-			document.getElementById("nozzim").src="/img/icon/star-empty.png";
-			$(this).removeAttr('id', 'nozzim')
-			$(this).attr('id', 'zzim')
-
-
-				$.ajax({
-				url : "updateWish.do",
-				type: "post",
-				data : {
-					"g_seq" : g_seq,
-					"status" : 0
-				},
-				success : function () {
-					console.log("찜 취소 성공")
-				},
-				error : function () {
-					console.log("실패")
-				}
-				
-				
-				
-			})
-			
-
-		})
 	</script>
 
 </body>

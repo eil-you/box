@@ -1,6 +1,3 @@
-
-
-
 log.addEventListener("scroll", (event) => {
 
 	
