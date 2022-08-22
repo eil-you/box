@@ -83,6 +83,12 @@ public class chatController {
 		
 		chatRoomVO room = new chatRoomVO();
 		
+		// db에 이미 채팅방이 있는 경우 채팅 방 리스트로 뿌리기
+		room=cMapper.cr_seqSelect(user_id, g_seq);
+		if(room== null) {
+
+		
+		
 		//if(roomName != null && !roomName.trim().equals("")) {
 		if(g_seq > 0) {
 			//Room room = new Room();
@@ -103,6 +109,7 @@ public class chatController {
 			roomList.add(room);
 			
 			
+		}
 		}
 		
 		return "redirect:/moveChating?roomName="+room.getCr_title()+"&"+"roomNumber="+room.getCr_seq();
