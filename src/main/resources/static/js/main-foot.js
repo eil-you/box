@@ -57,6 +57,7 @@ function viewGoodsContent(g_seq,apt_name){
 					//$("#navbar").css("display","block")
 					$("#navbar").css("width","100%")
 					$(".write-goods-form").css("display","none");
+					$(".navbar").css("z-index", "0");
 					
 			}
 			
@@ -65,7 +66,7 @@ function viewGoodsContent(g_seq,apt_name){
 						//$("#navbar").css("display","none")
 						$("#navbar").css("width","0%")
 						$(".write-goods-form").css("display","block");
-				
+						$(".navbar").css("z-index", "10");
 				
 			}
 			

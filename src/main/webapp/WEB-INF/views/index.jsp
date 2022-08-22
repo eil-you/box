@@ -215,11 +215,6 @@
 	<script type="text/javascript">
 	
 	
-	function goSite() {
-
-		var imgsrc = $(this).
-		
-	}
 	
 	function good(gc_name) {
 		
