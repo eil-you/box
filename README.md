@@ -118,7 +118,7 @@
     <td align="center"><strong>이설아</strong></td>
   </tr>
   <tr>
-    <td align="center"><b>Backend</b></td>
+    <td align="center"><b>팀장, Backend</b></td>
     <td align="center"><b>Frontend</b></td>
     <td align="center"><b>IoT,Frontend</b></td>
     <td align="center"><b>Backend</b></td>
